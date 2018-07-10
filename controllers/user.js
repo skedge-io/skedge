@@ -22,7 +22,7 @@ module.exports = (passport, app, User) => {
   })
 
   // Create User Account
-  app.post('/account/setup', (req, res) => {
+  app.post('api/user/new', (req, res) => {
     User.findById(req.user._id).then((user) => {
       user = {...user, ...req.body};
       user.save().then(() => {
