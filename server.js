@@ -8,9 +8,17 @@ mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/skedge', () => 
 });
 
 
-const keys = require('./config/keys');
+const authKeys = require('./config/keys');
 const passport = require('passport');
 require('./services/passport.js');
+const cookieSession = require('cookie-session');
+const bodyParser = require('body-parser');
+app.use(bodyParser.json())
+app.use(cookieSession({
+    maxAge: 30 * 24 * 60 * 60 * 1000,
+    keys: [authKeys.cookieKey]
+  })
+)
 app.use(passport.initialize());
 app.use(passport.session());
 
