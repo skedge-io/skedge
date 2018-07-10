@@ -14,6 +14,9 @@ require('./services/passport.js');
 app.use(passport.initialize());
 app.use(passport.session());
 
+//User Controller and Model
+const User = require('./models/User.js');
+require('./controllers/user.js')(passport, app, User);
 
 if (process.env.NODE_ENV === 'production') {
   // Express will serve up production assets
@@ -26,10 +29,6 @@ if (process.env.NODE_ENV === 'production') {
     res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
   })
 }
-
-//User Controller and Model
-const User = require('./models/User.js');
-require('./controllers/user.js')(passport, app, User);
 
 app.listen(port, () => {
   console.log("Skedge time");
