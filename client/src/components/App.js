@@ -8,6 +8,7 @@ import Header from './Header';
 import Landing from './Landing';
 import Dashboard from './Dashboard';
 import AppointmentNew from './appointments/AppointmentNew';
+import AccountSetUp from './account/AccountSetUp';
 
 
 class App extends Component {
@@ -25,6 +26,7 @@ class App extends Component {
               <Route exact path="/" component={Landing} />
               <Route exact path="/dashboard" component={Dashboard} />
               <Route exact path="/appointments/new" component={AppointmentNew} />
+              <Route exact path="/account/setup" component={AccountSetUp} />
             </div>
         </BrowserRouter>
     );
