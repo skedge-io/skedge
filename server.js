@@ -10,7 +10,7 @@ mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/skedge', () => 
 
 const keys = require('./config/keys');
 const passport = require('passport');
-require('/services/passport');
+require('./services/passport.js');
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -28,8 +28,8 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 //User Controller and Model
-const User = require('/models/User.js');
-require('/controllers/user.js')(passport, app, User);
+const User = require('./models/User.js');
+require('./controllers/user.js')(passport, app, User);
 
 app.listen(port, () => {
   console.log("Skedge time");
