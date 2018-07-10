@@ -26,7 +26,7 @@ const AccountFormReview = ({ onCancel, formValues, submitAccount, history }) => 
         Back
       </button>
       <button onClick={() => submitAccount(formValues, history)} className="green white-text btn-flat right">
-        Send Survey
+        Finish Registration
         <i className="material-icons right">email</i>
       </button>
     </div>
