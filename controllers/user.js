@@ -7,7 +7,7 @@ module.exports = (passport, app, User) => {
    );
 
   app.get('/auth/google/callback', passport.authenticate('google'), (req, res) => {
-      res.redirect('/surveys');
+      res.redirect('/dashboard');
     }
   );
 
