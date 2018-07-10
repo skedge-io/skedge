@@ -24,7 +24,9 @@ module.exports = (passport, app, User) => {
   // Create User Account
   app.post('api/user/new', (req, res) => {
     User.findById(req.user._id).then((user) => {
-      user = {...user, ...req.body};
+      user.name = req.body.name;
+      user.business = req.body.business;
+      user.phone = req.body.phone;
       user.save().then(() => {
         res.redirect('/dashboard');
       });
