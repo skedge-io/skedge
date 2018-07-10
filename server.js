@@ -7,6 +7,10 @@ mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/skedge', () => 
   console.log("Connected to Skedge Database");
 });
 
+const keys = require('./config/keys');
+
+
+
 if (process.env.NODE_ENV === 'production') {
   // Express will serve up production assets
   // like our main.js or main.css file
