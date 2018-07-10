@@ -7,7 +7,7 @@ import './styles.css';
 import Header from './Header';
 import Landing from './Landing';
 import Dashboard from './Dashboard';
-// import SurveyNew from './surveys/SurveyNew';
+import AppointmentNew from './appointments/AppointmentNew';
 
 
 class App extends Component {
@@ -24,6 +24,7 @@ class App extends Component {
               </div>
               <Route exact path="/" component={Landing} />
               <Route exact path="/dashboard" component={Dashboard} />
+              <Route exact path="/appointments/new" component={AppointmentNew} />
             </div>
         </BrowserRouter>
     );
