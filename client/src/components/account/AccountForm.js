@@ -16,6 +16,7 @@ class AccountForm extends Component {
   render() {
     return (
       <div>
+        <h2 align="center">Finish setting up your account</h2>
         <form onSubmit={this.props.handleSubmit(this.props.onAccountSubmit)}>
           {this.renderFields()}
           <Link to="/dashboard" className="red btn-flat white-text">
