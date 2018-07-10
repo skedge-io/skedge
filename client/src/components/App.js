@@ -6,7 +6,7 @@ import './styles.css';
 
 import Header from './Header';
 import Landing from './Landing';
-// import Dashboard from './Dashboard';
+import Dashboard from './Dashboard';
 // import SurveyNew from './surveys/SurveyNew';
 
 
@@ -23,6 +23,7 @@ class App extends Component {
               <div className="container">
               </div>
               <Route exact path="/" component={Landing} />
+              <Route exact path="/dashboard" component={Dashboard} />
             </div>
         </BrowserRouter>
     );
