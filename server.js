@@ -3,6 +3,9 @@ const app = express();
 const port = process.env.PORT || '5000';
 
 const mongoose = require('mongoose');
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/skedge', () => {
+  console.log("Connected to Skedge Database");
+});
 
 if (process.env.NODE_ENV === 'production') {
   // Express will serve up production assets
