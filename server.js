@@ -19,9 +19,9 @@ if (process.env.NODE_ENV === 'production') {
   })
 }
 
-app.get('/', (req,res) => {
-  res.send('Hello Heroku');
-})
+//User Controller and Model
+const User = require('/models/User.js');
+require('/controllers/user.js')(passport, User);
 
 app.listen(port, () => {
   console.log("Skedge time");
