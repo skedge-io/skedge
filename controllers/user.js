@@ -22,7 +22,7 @@ module.exports = (passport, app, User) => {
   })
 
   // Finish User Account
-  app.post('api/user/new', (req, res) => {
+  app.post('/api/user/new', (req, res) => {
     User.findById(req.user._id).then((user) => {
       user.name = req.body.name;
       user.business = req.body.business;
