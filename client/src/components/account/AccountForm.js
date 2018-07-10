@@ -4,6 +4,7 @@ import React, { Component } from 'react';
 import { reduxForm, Field } from 'redux-form';
 import { Link } from 'react-router-dom';
 import AccountField from './AccountField';
+import validateNumbers from '../../utils/validateNumbers';
 import formFields from './formFields.js';
 
 class AccountForm extends Component {
@@ -16,6 +17,7 @@ class AccountForm extends Component {
   render() {
     return (
       <div>
+        <h2 align="center">Finish setting up your account</h2>
         <form onSubmit={this.props.handleSubmit(this.props.onAccountSubmit)}>
           {this.renderFields()}
           <Link to="/dashboard" className="red btn-flat white-text">
@@ -31,6 +33,8 @@ class AccountForm extends Component {
 
 function validate(values) {
   const errors = {};
+
+  errors.phone = validateNumbers(values.phone || '');
 
   _.each(formFields, ({ name, noValueError }) => {
     if (!values[name]) {
