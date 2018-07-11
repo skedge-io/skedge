@@ -32,10 +32,13 @@ module.exports = (passport, app, User) => {
       user.business = req.body.business;
       user.phone = req.body.phone;
       user.save().then(() => {
-        console.log("User Saved");
-        res.redirect('/dashboard');
-      }).catch((err) => {
-        console.log(err);
+        let business = new Business();
+        business.name = req.body.business;
+        business.owner = req.body.name;
+        business.employees.push(req.body.name);
+        business.save().then(() => {
+          res.redirect('/dashboard');
+        })
       });
     }).catch((err) => {
       console.log(err);

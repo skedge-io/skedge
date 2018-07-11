@@ -15,4 +15,6 @@ module.exports = (app, Appointment) => {
     })
   });
 
+  app.post('/api/appointment/:business')
+
 }
