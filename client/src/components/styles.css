@@ -37,3 +37,8 @@
 .cal-out {
   width: 85%;
 }
+
+.rbc-toolbar {
+  flex-wrap: wrap;
+  justify-content: center;
+}
