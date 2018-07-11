@@ -13,6 +13,7 @@
     "materialize-css": "^0.100.2",
     "moment": "^2.22.2",
     "react": "^16.4.1",
+    "react-calendar": "^2.16.0",
     "react-datepicker": "^1.5.0",
     "react-dom": "^16.4.1",
     "react-materialize": "^2.3.3",

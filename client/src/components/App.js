@@ -6,7 +6,7 @@ import './styles.css';
 
 import Header from './Header';
 import Landing from './Landing';
-import Dashboard from './Dashboard';
+import Dashboard from './dashboard/Dashboard';
 import AppointmentNew from './appointments/AppointmentNew';
 import AccountSetUp from './account/AccountSetUp';
 
