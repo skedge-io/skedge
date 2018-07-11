@@ -13,3 +13,10 @@ export const submitAccount = (values, history) => async dispatch => {
   history.push('/dashboard');
   dispatch({ type: FETCH_USER, payload: res.data });
 };
+
+export const submitAppointment = (values, history) => async dispatch => {
+  const res = await axios.post('/api/appointment/new', values);
+
+  history.push('/dashboard');
+  dispatch({ type: FETCH_USER, payload: res.data });
+};

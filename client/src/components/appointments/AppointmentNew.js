@@ -1,12 +1,33 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+// AppointmentNew shows AppointmentForm and AppointmentFormReview
+import React, { Component } from 'react';
+import { reduxForm } from 'redux-form';
+import AppointmentForm from './AppointmentForm';
+import AppointmentFormReview from './AppointmentFormReview';
 
-const AppointmentNew = () => {
-  return (
-    <div>
-      <h1 align="center">Schedule Appointment</h1>
-    </div>
-  );
-};
+class AppointmentNew extends Component {
+  state = { showFormReview: false };
 
-export default AppointmentNew;
+  renderContent() {
+    if (this.state.showFormReview) {
+      return (
+        <AppointmentFormReview
+        onCancel={() => this.setState({ showFormReview: false })}
+       />
+     );
+  }
+
+    return <AppointmentForm onAppointmentSubmit={() => this.setState({ showFormReview: true })}/>;
+  }
+
+  render() {
+    return (
+      <div className="container">
+        {this.renderContent()}
+      </div>
+    );
+  }
+}
+
+export default reduxForm({
+  form: 'appointmentForm'
+})(AppointmentNew);
