@@ -22,7 +22,23 @@ class DashCalendar extends Component {
         start: new Date(),
         end: new Date(moment().add(0, "days")),
         title: "Jan <> Joe"
+      },
+      {
+        start: new Date(moment().add(6, "days")),
+        end: new Date(moment().add(6, "days")),
+        title: "Rick <> Joe"
+      },
+      {
+        start: new Date(moment().add(10, "days")),
+        end: new Date(moment().add(10, "days")),
+        title: "Rick <> Joe"
+      },
+      {
+        start: new Date(moment().add(2, "days")),
+        end: new Date(moment().add(2, "days")),
+        title: "Rick <> Joe"
       }
+
     ]
   };
 
@@ -73,6 +89,7 @@ class DashCalendar extends Component {
           onSelectEvent={this.onSelectEvent}
           onSelectSlot={this.onSelectSlot}
           resizable
+          popup
           style={{ height: "95%" }}
         />
       </div>

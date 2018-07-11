@@ -6,7 +6,6 @@ import formFields from './formFields';
 import { withRouter } from 'react-router-dom';
 import * as actions from '../../actions';
 import './../styles.css';
-// import { Input } from 'react-materialize'
 
 
 const AppointmentFormReview = ({ onCancel, formValues, submitAppointment, history }) => {
