@@ -1,3 +1,4 @@
+const Business = require('../models/Business.js');
 module.exports = (passport, app, User) => {
 
   app.get('/auth/google', passport.authenticate('google',
