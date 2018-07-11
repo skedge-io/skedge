@@ -3,9 +3,11 @@ const { Schema } = mongoose;
 
 const AppointmentSchema = new Schema({
   business : String,
-  customer_name : String,
+  customer : String,
   date : String,
-  time : String
+  notes : String,
+  employee : String,
+  phone : String
 });
 
 const Appointment = mongoose.model('Appointment', AppointmentSchema);

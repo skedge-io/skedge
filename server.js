@@ -26,6 +26,10 @@ app.use(passport.session());
 const User = require('./models/User.js');
 require('./controllers/user.js')(passport, app, User);
 
+//Appointment Controller and Model
+const Appointment = require('./models/Appointment.js');
+require('./controllers/appointment.js')(app, Appointment);
+
 if (process.env.NODE_ENV === 'production') {
   // Express will serve up production assets
   // like our main.js or main.css file

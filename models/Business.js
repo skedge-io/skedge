@@ -4,7 +4,7 @@ const { Schema } = mongoose;
 const BusinessSchema = new Schema({
   name : String,
   owner : String,
-  employees : String
+  employees : [String]
 });
 
 const Business = mongoose.model('Business', BusinessSchema);
