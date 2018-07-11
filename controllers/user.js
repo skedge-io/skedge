@@ -7,7 +7,11 @@ module.exports = (passport, app, User) => {
    );
 
   app.get('/auth/google/callback', passport.authenticate('google'), (req, res) => {
-      res.redirect('/account/setup');
+      if(req.user.name){
+        res.redirect('/dashboard');
+      }else{
+        res.redirect('/account/setup');
+      }
     }
   );
 
