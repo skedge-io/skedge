@@ -25,10 +25,10 @@ const AccountFormReview = ({ onCancel, formValues, submitAccount, history }) => 
       <h5>Please confirm your entries</h5>
       {reviewFields}
         <hr />
-        <button className="yellow darken-3 white-text btn-flat" onClick={onCancel}>
+        <button className="yellow darken-3 white-text btn-flat hoverable waves-effect waves-light" onClick={onCancel}>
           Back
         </button>
-        <button onClick={() => submitAccount(formValues, history)} className="green white-text btn-flat right">
+        <button onClick={() => submitAccount(formValues, history)} className="green white-text btn-flat right waves-effect waves-light">
           Finish Registration
           <i className="material-icons right">email</i>
         </button>
