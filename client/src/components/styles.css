@@ -5,3 +5,7 @@
 .slight-margin-top: {
   margin-top: 1rem;
 }
+
+.full {
+  width: 100%;
+}
