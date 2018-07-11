@@ -6,10 +6,11 @@ module.exports = (app, Appointment) => {
     appointment.customer = req.body.customer;
     appointment.employee = req.body.employee;
     appointment.employee_id = req.user._id;
+    appointment.title = req.body.title;
     appointment.phone = req.body.phone;
-    appointment.notes = req.body.notes;
-    appointment.date = req.body.date;
-    appointment.time = req.body.time;
+    appointment.desc = req.body.desc;
+    appointment.start = req.body.start;
+    appointment.end = req.body.end;
     appointment.business = req.user.business;
     appointment.save().then(() => {
       res.redirect('/dashboard');
