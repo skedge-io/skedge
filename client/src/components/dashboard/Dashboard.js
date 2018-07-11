@@ -5,8 +5,6 @@ import DashCalendar from './Calendar';
 
 const Dashboard = () => {
 
-
-
   return (
     <div>
       <div className="dash-con">

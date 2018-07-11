@@ -48,15 +48,30 @@ class DashCalendar extends Component {
     })
   };
 
+  onSelectEvent = ( event ) => {
+    alert(event.title)
+  }
+
+  onSelectSlot = ( slotInfo ) => {
+    alert(
+          `selected slot: \n\nstart ${slotInfo.start.toLocaleString()} ` +
+            `\nend: ${slotInfo.end.toLocaleString()}` +
+            `\naction: ${slotInfo.action}`
+        )
+  }
+
   render() {
     return (
       <div className="cal-out">
         <DnDCalendar
+          selectable
           defaultDate={new Date()}
           defaultView="month"
           events={this.state.events}
           onEventDrop={this.onEventDrop}
           onEventResize={this.onEventResize}
+          onSelectEvent={this.onSelectEvent}
+          onSelectSlot={this.onSelectSlot}
           resizable
           style={{ height: "95%" }}
         />
