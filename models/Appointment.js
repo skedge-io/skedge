@@ -5,6 +5,7 @@ const AppointmentSchema = new Schema({
   business : String,
   customer : String,
   date : String,
+  time : String,
   notes : String,
   employee : String,
   phone : String
