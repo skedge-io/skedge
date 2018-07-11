@@ -3,6 +3,8 @@ import Calendar from 'react-big-calendar';
 import moment from 'moment';
 import withDragAndDrop from "react-big-calendar/lib/addons/dragAndDrop";
 
+import CalendarEventView from './CalendarEventView';
+
 import "react-big-calendar/lib/addons/dragAndDrop/styles.css";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import '../styles.css';
@@ -31,12 +33,12 @@ class DashCalendar extends Component {
       {
         start: new Date(moment().add(10, "days")),
         end: new Date(moment().add(10, "days")),
-        title: "Rick <> Joe"
+        title: "Aleisha <> Joe"
       },
       {
         start: new Date(moment().add(2, "days")),
         end: new Date(moment().add(2, "days")),
-        title: "Rick <> Joe"
+        title: "Maddie <> James"
       }
 
     ]
@@ -65,7 +67,8 @@ class DashCalendar extends Component {
   };
 
   onSelectEvent = ( event ) => {
-    alert(event.title)
+    this.setState.eventTitle = event.title;
+    return alert(event.title)
   }
 
   onSelectSlot = ( slotInfo ) => {
