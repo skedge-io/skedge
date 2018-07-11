@@ -30,7 +30,7 @@ const AccountFormReview = ({ onCancel, formValues, submitAccount, history }) => 
         </button>
         <button onClick={() => submitAccount(formValues, history)} className="green white-text btn-flat right waves-effect waves-light">
           Finish Registration
-          <i className="material-icons right">email</i>
+          <i className="material-icons right">contact_mail</i>
         </button>
     </div>
   );
