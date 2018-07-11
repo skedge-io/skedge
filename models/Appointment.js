@@ -8,6 +8,7 @@ const AppointmentSchema = new Schema({
   time : String,
   notes : String,
   employee : String,
+  employee_id : String,
   phone : String
 });
 

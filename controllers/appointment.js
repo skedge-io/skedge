@@ -5,6 +5,7 @@ module.exports = (app, Appointment) => {
     let appointment = new Appointment();
     appointment.customer = req.body.customer;
     appointment.employee = req.body.employee;
+    appointment.employee_id = req.user._id;
     appointment.phone = req.body.phone;
     appointment.notes = req.body.notes;
     appointment.date = req.body.date;
@@ -15,6 +16,11 @@ module.exports = (app, Appointment) => {
     })
   });
 
-  app.post('/api/appointment/:business')
+  app.post('/api/appointments/:employee', (req, res) => {
+    Appointment.find({employee_id : req.params.employee})
+    .then((err, appointments) => {
+      res.json(appointments);
+    })
+  })
 
 }
