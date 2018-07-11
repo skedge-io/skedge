@@ -35,7 +35,17 @@ class DashCalendar extends Component {
   };
 
   onEventDrop = ({ event, start, end, allDay }) => {
-    console.log(start);
+    const { events } = this.state
+
+    const idx = events.indexOf(event)
+    const updatedEvent = { ...event, start, end }
+
+    const nextEvents = [...events]
+    nextEvents.splice(idx, 1, updatedEvent)
+
+    this.setState({
+      events: nextEvents,
+    })
   };
 
   render() {
