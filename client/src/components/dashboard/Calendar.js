@@ -5,6 +5,7 @@ import withDragAndDrop from "react-big-calendar/lib/addons/dragAndDrop";
 
 import "react-big-calendar/lib/addons/dragAndDrop/styles.css";
 import "react-big-calendar/lib/css/react-big-calendar.css";
+import '../styles.css';
 
 
 // Setup the localizer by providing the moment (or globalize) Object
@@ -19,8 +20,8 @@ class DashCalendar extends Component {
     events: [
       {
         start: new Date(),
-        end: new Date(moment().add(1, "days")),
-        title: "Some title"
+        end: new Date(moment().add(0, "days")),
+        title: "Jan <> Joe"
       }
     ]
   };
@@ -39,7 +40,7 @@ class DashCalendar extends Component {
 
   render() {
     return (
-      <div>
+      <div className="cal-out">
         <DnDCalendar
           defaultDate={new Date()}
           defaultView="month"
