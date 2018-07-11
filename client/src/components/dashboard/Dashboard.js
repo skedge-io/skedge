@@ -10,7 +10,7 @@ const Dashboard = () => {
   return (
     <div>
       <div className="dash-con">
-        <h1 align="center">Dashboard</h1>
+        <h4 align="center">Dashboard</h4>
 
         <div className="cal-container">
           <DashCalendar />

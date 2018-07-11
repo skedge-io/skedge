@@ -1,24 +1,57 @@
 import React, { Component } from 'react';
-import Calendar from 'react-calendar';
+import Calendar from 'react-big-calendar';
+import moment from 'moment';
+import withDragAndDrop from "react-big-calendar/lib/addons/dragAndDrop";
+
+import "react-big-calendar/lib/addons/dragAndDrop/styles.css";
+import "react-big-calendar/lib/css/react-big-calendar.css";
+
+
+// Setup the localizer by providing the moment (or globalize) Object
+// to the correct localizer.
+Calendar.setLocalizer(Calendar.momentLocalizer(moment));
+
+const DnDCalendar = withDragAndDrop(Calendar);
+
 
 class DashCalendar extends Component {
   state = {
-    date: new Date(),
-  }
+    events: [
+      {
+        start: new Date(),
+        end: new Date(moment().add(1, "days")),
+        title: "Some title"
+      }
+    ]
+  };
 
-  onChange = date => this.setState({ date })
+  onEventResize = (type, { event, start, end, allDay }) => {
+    this.setState(state => {
+      state.events[0].start = start;
+      state.events[0].end = end;
+      return { events: state.events };
+    });
+  };
 
+  onEventDrop = ({ event, start, end, allDay }) => {
+    console.log(start);
+  };
 
   render() {
     return (
       <div>
-        <Calendar
-          onChange={this.onChange}
-          value={this.state.date}
+        <DnDCalendar
+          defaultDate={new Date()}
+          defaultView="month"
+          events={this.state.events}
+          onEventDrop={this.onEventDrop}
+          onEventResize={this.onEventResize}
+          resizable
+          style={{ height: "95%" }}
         />
       </div>
     );
   }
 }
 
-export default DashCalendar
+export default DashCalendar;
