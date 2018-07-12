@@ -18,30 +18,50 @@ const DnDCalendar = withDragAndDrop(Calendar);
 
 
 class DashCalendar extends Component {
+
+
+
   state = {
     events: [
       {
+        id: 1,
         start: new Date(),
+        number: '',
         end: new Date(moment().add(0, "days")),
-        title: "Jan <> Joe"
+        title: "Jan <> Joe",
+        desc: 'Big conference for important people'
       },
       {
+        id: 2,
         start: new Date(moment().add(6, "days")),
         end: new Date(moment().add(6, "days")),
-        title: "Rick <> Joe"
+        title: "Rick <> Joe",
+        desc: 'Big conference for important people'
       },
       {
+        id: 3,
         start: new Date(moment().add(10, "days")),
         end: new Date(moment().add(10, "days")),
-        title: "Aleisha <> Joe"
+        title: "Aleisha <> Joe",
+        desc: 'Big conference for important people'
       },
       {
+        id: 4,
         start: new Date(moment().add(2, "days")),
         end: new Date(moment().add(2, "days")),
-        title: "Maddie <> James"
+        title: "Maddie <> James",
+        desc: 'Big conference for important people'
       }
 
-    ]
+    ],
+    eventView: {
+      boolean: false,
+      title: '',
+      desc: '',
+      start: '',
+      end: '',
+      style: {}
+    }
   };
 
   onEventResize = (type, { event, start, end, allDay }) => {
@@ -66,10 +86,17 @@ class DashCalendar extends Component {
     })
   };
 
-  onSelectEvent = ( event ) => {
-    this.setState.eventTitle = event.title;
-    return alert(event.title)
+  onSlotChange(slotInfo) {
+      var startDate = moment(slotInfo.start.toLocaleString()).format("YYYY-MM-DDm:ss");
+      var endDate = moment(slotInfo.end.toLocaleString()).format("YYYY-MM-DDm:ss");
+      console.log('startDate'); //shows the start time chosen
+      console.log('endDate'); //shows the end time chosen
   }
+
+  onEventClick(event) {
+    this.setState({ eventView : {boolean: true, title: event.title, desc: event.desc, start: event.start, end: event.end, style: {height: '100%'}} })
+  }
+
 
   onSelectSlot = ( slotInfo ) => {
     alert(
@@ -79,9 +106,35 @@ class DashCalendar extends Component {
         )
   }
 
+
+  renderEventView() {
+    switch(this.state.eventView.boolean) {
+      case null:
+        return;
+      case false:
+        return
+      case true:
+        return (
+          <div>
+            <h1>{this.state.eventView.title}</h1>
+            <p>{this.state.eventView.desc}</p>
+            <button onClick={() => this.setState({eventView : { style: {height: '0'} }})}>Hide</button>
+          </div>
+      )
+      default:
+        return
+    }
+  }
+
+
+
   render() {
     return (
       <div className="cal-out">
+      <div class="eventView" style={this.state.eventView.style}>
+        {this.renderEventView()}
+      </div>
+
         <DnDCalendar
           selectable
           defaultDate={new Date()}
@@ -89,15 +142,39 @@ class DashCalendar extends Component {
           events={this.state.events}
           onEventDrop={this.onEventDrop}
           onEventResize={this.onEventResize}
-          onSelectEvent={this.onSelectEvent}
+          onSelectEvent={event => this.onEventClick(event)}
           onSelectSlot={this.onSelectSlot}
           resizable
           popup
+          components={{
+                       event: Event,
+                       agenda: {
+                                event: EventAgenda
+                       }
+         }}
           style={{ height: "95%" }}
         />
       </div>
     );
   }
 }
+
+function Event({ event }) {
+    return (
+        <span>
+      <strong>
+      {event.title}
+      </strong>
+            { event.desc && (':  ' + event.desc)}
+    </span>
+    )
+}
+
+function EventAgenda({ event }) {
+    return <span>
+    <em style={{ color: 'magenta'}}>{event.title}</em>   <p>{ event.desc }</p>
+  </span>
+}
+
 
 export default DashCalendar;

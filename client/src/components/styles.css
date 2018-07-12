@@ -54,3 +54,8 @@
 .rbc-addons-dnd .rbc-addons-dnd-over {
   background-color: rgba(108, 186, 237, .6) !important;
 }
+
+.eventView {
+  height: 0px;
+  transition: all 400ms;
+}

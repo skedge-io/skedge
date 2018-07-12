@@ -10,7 +10,7 @@ class CalendarEventView extends Component {
   render() {
     return (
       <div>
-        <h1>{this.state.title}</h1>
+        <h1>title: {this.state.title}</h1>
       </div>
     );
   }
