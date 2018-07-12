@@ -22,7 +22,7 @@ module.exports = (app, Appointment) => {
   app.get('/api/appointments/:employee', reqLogin, (req, res) => {
     Appointment.find({employee_id : req.params.employee})
     .then((err, appointments) => {
-      res.json(appointments);
+      res.send(appointments);
     })
   })
 
