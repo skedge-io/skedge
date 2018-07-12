@@ -5,7 +5,7 @@ import * as actions from '../actions';
 import './styles.css';
 
 import Header from './Header';
-import Landing from './Landing';
+import Landing from './landing/Landing';
 import Dashboard from './dashboard/Dashboard';
 import AppointmentNew from './appointments/AppointmentNew';
 import AccountSetUp from './account/AccountSetUp';
