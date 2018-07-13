@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Calendar from 'react-big-calendar';
 import moment from 'moment';
 import withDragAndDrop from "react-big-calendar/lib/addons/dragAndDrop";
+import events from './events';
 
 import CalendarEventView from './CalendarEventView';
 
@@ -19,41 +20,8 @@ const DnDCalendar = withDragAndDrop(Calendar);
 
 class DashCalendar extends Component {
 
-
-
   state = {
-    events: [
-      {
-        id: 1,
-        start: new Date(),
-        number: '',
-        end: new Date(moment().add(0, "days")),
-        title: "Jan <> Joe",
-        desc: 'Big conference for important people'
-      },
-      {
-        id: 2,
-        start: new Date(moment().add(6, "days")),
-        end: new Date(moment().add(6, "days")),
-        title: "Rick <> Joe",
-        desc: 'Big conference for important people'
-      },
-      {
-        id: 3,
-        start: new Date(moment().add(10, "days")),
-        end: new Date(moment().add(10, "days")),
-        title: "Aleisha <> Joe",
-        desc: 'Big conference for important people'
-      },
-      {
-        id: 4,
-        start: new Date(moment().add(2, "days")),
-        end: new Date(moment().add(2, "days")),
-        title: "Maddie <> James",
-        desc: 'Big conference for important people'
-      }
-
-    ],
+    events: events,
     eventView: {
       boolean: false,
       title: '',
