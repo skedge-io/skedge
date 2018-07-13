@@ -94,7 +94,7 @@ class DashCalendar extends Component {
   }
 
   onEventClick(event) {
-    this.setState({ eventView : {boolean: true, title: event.title, desc: event.desc, start: event.start, end: event.end, style: {height: '100%'}} })
+    this.setState({ eventView : {boolean: true, title: event.title, desc: event.desc, start: event.start, end: event.end, style: {height: '35%'}} })
   }
 
 
@@ -118,7 +118,7 @@ class DashCalendar extends Component {
           <div>
             <h1>{this.state.eventView.title}</h1>
             <p>{this.state.eventView.desc}</p>
-            <button onClick={() => this.setState({eventView : { style: {height: '0'} }})}>Hide</button>
+            <button className="waves-effect waves-light btn red" onClick={() => this.setState({eventView : { style: {height: '0'} }})}>Hide</button>
           </div>
       )
       default:
@@ -131,7 +131,7 @@ class DashCalendar extends Component {
   render() {
     return (
       <div className="cal-out">
-      <div class="eventView" style={this.state.eventView.style}>
+      <div className="eventView" style={this.state.eventView.style}>
         {this.renderEventView()}
       </div>
 
