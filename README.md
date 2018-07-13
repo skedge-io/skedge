@@ -7,8 +7,6 @@ To install the required modules, run the command
 $ npm i
 ```
 ---
-
-# Starting up
 To start up your local dev envirement run:
 
 ```
