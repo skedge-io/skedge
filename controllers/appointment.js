@@ -1,7 +1,9 @@
+const reqLogin = require('../middlewares/requireLogin.js');
+
 module.exports = (app, Appointment) => {
 
   //Create Appointments
-  app.post('/api/appointment/new', (req, res) => {
+  app.post('/api/appointment/new', reqLogin, (req, res) => {
     let appointment = new Appointment();
     appointment.customer = req.body.customer;
     appointment.employee = req.body.employee;
@@ -17,10 +19,10 @@ module.exports = (app, Appointment) => {
     })
   });
 
-  app.post('/api/appointments/:employee', (req, res) => {
+  app.get('/api/appointments/:employee', reqLogin, (req, res) => {
     Appointment.find({employee_id : req.params.employee})
     .then((err, appointments) => {
-      res.json(appointments);
+      res.send(appointments);
     })
   })
 
