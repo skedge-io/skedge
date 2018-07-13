@@ -8,7 +8,6 @@ const Dashboard = () => {
   return (
     <div>
       <div className="dash-con">
-        <h4>Dashboard</h4>
         <div className="cal-container">
           <DashCalendar />
         </div>

@@ -10,7 +10,9 @@ class CalendarEventView extends Component {
   render() {
     return (
       <div>
-        <h1>title: {this.state.title}</h1>
+        <h1>{this.state.eventView.title}</h1>
+        <p>{this.state.eventView.desc}</p>
+        <button className="waves-effect waves-light btn red" onClick={() => this.setState({eventView : { style: {height: '0'} }})}>Hide</button>
       </div>
     );
   }

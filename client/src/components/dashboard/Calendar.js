@@ -134,7 +134,7 @@ class DashCalendar extends Component {
       <div className="eventView" style={this.state.eventView.style}>
         {this.renderEventView()}
       </div>
-
+        <h4 align="center">Calendar</h4>
         <DnDCalendar
           selectable
           defaultDate={new Date()}
