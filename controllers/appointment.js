@@ -8,7 +8,7 @@ module.exports = (app, Appointment) => {
     appointment.customer = req.body.customer;
     appointment.employee = req.body.employee;
     appointment.employee_id = req.user._id;
-    appointment.title = req.body.title;
+    appointment.title = req.body.employee + " <> " + req.body.customer;
     appointment.phone = req.body.phone;
     appointment.desc = req.body.desc;
     appointment.start = req.body.start;
@@ -19,8 +19,8 @@ module.exports = (app, Appointment) => {
     })
   });
 
-  app.get('/api/appointments/:employee', reqLogin, (req, res) => {
-    Appointment.find({employee_id : req.params.employee})
+  app.get('/api/appointments', reqLogin, (req, res) => {
+    Appointment.find({employee_id : req.user._id})
     .then((appointments) => {
       res.send(appointments);
     })
