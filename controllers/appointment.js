@@ -21,7 +21,7 @@ module.exports = (app, Appointment) => {
 
   app.get('/api/appointments/:employee', reqLogin, (req, res) => {
     Appointment.find({employee_id : req.params.employee})
-    .then((err, appointments) => {
+    .then((appointments) => {
       res.send(appointments);
     })
   })
