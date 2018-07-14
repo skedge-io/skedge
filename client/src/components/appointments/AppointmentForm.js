@@ -16,8 +16,8 @@ class AppointmentForm extends Component {
 
 
   renderFields() {
-    return _.map(formFields, ({ label, name, type, onChange, }) => {
-      return <Field key={name} onChange={onChange} type={type} component={AppointmentField} label={label} name={name} />
+    return _.map(formFields, ({ label, text, name, type, onChange, }) => {
+      return <Field key={name} defaultValue={text} onChange={onChange} type={type} component={AppointmentField} label={label} name={name} />
     })
   }
 

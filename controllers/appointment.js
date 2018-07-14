@@ -12,7 +12,7 @@ module.exports = (app, Appointment) => {
     appointment.phone = req.body.phone;
     appointment.desc = req.body.desc;
     appointment.start = req.body.start;
-    appointment.end = req.body.end;
+    appointment.end = req.body.start;
     appointment.business = req.user.business;
     appointment.save().then(() => {
       res.redirect('/dashboard');

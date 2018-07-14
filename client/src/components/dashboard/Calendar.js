@@ -62,7 +62,7 @@ class DashCalendar extends Component {
   }
 
   onEventClick(event) {
-    this.setState({ eventView : {boolean: true, title: event.title, desc: event.desc, start: event.start, end: event.end, style: {height: '35%'}} })
+    this.setState({ eventView : {boolean: true, title: event.title, desc: event.desc, start: event.start, end: event.end, style: {height: '100vh'}} })
   }
 
 
@@ -83,7 +83,7 @@ class DashCalendar extends Component {
         return
       case true:
         return (
-          <div>
+          <div className="woahThis">
             <h1>{this.state.eventView.title}</h1>
             <p>{this.state.eventView.desc}</p>
             <button className="waves-effect waves-light btn red" onClick={() => this.setState({eventView : { style: {height: '0'} }})}>Hide</button>
