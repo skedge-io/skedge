@@ -2,13 +2,17 @@ import React, { Component } from 'react';
 import Calendar from 'react-big-calendar';
 import moment from 'moment';
 import withDragAndDrop from "react-big-calendar/lib/addons/dragAndDrop";
-import events from './events';
+import { connect } from 'react-redux';
+import { fetchAppointments } from '../../actions';
+
+
 
 import CalendarEventView from './CalendarEventView';
 
 import "react-big-calendar/lib/addons/dragAndDrop/styles.css";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import '../styles.css';
+
 
 
 // Setup the localizer by providing the moment (or globalize) Object
@@ -20,8 +24,12 @@ const DnDCalendar = withDragAndDrop(Calendar);
 
 class DashCalendar extends Component {
 
+  componentDidMount() {
+    let events = this.props.fetchAppointments();
+  }
+
   state = {
-    events: events,
+    events: this.props.events,
     eventView: {
       boolean: false,
       title: '',
@@ -62,7 +70,7 @@ class DashCalendar extends Component {
   }
 
   onEventClick(event) {
-    this.setState({ eventView : {boolean: true, title: event.title, desc: event.desc, start: event.start, end: event.end, style: {height: '35%'}} })
+    this.setState({ eventView : {boolean: true, title: event.title, desc: event.desc, start: event.start, end: event.end, style: {height: '100vh'}} })
   }
 
 
@@ -83,7 +91,7 @@ class DashCalendar extends Component {
         return
       case true:
         return (
-          <div>
+          <div className="woahThis">
             <h1>{this.state.eventView.title}</h1>
             <p>{this.state.eventView.desc}</p>
             <button className="waves-effect waves-light btn red" onClick={() => this.setState({eventView : { style: {height: '0'} }})}>Hide</button>
@@ -144,5 +152,9 @@ function EventAgenda({ event }) {
   </span>
 }
 
+function mapStateToProps({ appointments }) {
+  return { appointments };
+}
 
-export default DashCalendar;
+
+export default connect(mapStateToProps, {  fetchAppointments })(DashCalendar);
