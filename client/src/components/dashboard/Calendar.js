@@ -2,13 +2,17 @@ import React, { Component } from 'react';
 import Calendar from 'react-big-calendar';
 import moment from 'moment';
 import withDragAndDrop from "react-big-calendar/lib/addons/dragAndDrop";
-import events from './events';
+import { connect } from 'react-redux';
+import { fetchAppointments } from '../../actions';
+
+
 
 import CalendarEventView from './CalendarEventView';
 
 import "react-big-calendar/lib/addons/dragAndDrop/styles.css";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import '../styles.css';
+
 
 
 // Setup the localizer by providing the moment (or globalize) Object
@@ -20,8 +24,12 @@ const DnDCalendar = withDragAndDrop(Calendar);
 
 class DashCalendar extends Component {
 
+  componentDidMount() {
+    let events = this.props.fetchAppointments();
+  }
+
   state = {
-    events: events,
+    events: this.props.events,
     eventView: {
       boolean: false,
       title: '',
@@ -144,5 +152,9 @@ function EventAgenda({ event }) {
   </span>
 }
 
+function mapStateToProps({ appointments }) {
+  return { appointments };
+}
 
-export default DashCalendar;
+
+export default connect(mapStateToProps, {  fetchAppointments })(DashCalendar);
