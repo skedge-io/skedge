@@ -4,7 +4,8 @@ import moment from 'moment';
 import withDragAndDrop from "react-big-calendar/lib/addons/dragAndDrop";
 import { connect } from 'react-redux';
 import { fetchAppointments } from '../../actions';
-
+import axios from 'axios';
+import events from './events';
 
 
 import CalendarEventView from './CalendarEventView';
@@ -14,7 +15,6 @@ import "react-big-calendar/lib/css/react-big-calendar.css";
 import '../styles.css';
 
 
-
 // Setup the localizer by providing the moment (or globalize) Object
 // to the correct localizer.
 Calendar.setLocalizer(Calendar.momentLocalizer(moment));
@@ -22,14 +22,14 @@ Calendar.setLocalizer(Calendar.momentLocalizer(moment));
 const DnDCalendar = withDragAndDrop(Calendar);
 
 
+
+
+
+
 class DashCalendar extends Component {
 
-  componentDidMount() {
-    let events = this.props.fetchAppointments();
-  }
-
   state = {
-    events: this.props.events,
+    events: [],
     eventView: {
       boolean: false,
       title: '',
@@ -39,6 +39,13 @@ class DashCalendar extends Component {
       style: {}
     }
   };
+
+  componentDidMount() {
+    axios.get('/api/appointments').then((res) => {
+      this.setState({events : res.data})
+    })
+  }
+
 
   onEventResize = (type, { event, start, end, allDay }) => {
     this.setState(state => {
@@ -61,6 +68,8 @@ class DashCalendar extends Component {
       events: nextEvents,
     })
   };
+
+
 
   onSlotChange(slotInfo) {
       var startDate = moment(slotInfo.start.toLocaleString()).format("YYYY-MM-DDm:ss");
@@ -105,6 +114,8 @@ class DashCalendar extends Component {
 
 
   render() {
+
+
     return (
       <div className="cal-out">
       <div className="eventView" style={this.state.eventView.style}>
@@ -134,6 +145,9 @@ class DashCalendar extends Component {
     );
   }
 }
+
+
+
 
 function Event({ event }) {
     return (

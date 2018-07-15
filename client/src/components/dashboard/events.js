@@ -30,5 +30,5 @@ export default [
       end: new Date(moment().add(2, "days")),
       title: "Maddie <> James",
       desc: 'Big conference for important people'
-    }
+    },
 ]

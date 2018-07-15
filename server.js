@@ -1,17 +1,17 @@
 const express = require('express');
 const app = express();
 const port = process.env.PORT || '5000';
-const cookieSession = require('cookie-session');
 
 const mongoose = require('mongoose');
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/skedge', () => {
   console.log("Connected to Skedge Database");
 });
 
-const passport = require('passport');
 
-const authKeys = require('./config/keys.js');
+const authKeys = require('./config/keys');
+const passport = require('passport');
 require('./services/passport.js');
+const cookieSession = require('cookie-session');
 const bodyParser = require('body-parser');
 app.use(bodyParser.json())
 app.use(cookieSession({
