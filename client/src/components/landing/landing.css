@@ -26,3 +26,11 @@ nav {
   margin-top: 4rem;
   color: white;
 }
+
+@media (max-width: 900px) and (min-width: 300px) {
+  .landingHero {
+    margin-top: 0px;
+    -webkit-transform: translate3d(0,0,0);
+  }
+
+}
