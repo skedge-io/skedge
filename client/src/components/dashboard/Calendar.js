@@ -100,11 +100,24 @@ class DashCalendar extends Component {
         return
       case true:
         return (
-          <div className="woahThis">
-            <h1>{this.state.eventView.title}</h1>
-            <p><b>Description</b>: {this.state.eventView.desc}</p>
-            <p><b>Number</b>: {this.state.eventView.phone}</p>
-            <button className="waves-effect waves-light btn red" onClick={() => this.setState({eventView : { style: {height: '0'} }})}>Hide</button>
+          <div>
+              <div className="row">
+                <div className="col s12 m6">
+                  <div className="card darken-1">
+                    <div className="card-content">
+                      <span className="card-title">{this.state.eventView.title}</span>
+                      <p>{this.state.eventView.phone}</p>
+                      <p>{this.state.eventView.desc}</p>
+                    </div>
+                    <div className="card-action">
+                      <a className="btn-floating waves-effect waves-light blue margin-right"><i className="material-icons">edit</i></a>
+                      <a className="btn-floating waves-effect waves-light red margin-right"><i className="material-icons">delete</i></a>
+                    </div>
+                  </div>
+                  <button className="waves-effect waves-light btn red" onClick={() => this.setState({eventView : { style: {height: '0'} }})}>Hide</button>
+
+                </div>
+              </div>
           </div>
       )
       default:
@@ -163,7 +176,7 @@ function Event({ event }) {
 
 function EventAgenda({ event }) {
     return <span>
-    <em style={{ color: 'magenta'}}>{event.title}</em> <p>{event.phone}</p>  <p>{ event.desc }</p> 
+    <em style={{ color: 'magenta'}}>{event.title}</em> <p>{event.phone}</p>  <p>{ event.desc }</p>
 
   </span>
 }
