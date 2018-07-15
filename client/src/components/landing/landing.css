@@ -27,6 +27,76 @@ nav {
   color: white;
 }
 
+
+.whyWeDo {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(236, 240, 241,1.0);
+}
+
+.whyWeDoContent {
+  width: 50%;
+}
+
+.threeBenefits {
+  margin: 0;
+  background: rgba(41, 128, 185,1.0);
+  height: 90vh;
+  width: 100%;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.threeBenefits p {
+  width: 50%;
+  font-size: 1.6rem;
+  text-align: center;
+}
+
+.threeBenefitItems {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.benefitItem {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  width: 30rem;
+}
+
+.benefitItem h4 {
+  text-align: left;
+}
+
+
+
+.cta-cont {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  text-align: left;
+}
+
+.cta-cont p {
+  text-align: center;
+}
+
+.b-p {
+  text-align: left !important;
+  font-size: 1rem !important;
+}
+
+
 @media (max-width: 900px) and (min-width: 300px) {
   .landingHero {
     margin-top: 0px;

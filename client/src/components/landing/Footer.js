@@ -21,6 +21,7 @@ class Footer extends Component {
                   <li><a className="grey-text text-lighten-3" href="#!">Home</a></li>
                   <li><a className="grey-text text-lighten-3" href="#!">Contact Us</a></li>
                   <li><a className="grey-text text-lighten-3" href="#!">Pricing</a></li>
+                  <li><a className="grey-text text-lighten-3" href="#!">About the Team</a></li>
                   <li><a className="grey-text text-lighten-3" href="#!">Careers</a></li>
                 </ul>
               </div>
