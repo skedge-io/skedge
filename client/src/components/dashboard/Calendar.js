@@ -79,7 +79,7 @@ class DashCalendar extends Component {
   }
 
   onEventClick(event) {
-    this.setState({ eventView : {boolean: true, title: event.title, desc: event.desc, start: event.start, end: event.end, style: {height: '100vh'}} })
+    this.setState({ eventView : {boolean: true, title: event.title, desc: event.desc, start: event.start, end: event.end, phone: event.phone,  style: {height: '100vh'}} })
   }
 
 
@@ -102,7 +102,8 @@ class DashCalendar extends Component {
         return (
           <div className="woahThis">
             <h1>{this.state.eventView.title}</h1>
-            <p>{this.state.eventView.desc}</p>
+            <p><b>Description</b>: {this.state.eventView.desc}</p>
+            <p><b>Number</b>: {this.state.eventView.phone}</p>
             <button className="waves-effect waves-light btn red" onClick={() => this.setState({eventView : { style: {height: '0'} }})}>Hide</button>
           </div>
       )
@@ -162,7 +163,8 @@ function Event({ event }) {
 
 function EventAgenda({ event }) {
     return <span>
-    <em style={{ color: 'magenta'}}>{event.title}</em>   <p>{ event.desc }</p>
+    <em style={{ color: 'magenta'}}>{event.title}</em> <p>{event.phone}</p>  <p>{ event.desc }</p> 
+
   </span>
 }
 
