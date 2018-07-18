@@ -46,7 +46,7 @@ module.exports = (passport, app, User) => {
     })
   })
 
-  app.post('/api/users/emails', (req, res) => {
+  app.get('/api/users/emails', (req, res) => {
     User.find().then((users) => {
       let emails = [];
       users.map((user) => {
