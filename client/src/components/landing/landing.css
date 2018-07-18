@@ -2,6 +2,19 @@ nav {
   z-index: 100;
 }
 
+.cfd-cta {
+  background-color: rgba(253, 253, 253, 1);
+  color: #616161;
+  border-radius: 40px;
+  border: 1px solid #C1C1C1;
+  padding: 10px 0;
+  text-decoration: none;
+  /* margin: 20px 0 25px 10%; */
+  width: 20rem;
+  text-align: center;
+  transition: all 100ms;
+}
+
 .margin {
 }
 
@@ -42,7 +55,9 @@ nav {
 
 .threeBenefits {
   margin: 0;
-  background: rgba(41, 128, 185,1.0);
+  background: linear-gradient(rgba(41, 128, 185,.8), rgba(41,128,185,.8)), url('https://images.pexels.com/photos/970629/pexels-photo-970629.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940');
+  background-size: cover;
+  background-attachment: fixed;
   height: 90vh;
   width: 100%;
   color: white;
@@ -59,21 +74,30 @@ nav {
 }
 
 .threeBenefitItems {
-  width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+  flex-wrap: wrap;
+  width: auto;
 }
 
 .benefitItem {
+  border-radius: 4px;
+  /* border: solid 1px black; */
+  height: 20rem;
+  width: 25rem;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  transition: all 200ms;
   text-align: left;
-  width: 30rem;
 }
 
 .benefitItem h4 {
   text-align: left;
+  width: 90%;
 }
 
 
@@ -94,7 +118,132 @@ nav {
 .b-p {
   text-align: left !important;
   font-size: 1rem !important;
+  width: 90% !important;
 }
+
+
+.bene-text {
+  margin: 0;
+}
+
+.icon, i {
+  width: 90%;
+  text-align: left !important;
+  margin: 0;
+  font-size: 2.5rem !important;
+}
+
+
+
+
+
+/************
+Clients
+************/
+
+
+.clients {
+  height: 20rem;
+  width: 100%;
+  background: rgba(236, 240, 241,1.0);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.client-content {
+  height: 100%;
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.price-text {
+  width: 100%;
+  text-align: center;
+  font-size: 3rem;
+}
+
+
+/***************
+reminders
+***************/
+
+
+.reminders {
+  margin: 0;
+  background: linear-gradient(rgba(41, 128, 185,.8), rgba(41,128,185,.8)), url('https://images.pexels.com/photos/1187439/pexels-photo-1187439.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940');
+  background-size: cover;
+  background-attachment: fixed;
+  height: 90vh;
+  width: 100%;
+  color: white;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.reminderText {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  height: 80%;
+  width: 60%;
+  font-size: 2.2rem;
+  padding: 2rem;
+}
+
+
+.cfd-cta-2 {
+  margin-top: 1rem;
+  align-self: flex-start;
+  background-color: rgba(253, 253, 253, 1);
+  color: #616161;
+  border-radius: 40px;
+  border: 1px solid #C1C1C1;
+  padding: 10px 0;
+  text-decoration: none;
+  /* margin: 20px 0 25px 10%; */
+  width: 20rem;
+  text-align: center;
+  transition: all 100ms;
+  font-size: 1.2rem;
+}
+
+
+/****************
+reviews
+****************/
+
+.more-reviews {
+  margin: 0;
+  background: linear-gradient(rgba(41, 128, 185,.8), rgba(41,128,185,.8)), url('https://images.pexels.com/photos/917293/pexels-photo-917293.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940');
+  background-size: cover;
+  background-attachment: fixed;
+  height: 90vh;
+  width: 100%;
+  color: white;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.reviewsText {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  height: 80%;
+  width: 60%;
+  font-size: 2.2rem;
+  padding: 2rem;
+}
+
 
 
 @media (max-width: 900px) and (min-width: 300px) {
