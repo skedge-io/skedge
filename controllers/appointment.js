@@ -16,6 +16,8 @@ module.exports = (app, Appointment) => {
     appointment.business = req.user.business;
     appointment.save().then(() => {
       res.redirect('/dashboard');
+    }).catch((err) => {
+      console.log(err);
     })
   });
 
