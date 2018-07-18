@@ -7,11 +7,15 @@ import './landing.css';
 const Landing = () => {
   return (
     <div>
+
       <div className="landingHero" style={{ textAlign: 'center' }}>
         <div className="heroContent">
           <h1>Skedge</h1>
           <h5>Schedule Appointments, send reminders, gain repeat business, and increase your five star reviews!</h5>
-          <a className="btn-large blue hoverable waves-effect waves-purple" href="./auth/google">Try For Free</a>
+          <a className="cfd-cta-2 hoverable waves-effect waves-purple" href="./auth/google">Try For Free</a>
+          <div className="bottom-align container">
+            <h5>Skedge.io is currently in alpha stage development. Create an account to stay updated on our development process, and be the first to know when skedge is production ready.</h5>
+          </div>
         </div>
       </div>
 
@@ -82,7 +86,7 @@ const Landing = () => {
 
       <div className="more-reviews">
         <div className="reviewImages">
-          <img className="img-phone-2" src="https://preview.ibb.co/dKSwMy/imageedit_1_5925980519.png" />
+          <img className="img-phone-2" src="https://image.ibb.co/gMaVGy/imageedit_7_3488219439.png" />
         </div>
         <div className="reviewsText">
           <div>We give you more five star reviews by sending out a message sometime after an appointment.<br /><br /> We filter reviews so only positive reviews end up on Yelp, Nextdoor, etc.</div>
@@ -100,6 +104,7 @@ const Landing = () => {
 
 
       <Footer />
+
     </div>
   )
 }

@@ -15,6 +15,20 @@ nav {
   transition: all 100ms;
 }
 
+.cfd-cta:active {
+  color: white;
+}
+
+.cfd-cta-2:active {
+  color: white;
+}
+
+.bottom-align {
+  align-self: baseline;
+  margin-top: 3rem;
+  color: #fff;
+}
+
 .margin {
 }
 
@@ -244,7 +258,9 @@ reviews
   padding: 2rem;
 }
 
-
+.img-phone-2 {
+  height: 600px;
+}
 
 @media (max-width: 900px) and (min-width: 300px) {
   .landingHero {
