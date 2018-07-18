@@ -30,17 +30,17 @@ const Landing = () => {
         <p>We help businesses grow by scheduling appointments,<br /> sending custom text reminders that combat no-shows, <br /> provide incentives to gain repeat business, <br />and by increasing their five star reviews.</p>
         <div className="threeBenefitItems">
           <div className="benefitItem">
-            <h1 className="icon"><i className="material-icons">phone_iphone</i></h1>
+            <h1 className="icon"><i className="material-icons icon">phone_iphone</i></h1>
             <h4 className="bene-text">Works anywhere</h4>
             <p className="b-p">On a phone? Browsing a tablet? Schedule appointments anywhere you go.</p>
           </div>
           <div className="benefitItem">
-            <h1 className="icon"><i className="material-icons">flash_on</i></h1>
+            <h1 className="icon"><i className="material-icons icon">flash_on</i></h1>
             <h4 className="bene-text">Fast and easy</h4>
             <p className="b-p">Skedge is almost twice as fast as it's competitors, and it's so easy you don't even have to train your employees on how to use it!</p>
           </div>
           <div className="benefitItem">
-            <h1 className="icon"><i className="material-icons">exit_to_app</i></h1>
+            <h1 className="icon"><i className="material-icons icon">exit_to_app</i></h1>
             <h4 className="bene-text">Cancel anytime</h4>
             <p className="b-p">If you decide Skedge isn't for you - no problem. No commitment. Cancel online anytime.</p>
           </div>
