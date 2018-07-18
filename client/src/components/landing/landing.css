@@ -252,4 +252,62 @@ reviews
     -webkit-transform: translate3d(0,0,0);
   }
 
+  .whyWeDoContent {
+    width: 90%;
+  }
+
+  .whyWeDo h3 {
+    font-size: 1.2rem;
+  }
+
+  .threeBenefits p {
+    width: 95%;
+    font-size: 1.2rem;
+  }
+
+  .threeBenefits {
+    height: 155vh;
+  }
+
+  .clients {
+    height: 40vh;
+  }
+
+  .price-text {
+    font-size: 1.6rem;
+  }
+
+  .reminders {
+    height: 100vh;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+
+  .reminderText {
+    width: 90%;
+    height:auto;
+  }
+
+  .img-phone {
+    margin-top: 0rem;
+    height: 500px;
+    display: none;
+  }
+
+  .more-reviews {
+    height: 100vh;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+
+  .img-phone-2 {
+    margin-top: 1rem;
+    height: 500px;
+    display: none;
+  }
+
+  .reviewsText {
+    width: 90%;
+  }
+
 }

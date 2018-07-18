@@ -68,7 +68,7 @@ const Landing = () => {
           <a className="cfd-cta-2 hoverable waves-effect waves-purple" href="./auth/google">Get Started</a>
         </div>
         <div className="reminderImages">
-          <img src="https://preview.ibb.co/dKSwMy/imageedit_1_5925980519.png" />
+          <img className="img-phone" src="https://preview.ibb.co/dKSwMy/imageedit_1_5925980519.png" />
         </div>
 
       </div>
@@ -82,7 +82,7 @@ const Landing = () => {
 
       <div className="more-reviews">
         <div className="reviewImages">
-          <img src="https://preview.ibb.co/dKSwMy/imageedit_1_5925980519.png" />
+          <img className="img-phone-2" src="https://preview.ibb.co/dKSwMy/imageedit_1_5925980519.png" />
         </div>
         <div className="reviewsText">
           <div>We give you more five star reviews by sending out a message sometime after an appointment.<br /><br /> We filter reviews so only positive reviews end up on Yelp, Nextdoor, etc.</div>
