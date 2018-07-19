@@ -140,6 +140,9 @@
   margin-right: 6px;
 }
 
+.rbc-btn-group button {
+    margin-bottom: 5px !important;
+}
 
 
 @media (max-width: 900px) and (min-width: 300px) {
@@ -159,5 +162,6 @@
   .dash-con {
     width: 100%;
   }
+
 
 }
