@@ -17,33 +17,13 @@ import AccountSetUp from './account/AccountSetUp';
 
 class App extends Component {
 
-  state = {
-    auth : ''
-  }
 
   componentDidMount() {
     this.props.fetchUser();
-
-
-
-  }
-
-  componentWillMount() {
-    axios.get('/api/current_user').then((res) => {
-
-      if (!res.data.googleId) {
-        this.setState({auth: false})
-      }
-      if (res.data.googleId) {
-        this.setState({auth : true})
-      }
-    })
-
   }
 
   render() {
 
-    console.log(this.state.auth)
 
 
     return (
@@ -53,9 +33,9 @@ class App extends Component {
               <div className="container">
               </div>
               <Route exact path="/" component={Landing} />
-              <PrivateRoute authed={this.state.auth} redirectTo="/" exact path="/dashboard" component={Dashboard} />
-              <PrivateRoute authed={this.state.auth} redirectTo="/" exact path="/appointments/new" component={AppointmentNew} />
-              <PrivateRoute authed={this.state.auth} redirectTo="/" exact path="/account/setup" component={AccountSetUp} />
+              <Route exact path="/dashboard" component={Dashboard} />
+              <Route exact path="/appointments/new" component={AppointmentNew} />
+              <Route exact path="/account/setup" component={AccountSetUp} />
             </div>
         </BrowserRouter>
     );
@@ -63,6 +43,11 @@ class App extends Component {
 };
 
 
+function mapStateToProps({ auth }) {
+  return { auth };
+}
+
+export default connect(mapStateToProps, actions)(App);
 
 
-export default connect(null, actions)(App);
+// export default connect(null, actions)(App);
