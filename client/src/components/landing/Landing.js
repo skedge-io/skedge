@@ -31,8 +31,8 @@ class Landing extends Component  {
 
       <div className="landingHero" style={{ textAlign: 'center' }}>
         <div className="heroContent">
-          <h1>{this.props.auth ? 'Welcome Back ' + this.props.auth.name : 'Skedge'}</h1>
-          <h5>Schedule Appointments, send reminders, gain repeat business, and increase your five star reviews!</h5>
+          <h1>Skedge</h1>
+          <h5>{this.props.auth ? 'Welcome Back ' + this.props.auth.name : 'Schedule Appointments, send reminders, gain repeat business, and increase your five star reviews!'}</h5>
           {this.renderContent()}
           <div className="bottom-align container">
             <h5>Skedge.io is currently in alpha stage development. Create an account to stay updated on our development process, and be the first to know when skedge is production ready.</h5>
