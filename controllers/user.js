@@ -1,4 +1,7 @@
 const Business = require('../models/Business.js');
+const reqLogin = require('../middlewares/requireLogin.js');
+const reqAdmin = require('../middlewares/requireAdmin.js');
+
 module.exports = (passport, app, User) => {
 
   app.get('/auth/google', passport.authenticate('google',
@@ -46,7 +49,7 @@ module.exports = (passport, app, User) => {
     })
   })
 
-  app.get('/api/users/emails', (req, res) => {
+  app.get('/api/users/emails', reqLogin, reqAdmin, (req, res) => {
     User.find().then((users) => {
       let emails = [];
       users.map((user) => {

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
+import { PropsRoute, PublicRoute, PrivateRoute } from 'react-router-with-props';
 import { connect } from 'react-redux';
 import * as actions from '../actions';
 import './styles.css';
@@ -24,9 +25,9 @@ class App extends Component {
               <div className="container">
               </div>
               <Route exact path="/" component={Landing} />
-              <Route exact path="/dashboard" component={Dashboard} />
-              <Route exact path="/appointments/new" component={AppointmentNew} />
-              <Route exact path="/account/setup" component={AccountSetUp} />
+              <PrivateRoute authed={true} redirectTo="/" exact path="/dashboard" component={Dashboard} />
+              <PrivateRoute authed={true} redirectTo="/" exact path="/appointments/new" component={AppointmentNew} />
+              <PrivateRoute authed={true} redirectTo="/" exact path="/account/setup" component={AccountSetUp} />
             </div>
         </BrowserRouter>
     );

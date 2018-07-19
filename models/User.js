@@ -6,7 +6,8 @@ const userSchema = new Schema({
   business : String,
   googleId : String,
   phone : String,
-  email : String
+  email : String,
+  admin : { type: Boolean, default: false }
 });
 
 const User = mongoose.model('User', userSchema);
