@@ -15,10 +15,10 @@ class Landing extends Component  {
         case false:
           return <a className="cfd-cta-2 hoverable waves-effect waves-purple" href="./auth/google">Try For Free</a>
         default:
-          return <Link  className="cfd-cta-2 hoverable waves-effect waves-purple" to="dashboard">Go to dashboard</Link>
+          return <Link  className="cfd-cta-2 hoverable waves-effect waves-purple" to="dashboard">Go To Dashboard</Link>
 
       }
-    
+
   }
 
 
@@ -31,7 +31,7 @@ class Landing extends Component  {
 
       <div className="landingHero" style={{ textAlign: 'center' }}>
         <div className="heroContent">
-          <h1>Skedge</h1>
+          <h1>{this.props.auth ? 'Welcome Back ' + this.props.auth.name : 'Skedge'}</h1>
           <h5>Schedule Appointments, send reminders, gain repeat business, and increase your five star reviews!</h5>
           {this.renderContent()}
           <div className="bottom-align container">
