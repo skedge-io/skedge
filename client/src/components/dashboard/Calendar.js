@@ -83,13 +83,20 @@ class DashCalendar extends Component {
   }
 
 
-  onSelectSlot = ( slotInfo ) => {
-    alert(
-          `selected slot: \n\nstart ${slotInfo.start.toLocaleString()} ` +
-            `\nend: ${slotInfo.end.toLocaleString()}` +
-            `\naction: ${slotInfo.action}`
-        )
-  }
+  onSelectSlot = ( event ) => {
+    let idList = this.state.events.map((a) => a.id);
+        let newId = Math.max(...idList) + 1;
+       let hour = {
+          id: newId,
+          title: 'New Event',
+          allDay: event.slots.length == 1,
+          start: event.start,
+          end: event.end,
+        }
+        this.setState({
+          events: this.state.events.concat([hour])
+       });
+      }
 
 
   renderEventView() {
