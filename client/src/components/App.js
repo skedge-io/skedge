@@ -24,17 +24,28 @@ class App extends Component {
   componentDidMount() {
     this.props.fetchUser();
 
-    axios.get('/api/current_user').then((res) => {
-      if (res.data = null) {
-        this.setState({auth: false})
-      }
-      this.setState({auth : true})
-    })
 
 
   }
 
+  componentWillMount() {
+    axios.get('/api/current_user').then((res) => {
+
+      if (!res.data.googleId) {
+        this.setState({auth: false})
+      }
+      if (res.data.googleId) {
+        this.setState({auth : true})
+      }
+    })
+
+  }
+
   render() {
+
+    console.log(this.state.auth)
+
+
     return (
         <BrowserRouter>
             <div>

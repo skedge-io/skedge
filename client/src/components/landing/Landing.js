@@ -1,10 +1,31 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Footer from './Footer';
+import { connect } from 'react-redux';
 
 import './landing.css';
 
-const Landing = () => {
+class Landing extends Component  {
+
+
+  renderContent() {
+      switch(this.props.auth) {
+        case null:
+          return <a className="cfd-cta-2 hoverable waves-effect waves-purple" href="./auth/google">Try For Free</a>
+        case false:
+          return <a className="cfd-cta-2 hoverable waves-effect waves-purple" href="./auth/google">Try For Free</a>
+        default:
+          return <Link  className="cfd-cta-2 hoverable waves-effect waves-purple" to="dashboard">Go to dashboard</Link>
+
+      }
+    
+  }
+
+
+
+  render() {
+
+
   return (
     <div>
 
@@ -12,7 +33,7 @@ const Landing = () => {
         <div className="heroContent">
           <h1>Skedge</h1>
           <h5>Schedule Appointments, send reminders, gain repeat business, and increase your five star reviews!</h5>
-          <a className="cfd-cta-2 hoverable waves-effect waves-purple" href="./auth/google">Try For Free</a>
+          {this.renderContent()}
           <div className="bottom-align container">
             <h5>Skedge.io is currently in alpha stage development. Create an account to stay updated on our development process, and be the first to know when skedge is production ready.</h5>
           </div>
@@ -108,5 +129,10 @@ const Landing = () => {
     </div>
   )
 }
+}
 
-export default Landing;
+function mapStateToProps({ auth }) {
+  return { auth };
+}
+
+export default connect(mapStateToProps)(Landing);
