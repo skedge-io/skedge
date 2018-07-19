@@ -101,7 +101,6 @@ class DashCalendar extends Component {
       case true:
         return (
           <div>
-              <div className="row">
                 <div className="col s12 m6">
                   <div className="card darken-1">
                     <div className="card-content">
@@ -117,7 +116,6 @@ class DashCalendar extends Component {
                   <button className="waves-effect waves-light btn red" onClick={() => this.setState({eventView : { style: {height: '0'} }})}>Hide</button>
 
                 </div>
-              </div>
           </div>
       )
       default:
@@ -132,10 +130,11 @@ class DashCalendar extends Component {
 
     return (
       <div className="cal-out">
-      <div className="eventView" style={this.state.eventView.style}>
-        {this.renderEventView()}
-      </div>
-        <h4 align="center">Calendar</h4>
+        <div className="eventView" style={this.state.eventView.style}>
+          {this.renderEventView()}
+        </div>
+        <p align="center"></p>
+
         <DnDCalendar
           selectable
           defaultDate={new Date()}

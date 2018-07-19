@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import ReactTooltip from 'react-tooltip';
 import DashCalendar from './Calendar';
+import TopBar from './TopBar';
+import LeftPanel from './LeftPanel';
+import RightPanel from './RightPanel';
+
 import { connect } from 'react-redux';
 
 
@@ -9,12 +13,20 @@ class Dashboard extends Component {
 
   renderAuth() {
    return (
-       <div>
+       <div className="row-this">
+
+       <LeftPanel />
+
+
         <div className="dash-con">
+          <TopBar />
           <div className="cal-container">
-            <DashCalendar />
+              <DashCalendar />
           </div>
         </div>
+
+        <RightPanel />
+
 
         <div className="fixed-action-btn">
           <Link to="/appointments/new" data-tip="React-tooltip" className="btn-floating btn-large blue hoverable waves-effect waves-light">
