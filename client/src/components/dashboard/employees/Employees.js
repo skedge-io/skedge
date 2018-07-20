@@ -22,7 +22,7 @@ class Employees extends Component {
 
 
        <div className="dash-con">
-         <TopBar header="Employees" btn={<Link to="/appointments/new" className="btn-flat right btn-small white-text blue hoverable waves-effect waves-light">Invite Employees</Link>}/>
+         <TopBar header="Employees" btn={<Link to="/dashboard/employees/new" className="btn-flat right btn-small white-text blue hoverable waves-effect waves-light">Invite Employees</Link>}/>
 
          <div className="cal-container">
           <h1>Employees</h1>
