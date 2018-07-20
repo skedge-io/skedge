@@ -14,6 +14,7 @@ import Dashboard from './dashboard/Dashboard';
 import AppointmentNew from './appointments/AppointmentNew';
 import AccountSetUp from './account/AccountSetUp';
 
+import Employees from './dashboard/employees/Employees';
 
 class App extends Component {
 
@@ -34,6 +35,7 @@ class App extends Component {
               </div>
               <Route exact path="/" component={Landing} />
               <Route exact path="/dashboard" component={Dashboard} />
+              <Route exact path="/dashboard/employees" component={Employees} />
               <Route exact path="/appointments/new" component={AppointmentNew} />
               <Route exact path="/account/setup" component={AccountSetUp} />
             </div>

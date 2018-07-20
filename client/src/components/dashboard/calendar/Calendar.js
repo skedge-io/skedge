@@ -3,7 +3,7 @@ import Calendar from 'react-big-calendar';
 import moment from 'moment';
 import withDragAndDrop from "react-big-calendar/lib/addons/dragAndDrop";
 import { connect } from 'react-redux';
-import { fetchAppointments } from '../../actions';
+import { fetchAppointments } from '../../../actions';
 import axios from 'axios';
 import events from './events';
 
@@ -12,7 +12,7 @@ import CalendarEventView from './CalendarEventView';
 
 import "react-big-calendar/lib/addons/dragAndDrop/styles.css";
 import "react-big-calendar/lib/css/react-big-calendar.css";
-import '../styles.css';
+import '../../styles.css';
 
 
 // Setup the localizer by providing the moment (or globalize) Object

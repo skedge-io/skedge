@@ -1,6 +1,6 @@
 //when you click a slot on the calander this will pop up
 import React, { Component } from 'react';
-import '../styles.css';
+import '../../styles.css';
 
 
 

@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import ReactTooltip from 'react-tooltip';
-import DashCalendar from './Calendar';
+
+import DashCalendar from './calendar/Calendar';
+import Employees from './employees/Employees';
+
 import TopBar from './TopBar';
 import LeftPanel from './LeftPanel';
 import RightPanel from './RightPanel';
@@ -11,6 +14,11 @@ import { connect } from 'react-redux';
 
 class Dashboard extends Component {
 
+  employeeClick() {
+    this.setState({section: 'Employees'})
+  }
+
+
   renderAuth() {
    return (
        <div className="row-this">
@@ -19,10 +27,12 @@ class Dashboard extends Component {
 
 
         <div className="dash-con">
-          <TopBar />
+          <TopBar header="Calendar" btn={<Link to="/appointments/new" className="btn-flat right btn-small white-text blue hoverable waves-effect waves-light">New Appointment</Link>}/>
+
           <div className="cal-container">
-              <DashCalendar />
+            <DashCalendar />
           </div>
+
         </div>
 
         <RightPanel />
@@ -55,6 +65,7 @@ class Dashboard extends Component {
 
 
   render () {
+
     return (
       <div>{this.renderContent()}</div>
     );

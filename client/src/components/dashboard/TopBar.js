@@ -6,11 +6,9 @@ class TopBar extends Component {
   render() {
     return (
       <div className="top-bar">
-        Calendar
+        {this.props.header}
         <div className="right">
-          <Link to="/appointments/new" className="btn-flat right btn-small white-text blue hoverable waves-effect waves-light">
-            New Appointment
-          </Link>
+          {this.props.btn}
         </div>
       </div>
     )
