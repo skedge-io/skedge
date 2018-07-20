@@ -15,6 +15,10 @@ import AppointmentNew from './appointments/AppointmentNew';
 import AccountSetUp from './account/AccountSetUp';
 
 import Employees from './dashboard/employees/Employees';
+import Statistics from './dashboard/statistics/Statistics';
+import Campaign from './dashboard/campaigns/Campaign';
+import Contacts from './dashboard/contacts/Contacts';
+
 
 class App extends Component {
 
@@ -35,8 +39,11 @@ class App extends Component {
               </div>
               <Route exact path="/" component={Landing} />
               <Route exact path="/dashboard" component={Dashboard} />
-              <Route exact path="/dashboard/employees" component={Employees} />
               <Route exact path="/appointments/new" component={AppointmentNew} />
+              <Route exact path="/dashboard/employees" component={Employees} />
+              <Route exact path="/dashboard/statistics" component={Statistics} />
+              <Route exact path="/dashboard/campaigns" component={Campaign} />
+              <Route exact path="/dashboard/contacts" component={Contacts} />
               <Route exact path="/account/setup" component={AccountSetUp} />
             </div>
         </BrowserRouter>
