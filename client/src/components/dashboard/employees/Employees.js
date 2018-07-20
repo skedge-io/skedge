@@ -18,11 +18,11 @@ class Employees extends Component {
     return (
       <div className="row-this">
 
-      <LeftPanel empAct="active-sec"/>
+      <LeftPanel index1="active-sec"/>
 
 
        <div className="dash-con">
-         <TopBar header="Employees" btn={<Link to="/appointments/new" className="btn-flat right btn-small white-text blue hoverable waves-effect waves-light">New Employee</Link>}/>
+         <TopBar header="Employees" btn={<Link to="/appointments/new" className="btn-flat right btn-small white-text blue hoverable waves-effect waves-light">Invite Employees</Link>}/>
 
          <div className="cal-container">
           <h1>Employees</h1>
@@ -37,7 +37,7 @@ class Employees extends Component {
          <Link to="/dashboard/employees/new" data-tip="React-tooltip" className="btn-floating btn-large blue hoverable waves-effect waves-light">
            <i className="material-icons">add</i>
          </Link>
-         <ReactTooltip place="left" type="dark" effect="solid">Add new employees</ReactTooltip>
+         <ReactTooltip place="left" type="dark" effect="solid">Invite employees</ReactTooltip>
        </div>
 
 

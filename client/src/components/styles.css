@@ -132,7 +132,11 @@
   color: #039be5;
 }
 
-.active-sec {
+/*.active-sec {
+  color: #039be5;
+}*/
+
+#active-sec {
   color: #039be5;
 }
 

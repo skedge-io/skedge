@@ -23,7 +23,7 @@ class Dashboard extends Component {
    return (
        <div className="row-this">
 
-       <LeftPanel />
+       <LeftPanel wambo="active-sec"/>
 
 
         <div className="dash-con">
