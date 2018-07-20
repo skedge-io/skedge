@@ -6,6 +6,7 @@ import formFields from './formFields';
 import { withRouter } from 'react-router-dom';
 import * as actions from '../../actions';
 import './../styles.css';
+import { Link } from 'react-router-dom';
 
 
 const AppointmentFormReview = ({ onCancel, formValues, submitAppointment, history }) => {
@@ -28,10 +29,10 @@ const AppointmentFormReview = ({ onCancel, formValues, submitAppointment, histor
         <button className="yellow darken-3 white-text btn-flat hoverable waves-effect waves-light" onClick={onCancel}>
           Back
         </button>
-        <button onClick={() => submitAppointment(formValues, history)} className="green white-text btn-flat right waves-effect waves-light">
+        <Link to="/dashboard" onClick={() => submitAppointment(formValues, history)} className="green white-text btn-flat right waves-effect waves-light">
           Create Appointment
           <i className="material-icons right">event_available</i>
-        </button>
+        </Link>
     </div>
   );
 };
