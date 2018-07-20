@@ -112,8 +112,9 @@ class DashCalendar extends Component {
                   <div className="card darken-1">
                     <div className="card-content">
                       <span className="card-title">{this.state.eventView.title}</span>
-                      <p>{this.state.eventView.phone}</p>
-                      <p>{this.state.eventView.desc}</p>
+                      <p><b>Start</b>: {this.state.eventView.start} <b><br />End</b>: {this.state.eventView.end}</p>
+                      <p><b>Phone</b>: {this.state.eventView.phone}</p>
+                      <p><b>Notes</b>:{this.state.eventView.desc}</p>
                     </div>
                     <div className="card-action">
                       <a className="btn-floating waves-effect waves-light blue margin-right"><i className="material-icons">edit</i></a>
