@@ -7,21 +7,17 @@ module.exports = (app, Appointment) => {
     let appointment = new Appointment();
     appointment.customer = req.body.customer;
     appointment.employee = req.body.employee;
-    appointment.startTime = req.body.startTime;
-    appointment.endTime = req.body.endTime;
-    appointment.minutes = req.body.minutes;
-    appointment.hours = req.body.hour
     appointment.employee_id = req.user._id;
     appointment.title = req.body.employee + " <> " + req.body.customer;
     appointment.phone = req.body.phone;
     appointment.desc = req.body.desc;
-    appointment.start = req.body.start + ' ' + req.body.startTime; //find am/pm and put a space before it
-    appointment.end = req.body.start + ' ' + req.body.endTime; //find am/pm and put a space before it
+    let startTimeLength = req.body.startTime.length;
+    appointment.start = req.body.start + ' ' + req.body.startTime.substring(0, startTimeLength - 2) + " " + req.body.startTime.substring(startTimeLength - 2, startTimeLength);
+    let endTimeLength = req.body.endTime.length;
+    appointment.end = req.body.start + ' ' + req.body.endTime.substring(0, endTimeLength - 2) + " " + req.body.endTime.substring(endTimeLength - 2, endTimeLength);
     appointment.business = req.user.business;
-    appointment.save().then(() => {
+    appointment.save(function(err, appointment){
       res.redirect('/dashboard');
-    }).catch((err) => {
-      console.log(err);
     })
   });
 
