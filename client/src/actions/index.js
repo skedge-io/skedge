@@ -16,17 +16,18 @@ export const submitAccount = (values, history) => async dispatch => {
 
 export const submitAppointment = (values, history) => async dispatch => {
   // const res = await axios.post('/api/appointment/new', values);
-  axios.post('/api/appointment/new', values)
+  const res = await axios.post('/api/appointment/new', values)
   .then(function (response) {
     //Redirect to /dashboard here
+    window.location = '/dashboard';
+    history.push('/dashboard');
+    dispatch({ type: FETCH_USER, payload: response.data });
   })
   .catch(function (error) {
     // Couldnt Create new Appointment
     console.log(error);
   });
 
-  history.push('/dashboard');
-  dispatch({ type: FETCH_USER, payload: res.data });
 };
 
 

@@ -29,10 +29,10 @@ const AppointmentFormReview = ({ onCancel, formValues, submitAppointment, histor
         <button className="yellow darken-3 white-text btn-flat hoverable waves-effect waves-light" onClick={onCancel}>
           Back
         </button>
-        <Link to="/dashboard" onClick={() => submitAppointment(formValues, history)} className="green white-text btn-flat right waves-effect waves-light">
+        <button onClick={() => submitAppointment(formValues, history)} className="green white-text btn-flat right waves-effect waves-light">
           Create Appointment
           <i className="material-icons right">event_available</i>
-        </Link>
+        </button>
     </div>
   );
 };
