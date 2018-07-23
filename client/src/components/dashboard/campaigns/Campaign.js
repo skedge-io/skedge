@@ -26,6 +26,7 @@ class Campaign extends Component {
 
          <div className="cal-container">
           <h1>Campaigns</h1>
+          <h1>Texts Messages</h1>
          </div>
 
        </div>
