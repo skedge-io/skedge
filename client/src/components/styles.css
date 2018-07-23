@@ -148,6 +148,20 @@
     margin-bottom: 5px !important;
 }
 
+.higher {
+  height: 100vh;
+}
+
+.inside {
+  padding: 2rem;
+  width: 80%;
+}
+
+.formFlex {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
 @media (max-width: 900px) and (min-width: 300px) {
 
