@@ -30,6 +30,7 @@ module.exports = (app, Appointment) => {
   });
 
   app.post('/api/appointment/edit/:id', reqLogin, (req, res) => {
+    console.log(req.body);
     Appointment.findById(req.params.id).then((appointment) => {
       appointment.customer = req.body.customer;
       appointment.employee = req.body.employee;
