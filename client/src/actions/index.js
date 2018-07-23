@@ -1,5 +1,7 @@
 import axios from 'axios';
 import { FETCH_USER, FETCH_APPOINTMENTS } from './types';
+import { push } from 'react-router-redux'
+
 
 export const fetchUser = () => async dispatch => {
   const res = await axios.get('/api/current_user')
@@ -15,19 +17,10 @@ export const submitAccount = (values, history) => async dispatch => {
 };
 
 export const submitAppointment = (values, history) => async dispatch => {
-  // const res = await axios.post('/api/appointment/new', values);
-  const res = await axios.post('/api/appointment/new', values)
-  .then(function (response) {
-    //Redirect to /dashboard here
-    window.location = '/dashboard';
-    history.push('/dashboard');
-    dispatch({ type: FETCH_USER, payload: response.data });
-  })
-  .catch(function (error) {
-    // Couldnt Create new Appointment
-    console.log(error);
-  });
+  const res = await axios.post('/api/appointment/new', values);
 
+  history.push('/dashboard');
+  dispatch({ type: FETCH_USER, payload: res.data });
 };
 
 

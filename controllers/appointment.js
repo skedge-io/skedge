@@ -17,7 +17,7 @@ module.exports = (app, Appointment) => {
     appointment.end = req.body.start + ' ' + req.body.endTime.substring(0, endTimeLength - 2) + " " + req.body.endTime.substring(endTimeLength - 2, endTimeLength);
     appointment.business = req.user.business;
     appointment.save(function(err, appointment){
-      res.redirect('/dashboard');
+      res.redirect('/');
     })
   });
 
