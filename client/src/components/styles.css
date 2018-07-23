@@ -163,6 +163,10 @@
   align-items: center;
 }
 
+.form-in-row {
+  display: flex;
+}
+
 @media (max-width: 900px) and (min-width: 300px) {
 
   .top-bar {

@@ -42,7 +42,7 @@ module.exports = (app, Appointment) => {
 
   app.post('/api/appointment/delete/:id', (req, res) => {
     Appointment.findOneAndDelete({_id : req.params.id}).then(() => {
-      res.redirect('/');
+      res.redirect('/dashboard');
     })
   })
 

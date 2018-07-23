@@ -7,6 +7,7 @@ import { fetchAppointments } from '../../../actions';
 import axios from 'axios';
 import events from './events';
 
+import { Link } from 'react-router-dom';
 
 import CalendarEventView from './CalendarEventView';
 
@@ -77,7 +78,7 @@ class DashCalendar extends Component {
   }
 
   onEventClick(event) {
-    this.setState({ eventView : {boolean: true, title: event.title, desc: event.desc, start: event.start, end: event.end, phone: event.phone,  style: {height: '100vh'}} })
+    this.setState({ eventView : {boolean: true, id: event._id, title: event.title, desc: event.desc, start: event.start, end: event.end, phone: event.phone,  style: {height: '100vh'}} })
   }
 
 
@@ -106,22 +107,26 @@ class DashCalendar extends Component {
       case true:
         return (
           <div>
-                <div className="col s12 m6">
-                  <div className="card darken-1">
-                    <div className="card-content">
-                      <span className="card-title">{this.state.eventView.title}</span>
-                      <p><b>Start</b>: {this.state.eventView.start} <b><br />End</b>: {this.state.eventView.end}</p>
-                      <p><b>Phone</b>: {this.state.eventView.phone}</p>
-                      <p><b>Notes</b>: {this.state.eventView.desc}</p>
-                    </div>
-                    <div className="card-action">
-                      <a className="btn-floating waves-effect waves-light blue margin-right"><i className="material-icons">edit</i></a>
-                      <a className="btn-floating waves-effect waves-light red margin-right"><i className="material-icons">delete</i></a>
-                    </div>
-                  </div>
-                  <button className="waves-effect waves-light btn red" onClick={() => this.setState({eventView : { style: {height: '0'} }})}>Hide</button>
-
+            <div className="col s12 m6">
+              <div className="card darken-1">
+                <div className="card-content">
+                  <span className="card-title">{this.state.eventView.title}</span>
+                  <p><b>Start</b>: {this.state.eventView.start} <b><br />End</b>: {this.state.eventView.end}</p>
+                  <p><b>Phone</b>: {this.state.eventView.phone}</p>
+                  <p><b>Notes</b>: {this.state.eventView.desc}</p>
+                  <p>{this.state.eventView.id}</p>
                 </div>
+                <div className="card-action">
+                  <div class="form-in-row">
+                    <Link to={"/appointments/edit/" + this.state.eventView.id} className="btn-floating waves-effect waves-light blue margin-right"><i className="material-icons">edit</i></Link>
+                    <form method="POST" action={'/api/appointment/delete/' + this.state.eventView.id}>
+                      <button type="submit" className="btn-floating waves-effect waves-light red margin-right"><i className="material-icons">delete</i></button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+              <button className="waves-effect waves-light btn red" onClick={() => this.setState({eventView : { style: {height: '0'} }})}>Hide</button>
+            </div>
           </div>
       )
       default:
