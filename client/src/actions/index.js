@@ -23,6 +23,13 @@ export const submitAppointment = (values, history) => async dispatch => {
   dispatch({ type: FETCH_USER, payload: res.data });
 };
 
+export const deleteAppointment = (values, history) => async dispatch => {
+  const res = await axios.post('/api/appointment/edit/:id', values);
+
+  history.push('/dashboard');
+  dispatch({ type: FETCH_USER, payload: res.data });
+};
+
 
 export const fetchAppointments = () => async dispatch => {
   const res = await axios.get('/api/appointments/');
