@@ -2,6 +2,12 @@ const reqLogin = require('../middlewares/requireLogin.js');
 
 module.exports = (app, Appointment) => {
 
+  app.get('/api/appointment/:id', reqLogin, (req, res) => {
+    Appointment.findById(req.params.id).then((appointment) => {
+      res.send(appointment);
+    })
+  });
+
   //Create Appointments
   app.post('/api/appointment/new', reqLogin, (req, res) => {
     let appointment = new Appointment();
