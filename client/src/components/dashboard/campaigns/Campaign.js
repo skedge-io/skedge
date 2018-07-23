@@ -25,8 +25,7 @@ class Campaign extends Component {
          <TopBar header="Campaigns" btn={<Link to="/dashboard/campaigns/new" className="btn-flat right btn-small white-text blue hoverable waves-effect waves-light">New Campaign</Link>}/>
 
          <div className="cal-container">
-          <h1>Campaigns</h1>
-          <h1>Texts Messages</h1>
+          <h1>Text Campaigns</h1>
          </div>
 
        </div>
