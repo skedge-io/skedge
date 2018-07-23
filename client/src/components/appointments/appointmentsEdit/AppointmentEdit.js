@@ -57,7 +57,7 @@ class AppointmentEdit extends Component {
               <label for="phone">Phone</label>
               <input type="text" name="phone" onChange={(event) => {this.setState({appointments: {phone: event.target.value}})}} value={this.state.appointments.phone}></input>
               <label for="Date">Date</label>
-              <Input type="date" name="start" onChange={(event) => {this.setState({appointments: {start: event.target.value}})}} value={this.state.appointments.start}></Input>
+              <Input type="date" name="date" onChange={(event) => {this.setState({appointments: {start: event.target.value}})}} value={this.state.appointments.date}></Input>
               <label for="startTime">Start Time</label>
               <Input type="time" name="startTime" onChange={(event) => {this.setState({appointments: {startTime: event.target.value}})}} value={this.state.appointments.startTime}></Input>
               <label for="EndTime">End Time</label>
