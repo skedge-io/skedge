@@ -12,6 +12,7 @@ import Header from './Header';
 import Landing from './landing/Landing';
 import Dashboard from './dashboard/Dashboard';
 import AppointmentNew from './appointments/AppointmentNew';
+import AppointmentEdit from './appointments/appointmentsEdit/AppointmentEdit';
 import AccountSetUp from './account/AccountSetUp';
 
 import Employees from './dashboard/employees/Employees';
@@ -40,6 +41,7 @@ class App extends Component {
               <Route exact path="/" component={Landing} />
               <Route exact path="/dashboard" component={Dashboard} />
               <Route exact path="/appointments/new" component={AppointmentNew} />
+              <Route path="/appointments/edit/" component={AppointmentEdit} />
               <Route exact path="/dashboard/employees" component={Employees} />
               <Route exact path="/dashboard/statistics" component={Statistics} />
               <Route exact path="/dashboard/campaigns" component={Campaign} />
