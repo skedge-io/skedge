@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
+import { reduxForm } from 'redux-form';
+
+
 import { Link } from 'react-router-dom';
 
 import TopBar from '../../dashboard/TopBar';
@@ -47,18 +50,24 @@ class AppointmentEdit extends Component {
           <div className="inside">
 
             <form method="POST" action={'/api/appointment/edit/' + theAptId}>
-
+              <label for="customer">Customer Name</label>
               <input type="text" name="customer" onChange={(event) => {this.setState({appointments: {customer: event.target.value}})}} value={this.state.appointments.customer}></input>
+              <label for="employee">Employee</label>
               <input type="text" name="employee" onChange={(event) => {this.setState({appointments: {employee: event.target.value}})}} value={this.state.appointments.employee}></input>
+              <label for="phone">Phone</label>
               <input type="text" name="phone" onChange={(event) => {this.setState({appointments: {phone: event.target.value}})}} value={this.state.appointments.phone}></input>
+              <label for="Date">Date</label>
               <Input type="date" name="start" onChange={(event) => {this.setState({appointments: {start: event.target.value}})}} value={this.state.appointments.start}></Input>
+              <label for="startTime">Start Time</label>
               <Input type="time" name="startTime" onChange={(event) => {this.setState({appointments: {startTime: event.target.value}})}} value={this.state.appointments.startTime}></Input>
+              <label for="EndTime">End Time</label>
               <Input type="time" name="endTime" onChange={(event) => {this.setState({appointments: {endTime: event.target.value}})}} value={this.state.appointments.endTime}></Input>
+              <label for="desc">Additional Notes</label>
               <Input type="text" name="desc" onChange={(event) => {this.setState({appointments: {desc: event.target.value}})}} value={this.state.appointments.desc}></Input>
               <Link to="/dashboard" className="red btn-flat white-text hoverable waves-effect waves-light">
                 Cancel
               </Link>
-              <button className="green white-text btn-flat right waves-effect waves-light">
+              <button type="submit" className="green white-text btn-flat right waves-effect waves-light">
                 Edit Appointment
                 <i className="material-icons right">event_available</i>
               </button>
