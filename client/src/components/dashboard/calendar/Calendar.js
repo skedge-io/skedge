@@ -74,8 +74,6 @@ class DashCalendar extends Component {
   onSlotChange(slotInfo) {
       var startDate = moment(slotInfo.start.toLocaleString()).format("YYYY-MM-DDm:ss");
       var endDate = moment(slotInfo.end.toLocaleString()).format("YYYY-MM-DDm:ss");
-      console.log('startDate'); //shows the start time chosen
-      console.log('endDate'); //shows the end time chosen
   }
 
   onEventClick(event) {
