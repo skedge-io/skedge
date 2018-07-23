@@ -58,7 +58,7 @@ class AppointmentEdit extends Component {
               <Link to="/dashboard" className="red btn-flat white-text hoverable waves-effect waves-light">
                 Cancel
               </Link>
-              <button className="green white-text btn-flat right waves-effect waves-light">
+              <button className="green white-text btn-flat right waves-effect waves-light" type="submit">
                 Edit Appointment
                 <i className="material-icons right">event_available</i>
               </button>
