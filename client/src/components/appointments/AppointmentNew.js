@@ -4,6 +4,13 @@ import { reduxForm } from 'redux-form';
 import AppointmentForm from './AppointmentForm';
 import AppointmentFormReview from './AppointmentFormReview';
 
+
+
+import TopBar from '../dashboard/TopBar';
+import LeftPanel from '../dashboard/LeftPanel';
+import RightPanel from '../dashboard/RightPanel';
+
+
 class AppointmentNew extends Component {
   state = { showFormReview: false };
 
@@ -21,8 +28,15 @@ class AppointmentNew extends Component {
 
   render() {
     return (
-      <div className="container">
-        {this.renderContent()}
+      <div className="row-this higher">
+        <LeftPanel wambo="active-sec" />
+        <div className="container formFlex">
+          <TopBar header="New Appointment" />
+          <div className="inside">
+            {this.renderContent()}
+          </div>
+        </div>
+        <RightPanel />
       </div>
     );
   }
