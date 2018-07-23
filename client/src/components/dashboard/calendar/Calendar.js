@@ -114,7 +114,6 @@ class DashCalendar extends Component {
                   <p><b>Start</b>: {this.state.eventView.start} <b><br />End</b>: {this.state.eventView.end}</p>
                   <p><b>Phone</b>: {this.state.eventView.phone}</p>
                   <p><b>Notes</b>: {this.state.eventView.desc}</p>
-                  <p>{this.state.eventView.id}</p>
                 </div>
                 <div className="card-action">
                   <div class="form-in-row">
