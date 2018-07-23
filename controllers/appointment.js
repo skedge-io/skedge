@@ -19,10 +19,11 @@ module.exports = (app, Appointment) => {
     appointment.startTime = req.body.startTime;
     appointment.endTime = req.body.endTime;
     appointment.desc = req.body.desc;
+    appointment.date = req.body.date;
     let startTimeLength = req.body.startTime.length;
-    appointment.start = req.body.start + ' ' + req.body.startTime.substring(0, startTimeLength - 2) + " " + req.body.startTime.substring(startTimeLength - 2, startTimeLength);
+    appointment.start = req.body.date + ' ' + req.body.startTime.substring(0, startTimeLength - 2) + " " + req.body.startTime.substring(startTimeLength - 2, startTimeLength);
     let endTimeLength = req.body.endTime.length;
-    appointment.end = req.body.start + ' ' + req.body.endTime.substring(0, endTimeLength - 2) + " " + req.body.endTime.substring(endTimeLength - 2, endTimeLength);
+    appointment.end = req.body.date + ' ' + req.body.endTime.substring(0, endTimeLength - 2) + " " + req.body.endTime.substring(endTimeLength - 2, endTimeLength);
     appointment.business = req.user.business;
     appointment.save(function(err, appointment){
       res.redirect('/');
@@ -40,9 +41,10 @@ module.exports = (app, Appointment) => {
       appointment.startTime = req.body.startTime;
       appointment.endTime = req.body.endTime;
       let startTimeLength = req.body.startTime.length;
-      appointment.start = req.body.start + ' ' + req.body.startTime.substring(0, startTimeLength - 2) + " " + req.body.startTime.substring(startTimeLength - 2, startTimeLength);
+      appointment.date = req.body.date;
+      appointment.start = req.body.date + ' ' + req.body.startTime.substring(0, startTimeLength - 2) + " " + req.body.startTime.substring(startTimeLength - 2, startTimeLength);
       let endTimeLength = req.body.endTime.length;
-      appointment.end = req.body.start + ' ' + req.body.endTime.substring(0, endTimeLength - 2) + " " + req.body.endTime.substring(endTimeLength - 2, endTimeLength);
+      appointment.end = req.body.date + ' ' + req.body.endTime.substring(0, endTimeLength - 2) + " " + req.body.endTime.substring(endTimeLength - 2, endTimeLength);
       appointment.business = req.user.business;
       appointment.save(function(err, appointment){
         res.redirect('/');

@@ -4,6 +4,7 @@ const { Schema } = mongoose;
 const AppointmentSchema = new Schema({
   business : String,
   customer : String,
+  date : String,
   start : String,
   startTime: String,
   endTime: String,
