@@ -16,6 +16,8 @@ module.exports = (app, Appointment) => {
     appointment.employee_id = req.user._id;
     appointment.title = req.body.employee + " <> " + req.body.customer;
     appointment.phone = req.body.phone;
+    appointment.startTime = req.body.startTime;
+    appointment.endTime = req.body.endTime;
     appointment.desc = req.body.desc;
     let startTimeLength = req.body.startTime.length;
     appointment.start = req.body.start + ' ' + req.body.startTime.substring(0, startTimeLength - 2) + " " + req.body.startTime.substring(startTimeLength - 2, startTimeLength);
@@ -35,6 +37,8 @@ module.exports = (app, Appointment) => {
       appointment.title = req.body.employee + " <> " + req.body.customer;
       appointment.phone = req.body.phone;
       appointment.desc = req.body.desc;
+      appointment.startTime = req.body.startTime;
+      appointment.endTime = req.body.endTime;
       let startTimeLength = req.body.startTime.length;
       appointment.start = req.body.start + ' ' + req.body.startTime.substring(0, startTimeLength - 2) + " " + req.body.startTime.substring(startTimeLength - 2, startTimeLength);
       let endTimeLength = req.body.endTime.length;

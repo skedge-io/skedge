@@ -113,11 +113,11 @@ class DashCalendar extends Component {
                   <span className="card-title">{this.state.eventView.title}</span>
                   <p><b>Start</b>: {this.state.eventView.start} <b><br />End</b>: {this.state.eventView.end}</p>
                   <p><b>Phone</b>: {this.state.eventView.phone}</p>
-                  <p><b>Notes</b>: {this.state.eventView.desc}</p>
+                  <p><b>Notes</b>: {this.state.eventView.desc} {this.state.eventView.id}</p>
                 </div>
                 <div className="card-action">
-                  <div class="form-in-row">
-                    <Link to={"/appointments/edit/" + this.state.eventView.id} className="btn-floating waves-effect waves-light blue margin-right"><i className="material-icons">edit</i></Link>
+                  <div className="form-in-row">
+                    <a href={"/appointments/edit/" + this.state.eventView.id} className="btn-floating waves-effect waves-light blue margin-right"><i className="material-icons">edit</i></a>
                     <form method="POST" action={'/api/appointment/delete/' + this.state.eventView.id}>
                       <button type="submit" className="btn-floating waves-effect waves-light red margin-right"><i className="material-icons">delete</i></button>
                     </form>
