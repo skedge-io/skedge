@@ -7,6 +7,7 @@ import './landing.css';
 
 class Landing extends Component  {
 
+//certainty, social proof, context, value, and urgency
 
   renderContent() {
       switch(this.props.auth) {
