@@ -7,6 +7,7 @@ import ReactTooltip from 'react-tooltip';
 import TopBar from '../TopBar';
 import LeftPanel from '../LeftPanel';
 import RightPanel from '../RightPanel';
+import MobileMenu from '../MobileMenu';
 
 
 class Statistics extends Component {
@@ -17,6 +18,7 @@ class Statistics extends Component {
 
     return (
       <div className="row-this">
+      <MobileMenu />
 
       <LeftPanel index2="active-sec"/>
 
