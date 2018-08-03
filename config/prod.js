@@ -4,5 +4,7 @@ module.exports = {
   googleClientSecret: process.env.GOOGLE_AUTH_SECRET,
   // mongoURI: process.env.MONGO_URI,
   cookieKey: process.env.COOKIE_KEY,
-  redirectDomain: process.env.REDIRECT_DOMAIN
+  redirectDomain: process.env.REDIRECT_DOMAIN,
+  twilioAcc: process.env.TWILIO_ACC,
+  twilioAuth: process.env.TWILIO_AUTH
 }

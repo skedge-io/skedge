@@ -1,7 +1,28 @@
 const reqLogin = require('../middlewares/requireLogin.js');
+const schedule = require('node-schedule');
+
+const twilioAcc = require('../config/keys.js').twilioAcc;
+const twilioAuth = require('../config/keys.js').twilioAuth;
+const twilio = require('twilio')(twilioAcc, twilioAuth);
+
 
 module.exports = (app, Appointment) => {
 
+  let texts = {}
+  //Schedule Texts for Appointments (Do this on server start)
+  Appointment.find().then((appointments) => {
+    appointments.forEach((appointment) => {
+      texts[appointment._id] = schedule.scheduleJob(appointment.start, function(){
+        twilio.messages.create({
+           body: `${appointment.title}`,
+           from: '+15158002233',
+           to: `+1${appointment.phone}`
+        })
+      });
+    })
+  })
+
+  // Get Specfic Appointment
   app.get('/api/appointment/:id', reqLogin, (req, res) => {
     Appointment.findById(req.params.id).then((appointment) => {
       res.send(appointment);
@@ -26,6 +47,14 @@ module.exports = (app, Appointment) => {
     appointment.end = req.body.date + ' ' + req.body.endTime.substring(0, endTimeLength - 2) + " " + req.body.endTime.substring(endTimeLength - 2, endTimeLength);
     appointment.business = req.user.business;
     appointment.save(function(err, appointment){
+      //Twilio Text Message
+      texts[appointment._id] = schedule.scheduleJob(appointment.start, function(){
+        twilio.messages.create({
+           body: `${appointment.title}`,
+           from: '+15158002233',
+           to: `+1${appointment.phone}`
+        })
+      });
       res.redirect('/');
     })
   });

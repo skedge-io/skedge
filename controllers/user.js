@@ -41,7 +41,7 @@ module.exports = (passport, app, User) => {
         business.owner = req.body.name;
         business.employees.push(req.body.name);
         business.save().then(() => {
-          res.redirect('/dashboard');
+          res.redirect('/');
         })
       });
     }).catch((err) => {
