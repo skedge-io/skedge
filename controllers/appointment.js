@@ -8,12 +8,6 @@ const twilio = require('twilio')(twilioAcc, twilioAuth);
 
 module.exports = (app, Appointment) => {
 
-  twilio.messages.create({
-     body: `Test`,
-     from: '+15158002233',
-     to: `+19259631992`
-  })
-
   let texts = {}
   //Schedule Texts for Appointments (Do this on server start)
   Appointment.find().then((appointments) => {
