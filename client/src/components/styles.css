@@ -168,6 +168,7 @@
 
 .form-in-row {
   display: flex;
+  justify-content: space-between;
 }
 
 .mob-menu-btn {
