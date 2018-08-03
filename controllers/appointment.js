@@ -55,6 +55,7 @@ module.exports = (app, Appointment) => {
     appointment.save(function(err, appointment){
       //Twilio Text Message
       texts[appointment._id] = schedule.scheduleJob(appointment.start, function(){
+        console.log("RUN");
         twilio.messages.create({
            body: `${appointment.title}`,
            from: '+15158002233',
