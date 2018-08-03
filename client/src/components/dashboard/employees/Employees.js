@@ -9,6 +9,7 @@ import LeftPanel from '../LeftPanel';
 import RightPanel from '../RightPanel';
 import MobileMenu from '../MobileMenu';
 
+import EmployeeBox from './EmployeeBox';
 
 class Employees extends Component {
 
@@ -25,11 +26,7 @@ class Employees extends Component {
 
        <div className="dash-con">
          <TopBar header="Employees" btn={<Link to="/dashboard/employees/new" className="btn-flat right btn-small white-text blue hoverable waves-effect waves-light">Invite Employees</Link>}/>
-
-         <div className="cal-container">
-          <h1>Employees</h1>
-         </div>
-
+            <EmployeeBox />
        </div>
 
        <RightPanel />
