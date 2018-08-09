@@ -5,6 +5,8 @@ import { connect } from 'react-redux';
 
 import './landing.css';
 
+import Canvas from './Canvas';
+
 class Landing extends Component  {
 
 //certainty, social proof, context, value, and urgency
@@ -29,16 +31,14 @@ class Landing extends Component  {
 
   return (
     <div>
-
-      <div className="landingHero" style={{ textAlign: 'center' }}>
-        <div className="heroContent">
+      <Canvas />
+        <div className="heroContent" style={{ textAlign: 'center' }}>
           <h1>Skedge</h1>
           <h5>{this.props.auth ? 'Welcome Back ' + this.props.auth.name : 'Schedule Appointments, send reminders, gain repeat business, and increase your five star reviews!'}</h5>
           {this.renderContent()}
           <div className="bottom-align container">
-            <h5>Skedge.io is currently in alpha stage development. Create an account to stay updated on our development process, and be the first to know when skedge is production ready.</h5>
+            <h5 className="skedgememo">Skedge.io is currently in alpha stage development. Create an account to stay updated on our development process, and be the first to know when skedge is production ready.</h5>
           </div>
-        </div>
       </div>
 
 
@@ -126,7 +126,13 @@ class Landing extends Component  {
 
 
       <Footer />
+      <script>
 
+
+
+
+
+      </script>
     </div>
   )
 }

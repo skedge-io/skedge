@@ -50,10 +50,21 @@ nav {
 }
 
 .heroContent {
-  margin-top: 4rem;
+  position: absolute;
+  top: 7rem;
+  width: 100%;
   color: white;
 }
 
+.skedgememo {
+  color: white;
+}
+
+canvas {
+  background: linear-gradient(rgba(44, 62, 80,.6), rgba(44, 62, 80,.5)), url('./bkg.jpg');
+  background-size: cover;
+  background-position: center;
+}
 
 .whyWeDo {
   width: 100%;
