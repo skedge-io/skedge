@@ -96,8 +96,8 @@ class Canvas extends React.Component {
     function init() {
         particles = []
 
-        for (let i = 0; i < 200; i++) {
-            const radius = 15;
+        for (let i = 0; i < 250; i++) {
+            const radius = randomIntFromRange(4,7);
             let x = randomIntFromRange(radius, canvas.width - radius)
             let y = randomIntFromRange(radius, canvas.height - radius)
             const color = randomColor(colors);

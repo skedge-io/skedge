@@ -37,7 +37,6 @@ class Landing extends Component  {
           <h5>{this.props.auth ? 'Welcome Back ' + this.props.auth.name : 'Schedule Appointments, send reminders, gain repeat business, and increase your five star reviews!'}</h5>
           {this.renderContent()}
           <div className="bottom-align container">
-            <h5 className="skedgememo">Skedge.io is currently in alpha stage development. Create an account to stay updated on our development process, and be the first to know when skedge is production ready.</h5>
           </div>
       </div>
 
@@ -121,6 +120,7 @@ class Landing extends Component  {
         <div className="reminderText">
           <div>Gain <b>repeat business</b> by offering customers <b>incentives</b> to keep scheduling appointments with you.</div>
           <a className="cfd-cta-2 hoverable waves-effect waves-purple" href="./auth/google">Try For Free</a>
+          <h5 className="skedgememo">Skedge.io is currently in alpha stage development. Create an account to stay updated on our development process, and be the first to know when skedge is production ready.</h5>
         </div>
       </div>
 
