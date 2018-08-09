@@ -21,7 +21,7 @@ class Canvas extends React.Component {
     // Event Listeners
     window.addEventListener('mousemove', event => {
         mouse.x = event.clientX
-        mouse.y = event.clientY
+        mouse.y = event.clientY - 64
     })
 
     window.addEventListener('resize', () => {
@@ -96,8 +96,8 @@ class Canvas extends React.Component {
     function init() {
         particles = []
 
-        for (let i = 0; i < 250; i++) {
-            const radius = randomIntFromRange(4,7);
+        for (let i = 0; i < 200; i++) {
+            const radius = randomIntFromRange(9,11);
             let x = randomIntFromRange(radius, canvas.width - radius)
             let y = randomIntFromRange(radius, canvas.height - radius)
             const color = randomColor(colors);

@@ -61,7 +61,7 @@ nav {
 }
 
 canvas {
-  background: linear-gradient(rgba(44, 62, 80,.6), rgba(44, 62, 80,.5)), url('./bkg.jpg');
+  background: linear-gradient(rgba(0, 0, 0,.8), rgba(0, 0, 0,.8)), url('./bkg.jpg');
   background-size: cover;
   background-position: center;
 }
@@ -335,6 +335,20 @@ reviews
 
   .reviewsText {
     width: 90%;
+  }
+
+  canvas {
+    opacity: 0;
+  }
+
+  .heroContent {
+    position: absolute;
+    top: 50px;
+    height: 100vh;
+    color: white;
+    background: linear-gradient(rgba(44,62,80,.6),rgba(44,62,80,.5)),url(/static/media/bkg.6ce6d51f.jpg);
+    background-position: center;
+    background-size: cover;
   }
 
 }
