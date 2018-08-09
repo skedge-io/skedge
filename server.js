@@ -33,6 +33,11 @@ require('./controllers/user.js')(passport, app, User);
 const Appointment = require('./models/Appointment.js');
 require('./controllers/appointment.js')(app, Appointment);
 
+//Business Controller and Model
+const Business = require('./models/Business.js');
+require('./controllers/business.js')(app, Business);
+
+
 if (process.env.NODE_ENV === 'production') {
   // Express will serve up production assets
   // like our main.js or main.css file

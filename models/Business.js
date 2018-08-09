@@ -3,7 +3,7 @@ const { Schema } = mongoose;
 
 const BusinessSchema = new Schema({
   name : String,
-  owner : String,
+  admin : String,
   employees : [String],
 });
 

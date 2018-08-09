@@ -5,17 +5,38 @@ const reqAdmin = require('../middlewares/requireAdmin.js');
 module.exports = (passport, app, User) => {
 
   app.get('/auth/google', passport.authenticate('google',
-     {
-      scope: ['profile', 'email']
-     })
-   );
+    {
+      scope: ['profile', 'email'],
+      callbackURL : '/auth/google/callback'
+    })
+  );
 
-  app.get('/auth/google/callback', passport.authenticate('google'), (req, res) => {
-      if(req.user.name){
-        res.redirect('/dashboard');
-      }else{
-        res.redirect('/account/setup');
-      }
+  app.get('/auth/google/callback', passport.authenticate('google', {
+      callbackURL : '/auth/google/callback'
+    }), (req, res) => {
+     if(req.user.name){
+       res.redirect('/dashboard');
+     }else{
+       res.redirect('/account/setup');
+     }
+    }
+  );
+
+  app.get('business/register/auth/google', passport.authenticate('google',
+    {
+      scope: ['profile', 'email'],
+      callbackURL : 'business/register/auth/google/callback'
+    })
+  );
+
+  app.get('business/register/auth/google/callback', passport.authenticate('google', {
+      callbackURL : 'business/register/auth/google/callback'
+    }), (req, res) => {
+     if(req.user.name){
+       res.redirect('/dashboard');
+     }else{
+       res.redirect('/business/register/account/setup');
+     }
     }
   );
 
@@ -33,17 +54,30 @@ module.exports = (passport, app, User) => {
   app.post('/api/user/new', (req, res) => {
     User.findById(req.user._id).then((user) => {
       user.name = req.body.name;
-      user.business = req.body.business;
       user.phone = req.body.phone;
-      user.save().then(() => {
+      // If User created is an admin for a new business
+      if(req.body.admin){
         let business = new Business();
         business.name = req.body.business;
-        business.owner = req.body.name;
-        business.employees.push(req.body.name);
-        business.save().then(() => {
-          res.redirect('/');
+        business.admin = req.user._id;
+        business.employees.push(req.user._id);
+        business.save().then((business) => {
+          user.business = business._id;
+          user.save().then(() => {
+            res.redirect('/');
+          });
         })
-      });
+      //Else User created is joining an existing business
+      }else{
+        Business.findById(req.body.business_id).then((business) => {
+          business.employees.push(req.user._id);
+          user.business = business._id;
+          business.save();
+          user.save().then(() => {
+            res.redirect('/');
+          })
+        })
+      }
     }).catch((err) => {
       console.log(err);
     })
