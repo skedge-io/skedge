@@ -17,7 +17,12 @@ module.exports = (passport, app, User) => {
      if(req.user.name){
        res.redirect('/dashboard');
      }else{
-       res.redirect('/account/setup');
+       User.findById(req.user._id).then((user) => {
+         user.admin = true;
+         user.save().then(() => {
+           res.redirect('/account/setup');
+         });
+       })
      }
     }
   );
