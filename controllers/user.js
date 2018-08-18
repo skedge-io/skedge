@@ -61,7 +61,7 @@ module.exports = (passport, app, User) => {
       user.name = req.body.name;
       user.phone = req.body.phone;
       // If User created is an admin for a new business
-      if(req.body.admin){
+      if(user.admin){
         let business = new Business();
         business.name = req.body.business;
         business.admin = req.user._id;
