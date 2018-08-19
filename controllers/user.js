@@ -67,6 +67,7 @@ module.exports = (passport, app, User) => {
         business.admin = req.user._id;
         business.employees.push(req.user._id);
         business.save().then((business) => {
+          business.createDefaultCampaigns(business._id);
           user.business = business._id;
           user.save().then(() => {
             res.redirect('/');
