@@ -3,7 +3,9 @@
   flex-direction: column;
   overflow: scroll;
   justify-content: flex-start;
+  padding-bottom: 2rem;
 }
+
 
 .outer-campaign {
   /*height: 100%;*/
@@ -13,6 +15,7 @@
 }
 
 .campaign-box {
+  position: relative;
   height: 0px;
   /*min-height: 20rem;*/
   width: 40rem;
@@ -40,4 +43,18 @@
   align-items: center;
   padding-left: 1rem;
   cursor: pointer;
+}
+
+.switch-enabler {
+  text-align: center;
+  position: absolute;
+  right: 0;
+}
+
+.campaign-form {
+  height: 100%;
+  padding-left: 1rem;
+}
+
+.FORM {
 }

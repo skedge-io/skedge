@@ -30,9 +30,10 @@ class Campaign extends Component {
          <TopBar header="Campaigns" btn={<Link to="/dashboard/campaigns/new" className="btn-flat right btn-small white-text blue hoverable waves-effect waves-light">New Campaign</Link>}/>
 
          <div className="cal-container container-campaigns">
-          <CampaignBox title="Send Reminders"/>
-          <CampaignBox title="Gain More Reviews"/>
-          <CampaignBox title="Gain Repeat Business"/>
+          <CampaignBox title="Reminders"/>
+          <CampaignBox title="Reviews"/>
+          <CampaignBox title="Revisits"/>
+          <CampaignBox title="Promotions"/>
          </div>
 
        </div>
