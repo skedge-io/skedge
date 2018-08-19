@@ -56,7 +56,7 @@ module.exports = (passport, app, User) => {
   })
 
   // Finish User Account
-  app.post('/api/user/new', (req, res) => {
+  app.post('/api/user/new', reqLogin, (req, res) => {
     User.findById(req.user._id).then((user) => {
       user.name = req.body.name;
       user.phone = req.body.phone;
