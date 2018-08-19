@@ -3,6 +3,10 @@
   z-index: 100000;
 }
 
+.clickable {
+  cursor: pointer; 
+}
+
 .outer-employee {
   height: 100%;
   width: 100%;

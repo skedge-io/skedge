@@ -9,6 +9,9 @@ import LeftPanel from '../LeftPanel';
 import RightPanel from '../RightPanel';
 import MobileMenu from '../MobileMenu';
 
+import CampaignBox from './CampaignBox';
+
+import './styles.css';
 
 class Campaign extends Component {
 
@@ -26,8 +29,10 @@ class Campaign extends Component {
        <div className="dash-con">
          <TopBar header="Campaigns" btn={<Link to="/dashboard/campaigns/new" className="btn-flat right btn-small white-text blue hoverable waves-effect waves-light">New Campaign</Link>}/>
 
-         <div className="cal-container">
-          <h1>Text Campaigns</h1>
+         <div className="cal-container container-campaigns">
+          <CampaignBox title="Send Reminders"/>
+          <CampaignBox title="Gain More Reviews"/>
+          <CampaignBox title="Gain Repeat Business"/>
          </div>
 
        </div>
