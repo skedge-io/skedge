@@ -7,15 +7,18 @@ class Form extends Component {
     super(props)
     this.handleEnabler= this.handleEnabler.bind(this);
     this.state = {
-      checked : 'checked'
+      checked : 'checked',
+      enabled: 'Enabled'
     }
   }
 
   handleEnabler() {
     if (this.state.checked) {
       this.setState({checked: ''})
+      this.setState({enabled: 'Disabled'})
     } else {
       this.setState({checked: 'checked'})
+      this.setState({enabled: 'Enabled'})
     }
   }
 
@@ -23,7 +26,7 @@ class Form extends Component {
     return (
       <div className="FORM">
         <div className="switch-enabler">
-          <label>Enable</label>
+          <label>{this.state.enabled}</label>
           <div class="switch">
             <label>
 
