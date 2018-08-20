@@ -28,7 +28,7 @@ BusinessSchema.methods.createDefaultCampaigns = function createDefaultCampaigns(
       text : "Hi *name*, did you enjoy your time at *business*? Let us know at (insert link)",
       when : "2 hour(s) after",
       active : false
-    });
+    }); 
     //Revisits
     business.campaigns.push({
       name : "Revisits",

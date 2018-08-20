@@ -6,7 +6,8 @@ module.exports = (app, Business) => {
     })
   })
 
-  app.post('/campaigns/update', (req, res) => {
+
+  app.post('/api/campaigns/update', (req, res) => {
     Business.findById(req.user.business).then((business) => {
       //Update the correct campaign
       let campaignIndex = business.campaigns.map((campaign) => {return campaign.name; }).indexOf(req.body.name);
@@ -14,7 +15,10 @@ module.exports = (app, Business) => {
       business.campaigns[campaignIndex].when = req.body.when;
       business.campaigns[campaignIndex].active = req.body.active;
       business.save();
+      res.redirect('/dashboard/campaigns')
     })
   })
+
+
 
 }
