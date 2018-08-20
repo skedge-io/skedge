@@ -1,16 +1,29 @@
 import React, { Component } from 'react';
 
+import axios from 'axios';
+
 import './styles.css';
 
 class Form extends Component {
   constructor(props) {
     super(props)
+    this.handleChange = this.handleChange.bind(this);
+
     this.handleEnabler= this.handleEnabler.bind(this);
     this.state = {
       checked : 'checked',
-      enabled: 'Enabled'
+      enabled: 'Enabled',
+      value: this.props.text
     }
   }
+
+
+
+  handleChange(event) {
+    this.setState({value: event.target.value});
+  }
+
+
 
   handleEnabler() {
     if (this.state.checked) {
@@ -23,35 +36,35 @@ class Form extends Component {
   }
 
   render() {
-    return (
-      <div className="FORM">
-        <div className="switch-enabler">
-          <label>{this.state.enabled}</label>
-          <div class="switch">
-            <label>
+      return (
+        <div className="FORM">
+          <div className="switch-enabler">
+            <label>{this.state.enabled}</label>
+            <div className="switch">
+              <label>
+                <input onClick={this.handleEnabler} checked={this.state.checked} type="checkbox" />
+                <span className="lever"></span>
 
-              <input onClick={this.handleEnabler} checked={this.state.checked} type="checkbox" />
-              <span className="lever"></span>
-
-            </label>
+              </label>
+            </div>
           </div>
+
+          <form className="campaign-form">
+            <div className="form-text-message">
+              <label>Text Message</label>
+              <textarea style={{padding: '0'}} value={this.state.value} onChange={this.handleChange} rows="1" class="materialize-textarea"></textarea>
+            </div>
+            <label>When</label>
+            <div className="form-when">
+              <input />
+              <label>{this.props.when}</label>
+            </div>
+            <input className="btn-flat btn-small white-text blue hoverable waves-effect waves-light" type="submit" value="update"/>
+          </form>
         </div>
+      )
+    }
 
-        <form className="campaign-form">
-          <div className="form-text-message">
-            <label>Text Message</label>
-            <textarea rows="1" class="materialize-textarea"></textarea>
-          </div>
-          <label>When</label>
-          <div className="form-when">
-            <input />
-            <div>{this.props.when}</div>
-          </div>
-          <input className="btn-flat btn-small white-text blue hoverable waves-effect waves-light" type="submit" value="update"/>
-        </form>
-      </div>
-    )
-  }
 
 }
 
