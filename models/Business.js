@@ -19,28 +19,28 @@ BusinessSchema.methods.createDefaultCampaigns = function createDefaultCampaigns(
     business.campaigns.push({
       name : "Reminders",
       text : "Hi *name*, this is *business* reminding you of your appointment tomorrow at *time*",
-      when : "24 hour(s) before",
+      when : "24",
       active : false
     });
     //Reviews
     business.campaigns.push({
       name : "Reviews",
       text : "Hi *name*, did you enjoy your time at *business*? Let us know at (insert link)",
-      when : "2 hour(s) after",
+      when : "24",
       active : false
-    }); 
+    });
     //Revisits
     business.campaigns.push({
       name : "Revisits",
       text : "Hi *name*, we hope you come back to *business*. Here's a discount for you at (insert link)",
-      when : "1 month(s) after",
+      when : "30",
       active : false
     });
     //Promotions
     business.campaigns.push({
       name : "Promotions",
       text : "(Insert Promotion Here)",
-      when : "2 month(s) after",
+      when : "2",
       active : false
     });
     business.save();
