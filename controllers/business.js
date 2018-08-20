@@ -14,8 +14,9 @@ module.exports = (app, Business) => {
       business.campaigns[campaignIndex].text = req.body.text;
       business.campaigns[campaignIndex].when = req.body.when;
       business.campaigns[campaignIndex].active = req.body.active;
-      business.save();
-      res.redirect('/dashboard/campaigns')
+      business.save().then((business) => {
+        res.redirect('/dashboard/campaigns')
+      });
     })
   })
 
