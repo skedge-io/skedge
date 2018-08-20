@@ -36,7 +36,7 @@ class CampaignBox extends Component {
       <div className="outer-campaign">
         <div onClick={this.addActiveClass} className="campaign-top-bar">{this.props.title}</div>
         <div className="campaign-box" style={this.state.isActive ? this.state.highView.style : this.state.lowView.style}>
-          {this.state.isActive ? null : <Form />}
+          {this.state.isActive ? null : <Form when={this.props.when}/>}
         </div>
       </div>
     )

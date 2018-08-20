@@ -42,9 +42,10 @@ class Form extends Component {
             <label>Text Message</label>
             <textarea rows="1" class="materialize-textarea"></textarea>
           </div>
+          <label>When</label>
           <div className="form-when">
-            <label>Time Sent</label>
             <input />
+            <div>{this.props.when}</div>
           </div>
           <input className="btn-flat btn-small white-text blue hoverable waves-effect waves-light" type="submit" value="update"/>
         </form>

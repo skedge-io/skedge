@@ -58,3 +58,14 @@
 
 .FORM {
 }
+
+.form-when {
+  display: flex;
+}
+
+.form-when input {
+  max-width: 100px;
+  align-items: baseline;
+  height: 20px;
+  margin-right: 10px;
+}
