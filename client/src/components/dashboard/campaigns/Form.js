@@ -8,12 +8,14 @@ class Form extends Component {
   constructor(props) {
     super(props)
     this.handleChange = this.handleChange.bind(this);
+    this.handleWhenChange= this.handleWhenChange.bind(this);
 
     this.handleEnabler= this.handleEnabler.bind(this);
     this.state = {
       checked : this.props.active,
       enabled: this.props.active ? 'Enabled' : 'Disabled',
-      value: this.props.text
+      value: this.props.text,
+      eventValue: this.props.when
     }
   }
 
@@ -23,6 +25,9 @@ class Form extends Component {
     this.setState({value: event.target.value});
   }
 
+  handleWhenChange(event) {
+    this.setState({whenValue: event.target.value});
+  }
 
 
   handleEnabler() {
@@ -63,8 +68,8 @@ class Form extends Component {
             </div>
             <label>When</label>
             <div className="form-when">
-              <input name="when" />
-              <label>{this.props.when}</label>
+              <input name="when" value={this.state.whenValue} onChange={this.handleWhenChange}/>
+              <label>{this.props.time}</label>
             </div>
             <input className="btn-flat btn-small white-text blue hoverable waves-effect waves-light" type="submit" value="update"/>
           </form>
