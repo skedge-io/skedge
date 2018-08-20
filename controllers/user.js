@@ -29,7 +29,7 @@ module.exports = (passport, app, User) => {
 
   app.get('business/register/auth/google', passport.authenticate('google',
     {
-      scope: ['profile', 'email'],
+      scope: ['profile', 'email', 'https://www.googleapis.com/auth/calendar'],
       callbackURL : 'business/register/auth/google/callback'
     })
   );
