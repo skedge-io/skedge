@@ -3,7 +3,14 @@ const schedule = require('node-schedule');
 
 const twilioAcc = require('../config/keys.js').twilioAcc;
 const twilioAuth = require('../config/keys.js').twilioAuth;
+const googleCalendarKey = require('../config/keys.js').googleCalendarKey;
+const configKeys = require('../config/keys.js');
 const twilio = require('twilio')(twilioAcc, twilioAuth);
+
+const {google} = require('googleapis');
+const {OAuth2Client} = require('google-auth-library');
+
+
 
 
 module.exports = (app, Appointment) => {
@@ -56,7 +63,40 @@ module.exports = (app, Appointment) => {
            to: `+1${appointment.phone}`
         })
       });
-      res.redirect('/');
+      //Google calendar
+      let oauth2Client = new OAuth2Client(
+        configKeys.googleClientID,
+        configKeys.googleClientSecret
+      );
+      oauth2Client.credentials = {
+        access_token: req.user.accessToken,
+        refresh_token: req.user.refreshToken
+      }
+      let calendar = google.calendar('v3');
+      let startDate = new Date(appointment.start);
+      let endDate = new Date(appointment.end);
+      let newGoogleEvent = {
+        'summary' : appointment.title,
+        'start' : {
+          'dateTime' : startDate,
+          'timeZone': 'America/Los_Angeles',
+        },
+        'end' : {
+          'dateTime' : endDate,
+          'timeZone' : 'America/Los_Angeles'
+        },
+      }
+      calendar.events.insert({
+        auth: oauth2Client,
+        calendarId: 'primary',
+        resource: newGoogleEvent,
+      }, function(err, event) {
+        if (err) {
+          console.log('There was an error contacting the Calendar service: ' + err);
+          return;
+        }
+        res.redirect('/');
+      });
     })
   });
 

@@ -6,7 +6,7 @@ module.exports = (passport, app, User) => {
 
   app.get('/auth/google', passport.authenticate('google',
     {
-      scope: ['profile', 'email'],
+      scope: ['profile', 'email', 'https://www.googleapis.com/auth/calendar'],
       callbackURL : '/auth/google/callback'
     })
   );
