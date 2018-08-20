@@ -52,7 +52,7 @@ class Form extends Component {
           <form className="campaign-form">
             <div className="form-text-message">
               <label>Text Message</label>
-              <textarea style={{padding: '0'}} value={this.state.value} onChange={this.handleChange} rows="1" class="materialize-textarea"></textarea>
+              <textarea style={{padding: '0', width: '95%'}} value={this.state.value} onChange={this.handleChange} rows="1" class="materialize-textarea"></textarea>
             </div>
             <label>When</label>
             <div className="form-when">
