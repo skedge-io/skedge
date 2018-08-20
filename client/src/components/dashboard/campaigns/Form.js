@@ -16,7 +16,7 @@ class Form extends Component {
       activeValue : this.props.active,
       enabled: this.props.active ? 'Enabled' : 'Disabled',
       value: this.props.text,
-      eventValue: this.props.when
+      whenValue: this.props.when
     }
   }
 
