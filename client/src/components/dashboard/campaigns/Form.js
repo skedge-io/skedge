@@ -13,6 +13,7 @@ class Form extends Component {
     this.handleEnabler= this.handleEnabler.bind(this);
     this.state = {
       checked : this.props.active,
+      activeValue : this.props.active,
       enabled: this.props.active ? 'Enabled' : 'Disabled',
       value: this.props.text,
       eventValue: this.props.when
@@ -34,13 +35,13 @@ class Form extends Component {
     if (this.state.checked) {
       this.setState({checked: ''})
       this.setState({enabled: 'Disabled'})
-      this.setState({activeValue: false})
+      this.setState({activeValue: 'false'})
 
       axios.post('/campaigns/update')
     } else {
       this.setState({checked: 'checked'})
       this.setState({enabled: 'Enabled'})
-      this.setState({activeValue: true})
+      this.setState({activeValue: 'true'})
       axios.post('/campaigns/update')
     }
   }
