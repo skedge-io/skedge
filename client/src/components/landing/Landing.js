@@ -52,7 +52,7 @@ class Landing extends Component  {
 
 
       <div className="threeBenefits">
-        <p>We help businesses grow by scheduling appointments,<br /> sending custom text reminders that combat no-shows, <br /> provide incentives to gain repeat business, <br />and by increasing their five star reviews.</p>
+        <p>We help businesses grow by scheduling appointments,<br /> sending custom text reminders that combat no-shows, <br /> providing incentives to gain repeat business, <br />and by increasing their five star reviews.</p>
         <div className="threeBenefitItems">
           <div className="benefitItem">
             <h1 className="icon"><i className="material-icons icon">phone_iphone</i></h1>
