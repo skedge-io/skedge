@@ -89,12 +89,34 @@ class DashCalendar extends Component {
           id: newId,
           title: 'New Event',
           allDay: event.slots.length == 1,
+          startTime: '1',
           start: event.start,
           end: event.end,
+          phone: '',
+          name: ''
         }
         this.setState({
           events: this.state.events.concat([hour])
        });
+
+       const newEvent = {
+         "title" : "New Event",
+         "phone" : "1234567890",
+         "startTime" : "12:00PM",
+         "name": '',
+         "employee": '',
+         "endTime" : "12:00PM",
+         "desc" : "none",
+         "date" : event.start,
+         "start" : event.start,
+         "end" : event.end,
+       }
+
+       axios.post('/api/appointment/new', newEvent).then(res => {
+         console.log(res);
+         console.log(res.data);
+       })
+
       }
 
 
