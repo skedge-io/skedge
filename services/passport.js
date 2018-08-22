@@ -26,8 +26,10 @@ passport.use(
   const existingUser = await User.findOne({ googleId: profile.id})
 
         if (existingUser) {
-          // we already have a user
-          return done(null, existingUser);
+          existingUser.accessToken = accessToken;
+          existingUser.save().then(()=>{
+            return done(null, existingUser);
+          })
         }
         // make a new record
         let user = await new User({

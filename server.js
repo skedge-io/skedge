@@ -25,6 +25,9 @@ app.use(cookieSession({
 app.use(passport.initialize());
 app.use(passport.session());
 
+//Initalize the texting object
+let texts = {};
+
 //User Controller and Model
 const User = require('./models/User.js');
 require('./controllers/user.js')(passport, app, User);
@@ -35,7 +38,7 @@ require('./controllers/appointment.js')(app, Appointment);
 
 //Business Controller and Model
 const Business = require('./models/Business.js');
-require('./controllers/business.js')(app, Business);
+require('./controllers/business.js')(app, Business, texts);
 
 
 if (process.env.NODE_ENV === 'production') {
