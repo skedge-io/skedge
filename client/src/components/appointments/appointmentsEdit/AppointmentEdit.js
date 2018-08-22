@@ -45,8 +45,10 @@ class AppointmentEdit extends Component {
     return (
       <div className="row-this higher">
         <LeftPanel wambo="active-sec" />
+
         <div className="container formFlex">
-          <TopBar header="Edit Appointment" />
+        <TopBar style={{paddingTop: '1.5rem', paddingBottom: '1.5rem'}} header="Edit Appointment" />
+
           <div className="inside">
 
             <form method="POST" action={'/api/appointment/edit/' + theAptId}>

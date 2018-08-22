@@ -90,8 +90,9 @@ class DashCalendar extends Component {
           title: 'New Event',
           allDay: event.slots.length == 1,
           startTime: '1',
-          start: event.start,
-          end: event.end,
+          "date" : moment(event.start).format('MMM D, YYYY'),
+          "start" : moment(event.start).format('MMM D, YYYY'),
+          "end" : moment(event.start).format('MMM D, YYYY'),
           phone: '',
           name: ''
         }
@@ -107,14 +108,21 @@ class DashCalendar extends Component {
          "employee": '',
          "endTime" : "12:00PM",
          "desc" : "none",
-         "date" : event.start,
-         "start" : event.start,
-         "end" : event.end,
+         "date" : moment(event.start).format('MMM D, YYYY'),
+         "start" : moment(event.start).format('MMM D, YYYY'),
+         "end" : moment(event.start).format('MMM D, YYYY')
        }
+
+       console.log(newEvent)
 
        axios.post('/api/appointment/new', newEvent).then(res => {
          console.log(res);
          console.log(res.data);
+         
+         axios.get('/api/appointments').then((res) => {
+           this.setState({events : res.data})
+         })
+
        })
 
       }

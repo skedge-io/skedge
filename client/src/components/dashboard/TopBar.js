@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 class TopBar extends Component {
   render() {
     return (
-      <div className="top-bar">
+      <div style={this.props.style} className="top-bar">
         {this.props.header}
         <div className="right">
           {this.props.btn}
