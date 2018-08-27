@@ -102,7 +102,7 @@ class DashCalendar extends Component {
 
        const newEvent = {
          "title" : "New Event",
-         "phone" : "1234567890",
+         "phone" : "",
          "startTime" : "12:00PM",
          "name": '',
          "employee": '',
@@ -110,20 +110,20 @@ class DashCalendar extends Component {
          "desc" : "none",
          "date" : moment(event.start).format('MMM D, YYYY'),
          "start" : moment(event.start).format('MMM D, YYYY'),
-         "end" : moment(event.start).format('MMM D, YYYY')
+         "end" : moment(event.start).format('MMM D, YYYY'),
+         "desc": ''
        }
 
        console.log(newEvent)
 
        axios.post('/api/appointment/new', newEvent).then(res => {
-         console.log(res);
-         console.log(res.data);
-         
          axios.get('/api/appointments').then((res) => {
            this.setState({events : res.data})
          })
 
        })
+
+
 
       }
 

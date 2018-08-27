@@ -42,7 +42,17 @@ module.exports = (app, Appointment) => {
     appointment.customer = req.body.customer;
     appointment.employee = req.body.employee;
     appointment.employee_id = req.user._id;
-    appointment.title = req.body.employee + " <> " + req.body.customer;
+
+    // This checks if an event was made from a form or by clicking on a specific day.
+     if (req.body.employee) {
+    // filled out form
+    appointment.title =  req.body.employee + " <> " + req.body.customer
+  } else {
+    // Clicked on a specific day
+    appointment.title = 'New Event'
+    appointment.desc = ''
+  }
+
     appointment.phone = req.body.phone;
     appointment.startTime = req.body.startTime;
     appointment.endTime = req.body.endTime;
