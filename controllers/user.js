@@ -7,7 +7,9 @@ module.exports = (passport, app, User) => {
   app.get('/auth/google', passport.authenticate('google',
     {
       scope: ['profile', 'email', 'https://www.googleapis.com/auth/calendar'],
-      callbackURL : '/auth/google/callback'
+      callbackURL : '/auth/google/callback',
+      accessType: 'offline',
+      prompt: 'consent'
     })
   );
 
@@ -30,7 +32,9 @@ module.exports = (passport, app, User) => {
   app.get('business/register/auth/google', passport.authenticate('google',
     {
       scope: ['profile', 'email', 'https://www.googleapis.com/auth/calendar'],
-      callbackURL : 'business/register/auth/google/callback'
+      callbackURL : 'business/register/auth/google/callback',
+      accessType: 'offline',
+      prompt: 'consent'
     })
   );
 
