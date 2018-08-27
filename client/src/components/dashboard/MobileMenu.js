@@ -24,7 +24,6 @@ class MobileMenu extends Component {
 
         <div className="mob-menu" className={this.state.mobActive ? 'mob-menu on': 'mob-menu'}>
           <div className={this.state.mobActive ? 'mobileMenuLinks on': 'mobileMenuLinks'}>
-            <h2>Skedge.io</h2>
             <Link  id={this.props.wambo} to="/dashboard">Calendar</Link>
             <Link  id={this.props.index1} to="/dashboard/employees">Employees</Link>
             <Link  id={this.props.index2} to="/dashboard/statistics">Statistics</Link>
