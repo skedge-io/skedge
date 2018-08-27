@@ -8,7 +8,6 @@ import Employees from './employees/Employees';
 import TopBar from './TopBar';
 import LeftPanel from './LeftPanel';
 import RightPanel from './RightPanel';
-import MobileMenu from './MobileMenu';
 
 import { connect } from 'react-redux';
 
@@ -27,8 +26,9 @@ class Dashboard extends Component {
 
 
    return (
+
+
        <div className="row-this">
-       <MobileMenu />
        <LeftPanel wambo="active-sec"/>
 
 

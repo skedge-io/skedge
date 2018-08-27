@@ -46,7 +46,6 @@ class Campaign extends Component {
       return (
 
         <div className="row-this">
-        <MobileMenu />
 
         <LeftPanel index3="active-sec"/>
 

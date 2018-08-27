@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
+import MobileMenu from './dashboard/MobileMenu';
+
+
 class Header extends Component {
   renderContent() {
     switch(this.props.auth) {
@@ -22,6 +25,8 @@ class Header extends Component {
     return (
       <nav className="blue">
         <div className="nav-wrapper">
+        <MobileMenu />
+
           <Link
             to={this.props.auth ? '/dashboard' : '/'}
             className="left brand-logo"
@@ -31,6 +36,7 @@ class Header extends Component {
           <ul className="right">
             {this.renderContent()}
           </ul>
+
         </div>
       </nav>
     )

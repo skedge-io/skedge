@@ -18,7 +18,6 @@ class Statistics extends Component {
 
     return (
       <div className="row-this">
-      <MobileMenu />
 
       <LeftPanel index2="active-sec"/>
 

@@ -18,7 +18,6 @@ class Contacts extends Component {
 
     return (
       <div className="row-this">
-      <MobileMenu />
 
       <LeftPanel index4="active-sec"/>
 
