@@ -9,6 +9,8 @@ const twilio = require('twilio')(twilioAcc, twilioAuth);
 
 const {google} = require('googleapis');
 const {OAuth2Client} = require('google-auth-library');
+const refresh = require('passport-oauth2-refresh');
+const User = require('../models/User.js');
 
 
 
@@ -64,49 +66,60 @@ module.exports = (app, Appointment) => {
     appointment.end = req.body.date + ' ' + req.body.endTime.substring(0, endTimeLength - 2) + " " + req.body.endTime.substring(endTimeLength - 2, endTimeLength);
     appointment.business = req.user.business;
     appointment.save(function(err, appointment){
-      //Twilio Text Message
-      texts[appointment._id] = schedule.scheduleJob(appointment.start, function(){
-        console.log("RUN");
-        twilio.messages.create({
-           body: `${appointment.title}`,
-           from: '+15158002233',
-           to: `+1${appointment.phone}`
-        })
-      });
-      //Google calendar
-      let oauth2Client = new OAuth2Client(
-        configKeys.googleClientID,
-        configKeys.googleClientSecret
-      );
-      oauth2Client.credentials = {
-        access_token: req.user.accessToken,
-        refresh_token: req.user.refreshToken
-      }
-      let calendar = google.calendar('v3');
-      let startDate = new Date(appointment.start);
-      let endDate = new Date(appointment.end);
-      let newGoogleEvent = {
-        'summary' : appointment.title,
-        'start' : {
-          'dateTime' : startDate,
-          'timeZone': 'America/Los_Angeles',
-        },
-        'end' : {
-          'dateTime' : endDate,
-          'timeZone' : 'America/Los_Angeles'
-        },
-      }
-      calendar.events.insert({
-        auth: oauth2Client,
-        calendarId: 'primary',
-        resource: newGoogleEvent,
-      }, function(err, event) {
-        if (err) {
-          console.log('There was an error contacting the Calendar service: ' + err);
+      let calRetries = 2;
+      addToUserCalendar = () => {
+        if(!calRetries){
           return;
         }
-        res.redirect('/');
-      });
+        calRetries--;
+        User.findById(req.user._id).then((user) => {
+          let oauth2Client = new OAuth2Client(
+            configKeys.googleClientID,
+            configKeys.googleClientSecret
+          );
+          oauth2Client.credentials = {
+            access_token: user.accessToken,
+            refresh_token: user.refreshToken
+          }
+          let calendar = google.calendar('v3');
+          let startDate = new Date(appointment.start);
+          let endDate = new Date(appointment.end);
+          let newGoogleEvent = {
+            'summary' : appointment.title,
+            'start' : {
+              'dateTime' : startDate,
+              'timeZone': 'America/Los_Angeles',
+            },
+            'end' : {
+              'dateTime' : endDate,
+              'timeZone' : 'America/Los_Angeles'
+            },
+          }
+          calendar.events.insert({
+            auth: oauth2Client,
+            calendarId: 'primary',
+            resource: newGoogleEvent,
+          }, function(err, event) {
+            if (err) {
+              if(err == "Error: Invalid Credentials" ||
+                  "Error: No access, refresh token or API key is set."){
+                refresh.requestNewAccessToken('google', user.refreshToken, (err, accessToken) => {
+                  console.log(accessToken);
+                  user.accessToken = accessToken;
+                  user.save().then(() => {
+                    addToUserCalendar();
+                  })
+                })
+              }else{
+                console.log('There was an error contacting the Calendar service: ' + err);
+                return;
+              }
+            }
+            res.redirect('/');
+          });
+        });
+      }
+      addToUserCalendar();
     })
   });
 

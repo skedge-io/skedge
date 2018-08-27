@@ -26,7 +26,8 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 //Initalize the texting object
-let texts = {};
+let texts = {hey : "hey"};
+module.exports = {texts};
 
 //User Controller and Model
 const User = require('./models/User.js');
