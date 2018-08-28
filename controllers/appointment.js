@@ -6,30 +6,22 @@ const twilioAuth = require('../config/keys.js').twilioAuth;
 const googleCalendarKey = require('../config/keys.js').googleCalendarKey;
 const configKeys = require('../config/keys.js');
 const twilio = require('twilio')(twilioAcc, twilioAuth);
+const moment = require('moment');
+
 
 const {google} = require('googleapis');
 const {OAuth2Client} = require('google-auth-library');
 const refresh = require('passport-oauth2-refresh');
 const User = require('../models/User.js');
+const Business = require('../models/Business.js');
+
+let texts = require('../server.js').texts;
+
 
 
 
 
 module.exports = (app, Appointment) => {
-
-  let texts = {}
-  //Schedule Texts for Appointments (Do this on server start)
-  Appointment.find().then((appointments) => {
-    appointments.forEach((appointment) => {
-      texts[appointment._id] = schedule.scheduleJob(appointment.start, function(){
-        twilio.messages.create({
-           body: `${appointment.title}`,
-           from: '+15158002233',
-           to: `+1${appointment.phone}`
-        })
-      });
-    })
-  })
 
   // Get Specfic Appointment
   app.get('/api/appointment/:id', reqLogin, (req, res) => {
@@ -46,14 +38,14 @@ module.exports = (app, Appointment) => {
     appointment.employee_id = req.user._id;
 
     // This checks if an event was made from a form or by clicking on a specific day.
-     if (req.body.employee) {
-    // filled out form
-    appointment.title =  req.body.employee + " <> " + req.body.customer
-  } else {
-    // Clicked on a specific day
-    appointment.title = 'New Event'
-    appointment.desc = ''
-  }
+    if (req.body.employee) {
+      // filled out form
+      appointment.title =  req.body.employee + " <> " + req.body.customer
+    } else {
+      // Clicked on a specific day
+      appointment.title = 'New Event'
+      appointment.desc = ''
+    }
 
     appointment.phone = req.body.phone;
     appointment.startTime = req.body.startTime;
@@ -66,6 +58,20 @@ module.exports = (app, Appointment) => {
     appointment.end = req.body.date + ' ' + req.body.endTime.substring(0, endTimeLength - 2) + " " + req.body.endTime.substring(endTimeLength - 2, endTimeLength);
     appointment.business = req.user.business;
     appointment.save(function(err, appointment){
+      //Add to Business Text Campaign if active
+      Business.findById(req.user.business).then((business) => {
+        if(business.campaigns[0].active){
+          let remindTime = moment(new Date(appointment.start)).subtract(business.campaigns[0].when, "hours").format("D MMMM, YYYY hh:mm A");
+          texts[business._id]["Reminders"][appointment._id] = schedule.scheduleJob(remindTime, function(){
+            twilio.messages.create({
+               body: business.campaigns[0].text,
+               from: '+15158002233',
+               to: `+1${appointment.phone}`
+            })
+          });
+        }
+      })
+
       let calRetries = 2;
       addToUserCalendar = () => {
         if(!calRetries){

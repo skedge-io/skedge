@@ -63,8 +63,7 @@ BusinessSchema.methods.activateCampaign = function activateCampaign(id, campaign
       case "Reminders":
         Appointment.find({business : id}).then((appointments) => {
           appointments.forEach((appointment) => {
-            remindTime = moment(new Date(appointment.start)).subtract(campaign.when, timeType).format("D MMMM, YYYY hh:mm A");
-            console.log(remindTime);
+            let remindTime = moment(new Date(appointment.start)).subtract(campaign.when, timeType).format("D MMMM, YYYY hh:mm A");
             texts[id]["Reminders"][appointment._id] = schedule.scheduleJob(remindTime, function(){
               twilio.messages.create({
                  body: `${campaign.text}`,
