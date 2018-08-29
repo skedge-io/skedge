@@ -1,12 +1,12 @@
 const reqLogin = require('../middlewares/requireLogin.js');
-const schedule = require('node-schedule');
-
-const twilioAcc = require('../config/keys.js').twilioAcc;
-const twilioAuth = require('../config/keys.js').twilioAuth;
+// const schedule = require('node-schedule');
+//
+// const twilioAcc = require('../config/keys.js').twilioAcc;
+// const twilioAuth = require('../config/keys.js').twilioAuth;
 const googleCalendarKey = require('../config/keys.js').googleCalendarKey;
 const configKeys = require('../config/keys.js');
-const twilio = require('twilio')(twilioAcc, twilioAuth);
-const moment = require('moment');
+// const twilio = require('twilio')(twilioAcc, twilioAuth);
+// const moment = require('moment');
 
 
 const {google} = require('googleapis');
@@ -14,12 +14,9 @@ const {OAuth2Client} = require('google-auth-library');
 const refresh = require('passport-oauth2-refresh');
 const User = require('../models/User.js');
 const Business = require('../models/Business.js');
+const campaigns = require('../services/campaigns.js');
 
-let texts = require('../server.js').texts;
-
-
-
-
+// let texts = require('../server.js').texts;
 
 module.exports = (app, Appointment) => {
 
@@ -61,14 +58,7 @@ module.exports = (app, Appointment) => {
       //Add to Business Text Campaign if active
       Business.findById(req.user.business).then((business) => {
         if(business.campaigns[0].active){
-          let remindTime = moment(new Date(appointment.start)).subtract(business.campaigns[0].when, "hours").format("D MMMM, YYYY hh:mm A");
-          texts[business._id]["Reminders"][appointment._id] = schedule.scheduleJob(remindTime, function(){
-            twilio.messages.create({
-               body: business.campaigns[0].text,
-               from: '+15158002233',
-               to: `+1${appointment.phone}`
-            })
-          });
+          campaigns.setText(appointment, business, business.campaigns[0]);
         }
       })
 

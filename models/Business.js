@@ -1,12 +1,13 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
-const twilioAcc = require('../config/keys.js').twilioAcc;
-const twilioAuth = require('../config/keys.js').twilioAuth;
-const twilio = require('twilio')(twilioAcc, twilioAuth);
-const schedule = require('node-schedule');
-let texts = require('../server.js').texts;
-const moment = require('moment');
+// const twilioAcc = require('../config/keys.js').twilioAcc;
+// const twilioAuth = require('../config/keys.js').twilioAuth;
+// const twilio = require('twilio')(twilioAcc, twilioAuth);
+// const schedule = require('node-schedule');
+// let texts = require('../server.js').texts;
+// const moment = require('moment');
 const Appointment = require('./Appointment.js')
+const campaigns = require('../services/campaigns.js');
 
 const BusinessSchema = new Schema({
   name : String,
@@ -25,8 +26,8 @@ BusinessSchema.methods.createDefaultCampaigns = function createDefaultCampaigns(
     //Reminders
     business.campaigns.push({
       name : "Reminders",
-      text : "Hi *name*, this is *business* reminding you of your appointment tomorrow at *time*",
-      when : "24",
+      text : "Hi *name*, this is *business* reminding you of your appointment with *employee* at *time*",
+      when : "1",
       active : false
     });
     //Reviews
@@ -58,23 +59,11 @@ BusinessSchema.methods.createDefaultCampaigns = function createDefaultCampaigns(
 //Activating A campaign
 BusinessSchema.methods.activateCampaign = function activateCampaign(id, campaign){
   this.model('Business').findById(id).then((business) => {
-    let timeType = (campaign.name == "Revisits") ? "days" : "hours";
-    switch(campaign.name){
-      case "Reminders":
-        Appointment.find({business : id}).then((appointments) => {
-          appointments.forEach((appointment) => {
-            let remindTime = moment(new Date(appointment.start)).subtract(campaign.when, timeType).format("D MMMM, YYYY hh:mm A");
-            texts[id]["Reminders"][appointment._id] = schedule.scheduleJob(remindTime, function(){
-              twilio.messages.create({
-                 body: `${campaign.text}`,
-                 from: '+15158002233',
-                 to: `+1${appointment.phone}`
-              })
-            });
-          })
-        });
-        break;
-    }
+    Appointment.find({business : id}).then((appointments) => {
+      appointments.forEach((appointment) => {
+        campaigns.setText(appointment, business, business.campaigns[0]);
+      })
+    });
   })
 }
 

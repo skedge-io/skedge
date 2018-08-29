@@ -26,7 +26,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 //Initalize the texting object
-let texts = {hey : "hey"};
+let texts = {};
 module.exports = {texts};
 
 //User Controller and Model
