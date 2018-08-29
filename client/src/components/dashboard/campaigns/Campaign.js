@@ -35,6 +35,16 @@ class Campaign extends Component {
           <CampaignBox text={this.state.campaigns[1].text} active={this.state.campaigns[1].active} camp={this.state.campaigns[1].name} when={this.state.campaigns[1].when} title="Reviews" time="Hours after appointment"/>
           <CampaignBox text={this.state.campaigns[2].text} active={this.state.campaigns[2].active} camp={this.state.campaigns[2].name} when={this.state.campaigns[2].when} title="Revisits" time="Days after last appointment"/>
           <CampaignBox text={this.state.campaigns[3].text} active={this.state.campaigns[3].active} camp={this.state.campaigns[3].name} when={this.state.campaigns[3].when} title="Promotions" time="Hours from now"/>
+
+          <div className="key-box">
+            <div className="key-top-bar">Key</div>
+            <p className="key-word"><b>*name*</b>: Name of Client</p>
+            <p className="key-word"><b>*employee*</b>: Name of Employee</p>
+            <p className="key-word"><b>*business*</b>: Name of Business</p>
+            <p className="key-word"><b>*time*</b>: Time of appointment</p>
+
+          </div>
+
         </div>
       )
     } else {
