@@ -57,11 +57,13 @@ module.exports = (app, Appointment) => {
     appointment.save(function(err, appointment){
       //Add to Business Text Campaign if active
       Business.findById(req.user.business).then((business) => {
-        if(business.campaigns[0].active){
-          campaigns.setText(appointment, business, business.campaigns[0]);
+        for(let i=0;i<2;i++){
+          if(business.campaigns[i].active){
+            campaigns.setText(appointment, business, business.campaigns[i]);
+          }
         }
       })
-
+      //Add to Calendar
       let calRetries = 2;
       addToUserCalendar = () => {
         if(!calRetries){
@@ -143,6 +145,12 @@ module.exports = (app, Appointment) => {
 
   app.post('/api/appointment/delete/:id', (req, res) => {
     Appointment.findOneAndDelete({_id : req.params.id}).then(() => {
+      Business.findById(req.user.business).then((business) => {
+        //Delete Campaign Reminders and Reviews
+        for(let i=0;i<2;i++){
+          campaigns.deleteText(req.params.id, business, business.campaigns[i]);
+        }
+      })
       res.redirect('/dashboard');
     })
   })

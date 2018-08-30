@@ -8,20 +8,19 @@ const schedule = require('node-schedule');
 
 
 filterMessage = (appointment, business, message) => {
-  let newMessage = message.replace(/name/gi, appointment.customer);
-  newMessage = newMessage.replace(/business/gi, business.name);
-  newMessage = newMessage.replace(/time/gi, appointment.startTime);
-  newMessage = newMessage.replace(/employee/gi, appointment.employee);
-  newMessage = newMessage.replace(/\*/gi, '');
+  let newMessage = message.replace(/\*name\*/gi, appointment.customer);
+  newMessage = newMessage.replace(/\*business\*/gi, business.name);
+  newMessage = newMessage.replace(/\*time\*/gi, appointment.startTime);
+  newMessage = newMessage.replace(/\*employee\*/gi, appointment.employee);
   return newMessage;
 }
 
 setText = (appointment, business, campaign) => {
+  let textMessage = filterMessage(appointment, business, campaign.text);
   switch(campaign.name){
 
     case "Reminders":
       let remindTime = moment(new Date(appointment.start)).subtract(campaign.when, "hours").format("D MMMM, YYYY hh:mm A");
-      let textMessage = filterMessage(appointment, business, campaign.text);
       texts[business._id]["Reminders"][appointment._id] = schedule.scheduleJob(remindTime, function(){
         twilio.messages.create({
            body: textMessage,
@@ -31,7 +30,27 @@ setText = (appointment, business, campaign) => {
       });
       break;
 
+    case "Reviews":
+      let reviewTime = moment(new Date(appointment.end)).add(campaign.when, "hours").format("D MMMM, YYYY hh:mm A");
+      texts[business._id]["Reviews"][appointment._id] = schedule.scheduleJob(reviewTime, function(){
+        twilio.messages.create({
+           body: textMessage,
+           from: '+15158002233',
+           to: `+1${appointment.phone}`
+        })
+      });
+      break;
+
+
+
   }
+}
+
+deleteText = (appointmentId, business, campaign) => {
+  console.log(texts);
+  texts[business._id][campaign.name][appointmentId].cancel();
+  delete texts[business._id][campaign.name][appointmentId];
+  console.log(texts);
 }
 
 initBusinessCampaigns = (Business) => {
@@ -43,16 +62,18 @@ initBusinessCampaigns = (Business) => {
         "Revisits" : {},
         "Promotions" : {}
       };
-      //Reminders
-      if(business.campaigns[0].active){
-        Appointment.find({business : business._id}).then((appointments) => {
-          appointments.forEach((appointment) => {
-            setText(appointment, business, business.campaigns[0]);
+      //Reminders and Reviews
+      for(let i=0;i<2;i++){
+        if(business.campaigns[i].active){
+          Appointment.find({business : business._id}).then((appointments) => {
+            appointments.forEach((appointment) => {
+              setText(appointment, business, business.campaigns[i]);
+            })
           })
-        })
+        }
       }
     })
   })
 }
 
-module.exports = {setText, initBusinessCampaigns}
+module.exports = {setText, initBusinessCampaigns, deleteText}

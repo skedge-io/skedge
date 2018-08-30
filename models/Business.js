@@ -55,13 +55,12 @@ BusinessSchema.methods.createDefaultCampaigns = function createDefaultCampaigns(
   })
 }
 
-
 //Activating A campaign
 BusinessSchema.methods.activateCampaign = function activateCampaign(id, campaign){
   this.model('Business').findById(id).then((business) => {
     Appointment.find({business : id}).then((appointments) => {
       appointments.forEach((appointment) => {
-        campaigns.setText(appointment, business, business.campaigns[0]);
+        campaigns.setText(appointment, business, campaign);
       })
     });
   })
