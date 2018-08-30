@@ -48,7 +48,7 @@ class Campaign extends Component {
         </div>
       )
     } else {
-      return <div><img src="https://image.ibb.co/j1eKCp/blue_loading.gif" /></div>
+      return <div><img height="100px" src="https://image.ibb.co/j1eKCp/blue_loading.gif" /></div>
     }
   }
 
