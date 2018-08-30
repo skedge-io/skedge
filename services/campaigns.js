@@ -47,10 +47,10 @@ setText = (appointment, business, campaign) => {
 }
 
 deleteText = (appointmentId, business, campaign) => {
-  console.log(texts);
-  texts[business._id][campaign.name][appointmentId].cancel();
-  delete texts[business._id][campaign.name][appointmentId];
-  console.log(texts);
+  if(texts[business._id][campaign.name][appointmentId]){
+    texts[business._id][campaign.name][appointmentId].cancel();
+    delete texts[business._id][campaign.name][appointmentId];
+  }
 }
 
 initBusinessCampaigns = (Business) => {

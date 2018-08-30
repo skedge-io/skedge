@@ -3,7 +3,7 @@ const reqLogin = require('../middlewares/requireLogin.js');
 //
 // const twilioAcc = require('../config/keys.js').twilioAcc;
 // const twilioAuth = require('../config/keys.js').twilioAuth;
-const googleCalendarKey = require('../config/keys.js').googleCalendarKey;
+// const googleCalendarKey = require('../config/keys.js').googleCalendarKey;
 const configKeys = require('../config/keys.js');
 // const twilio = require('twilio')(twilioAcc, twilioAuth);
 // const moment = require('moment');
@@ -15,6 +15,7 @@ const refresh = require('passport-oauth2-refresh');
 const User = require('../models/User.js');
 const Business = require('../models/Business.js');
 const campaigns = require('../services/campaigns.js');
+const gCalendar = require('../services/gCalendar.js');
 
 // let texts = require('../server.js').texts;
 
@@ -64,60 +65,12 @@ module.exports = (app, Appointment) => {
         }
       })
       //Add to Calendar
-      let calRetries = 2;
-      addToUserCalendar = () => {
-        if(!calRetries){
-          return;
-        }
-        calRetries--;
-        User.findById(req.user._id).then((user) => {
-          let oauth2Client = new OAuth2Client(
-            configKeys.googleClientID,
-            configKeys.googleClientSecret
-          );
-          oauth2Client.credentials = {
-            access_token: user.accessToken,
-            refresh_token: user.refreshToken
-          }
-          let calendar = google.calendar('v3');
-          let startDate = new Date(appointment.start);
-          let endDate = new Date(appointment.end);
-          let newGoogleEvent = {
-            'summary' : appointment.title,
-            'start' : {
-              'dateTime' : startDate,
-              'timeZone': 'America/Los_Angeles',
-            },
-            'end' : {
-              'dateTime' : endDate,
-              'timeZone' : 'America/Los_Angeles'
-            },
-          }
-          calendar.events.insert({
-            auth: oauth2Client,
-            calendarId: 'primary',
-            resource: newGoogleEvent,
-          }, function(err, event) {
-            if (err) {
-              if(err == "Error: Invalid Credentials" ||
-                  "Error: No access, refresh token or API key is set."){
-                refresh.requestNewAccessToken('google', user.refreshToken, (err, accessToken) => {
-                  console.log(accessToken);
-                  user.accessToken = accessToken;
-                  user.save().then(() => {
-                    addToUserCalendar();
-                  })
-                })
-              }else{
-                console.log('There was an error contacting the Calendar service: ' + err);
-                return;
-              }
-            }
-            res.redirect('/');
-          });
-        });
-      }
-      addToUserCalendar();
+      gCalendar.addEvent(req.user, appointment, (gCalendarId) => {
+        appointment.gCalendarId = gCalendarId;
+        appointment.save().then(() => {
+          res.redirect('/');
+        })
+      })
     })
   });
 
@@ -144,12 +97,14 @@ module.exports = (app, Appointment) => {
   });
 
   app.post('/api/appointment/delete/:id', (req, res) => {
-    Appointment.findOneAndDelete({_id : req.params.id}).then(() => {
+    Appointment.findOneAndDelete({_id : req.params.id}).then((appointment) => {
       Business.findById(req.user.business).then((business) => {
         //Delete Campaign Reminders and Reviews
         for(let i=0;i<2;i++){
           campaigns.deleteText(req.params.id, business, business.campaigns[i]);
         }
+        //Remove from Google Calendar
+        gCalendar.deleteEvent(req.user, appointment.gCalendarId);
       })
       res.redirect('/dashboard');
     })
