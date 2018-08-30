@@ -57,6 +57,34 @@
   background-color: rgba(108, 186, 237, .6) !important;
 }
 
+
+
+
+
+
+.rbc-btn-group button {
+  background-color: #2196F3 !important;
+  color: white !important;
+  border: solid 1px white !important;
+  margin-right: 2px !important;
+  border-radius: 4px !important;
+  transition: all 200ms;
+}
+
+.rbc-btn-group button:hover {
+  background-color: #44acfe !important;
+}
+
+.rbc-event {
+  background: #09a3e1 !important;
+  transition: all 200ms !important;
+}
+
+.rbc-event:hover {
+  background-color: #0381b4 !important;
+}
+
+
 .eventView {
   height: 0vh;
   width: 100%;
