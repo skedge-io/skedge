@@ -76,12 +76,12 @@
 }
 
 .rbc-event {
-  background: #09a3e1 !important;
+  background-color: #0381b4 !important;
   transition: all 200ms !important;
 }
 
 .rbc-event:hover {
-  background-color: #0381b4 !important;
+  background: #09a3e1 !important;
 }
 
 
