@@ -30,6 +30,15 @@ class Form extends Component {
     this.setState({whenValue: event.target.value});
   }
 
+  handleSubmit(event) {
+      // event.preventDefault();
+      const data = new FormData(event.target);
+
+      fetch('/api/campaigns/update', {
+        method: 'POST',
+        body: data,
+      });
+    }
 
   handleEnabler() {
     if (this.state.checked) {
@@ -37,12 +46,21 @@ class Form extends Component {
       this.setState({enabled: 'Disabled'})
       this.setState({activeValue: 'false'})
 
-      axios.post('/campaigns/update')
+
+
+      axios.post('/api/campaigns/update', {
+        active: false
+      })
     } else {
       this.setState({checked: 'checked'})
       this.setState({enabled: 'Enabled'})
       this.setState({activeValue: 'true'})
-      axios.post('/campaigns/update')
+
+
+
+      axios.post('/api/campaigns/update', {
+        active: true
+      })
     }
   }
 

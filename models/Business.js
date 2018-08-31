@@ -28,7 +28,7 @@ BusinessSchema.methods.createDefaultCampaigns = function createDefaultCampaigns(
       name : "Reminders",
       text : "Hi *name*, this is *business* reminding you of your appointment with *employee* at *time*",
       when : "1",
-      active : false
+      active : true
     });
     //Reviews
     business.campaigns.push({
