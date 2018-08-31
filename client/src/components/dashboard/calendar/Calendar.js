@@ -154,7 +154,7 @@ class DashCalendar extends Component {
                   </div>
                 </div>
               </div>
-              <button className="waves-effect waves-light btn red" onClick={() => this.setState({eventView : { style: {height: '0'} }})}>Hide</button>
+              <button className="waves-effect waves-light btn blue darken-2" onClick={() => this.setState({eventView : { style: {height: '0'} }})}>Back to Calendar</button>
             </div>
           </div>
       )
