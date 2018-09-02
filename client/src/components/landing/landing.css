@@ -56,6 +56,11 @@ nav {
   color: white;
 }
 
+.scroll-icon {
+  color: white;
+  font-size: 3rem;
+}
+
 .skedgememo {
   color: #000;
 }
@@ -350,5 +355,11 @@ reviews
     background-position: center;
     background-size: cover;
   }
+
+
+  .scroll-icon {
+display: none;
+ }
+
 
 }

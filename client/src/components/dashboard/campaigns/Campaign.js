@@ -37,12 +37,27 @@ class Campaign extends Component {
           <CampaignBox text={this.state.campaigns[3].text} active={this.state.campaigns[3].active} camp={this.state.campaigns[3].name} when={this.state.campaigns[3].when} title="Promotions" time="Hours from now"/>
 
           <div className="key-box">
-            <div className="key-top-bar">Key</div>
-            <p className="key-word"><b>*name*</b>: Name of Client</p>
-            <p className="key-word"><b>*employee*</b>: Name of Employee</p>
-            <p className="key-word"><b>*business*</b>: Name of Business</p>
-            <p className="key-word"><b>*time*</b>: Time of appointment</p>
+          <div className="key-top-bar">
+            <div>Key</div>
+            <i className="material-icons keyname-info">info</i>
+          </div>
+            <div className="key-table">
 
+              <div className="key-titles">
+                <p className="key-word"><b>*name*</b>:</p>
+                <p className="key-word"><b>*employee*</b>:</p>
+                <p className="key-word"><b>*business*</b>:</p>
+                <p className="key-word"><b>*time*</b>:</p>
+              </div>
+
+              <div className="key-descriptions">
+                <p className="key-word"> Name of Client</p>
+                <p className="key-word">Name of Employee</p>
+                <p className="key-word">Name of Business</p>
+                <p className="key-word">Time of appointment</p>
+              </div>
+
+            </div>
           </div>
 
         </div>

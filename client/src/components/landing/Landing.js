@@ -37,8 +37,9 @@ class Landing extends Component  {
           <h5>{this.props.auth ? 'Welcome Back ' + this.props.auth.name : 'Schedule Appointments, send reminders, gain repeat business, and increase your five star reviews!'}</h5>
           {this.renderContent()}
           <div className="bottom-align container">
+            <a href="#down"><i className="scroll-icon material-icons">keyboard_arrow_down</i></a>
           </div>
-      </div>
+        </div>
 
 
 
