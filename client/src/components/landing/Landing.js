@@ -112,7 +112,7 @@ class Landing extends Component  {
         </div>
         <div className="reviewsText">
           <div>We give you more five star reviews by sending out a message sometime after an appointment.<br /><br /> We filter reviews so only positive reviews end up on Yelp, Nextdoor, etc.</div>
-          <a className="cfd-cta-2 hoverable waves-effect waves-purple" href="./auth/google">Get More Reviews</a>
+          <a className="cfd-cta-2 no-mobile-padding hoverable waves-effect waves-purple" href="./auth/google">Get More Reviews</a>
         </div>
       </div>
 

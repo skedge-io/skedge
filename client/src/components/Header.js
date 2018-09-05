@@ -19,20 +19,35 @@ class Header extends Component {
     }
   }
 
+renderMobile() {
+  switch(this.props.auth) {
+    case null:
+      return;
+    case false:
+      return;
+    default:
+      return  (
+        <MobileMenu />
+      )
+  }
+}
 
 
   render() {
     return (
       <nav className="blue">
         <div className="nav-wrapper">
-        <MobileMenu />
+
+        {this.renderMobile()}
 
           <Link
             to={this.props.auth ? '/dashboard' : '/'}
-            className="left brand-logo"
+            className={this.props.auth ? 'left brand-logo' : 'left brand-logo logged-out-brand'}
           >
             Skedge
           </Link>
+
+
           <ul className="right">
             {this.renderContent()}
           </ul>
