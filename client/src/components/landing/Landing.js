@@ -14,11 +14,11 @@ class Landing extends Component  {
   renderContent() {
       switch(this.props.auth) {
         case null:
-          return <a className="cfd-cta-2 hoverable waves-effect waves-purple" href="./auth/google">Try For Free</a>
+          return <a className="cfd-cta-2 no-mobile-padding hoverable waves-effect waves-purple" href="./auth/google">Try For Free</a>
         case false:
-          return <a className="cfd-cta-2 hoverable waves-effect waves-purple" href="./auth/google">Try For Free</a>
+          return <a className="cfd-cta-2 no-mobile-padding hoverable waves-effect waves-purple" href="./auth/google">Try For Free</a>
         default:
-          return <Link  className="cfd-cta-2 hoverable waves-effect waves-purple" to="dashboard">Go To Dashboard</Link>
+          return <Link  className="cfd-cta-2 no-mobile-padding hoverable waves-effect waves-purple" to="dashboard">Go To Dashboard</Link>
 
       }
 
@@ -91,7 +91,7 @@ class Landing extends Component  {
 
         <div className="reminderText">
           <div>Send custom text reminders to combat no shows! A day before, an hour before, whatever you decide.</div>
-          <a className="cfd-cta-2 hoverable waves-effect waves-purple" href="./auth/google">Get Started</a>
+          <a className="cfd-cta-2 no-mobile-padding hoverable waves-effect waves-purple" href="./auth/google">Get Started</a>
         </div>
         <div className="reminderImages">
           <img className="img-phone" src="https://preview.ibb.co/dKSwMy/imageedit_1_5925980519.png" />
@@ -120,7 +120,7 @@ class Landing extends Component  {
       <div className="repeat-business">
         <div className="reminderText">
           <div>Gain <b>repeat business</b> by offering customers <b>incentives</b> to keep scheduling appointments with you.</div>
-          <a className="cfd-cta-2 hoverable waves-effect waves-purple" href="./auth/google">Try For Free</a>
+          <a className="cfd-cta-2 no-mobile-padding hoverable waves-effect waves-purple" href="./auth/google">Try For Free</a>
           <h5 className="skedgememo">Skedge.io is currently in alpha stage development. Create an account to stay updated on our development process, and be the first to know when skedge is production ready.</h5>
         </div>
       </div>

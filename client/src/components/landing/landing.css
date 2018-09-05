@@ -298,7 +298,8 @@ reviews
   }
 
   .threeBenefits {
-    height: 155vh;
+    height: 165vh;
+    padding-bottom: 3rem;
   }
 
   .clients {
@@ -327,7 +328,7 @@ reviews
   }
 
   .more-reviews {
-    height: 100vh;
+    height: 110vh;
     flex-wrap: wrap;
     justify-content: flex-start;
   }
@@ -361,5 +362,20 @@ reviews
 display: none;
  }
 
+
+ .cfd-cta-2 {
+   margin-top: 2rem;
+   padding-bottom: 2.5rem;
+ }
+
+.no-mobile-padding {
+  padding: 1rem;
+}
+
+
+.cfd-cta {
+  margin-top: 6rem;
+  padding-bottom: 2.2rem;
+}
 
 }
