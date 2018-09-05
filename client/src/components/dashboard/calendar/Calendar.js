@@ -181,10 +181,8 @@ class DashCalendar extends Component {
           defaultView="month"
           events={this.state.events}
           onEventDrop={this.onEventDrop}
-          onEventResize={this.onEventResize}
           onSelectEvent={event => this.onEventClick(event)}
           onSelectSlot={this.onSelectSlot}
-          resizable
           popup
           components={{
                        event: Event,
