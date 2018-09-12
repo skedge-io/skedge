@@ -4,7 +4,7 @@
 }
 
 .clickable {
-  cursor: pointer; 
+  cursor: pointer;
 }
 
 .outer-employee {
@@ -74,4 +74,14 @@
 .list-item-info.delete {
   color: red;
   width: 10%;
+}
+
+
+
+@media (max-width: 900px) and (min-width: 300px) {
+
+  .employee-box {
+    transform: scale(.6) translateX(-180px) translateY(-100px);
+  }
+
 }
