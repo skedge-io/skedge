@@ -33,10 +33,10 @@ class Campaign extends Component {
     if (this.state.campaigns) {
       return (
         <div className="cal-container container-campaigns">
-          <CampaignBox text={this.state.campaigns[0].text} active={this.state.campaigns[0].active} camp={this.state.campaigns[0].name} when={this.state.campaigns[0].when} title="Reminders" time="Hours before appointment"/>
-          <CampaignBox text={this.state.campaigns[1].text} active={this.state.campaigns[1].active} camp={this.state.campaigns[1].name} when={this.state.campaigns[1].when} title="Reviews" time="Hours after appointment"/>
-          <CampaignBox text={this.state.campaigns[2].text} active={this.state.campaigns[2].active} camp={this.state.campaigns[2].name} when={this.state.campaigns[2].when} title="Revisits" time="Days after last appointment"/>
-          <CampaignBox text={this.state.campaigns[3].text} active={this.state.campaigns[3].active} camp={this.state.campaigns[3].name} when={this.state.campaigns[3].when} title="Promotions" time="Hours from now"/>
+          <CampaignBox text={this.state.campaigns[0].text} active={this.state.campaigns[0].active} camp={this.state.campaigns[0].name} when={this.state.campaigns[0].when} title="Reminders" time="Hours before appointment" toolTipMsg="Send a text reminder to help prevent no-shows"/>
+          <CampaignBox text={this.state.campaigns[1].text} active={this.state.campaigns[1].active} camp={this.state.campaigns[1].name} when={this.state.campaigns[1].when} title="Reviews" time="Hours after appointment" toolTipMsg="Send a text to encourage your clients to leave a review" />
+          <CampaignBox text={this.state.campaigns[2].text} active={this.state.campaigns[2].active} camp={this.state.campaigns[2].name} when={this.state.campaigns[2].when} title="Revisits" time="Days after last appointment" toolTipMsg="Send a text to get clients back who haven't scheduled in a speccified time period"/>
+          <CampaignBox text={this.state.campaigns[3].text} active={this.state.campaigns[3].active} camp={this.state.campaigns[3].name} when={this.state.campaigns[3].when} title="Promotions" time="Hours from now" toolTipMsg="Send a general promotional text"/>
 
 
           <div className="key-box">
