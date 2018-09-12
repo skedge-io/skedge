@@ -7,7 +7,6 @@ mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/skedge', () => 
   console.log("Connected to Skedge Database");
 });
 
-
 const authKeys = require('./config/keys');
 const passport = require('passport');
 require('./services/passport.js');
