@@ -17,7 +17,7 @@ class Campaign extends Component {
   constructor(props) {
     super(props)
 
-    this.state = {}
+    this.state = {renderInfo : false}
 
   }
 
@@ -26,6 +26,8 @@ class Campaign extends Component {
       this.setState({campaigns : res.data.campaigns})
     })
   }
+
+
 
   renderFields() {
     if (this.state.campaigns) {
@@ -36,11 +38,13 @@ class Campaign extends Component {
           <CampaignBox text={this.state.campaigns[2].text} active={this.state.campaigns[2].active} camp={this.state.campaigns[2].name} when={this.state.campaigns[2].when} title="Revisits" time="Days after last appointment"/>
           <CampaignBox text={this.state.campaigns[3].text} active={this.state.campaigns[3].active} camp={this.state.campaigns[3].name} when={this.state.campaigns[3].when} title="Promotions" time="Hours from now"/>
 
+
           <div className="key-box">
           <div className="key-top-bar">
             <div>Key</div>
-            <i className="material-icons keyname-info">info</i>
-          </div>
+              <ReactTooltip id="key-info" place="top" type="dark" effect="solid">Use these in your campaign messages</ReactTooltip>
+              <i data-tip="key-info" data-for='key-info' className="material-icons keyname-info">info</i>
+            </div>
             <div className="key-table">
 
               <div className="key-titles">
