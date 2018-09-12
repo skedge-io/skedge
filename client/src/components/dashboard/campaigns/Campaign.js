@@ -67,7 +67,11 @@ class Campaign extends Component {
         </div>
       )
     } else {
-      return <div><img height="100px" src="https://image.ibb.co/j1eKCp/blue_loading.gif" /></div>
+      return (
+        <div>
+          Loading
+        </div>
+      )
     }
   }
 
@@ -80,7 +84,7 @@ class Campaign extends Component {
 
 
          <div className="dash-con">
-           <TopBar header="Campaigns" btn={<Link to="/dashboard/campaigns/new" className="btn-flat right btn-small white-text blue hoverable waves-effect waves-light">New Campaign</Link>}/>
+           <TopBar header="Campaigns"/>
             {this.renderFields()}
 
          </div>
@@ -88,12 +92,6 @@ class Campaign extends Component {
          <RightPanel />
 
 
-         <div className="fixed-action-btn">
-           <Link to="/dashboard/campaigns/new" data-tip="React-tooltip" className="btn-floating btn-large blue hoverable waves-effect waves-light">
-             <i className="material-icons">add</i>
-           </Link>
-           <ReactTooltip place="left" type="dark" effect="solid">New Campaign</ReactTooltip>
-         </div>
 
 
 
