@@ -43,7 +43,16 @@ class DashCalendar extends Component {
 
   componentDidMount() {
     axios.get('/api/appointments').then((res) => {
-      this.setState({events : res.data})
+      let events = []
+      res.data.forEach((appointment) => {
+        events.push({
+          title : appointment.title,
+          desc : appointment.desc,
+          start : new Date(appointment.start),
+          end : new Date(appointment.end)
+        });
+      })
+      this.setState({events : events})
     })
   }
 
@@ -78,54 +87,55 @@ class DashCalendar extends Component {
   }
 
   onEventClick(event) {
-    this.setState({ eventView : {boolean: true, id: event._id, title: event.title, desc: event.desc, start: event.start, end: event.end, phone: event.phone,  style: {height: '100vh'}} })
+    console.log(event);
+    this.setState({
+      eventView : {
+        boolean: true,
+        id: event._id,
+        title: event.title,
+        desc: event.desc,
+        start: moment(event.start).format("D MMMM, YYYY hh:mm A"),
+        end: moment(event.end).format("D MMMM, YYYY hh:mm A"),
+        phone: event.phone,
+        style: {height: '100vh'}
+      }
+    })
   }
 
 
   onSelectSlot = ( event ) => {
-    let idList = this.state.events.map((a) => a.id);
-        let newId = Math.max(...idList) + 1;
-       let hour = {
-          id: newId,
-          title: 'New Event',
-          allDay: event.slots.length == 1,
-          startTime: '1',
-          "date" : moment(event.start).format('MMM D, YYYY'),
-          "start" : moment(event.start).format('MMM D, YYYY'),
-          "end" : moment(event.start).format('MMM D, YYYY'),
-          phone: '',
-          name: ''
-        }
-        this.setState({
-          events: this.state.events.concat([hour])
-       });
+    console.log(event);
 
-       const newEvent = {
-         "title" : "New Event",
-         "phone" : "",
-         "startTime" : "12:00PM",
-         "name": '',
-         "employee": '',
-         "endTime" : "12:00PM",
-         "desc" : "none",
-         "date" : moment(event.start).format('MMM D, YYYY'),
-         "start" : moment(event.start).format('MMM D, YYYY'),
-         "end" : moment(event.start).format('MMM D, YYYY'),
-         "desc": ''
-       }
+     const newEvent = {
+       "title" : "New Event",
+       "phone" : "",
+       "startTime" : moment(event.start).format("hh:mm A"),
+       "name": '',
+       "employee": '',
+       "endTime" : moment(event.end).format("hh:mm A"),
+       "desc" : "none",
+       "date" : moment(event.start).format("D MMMM, YYYY"),
+       "start" : "",
+       "end" : "",
+       "desc": ''
+     }
 
-       console.log(newEvent)
-
-       axios.post('/api/appointment/new', newEvent).then(res => {
-         axios.get('/api/appointments').then((res) => {
-           this.setState({events : res.data})
+     axios.post('/api/appointment/new', newEvent).then(res => {
+       axios.get('/api/appointments').then((res) => {
+         console.log(res.data);
+         let events = []
+         res.data.forEach((appointment) => {
+           events.push({
+             title : appointment.title,
+             desc : appointment.desc,
+             start : new Date(appointment.start),
+             end : new Date(appointment.end)
+           });
          })
-
+         this.setState({events : events})
        })
-
-
-
-      }
+     })
+  }
 
 
   renderEventView() {
@@ -141,7 +151,7 @@ class DashCalendar extends Component {
               <div className="card darken-1">
                 <div className="card-content">
                   <span className="card-title">{this.state.eventView.title}</span>
-                  <p><b>Start</b>: {this.state.eventView.start} <b><br />End</b>: {this.state.eventView.end}</p>
+                  <p><b>Start</b>: {this.state.eventView.start} <b><br />End</b>: {this.state.eventView.end.toString()}</p>
                   <p><b>Phone</b>: {this.state.eventView.phone}</p>
                   <p><b>Notes</b>: {this.state.eventView.desc}</p>
                 </div>

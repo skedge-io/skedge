@@ -52,10 +52,8 @@ module.exports = (app, Appointment) => {
     appointment.date = req.body.date;
     let startTimeLength = req.body.startTime.length;
     appointment.start = req.body.date + ' ' + req.body.startTime.substring(0, startTimeLength - 2) + " " + req.body.startTime.substring(startTimeLength - 2, startTimeLength);
-    appointment.startDateString = new Date(appointment.start);
     let endTimeLength = req.body.endTime.length;
     appointment.end = req.body.date + ' ' + req.body.endTime.substring(0, endTimeLength - 2) + " " + req.body.endTime.substring(endTimeLength - 2, endTimeLength);
-    appointment.endDateString = new Date(appointment.end);
     appointment.business = req.user.business;
     appointment.save(function(err, appointment){
       //Add to Business Text Campaign if active
