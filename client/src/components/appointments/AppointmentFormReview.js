@@ -6,7 +6,6 @@ import formFields from './formFields';
 import { withRouter } from 'react-router-dom';
 import * as actions from '../../actions';
 import './../styles.css';
-import { Link } from 'react-router-dom';
 
 
 const AppointmentFormReview = ({ onCancel, formValues, submitAppointment, history }) => {

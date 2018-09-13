@@ -6,7 +6,6 @@ import { Link } from 'react-router-dom';
 import AppointmentField from './AppointmentField';
 import validateNumbers from '../../utils/validateNumbers';
 import formFields from './formFields.js';
-import { Input } from 'react-materialize'
 
 
 class AppointmentForm extends Component {
