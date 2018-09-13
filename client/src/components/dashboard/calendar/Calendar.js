@@ -49,7 +49,10 @@ class DashCalendar extends Component {
           title : appointment.title,
           desc : appointment.desc,
           start : new Date(appointment.start),
-          end : new Date(appointment.end)
+          end : new Date(appointment.end),
+          id : appointment._id,
+          phone : appointment.phone,
+          desc : appointment.desc
         });
       })
       this.setState({events : events})
@@ -91,7 +94,7 @@ class DashCalendar extends Component {
     this.setState({
       eventView : {
         boolean: true,
-        id: event._id,
+        id: event.id,
         title: event.title,
         desc: event.desc,
         start: moment(event.start).format("D MMMM, YYYY hh:mm A"),
@@ -129,7 +132,10 @@ class DashCalendar extends Component {
              title : appointment.title,
              desc : appointment.desc,
              start : new Date(appointment.start),
-             end : new Date(appointment.end)
+             end : new Date(appointment.end),
+             id : appointment._id,
+             phone : appointment.phone,
+             desc : appointment.desc
            });
          })
          this.setState({events : events})
