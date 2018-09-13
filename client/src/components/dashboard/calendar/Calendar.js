@@ -193,9 +193,12 @@ class DashCalendar extends Component {
 
         <DnDCalendar
           selectable
+          onEventResize={this.onEventResize}
+          resizable
           defaultDate={new Date()}
           defaultView="month"
           events={this.state.events}
+          scrollToTime
           onEventDrop={this.onEventDrop}
           onSelectEvent={event => this.onEventClick(event)}
           onSelectSlot={this.onSelectSlot}
