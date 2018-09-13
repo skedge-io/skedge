@@ -9,8 +9,15 @@ import LeftPanel from '../LeftPanel';
 import RightPanel from '../RightPanel';
 import MobileMenu from '../MobileMenu';
 
+import ContactList from './ContactList';
+
+import './styles.css';
+
+
 
 class Contacts extends Component {
+
+
 
 
 
@@ -25,9 +32,12 @@ class Contacts extends Component {
        <div className="dash-con">
          <TopBar header="Contacts" btn={<Link to="/dashboard/contacts/new" className="btn-flat right btn-small white-text blue hoverable waves-effect waves-light">New Contact</Link>}/>
 
-         <div className="cal-container">
-          <h1>Contacts</h1>
-         </div>
+
+            <ContactList />
+
+
+
+
 
        </div>
 
