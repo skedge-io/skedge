@@ -78,6 +78,7 @@
 
 .rbc-event {
   background: none !important;
+  border: solid 1px #0a5a9a;
   font-size: .8rem !important;
   transition: all 200ms !important;
   color: #0a5a9a !important;
@@ -85,8 +86,8 @@
 
 
 .rbc-event:hover {
-  background: none !important;
-  color: #9b59b6 !important;
+  background: #0a5a9a !important;
+  color: white !important;
 }
 
 .rbc-event::before:hover {
