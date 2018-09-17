@@ -72,14 +72,42 @@
   background-color: #44acfe !important;
 }
 
+.rbc-addons-dnd .rbc-addons-dnd-resize-ew-anchor {
+  display: none !important;
+}
+
 .rbc-event {
-  background-color: #0381b4 !important;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  display: flex;
+  flex-direction: row;
+  background: none !important;
+  font-size: .8rem !important;
   transition: all 200ms !important;
+  color: #0e5085 !important;
+  align-items: center;
+  height: 1.5rem;
+  margin-bottom: 5px !important;
+}
+
+.rbc-event::before {
+  margin-left: .5rem;
+  content: "•";
+  font-size: 2rem;
+  padding: 0 !important;
+  padding-right: .5rem !important;
+  color: #0e5085 !important;
 }
 
 .rbc-event:hover {
-  background: #09a3e1 !important;
+  background: none !important;
+  color: #9b59b6 !important;
 }
+
+.rbc-event::before:hover {
+  color: #208eff !important;
+}
+
 
 .eventView {
   height: 0vh;

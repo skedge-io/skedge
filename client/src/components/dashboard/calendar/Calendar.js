@@ -26,7 +26,6 @@ const DnDCalendar = withDragAndDrop(Calendar);
 
 
 
-
 class DashCalendar extends Component {
 
   state = {
@@ -193,8 +192,6 @@ class DashCalendar extends Component {
 
         <DnDCalendar
           selectable
-          onEventResize={this.onEventResize}
-          resizable
           defaultDate={new Date()}
           defaultView="month"
           events={this.state.events}
@@ -231,10 +228,12 @@ function Event({ event }) {
 }
 
 function EventAgenda({ event }) {
-    return <span>
+    return (
+      <span>
     <em style={{ color: 'magenta'}}>{event.title}</em> <p>{event.phone}</p>  <p>{ event.desc }</p>
 
-  </span>
+    </span>
+  )
 }
 
 function mapStateToProps({ appointments }) {
