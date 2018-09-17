@@ -77,27 +77,12 @@
 }
 
 .rbc-event {
-  padding-top: 0px;
-  padding-bottom: 0px;
-  display: flex;
-  flex-direction: row;
   background: none !important;
   font-size: .8rem !important;
   transition: all 200ms !important;
-  color: #0e5085 !important;
-  align-items: center;
-  height: 1.5rem;
-  margin-bottom: 5px !important;
+  color: #0a5a9a !important;
 }
 
-.rbc-event::before {
-  margin-left: .5rem;
-  content: "•";
-  font-size: 2rem;
-  padding: 0 !important;
-  padding-right: .5rem !important;
-  color: #0e5085 !important;
-}
 
 .rbc-event:hover {
   background: none !important;
