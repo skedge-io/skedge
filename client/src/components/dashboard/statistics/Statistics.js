@@ -9,6 +9,10 @@ import LeftPanel from '../LeftPanel';
 import RightPanel from '../RightPanel';
 import MobileMenu from '../MobileMenu';
 
+import SkedgeStats from './SkedgeStats';
+
+import './styles.css';
+
 
 class Statistics extends Component {
 
@@ -25,9 +29,10 @@ class Statistics extends Component {
        <div className="dash-con">
          <TopBar header="Statistics" btn=""/>
 
-         <div className="cal-container">
-          <h1>Statistics</h1>
-         </div>
+
+            <SkedgeStats />
+
+
 
        </div>
 
