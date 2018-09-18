@@ -1,14 +1,35 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { fetchAppointments } from '../../../actions';
+
+
+import axios from 'axios';
+
 
 class SkedgeStats extends Component {
   constructor(props) {
     super(props)
 
-    this.state = {}
+    this.state = {events: [], boo: 'yes'}
   }
 
-  compponentDidMount() {
-
+  componentDidMount() {
+    axios.get('/api/appointments').then((res) => {
+      let events = []
+      res.data.forEach((appointment) => {
+        console.log(appointment)
+        events.push({
+          title : appointment.title,
+          desc : appointment.desc,
+          start : new Date(appointment.start),
+          end : new Date(appointment.end),
+          id : appointment._id,
+          phone : appointment.phone,
+          desc : appointment.desc
+        });
+      })
+      this.setState({events : events})
+    })
   }
 
 
@@ -17,7 +38,7 @@ class SkedgeStats extends Component {
       <div className="stats-page">
 
         <div className="stats-box">
-          <div className="stat-counter">14</div>
+          <div className="stat-counter">{this.state.events.length}</div>
           <div className="bottom-stats">Appointments this month</div>
         </div>
 
@@ -37,4 +58,9 @@ class SkedgeStats extends Component {
   }
 }
 
-export default SkedgeStats;
+function mapStateToProps({ appointments, auth }) {
+  return { appointments, auth };
+}
+
+
+export default connect(mapStateToProps, {  fetchAppointments })(SkedgeStats);

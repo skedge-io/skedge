@@ -23,9 +23,6 @@ Calendar.setLocalizer(Calendar.momentLocalizer(moment));
 const DnDCalendar = withDragAndDrop(Calendar);
 
 
-
-
-
 class DashCalendar extends Component {
 
   state = {
