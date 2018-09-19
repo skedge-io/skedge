@@ -1,4 +1,5 @@
 const Appointment = require('../models/Appointment');
+const Client = require('../models/Client');
 const campaigns = require('../services/campaigns.js');
 
 module.exports = (app, Business) => {
@@ -8,7 +9,13 @@ module.exports = (app, Business) => {
 
   app.get('/api/current_business', (req, res) => {
     Business.findById(req.user.business).then((business) => {
-      res.send(business);
+      //Get Clients of Business
+      Client.find({'_id': { $in: business.clients}}).then((clients) => {
+        res.send({
+          business : business,
+          clients : clients
+        });
+      })
     })
   })
 
