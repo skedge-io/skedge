@@ -14,6 +14,7 @@ const {OAuth2Client} = require('google-auth-library');
 const refresh = require('passport-oauth2-refresh');
 const User = require('../models/User.js');
 const Business = require('../models/Business.js');
+const Client = require('../models/Client.js');
 const campaigns = require('../services/campaigns.js');
 const gCalendar = require('../services/gCalendar.js');
 
@@ -31,20 +32,17 @@ module.exports = (app, Appointment) => {
   //Create Appointments
   app.post('/api/appointment/new', reqLogin, (req, res) => {
     let appointment = new Appointment();
-    appointment.customer = req.body.customer;
     appointment.employee = req.body.employee;
     appointment.employee_id = req.user._id;
-
     // This checks if an event was made from a form or by clicking on a specific day.
     if (req.body.employee) {
       // filled out form
-      appointment.title =  req.body.employee + " <> " + req.body.customer
+      appointment.title =  req.body.employee + " <> " + req.body.client
     } else {
       // Clicked on a specific day
-      appointment.title = 'New Event'
+      appointment.title = 'New Appointment'
       appointment.desc = ''
     }
-
     appointment.phone = req.body.phone;
     appointment.startTime = req.body.startTime;
     appointment.endTime = req.body.endTime;
@@ -56,30 +54,50 @@ module.exports = (app, Appointment) => {
     appointment.end = req.body.date + ' ' + req.body.endTime.substring(0, endTimeLength - 2) + " " + req.body.endTime.substring(endTimeLength - 2, endTimeLength);
     appointment.business = req.user.business;
     appointment.save(function(err, appointment){
-      //Add to Business Text Campaign if active
-      Business.findById(req.user.business).then((business) => {
-        for(let i=0;i<2;i++){
-          if(business.campaigns[i].active){
-            campaigns.setText(appointment, business, business.campaigns[i]);
-          }
+      //Adding the client
+      Client.findOne({
+        phone : req.body.phone,
+        business : req.user.business
+      }).then((client) => {
+        if(!client){
+          client = new Client();
+          client.name = req.body.client;
+          client.phone = req.body.phone;
+          client.business = req.user.business;
         }
-      })
-      //Add to Calendar
-      gCalendar.addEvent(req.user, appointment, (gCalendarId) => {
-        appointment.gCalendarId = gCalendarId;
-        appointment.save().then(() => {
-          res.redirect('/');
-        })
+        client.nextAppointment = appointment._id;
+        client.save().then((client) => {
+          appointment.client = client._id;
+          appointment.save().then((appointment) => {
+            Business.findById(req.user.business).then((business) => {
+              //Add Client to Business Contacts
+              business.clients.push(client._id);
+              business.save();
+              //Add to Business Text Campaign if active
+              for(let i=0;i<2;i++){
+                if(business.campaigns[i].active){
+                  campaigns.setText(appointment, business, business.campaigns[i]);
+                }
+              }
+            })
+            //Add to Calendar
+            gCalendar.addEvent(req.user, appointment, (gCalendarId) => {
+              appointment.gCalendarId = gCalendarId;
+              appointment.save().then(() => {
+                res.redirect('/');
+              })
+            })
+          });
+        });
       })
     })
   });
 
   app.post('/api/appointment/edit/:id', reqLogin, (req, res) => {
     Appointment.findById(req.params.id).then((appointment) => {
-      appointment.customer = req.body.customer;
       appointment.employee = req.body.employee;
       appointment.employee_id = req.user._id;
-      appointment.title = req.body.employee + " <> " + req.body.customer;
+      appointment.title = req.body.employee + " <> " + req.body.client;
       appointment.phone = req.body.phone;
       appointment.desc = req.body.desc;
       appointment.startTime = req.body.startTime;
@@ -91,7 +109,27 @@ module.exports = (app, Appointment) => {
       appointment.end = req.body.date + ' ' + req.body.endTime.substring(0, endTimeLength - 2) + " " + req.body.endTime.substring(endTimeLength - 2, endTimeLength);
       appointment.business = req.user.business;
       appointment.save(function(err, appointment){
-        res.redirect('/dashboard');
+        Client.findOne({
+          phone : req.body.phone,
+          business : req.user.business
+        }).then((client) => {
+          if(!client){
+            client = new Client();
+            client.phone = req.body.phone;
+            client.business.req.user.business;
+          }
+          client.name = req.body.name;
+          client.nextAppointment = appointment._id;
+          client.save().then((client) => {
+            Busines.findById(req.user.business).then((business) => {
+              if(business.clients.indexOf(client._id) == -1){
+                business.clients.push(client._id);
+                business.save();
+              }
+            })
+            res.redirect('/dashboard');
+          })
+        });
       })
     })
   });

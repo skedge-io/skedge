@@ -8,11 +8,13 @@ const { Schema } = mongoose;
 // const moment = require('moment');
 const Appointment = require('./Appointment.js')
 const campaigns = require('../services/campaigns.js');
+let texts =require('../server.js').texts;
 
 const BusinessSchema = new Schema({
   name : String,
   admin : String,
   employees : [String],
+  clients : [String],
   campaigns : [{
     name : String,
     text : String,
@@ -51,7 +53,14 @@ BusinessSchema.methods.createDefaultCampaigns = function createDefaultCampaigns(
       when : "2",
       active : false
     });
-    business.save();
+    business.save().then((business) => {
+      texts[business._id] = {
+        "Reminders" : {},
+        "Reviews" : {},
+        "Revisits" : {},
+        "Promotions" : {}
+      };
+    });
   })
 }
 
