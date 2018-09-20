@@ -68,6 +68,7 @@ module.exports = (app, Appointment) => {
         client.nextAppointment = appointment._id;
         client.save().then((client) => {
           appointment.client = client._id;
+          appointment.clientName = client.name;
           appointment.save().then((appointment) => {
             Business.findById(req.user.business).then((business) => {
               //Add Client to Business Contacts
@@ -108,6 +109,7 @@ module.exports = (app, Appointment) => {
       let endTimeLength = req.body.endTime.length;
       appointment.end = req.body.date + ' ' + req.body.endTime.substring(0, endTimeLength - 2) + " " + req.body.endTime.substring(endTimeLength - 2, endTimeLength);
       appointment.business = req.user.business;
+      appointment.clientName = req.body.client;
       appointment.save(function(err, appointment){
         Client.findOne({
           phone : req.body.phone,
@@ -118,7 +120,7 @@ module.exports = (app, Appointment) => {
             client.phone = req.body.phone;
             client.business.req.user.business;
           }
-          client.name = req.body.name;
+          client.name = req.body.client;
           client.nextAppointment = appointment._id;
           client.save().then((client) => {
             Busines.findById(req.user.business).then((business) => {
