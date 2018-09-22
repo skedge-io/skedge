@@ -126,10 +126,11 @@ module.exports = (app, Appointment) => {
             Busines.findById(req.user.business).then((business) => {
               if(business.clients.indexOf(client._id) == -1){
                 business.clients.push(client._id);
-                business.save();
+                business.save().then((business) => {
+                  res.redirect('/dashboard');
+                });
               }
             })
-            res.redirect('/dashboard');
           })
         });
       })
