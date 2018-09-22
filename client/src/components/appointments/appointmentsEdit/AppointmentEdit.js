@@ -52,7 +52,7 @@ class AppointmentEdit extends Component {
           <div className="inside">
 
             <form method="POST" action={'/api/appointment/edit/' + theAptId}>
-              <input type="text" placeholder="Client Name" name="client" onChange={(event) => {this.setState({appointments: {client: event.target.value}})}} value={this.state.appointments.client}></input>
+              <input type="text" placeholder="Client Name" name="clientName" onChange={(event) => {this.setState({appointments: {clientName: event.target.value}})}} value={this.state.appointments.clientName}></input>
               <input type="text" placeholder="Employee Name" name="employee" onChange={(event) => {this.setState({appointments: {employee: event.target.value}})}} value={this.state.appointments.employee}></input>
               <input type="text" name="phone" placeholder="Customer Phone Number" onChange={(event) => {this.setState({appointments: {phone: event.target.value}})}} value={this.state.appointments.phone}></input>
               <Input type="date" name="date" placeholder="Date" onChange={(event) => {this.setState({appointments: {start: event.target.value}})}} value={this.state.appointments.date}></Input>
