@@ -117,9 +117,9 @@ module.exports = (app, Appointment) => {
         }).then((client) => {
           if(!client){
             client = new Client();
-            client.phone = req.body.phone;
-            client.business.req.user.business;
           }
+          client.phone = req.body.phone;
+          client.business.req.user.business;
           client.name = req.body.client;
           client.nextAppointment = appointment._id;
           client.save().then((client) => {
