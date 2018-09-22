@@ -23,7 +23,7 @@ class Campaign extends Component {
 
   componentDidMount() {
     axios.get('/api/current_business').then((res) => {
-      this.setState({campaigns : res.data.campaigns})
+      this.setState({campaigns : res.data.business.campaigns})
     })
   }
 

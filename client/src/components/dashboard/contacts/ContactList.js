@@ -1,112 +1,30 @@
 import React, { Component } from 'react';
 import Contact from './Contact';
-
-let dummyData = [
-  {
-    name : "John",
-    number : "123-456-7890",
-    lastVisit : "9/3/2018"
-  },
-  {
-    name : "John",
-    number : "123-456-7890",
-    lastVisit : "9/3/2018"
-  },
-  {
-    name : "John",
-    number : "123-456-7890",
-    lastVisit : "9/3/2018"
-  },
-  {
-    name : "John",
-    number : "123-456-7890",
-    lastVisit : "9/3/2018"
-  },
-    {
-      name : "John",
-      number : "123-456-7890",
-      lastVisit : "9/3/2018"
-    },
-    {
-      name : "John",
-      number : "123-456-7890",
-      lastVisit : "9/3/2018"
-    },
-    {
-      name : "John",
-      number : "123-456-7890",
-      lastVisit : "9/3/2018"
-    },
-    {
-      name : "John",
-      number : "123-456-7890",
-      lastVisit : "9/3/2018"
-    },
-    {
-      name : "John",
-      number : "123-456-7890",
-      lastVisit : "9/3/2018"
-    },
-    {
-      name : "John",
-      number : "123-456-7890",
-      lastVisit : "9/3/2018"
-    },
-    {
-      name : "John",
-      number : "123-456-7890",
-      lastVisit : "9/3/2018"
-    },
-    {
-      name : "John",
-      number : "123-456-7890",
-      lastVisit : "9/3/2018"
-    },
-    {
-      name : "John",
-      number : "123-456-7890",
-      lastVisit : "9/3/2018"
-    },
-    {
-      name : "John",
-      number : "123-456-7890",
-      lastVisit : "9/3/2018"
-    },
-    {
-      name : "John",
-      number : "123-456-7890",
-      lastVisit : "9/3/2018"
-    },
-    {
-      name : "John",
-      number : "123-456-7890",
-      lastVisit : "9/3/2018"
-    },
-    {
-      name : "John",
-      number : "123-456-7890",
-      lastVisit : "9/3/2018"
-    },
-    {
-      name : "John",
-      number : "123-456-7890",
-      lastVisit : "9/3/2018"
-    }
-
-
-]
+import axios from 'axios';
 
 
 class ContactList extends Component {
   constructor(props) {
     super(props)
+    this.state = {
+      showContact: false,
+      contacts: []
+    };
 
     this.showContactDetails  = this.showContactDetails.bind(this);
+    this.contactData = this.state.contacts
 
 
-    this.state = {
-      showContact: false
-    };
+  }
+
+  componentDidMount() {
+    axios.get('/api/current_business').then((res) => {
+      this.setState({contacts : res.data.clients})
+      console.log(this.state.contacts);
+      this.contactData = this.state.contacts;
+    })
+
+
   }
 
 
@@ -122,7 +40,7 @@ class ContactList extends Component {
   renderContactDetails() {
         return (
           <div className="contact-details">
-            <p>Name: {this.state.details.name}</p>
+            <p>Name: {this.state.contacts.name}</p>
             <p>Number: 123-456-7890</p>
             <p>Notes: </p>
             <p>Next Appointment: Unscheduled</p>
@@ -140,7 +58,7 @@ class ContactList extends Component {
       <div className="contacts-container">
         <div className="contact-list-container">
 
-          {dummyData.map((data, index) => (
+          {this.state.contacts.map((data, index) => (
             <Contact key={data.number} clicky={this.showContactDetails} name={data.name} number={data.number} lastVisit={data.lastVisit} />
           ))}
 

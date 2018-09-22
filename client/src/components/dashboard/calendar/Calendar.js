@@ -86,7 +86,6 @@ class DashCalendar extends Component {
   }
 
   onEventClick(event) {
-    console.log(event);
     this.setState({
       eventView : {
         boolean: true,
@@ -109,7 +108,7 @@ class DashCalendar extends Component {
        "title" : "New Event",
        "phone" : "",
        "startTime" : moment(event.start).format("hh:mm A"),
-       "name": '',
+       "clientName": '',
        "employee": '',
        "endTime" : moment(event.end).format("hh:mm A"),
        "desc" : "none",
@@ -126,6 +125,7 @@ class DashCalendar extends Component {
          res.data.forEach((appointment) => {
            events.push({
              title : appointment.title,
+             clientName: appointment.clientName,
              desc : appointment.desc,
              start : new Date(appointment.start),
              end : new Date(appointment.end),
@@ -133,6 +133,7 @@ class DashCalendar extends Component {
              phone : appointment.phone,
              desc : appointment.desc
            });
+           window.location = '/appointments/edit/' + appointment._id
          })
          this.setState({events : events})
        })
