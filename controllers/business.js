@@ -1,13 +1,15 @@
 const Appointment = require('../models/Appointment');
 const Client = require('../models/Client');
 const campaigns = require('../services/campaigns.js');
+const reqLogin = require('../middlewares/requireLogin.js');
+
 
 module.exports = (app, Business) => {
 
   //Initalize the Campaigns (When server restarts)
   campaigns.initBusinessCampaigns(Business);
 
-  app.get('/api/current_business', (req, res) => {
+  app.get('/api/current_business', reqLogin, (req, res) => {
     Business.findById(req.user.business).then((business) => {
       //Get Clients of Business
       Client.find({'_id': { $in: business.clients}}).then((clients) => {

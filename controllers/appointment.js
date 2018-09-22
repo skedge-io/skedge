@@ -61,7 +61,7 @@ module.exports = (app, Appointment) => {
       }).then((client) => {
         if(!client){
           client = new Client();
-          client.name = req.body.client;
+          client.name = req.body.clientName;
           client.phone = req.body.phone;
           client.business = req.user.business;
         }
@@ -109,7 +109,7 @@ module.exports = (app, Appointment) => {
       let endTimeLength = req.body.endTime.length;
       appointment.end = req.body.date + ' ' + req.body.endTime.substring(0, endTimeLength - 2) + " " + req.body.endTime.substring(endTimeLength - 2, endTimeLength);
       appointment.business = req.user.business;
-      appointment.clientName = req.body.client;
+      appointment.clientName = req.body.clientName;
       appointment.save(function(err, appointment){
         Client.findOne({
           phone : req.body.phone,
