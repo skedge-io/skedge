@@ -8,7 +8,7 @@ const schedule = require('node-schedule');
 
 
 filterMessage = (appointment, business, message) => {
-  let newMessage = message.replace(/\*name\*/gi, appointment.client);
+  let newMessage = message.replace(/\*name\*/gi, appointment.clientName);
   newMessage = newMessage.replace(/\*business\*/gi, business.name);
   newMessage = newMessage.replace(/\*time\*/gi, appointment.startTime);
   newMessage = newMessage.replace(/\*employee\*/gi, appointment.employee);
