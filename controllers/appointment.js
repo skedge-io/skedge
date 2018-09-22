@@ -37,7 +37,7 @@ module.exports = (app, Appointment) => {
     // This checks if an event was made from a form or by clicking on a specific day.
     if (req.body.employee) {
       // filled out form
-      appointment.title =  req.body.employee + " <> " + req.body.client
+      appointment.title = req.body.clientName + req.body.employee;
     } else {
       // Clicked on a specific day
       appointment.title = 'New Appointment'
@@ -98,7 +98,7 @@ module.exports = (app, Appointment) => {
     Appointment.findById(req.params.id).then((appointment) => {
       appointment.employee = req.body.employee;
       appointment.employee_id = req.user._id;
-      appointment.title = req.body.employee + " <> " + req.body.client;
+      appointment.title = req.body.clientName + req.body.employee;
       appointment.phone = req.body.phone;
       appointment.desc = req.body.desc;
       appointment.startTime = req.body.startTime;
