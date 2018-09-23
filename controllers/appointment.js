@@ -137,7 +137,7 @@ module.exports = (app, Appointment) => {
     })
   });
 
-  app.post('/api/appointment/delete/:id', (req, res) => {
+  app.post('/api/appointment/delete/:id', reqLogin, (req, res) => {
     Appointment.findOneAndDelete({_id : req.params.id}).then((appointment) => {
       Business.findById(req.user.business).then((business) => {
         //Delete Campaign Reminders and Reviews
