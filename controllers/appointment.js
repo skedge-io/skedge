@@ -70,30 +70,47 @@ module.exports = (app, Appointment) => {
           client.save().then((client) => {
             appointment.client = client._id;
             appointment.clientName = client.name;
-            appointment.save();
+            appointment.save().then((appointment) => {
+              Business.findById(req.user.business).then((business) => {
+                //Add Client to Business Contacts
+                if(req.body.clientName){
+                  business.clients.push(client._id);
+                  business.save();
+                }
+                //Add to Business Text Campaign if active
+                for(let i=0;i<2;i++){
+                  if(business.campaigns[i].active){
+                    campaigns.setText(appointment, business, business.campaigns[i]);
+                  }
+                }
+              })
+              //Add to Calendar
+              gCalendar.addEvent(req.user, appointment, (gCalendarId) => {
+                appointment.gCalendarId = gCalendarId;
+                appointment.save().then(() => {
+                  res.redirect('/');
+                })
+              })
+            })
           });
         });
-      }
-      Business.findById(req.user.business).then((business) => {
-        //Add Client to Business Contacts
-        if(req.body.clientName){
-          business.clients.push(client._id);
-          business.save();
-        }
-        //Add to Business Text Campaign if active
-        for(let i=0;i<2;i++){
-          if(business.campaigns[i].active){
-            campaigns.setText(appointment, business, business.campaigns[i]);
+      } else {
+        Business.findById(req.user.business).then((business) => {
+          //Add to Business Text Campaign if active
+          for(let i=0;i<2;i++){
+            if(business.campaigns[i].active){
+              campaigns.setText(appointment, business, business.campaigns[i]);
+            }
           }
-        }
-      })
-      //Add to Calendar
-      gCalendar.addEvent(req.user, appointment, (gCalendarId) => {
-        appointment.gCalendarId = gCalendarId;
-        appointment.save().then(() => {
-          res.redirect('/');
         })
-      })
+        //Add to Calendar
+        gCalendar.addEvent(req.user, appointment, (gCalendarId) => {
+          appointment.gCalendarId = gCalendarId;
+          appointment.save().then(() => {
+            res.redirect('/');
+          })
+        })
+      }
     })
   })
 
