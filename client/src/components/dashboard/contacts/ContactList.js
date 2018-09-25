@@ -8,43 +8,44 @@ class ContactList extends Component {
     super(props)
     this.state = {
       showContact: false,
-      contacts: []
+      contacts: [],
+      contactDetails: {
+        name: '',
+        phone: '',
+        nextAppointment: '',
+        previousAppointments: '',
+        notes: ''
+      }
     };
 
     this.showContactDetails  = this.showContactDetails.bind(this);
-    this.contactData = this.state.contacts
-
 
   }
 
   componentDidMount() {
     axios.get('/api/current_business').then((res) => {
       this.setState({contacts : res.data.clients})
-      console.log(this.state.contacts);
-      this.contactData = this.state.contacts;
     })
 
 
   }
 
 
-  showContactDetails(event) {
-    console.log(event.target);
-    this.setState({ showContact: true, details: {
-      name: event.target.name,
-      number: this.number,
-      lastVisit: this.lastVisit
+  showContactDetails(event,data) {
+    this.setState({ showContact: true, contactDetails: {
+      name: data.name,
+      number: data.phone,
     } })
   }
 
   renderContactDetails() {
         return (
           <div className="contact-details">
-            <p>Name: {this.state.contacts.name}</p>
-            <p>Number: 123-456-7890</p>
-            <p>Notes: </p>
-            <p>Next Appointment: Unscheduled</p>
-            <p>Previous Appointments: </p>
+            <p>Name: {this.state.contactDetails.name}</p>
+            <p>Number: {this.state.contactDetails.number}</p>
+            <p>Notes: {this.state.contactDetails.notes}</p>
+            <p>Next Appointment: {this.state.contactDetails.nextAppointment}</p>
+            <p>Previous Appointments: {this.state.contactDetails.previousAppointments}</p>
           </div>
       )
   }
@@ -59,7 +60,7 @@ class ContactList extends Component {
         <div className="contact-list-container">
 
           {this.state.contacts.map((data, index) => (
-            <Contact key={data.number} clicky={this.showContactDetails} name={data.name} number={data.number} lastVisit={data.lastVisit} />
+            <Contact key={data.number} clicky={(event) => {this.showContactDetails(event,data)}} name={data.name} number={data.number}  />
           ))}
 
         </div>
