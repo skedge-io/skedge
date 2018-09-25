@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import ReactTooltip from 'react-tooltip';
 
 import DashCalendar from './calendar/Calendar';
-import Employees from './employees/Employees';
 
 import TopBar from './TopBar';
 import LeftPanel from './LeftPanel';

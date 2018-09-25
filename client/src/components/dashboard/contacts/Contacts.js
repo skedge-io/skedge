@@ -7,7 +7,6 @@ import ReactTooltip from 'react-tooltip';
 import TopBar from '../TopBar';
 import LeftPanel from '../LeftPanel';
 import RightPanel from '../RightPanel';
-import MobileMenu from '../MobileMenu';
 
 import ContactList from './ContactList';
 

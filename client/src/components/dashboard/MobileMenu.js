@@ -22,7 +22,7 @@ class MobileMenu extends Component {
       <div>
         <div onClick={this.toggleClass.bind(this)} className={this.state.mobActive ? 'mob-menu-btn active': 'mob-menu-btn'}><i className="material-icons">menu</i></div>
 
-        <div className="mob-menu" className={this.state.mobActive ? 'mob-menu on': 'mob-menu'}>
+        <div className={this.state.mobActive ? 'mob-menu on': 'mob-menu'}>
           <div className={this.state.mobActive ? 'mobileMenuLinks on': 'mobileMenuLinks'}>
             <Link onClick={this.toggleClass.bind(this)}  id={this.props.wambo} to="/dashboard">Calendar</Link>
             <Link onClick={this.toggleClass.bind(this)}  id={this.props.index1} to="/dashboard/employees">Employees</Link>

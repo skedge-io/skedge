@@ -25,7 +25,6 @@ class SkedgeStats extends Component {
           end : new Date(appointment.end),
           id : appointment._id,
           phone : appointment.phone,
-          desc : appointment.desc
         });
       })
       this.setState({events : events})

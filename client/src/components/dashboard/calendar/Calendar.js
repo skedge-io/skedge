@@ -193,7 +193,6 @@ class DashCalendar extends Component {
           defaultDate={new Date()}
           defaultView="month"
           events={this.state.events}
-          scrollToTime
           onEventDrop={this.onEventDrop}
           onSelectEvent={event => this.onEventClick(event)}
           onSelectSlot={this.onSelectSlot}

@@ -94,7 +94,7 @@ class Landing extends Component  {
           <a className="cfd-cta-2 no-mobile-padding hoverable waves-effect waves-purple" href="./auth/google">Get Started</a>
         </div>
         <div className="reminderImages">
-          <img className="img-phone" src="https://preview.ibb.co/dKSwMy/imageedit_1_5925980519.png" />
+          <img alt="skedge text campaign" className="img-phone" src="https://preview.ibb.co/dKSwMy/imageedit_1_5925980519.png" />
         </div>
 
       </div>
@@ -108,7 +108,7 @@ class Landing extends Component  {
 
       <div className="more-reviews">
         <div className="reviewImages">
-          <img className="img-phone-2" src="https://image.ibb.co/gMaVGy/imageedit_7_3488219439.png" />
+          <img alt="skedge review text campaign" className="img-phone-2" src="https://image.ibb.co/gMaVGy/imageedit_7_3488219439.png" />
         </div>
         <div className="reviewsText">
           <div>We give you more five star reviews by sending out a message sometime after an appointment.<br /><br /> We filter reviews so only positive reviews end up on Yelp, Nextdoor, etc.</div>

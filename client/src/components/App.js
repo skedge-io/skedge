@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
-import { PropsRoute, PublicRoute, PrivateRoute } from 'react-router-with-props';
 import { connect } from 'react-redux';
 import * as actions from '../actions';
-
-import axios from 'axios';
 
 import './styles.css';
 

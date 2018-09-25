@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import utils, {randomIntFromRange, randomColor, distance, rotate, resolveCollision} from '../../utils/canvutils'
 
 class Canvas extends React.Component {

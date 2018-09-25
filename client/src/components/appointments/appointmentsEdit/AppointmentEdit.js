@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
-import { reduxForm } from 'redux-form';
 
 
 import { Link } from 'react-router-dom';
