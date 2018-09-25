@@ -43,7 +43,7 @@ class Landing extends Component  {
 
 
 
-      <div className="whyWeDo">
+      <div id="down" className="whyWeDo">
         <div className="whyWeDoContent">
           <h3>What extra value does your Appointment scheduling software bring your business?</h3>
           <p>We invented Skedge because we believe in software that goes the <b><big>extra mile</big></b>. Skedge helps you schedule appointments and <b><big>grow your business</big></b> at the same time!</p>
