@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Contact from './Contact';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 
 class ContactList extends Component {
@@ -35,6 +36,7 @@ class ContactList extends Component {
     this.setState({ showContact: true, contactDetails: {
       name: data.name,
       number: data.phone,
+      id: data._id
     } })
   }
 
@@ -46,6 +48,8 @@ class ContactList extends Component {
             <p>Notes: {this.state.contactDetails.notes}</p>
             <p>Next Appointment: {this.state.contactDetails.nextAppointment}</p>
             <p>Previous Appointments: {this.state.contactDetails.previousAppointments}</p>
+
+            <Link to={"/contacts/edit/" + this.state.contactDetails.id}>Edit</Link>
           </div>
       )
   }
