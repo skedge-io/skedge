@@ -16,6 +16,7 @@ import Employees from './dashboard/employees/Employees';
 import Statistics from './dashboard/statistics/Statistics';
 import Campaign from './dashboard/campaigns/Campaign';
 import Contacts from './dashboard/contacts/Contacts';
+import ContactEdit from './dashboard/contacts/ContactsEdit';
 
 
 class App extends Component {
@@ -44,6 +45,7 @@ class App extends Component {
               <Route exact path="/dashboard/campaigns" component={Campaign} />
               <Route exact path="/dashboard/contacts" component={Contacts} />
               <Route exact path="/account/setup" component={AccountSetUp} />
+              <Route path="/contacts/edit/" component={ContactEdit} />
             </div>
         </BrowserRouter>
     );
