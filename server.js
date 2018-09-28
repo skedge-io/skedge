@@ -40,6 +40,10 @@ require('./controllers/appointment.js')(app, Appointment);
 const Business = require('./models/Business.js');
 require('./controllers/business.js')(app, Business, texts);
 
+//Client Controller
+require('./controllers/client.js')(app);
+
+
 
 if (process.env.NODE_ENV === 'production') {
   // Express will serve up production assets

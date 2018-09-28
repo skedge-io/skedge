@@ -21,15 +21,6 @@ module.exports = (app, Business) => {
     })
   })
 
-  //grab one client - Done by Joe, refactor if needed 9/26/18
-  app.get('/api/current_business/client/:clientId', reqLogin, (req, res) => {
-    Business.findById(req.user.business).then((business) => {
-      Client.find({'_id': req.params.clientId}).then((client) => {
-        res.send(client)
-      })
-    })
-  })
-
   app.post('/api/campaigns/update', reqLogin, (req, res) => {
     Business.findById(req.user.business).then((business) => {
       //Update the correct campaign
