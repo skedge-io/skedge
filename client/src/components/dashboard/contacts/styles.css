@@ -47,6 +47,7 @@
   padding-left: 1rem;
   padding-right: 1rem;
   border: solid 1px #c0392b;
+  border-radius: 3px;
   margin: 0;
   color: #c0392b;
   transition: all 250ms;

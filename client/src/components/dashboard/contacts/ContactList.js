@@ -25,7 +25,19 @@ class ContactList extends Component {
 
   componentDidMount() {
     axios.get('/api/current_business').then((res) => {
+
       this.setState({contacts : res.data.clients})
+
+      //this sorts the contacts in alphabetical order
+      let newClients = this.state.contacts.sort(function(a, b) {
+        let textA = a.name.toUpperCase();
+        let textB = b.name.toUpperCase();
+        return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
+      });
+
+      this.setState({contacts: newClients})
+
+
     })
 
 
