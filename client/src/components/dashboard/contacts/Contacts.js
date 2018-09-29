@@ -29,7 +29,7 @@ class Contacts extends Component {
 
 
        <div className="dash-con">
-         <TopBar header="Contacts" btn={<Link to="/dashboard/contacts/new" className="btn-flat right btn-small white-text blue hoverable waves-effect waves-light">New Contact</Link>}/>
+         <TopBar header="Contacts" />
 
 
             <ContactList />
@@ -43,12 +43,6 @@ class Contacts extends Component {
        <RightPanel />
 
 
-       <div className="fixed-action-btn">
-         <Link to="/dashboard/contacts/new" data-tip="React-tooltip" className="btn-floating btn-large blue hoverable waves-effect waves-light">
-           <i className="material-icons">add</i>
-         </Link>
-         <ReactTooltip place="left" type="dark" effect="solid">New Contact</ReactTooltip>
-       </div>
 
 
 

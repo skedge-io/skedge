@@ -43,7 +43,7 @@ class Landing extends Component  {
 
     let scene = new ScrollMagic.Scene({
       triggerElement: '.whyWeDo',
-      duration: 600
+      duration: 600,
     })
     .setClassToggle('.grow', 'scrolled')
     .addTo(smc)

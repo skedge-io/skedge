@@ -53,7 +53,7 @@ class ContactList extends Component {
             <a className="btn green white-text" href={"/contacts/edit/" + this.state.contactDetails.id}>Edit</a>
 
             <form className="del-contact" method="post" action={"/api/clients/" + this.state.contactDetails.id + "/delete"}>
-              <button className="btn red white-text right delete-contact">Delete Contact</button>
+              <button className="right delete-contact">Delete</button>
             </form>
           </div>
       )
