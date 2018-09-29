@@ -23,6 +23,9 @@ Calendar.setLocalizer(Calendar.momentLocalizer(moment));
 const DnDCalendar = withDragAndDrop(Calendar);
 
 
+let defaultDate = new Date();
+defaultDate.setHours(9,0,0,0);
+
 class DashCalendar extends Component {
 
   state = {
@@ -190,7 +193,8 @@ class DashCalendar extends Component {
 
         <DnDCalendar
           selectable
-          defaultDate={new Date()}
+          defaultDate={defaultDate}
+          scrollToTime={defaultDate}
           defaultView="month"
           events={this.state.events}
           onEventDrop={this.onEventDrop}
