@@ -64,3 +64,39 @@
   top: -.3rem;
   right: 1rem;
 }
+
+.search-box {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  text-align: center;
+  height: 3rem;
+  color: gray;
+  transition: all 250ms;
+}
+
+.search-box:hover {
+  color: black;
+}
+
+.search-bar {
+  padding-left: 1rem !important;
+  border-bottom: none !important;
+  width: 60%;
+}
+
+.search-bar:focus {
+  border-bottom: none !important;
+  outline: none;
+}
+
+.search-bar::placeholder {
+  font-weight: 200;
+}
+
+.search-icon {
+  margin-top: 5px;
+  align-self: center;
+  margin-right: .5rem;
+}

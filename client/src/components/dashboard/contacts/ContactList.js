@@ -79,7 +79,10 @@ class ContactList extends Component {
     return (
       <div className="contacts-container">
         <div className="contact-list-container">
-
+            <div className="search-box">
+              <input disabled placeholder="search" className="search-bar"></input>
+              <div className="search-icon"><i className="material-icons">search</i></div>
+            </div>
           {this.state.contacts.map((data, index) => (
             <Contact key={data.number} clicky={(event) => {this.showContactDetails(event,data)}} name={data.name} number={data.number}  />
           ))}
