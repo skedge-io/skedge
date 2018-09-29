@@ -20,6 +20,7 @@ class ContactList extends Component {
     };
 
     this.showContactDetails  = this.showContactDetails.bind(this);
+    this.searchChange  = this.searchChange.bind(this);
 
   }
 
@@ -71,7 +72,38 @@ class ContactList extends Component {
       )
   }
 
+  searchChange(event) {
+    let sortedContacts = []
 
+    //if event.target.value is found on the name property this.state.contacts
+      for (let i = 0; i < this.state.contacts.length; i++) {
+        if (this.state.contacts[i].name.toLowerCase().includes(event.target.value.toLowerCase())) {
+          sortedContacts.push(this.state.contacts[i])
+        }
+      }
+      //add that contact to sortedContacts
+      this.setState({contacts: sortedContacts})
+
+    //else
+      //add nothing
+      this.setState({contacts: sortedContacts})
+      //if event.target.value is zero, do an axios request and set state to contacts from api
+      if (event.target.value.length < 1) {
+        axios.get('/api/current_business').then((res) => {
+
+          this.setState({contacts : res.data.clients})
+
+          //this sorts the contacts in alphabetical order
+          let newClients = this.state.contacts.sort(function(a, b) {
+            let textA = a.name.toUpperCase();
+            let textB = b.name.toUpperCase();
+            return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
+          });
+
+          this.setState({contacts: newClients})
+        })
+      }
+  }
 
   render() {
 
@@ -80,7 +112,7 @@ class ContactList extends Component {
       <div className="contacts-container">
         <div className="contact-list-container">
             <div className="search-box">
-              <input disabled placeholder="search" className="search-bar"></input>
+              <input onChange={this.searchChange} placeholder="search" className="search-bar"></input>
               <div className="search-icon"><i className="material-icons">search</i></div>
             </div>
           {this.state.contacts.map((data, index) => (
