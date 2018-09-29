@@ -20,7 +20,9 @@ module.exports = (app) => {
         client.name = req.body.name;
         client.phone = req.body.phone;
         client.notes = req.body.notes;
-        client.save();
+        client.save().then((client) => {
+          res.redirect('/dashboard/contacts');
+        });
       });
     })
   })

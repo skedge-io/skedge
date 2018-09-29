@@ -134,7 +134,7 @@ class Canvas extends React.Component {
 
 render() {
     return(
-      <div>
+      <div style={{background: 'rgba(236, 240, 241,1.0)'}}>
         <canvas ref="canvas" />
       </div>
     )

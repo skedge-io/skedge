@@ -49,7 +49,7 @@ class ContactList extends Component {
             <p>Next Appointment: {this.state.contactDetails.nextAppointment}</p>
             <p>Previous Appointments: {this.state.contactDetails.previousAppointments}</p>
 
-            <Link to={"/contacts/edit/" + this.state.contactDetails.id}>Edit</Link>
+            <a href={"/contacts/edit/" + this.state.contactDetails.id}>Edit</a>
           </div>
       )
   }

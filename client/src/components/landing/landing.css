@@ -56,6 +56,19 @@ nav {
   color: white;
 }
 
+.skedge-brand {
+  transition: all 3s;
+  color: white;
+  font-size: 3rem;
+}
+
+
+
+.skedge-brand.scrolled {
+  font-size: 6rem;
+  transform: translateY(1050px);
+}
+
 .scroll-icon {
   color: white;
   font-size: 3rem;
@@ -77,10 +90,49 @@ canvas {
   align-items: center;
   justify-content: center;
   background: rgba(236, 240, 241,1.0);
+  transition: all 1s;
+}
+
+
+.grow {
+  display: inline-block;
+  transition: all 1s;
+}
+
+@keyframes wiggle {
+  from {
+    transform: scale(1) translateX(1050px);
+  }
+
+  50% {
+    transform: scale(9);
+  }
+
+  60% {
+    transform: scale(1) translateX(0px);
+  }
+
+  100% {
+    transform: scale(1) translateX(0px);
+  }
+
+}
+
+.grow.scrolled {
+  animation-name: wiggle;
+  animation-duration: 4s;
+  animation-iteration-count: 1;
+  animation-fill-mode: both;
+  animation-timing-function: linear;
+  color: black;
 }
 
 .whyWeDoContent {
   width: 50%;
+}
+
+.no-margin {
+  margin: 0;
 }
 
 .threeBenefits {
