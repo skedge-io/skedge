@@ -81,12 +81,9 @@ class ContactList extends Component {
           sortedContacts.push(this.state.contacts[i])
         }
       }
-      //add that contact to sortedContacts
+      //add that contact to sortedContacts/if nothing found return no contacts
       this.setState({contacts: sortedContacts})
 
-    //else
-      //add nothing
-      this.setState({contacts: sortedContacts})
       //if event.target.value is zero, do an axios request and set state to contacts from api
       if (event.target.value.length < 1) {
         axios.get('/api/current_business').then((res) => {
