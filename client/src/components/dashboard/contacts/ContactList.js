@@ -36,6 +36,7 @@ class ContactList extends Component {
     this.setState({ showContact: true, contactDetails: {
       name: data.name,
       number: data.phone,
+      notes: data.notes,
       id: data._id
     } })
   }
@@ -45,11 +46,15 @@ class ContactList extends Component {
           <div className="contact-details">
             <p>Name: {this.state.contactDetails.name}</p>
             <p>Number: {this.state.contactDetails.number}</p>
-            <p>Notes: {this.state.contactDetails.notes}</p>
             <p>Next Appointment: {this.state.contactDetails.nextAppointment}</p>
             <p>Previous Appointments: {this.state.contactDetails.previousAppointments}</p>
+            <p>Notes: {this.state.contactDetails.notes}</p>
 
-            <a href={"/contacts/edit/" + this.state.contactDetails.id}>Edit</a>
+            <a className="btn green white-text" href={"/contacts/edit/" + this.state.contactDetails.id}>Edit</a>
+
+            <form className="del-contact" method="post" action={"/api/clients/" + this.state.contactDetails.id + "/delete"}>
+              <button className="btn red white-text right delete-contact">Delete Contact</button>
+            </form>
           </div>
       )
   }

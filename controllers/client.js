@@ -30,7 +30,7 @@ module.exports = (app) => {
   app.post('/api/clients/:cliendId/delete', reqLogin, (req, res) => {
     Business.findById(req.user.business).then((business) => {
       Client.findOneAndDelete({_id : req.params.id}).then((client) => {
-        res.redirect('/');
+        res.redirect('/dashboard/contacts');
       })
     })
   })
