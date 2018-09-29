@@ -29,8 +29,12 @@ module.exports = (app) => {
 
   app.post('/api/clients/:cliendId/delete', reqLogin, (req, res) => {
     Business.findById(req.user.business).then((business) => {
-      Client.findOneAndDelete({_id : req.params.id}).then((client) => {
-        res.redirect('/dashboard/contacts');
+      Client.findOneAndRemove({_id : req.params.id}).then((client) => {
+        let businessClientIndex = business.clients.indexOf(req.params.clientId);
+        business.clients.splice(businessClientIndex, 1);
+        business.save().then(() => {
+          res.redirect('/dashboard/contacts');
+        })
       })
     })
   })
