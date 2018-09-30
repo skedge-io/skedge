@@ -76,9 +76,19 @@ class DashCalendar extends Component {
     const nextEvents = [...events]
     nextEvents.splice(idx, 1, updatedEvent)
 
+    console.log(updatedEvent)
+
+    let theAptId = updatedEvent.id
+    console.log(theAptId)
+    axios.post(`/api/appointment/edit/${theAptId}`, updatedEvent).then(res => {
+      console.log('axios post')
+    })
+
+
     this.setState({
       events: nextEvents,
     })
+
   };
 
 
