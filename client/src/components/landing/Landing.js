@@ -104,14 +104,14 @@ class Landing extends Component  {
 
           <div className="cta-cont">
             <a className="cfd-cta hoverable waves-effect waves-purple" href="./auth/google">Sign Up</a>
-            <p>We cut prices in half!</p>
+            <p>{/*some other call to action here*/}</p>
           </div>
         </div>
 
 
         <div className="clients">
           <div className="client-content">
-            <p className="price-text">We want to save you money! Switch to us and pay 50% off whatever you are currently paying.</p>
+            <p className="price-text">Skedge is expecting to launch at the end of Fall, 2018.</p>
           </div>
         </div>
 
@@ -132,7 +132,7 @@ class Landing extends Component  {
 
         <div className="clients">
           <div className="client-content">
-            <p className="price-text">We will convert your current appointments over to skedge free of cost</p>
+            <p className="price-text">Skedge can sync your appointments to Google and Outlook Calendar.</p>
           </div>
         </div>
 
