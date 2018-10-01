@@ -118,7 +118,7 @@ module.exports = (app, Appointment) => {
     Appointment.findById(req.params.id).then((appointment) => {
       appointment.employee = req.body.employee;
       appointment.employee_id = req.user._id;
-      appointment.title = req.body.clientName + " : " + req.body.employee;
+      appointment.title = req.body.title ? req.body.title : req.body.clientName + " : " + req.body.employee;
       appointment.phone = req.body.phone;
       appointment.desc = req.body.desc;
       appointment.startTime = req.body.startTime;
