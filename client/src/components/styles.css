@@ -39,7 +39,7 @@
 
 .cal-out {
   height: 110%;
-  width: 85%;
+  width: calc(100% - 2rem);
 }
 
 .rbc-toolbar {
