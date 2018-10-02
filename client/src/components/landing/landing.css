@@ -2,6 +2,18 @@ nav {
   z-index: 100;
 }
 
+.nav-wrapper.landing {
+  box-shadow: 0 1px 1px rgba(0,0,0,.3);
+}
+
+.brand-logo.landing {
+  color: darkblue
+}
+
+.auth.landing {
+  color: darkblue;
+}
+
 .cfd-cta {
   background-color: rgba(253, 253, 253, 1);
   color: #616161;

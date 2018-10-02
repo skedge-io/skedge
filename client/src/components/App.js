@@ -6,6 +6,8 @@ import * as actions from '../actions';
 import './styles.css';
 
 import Header from './Header';
+import LandingHeader from './LandingHeader';
+
 import Landing from './landing/Landing';
 import Dashboard from './dashboard/Dashboard';
 import AppointmentNew from './appointments/AppointmentNew';
@@ -33,10 +35,11 @@ class App extends Component {
     return (
         <BrowserRouter>
             <div>
+            <Route exact path="/" component={Landing} />
+
               <Header />
               <div className="container">
               </div>
-              <Route exact path="/" component={Landing} />
               <Route exact path="/dashboard" component={Dashboard} />
               <Route exact path="/appointments/new" component={AppointmentNew} />
               <Route path="/appointments/edit/" component={AppointmentEdit} />
