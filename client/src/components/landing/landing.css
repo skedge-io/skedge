@@ -41,7 +41,7 @@ nav {
   margin-top: -2.1rem;
   height: 90vh;
   width: 100%;
-  background: linear-gradient(rgba(44, 62, 80,.6), rgba(44, 62, 80,.5)), url('./bkg.jpg');
+  background: linear-gradient(rgba(44, 62, 80,1), rgba(44, 62, 80,.0)), url('./bkg.jpg');
   background-size: cover;
   background-position: center;
   display: flex;
@@ -53,13 +53,19 @@ nav {
   position: absolute;
   top: 7rem;
   width: 100%;
-  color: white;
+  color: #045a9e;
+  /*background: white;*/
+  /*text-shadow: 0px 1px 3px rgba(0,0,0,.3);*/
+}
+
+.heroContent h5 {
 }
 
 .skedge-brand {
   transition: all 3s;
-  color: white;
+  color: #045a9e;
   font-size: 3rem;
+  text-shadow: 0px 1px 3px rgba(0,0,0,.3);
 }
 
 
@@ -79,7 +85,7 @@ nav {
 }
 
 canvas {
-  background: linear-gradient(rgba(0, 0, 0,.8), rgba(0, 0, 0,.8)), url('./bkg.jpg');
+  background: linear-gradient(rgb(255, 255, 255,1),rgba(255, 255, 255, 0)),url(https://image.ibb.co/i6yXuK/Screen_Shot_2018_10_01_at_4_33_57_PM.png);
   background-size: cover;
   background-position: center;
 }

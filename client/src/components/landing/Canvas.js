@@ -63,12 +63,14 @@ class Canvas extends React.Component {
             }
 
             //mouse collision detection
-            if (distance(mouse.x, mouse.y, this.x, this.y) < 120 && this.opacity < 0.6) {
+            if (distance(mouse.x, mouse.y, this.x, this.y) < 120 && this.opacity < 0.6 && this.radius < 50) {
               this.opacity += 0.06;
-            } else if (this.opacity > 0) {
+              this.radius += .8
+            } else if (this.opacity > 0 || this.radius > 50) {
               this.opacity -= 0.06;
-
+              this.radius -= .8
               this.opacity = Math.max(0, this.opacity);
+              this.radius = Math.max(9, this.radius);
             }
 
             this.x += this.velocity.x;
@@ -96,7 +98,7 @@ class Canvas extends React.Component {
     function init() {
         particles = []
 
-        for (let i = 0; i < 200; i++) {
+        for (let i = 0; i < 30; i++) {
             const radius = randomIntFromRange(9,11);
             let x = randomIntFromRange(radius, canvas.width - radius)
             let y = randomIntFromRange(radius, canvas.height - radius)

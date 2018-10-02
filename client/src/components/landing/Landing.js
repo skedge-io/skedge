@@ -39,14 +39,14 @@ class Landing extends Component  {
 
       At the end of each scene, we must add what we made to the Controller in order to store it.
     */
-    const smc = new ScrollMagic.Controller();
-
-    let scene = new ScrollMagic.Scene({
-      triggerElement: '.whyWeDo',
-      duration: 600,
-    })
-    .setClassToggle('.grow', 'scrolled')
-    .addTo(smc)
+    // const smc = new ScrollMagic.Controller();
+    //
+    // let scene = new ScrollMagic.Scene({
+    //   triggerElement: '.whyWeDo',
+    //   duration: 600,
+    // })
+    // .setClassToggle('.grow', 'scrolled')
+    // .addTo(smc)
 
     // let scene2 = new ScrollMagic.Scene({
     //   triggerElement: '.whyWeDo',
