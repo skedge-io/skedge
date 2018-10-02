@@ -76,7 +76,7 @@ nav {
 }
 
 .scroll-icon {
-  color: white;
+  color: #234fb2;
   font-size: 3rem;
 }
 
@@ -290,9 +290,9 @@ reminders
   margin-top: 1rem;
   align-self: flex-start;
   background-color: rgba(253, 253, 253, 1);
-  color: #616161;
+  color: #2c2aab;
   border-radius: 40px;
-  border: 1px solid #C1C1C1;
+  border: 1px solid #2020a0;
   padding: 10px 0;
   text-decoration: none;
   /* margin: 20px 0 25px 10%; */
@@ -301,6 +301,13 @@ reminders
   transition: all 100ms;
   font-size: 1.2rem;
 }
+
+.waves-effect.waves-blue .waves-ripple {
+ /* The alpha value allows the text and background color
+ of the button to still show through. */
+  background-color: rgba(31, 53, 147, 0.8);
+}
+
 
 
 /****************
@@ -416,9 +423,6 @@ reviews
   }
 
 
-  .scroll-icon {
-display: none;
- }
 
 
  .cfd-cta-2 {
