@@ -87,10 +87,36 @@ nav {
   transform: translateY(1050px);
 }
 
+@keyframes scrollDown {
+  5% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(10px);
+  }
+
+
+  95% {
+    transform: translateY(0px);
+  }
+}
+
 .scroll-icon {
+  animation-name: scrollDown;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  animation-fill-mode: both;
+  animation-timing-function: ease-in-out;
   color: #234fb2;
   font-size: 3rem;
 }
+
+.scroll-icon::after {
+  transition: all 1s;
+  opacity: 0;
+}
+
 
 .skedgememo {
   color: #000;
@@ -361,6 +387,11 @@ reviews
     -webkit-transform: translate3d(0,0,0);
   }
 
+
+  .heroContent h5 {
+    color: #045a9e;
+  }
+
   .whyWeDoContent {
     width: 90%;
   }
@@ -429,7 +460,7 @@ reviews
     top: 50px;
     height: 100vh;
     color: white;
-    background: linear-gradient(rgba(44,62,80,.6),rgba(44,62,80,.5)),url(/static/media/bkg.6ce6d51f.jpg);
+    background: linear-gradient(rgb(255, 255, 255,1),rgba(255, 255, 255, 0)),url(https://image.ibb.co/i6yXuK/Screen_Shot_2018_10_01_at_4_33_57_PM.png);
     background-position: center;
     background-size: cover;
   }
@@ -450,6 +481,10 @@ reviews
 .cfd-cta {
   margin-top: 6rem;
   padding-bottom: 2.2rem;
+}
+
+.no-mob-nav + nav {
+  display: none !important;
 }
 
 }

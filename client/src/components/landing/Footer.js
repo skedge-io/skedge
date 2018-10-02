@@ -5,7 +5,7 @@ class Footer extends Component {
   render() {
 
     return (
-      <div className="margin">
+      <div className="margin footer-extension">
       <footer className="page-footer blue darken-3">
         <div className="container">
           <div className="row">

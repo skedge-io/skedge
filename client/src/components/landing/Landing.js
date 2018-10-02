@@ -61,7 +61,7 @@ class Landing extends Component  {
 
   render() {
     return (
-      <div>
+      <div className="no-mob-nav">
         <LandingHeader />
         <Canvas />
           <div className="heroContent" style={{ textAlign: 'center' }}>
