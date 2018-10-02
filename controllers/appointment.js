@@ -116,7 +116,7 @@ module.exports = (app, Appointment) => {
 
   app.post('/api/appointment/edit/:id', reqLogin, (req, res) => {
     Appointment.findById(req.params.id).then((appointment) => {
-      appointment.employee = req.body.employee;
+      appointment.employee = req.body.employee ? req.body.employee : appointment.employee;
       appointment.employee_id = req.user._id;
       appointment.title = req.body.title ? req.body.title : req.body.clientName + " : " + req.body.employee;
       appointment.phone = req.body.phone;
@@ -129,7 +129,7 @@ module.exports = (app, Appointment) => {
       let endTimeLength = req.body.endTime.length;
       appointment.end = req.body.date + ' ' + req.body.endTime.substring(0, endTimeLength - 2) + " " + req.body.endTime.substring(endTimeLength - 2, endTimeLength);
       appointment.business = req.user.business;
-      appointment.clientName = req.body.clientName;
+      appointment.clientName = req.body.clientName ? req.body.clientName : appointment.clientName;
       appointment.save(function(err, appointment){
         Client.findOne({
           phone : req.body.phone,
