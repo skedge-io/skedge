@@ -51,7 +51,7 @@ class Canvas extends React.Component {
             let radius = this.radius / 2
 
 
-            if (distance(mouse.x, mouse.y, this.x, this.y) < 50) {
+            if (distance(mouse.x, mouse.y, this.x, this.y) < 100) {
                 this.velocity.x *= -1.3;
                 this.velocity.y *= -1.3;
                 // if (particles.length < 300) {
