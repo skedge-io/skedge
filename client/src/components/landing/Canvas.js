@@ -44,6 +44,23 @@ class Canvas extends React.Component {
         this.mass = 1;
         this.opacity = 0;
 
+        window.addEventListener('click', event => {
+            mouse.x = event.clientX
+            mouse.y = event.clientY - 64
+            let color = randomColor(colors);
+            let radius = this.radius / 2
+
+
+            if (distance(mouse.x, mouse.y, this.x, this.y) < 50) {
+                this.velocity.x *= -1.3;
+                this.velocity.y *= -1.3;
+                // if (particles.length < 300) {
+                //   particles.push(new Particle(mouse.x, mouse.y, radius, this.color))
+                // }
+              }
+
+        })
+
         this.update = particles => {
             this.draw()
 
