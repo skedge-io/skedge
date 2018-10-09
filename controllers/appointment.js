@@ -88,7 +88,7 @@ module.exports = (app, Appointment) => {
               gCalendar.addEvent(req.user, appointment, (gCalendarId) => {
                 appointment.gCalendarId = gCalendarId;
                 appointment.save().then(() => {
-                  res.redirect('/');
+                  res.send("Appointment Saved");
                 })
               })
             })
@@ -107,7 +107,7 @@ module.exports = (app, Appointment) => {
         gCalendar.addEvent(req.user, appointment, (gCalendarId) => {
           appointment.gCalendarId = gCalendarId;
           appointment.save().then(() => {
-            res.redirect('/');
+            res.send("Appointment Saved");
           })
         })
       }
@@ -147,8 +147,11 @@ module.exports = (app, Appointment) => {
               if(business.clients.indexOf(client._id) == -1){
                 business.clients.push(client._id);
                 business.save().then((business) => {
-                  res.redirect('/');
+                  console.log("Saved");
+                  res.send("Appointment Saved");
                 });
+              }else{
+                res.send("Appointment Saved");
               }
             })
           })
