@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import './landing.css';
 
 import Canvas from './Canvas';
+import LandingHeader from '../LandingHeader';
 
 const ScrollMagic = require('scrollmagic');
 
@@ -60,7 +61,8 @@ class Landing extends Component  {
 
   render() {
     return (
-      <div>
+      <div className="no-mob-nav">
+        <LandingHeader />
         <Canvas />
           <div className="heroContent" style={{ textAlign: 'center' }}>
             <h1 className="skedge-brand">Skedge</h1>
