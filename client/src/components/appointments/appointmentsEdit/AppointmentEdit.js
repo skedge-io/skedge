@@ -31,7 +31,6 @@ class AppointmentEdit extends Component {
   componentDidMount() {
     axios.get(axiosUrl).then((res) => {
       this.setState({ appointments : res.data })
-      console.log(res.data);
     })
   }
 
@@ -61,11 +60,12 @@ class AppointmentEdit extends Component {
               <Link to="/dashboard" className="red btn-flat white-text hoverable waves-effect waves-light">
                 Cancel
               </Link>
-              <button type="submit" className="green white-text btn-flat right waves-effect waves-light">
-                Save Appointment
-                <i className="material-icons right">event_available</i>
-              </button>
+                <button type="submit" className="green white-text btn-flat right waves-effect waves-light">
 
+                 Save Appointment
+
+                  <i className="material-icons right">event_available</i>
+                </button>
             </form>
 
           </div>

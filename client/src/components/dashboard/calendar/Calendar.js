@@ -85,7 +85,7 @@ class DashCalendar extends Component {
 
     let theAptId = updatedEvent.id
     axios.post(`/api/appointment/edit/${theAptId}`, updatedEvent).then(res => {
-      
+
     })
 
 
@@ -205,7 +205,7 @@ class DashCalendar extends Component {
           selectable
           defaultDate={defaultDate}
           scrollToTime={defaultDate}
-          defaultView="month"
+          defaultView="week"
           events={this.state.events}
           onEventDrop={this.onEventDrop}
           onSelectEvent={event => this.onEventClick(event)}
