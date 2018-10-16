@@ -38,8 +38,8 @@ class App extends Component {
             <Route exact path="/" component={Landing} />
 
               <Header />
-              <div className="container">
-              </div>
+                <div className="container">
+                </div>
               <Route exact path="/dashboard" component={Dashboard} />
               <Route exact path="/appointments/new" component={AppointmentNew} />
               <Route path="/appointments/edit/" component={AppointmentEdit} />
