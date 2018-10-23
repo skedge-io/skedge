@@ -5,8 +5,7 @@ import * as actions from "../actions";
 
 import "./styles.css";
 
-// import Header from "./Header";
-// import LandingHeader from "./LandingHeader";
+import Header from "./Header";
 
 import Landing from "./landing/Landing";
 import Dashboard from "./dashboard/Dashboard";
@@ -30,7 +29,7 @@ class App extends Component {
       <BrowserRouter>
         <div>
           <Route exact path="/" component={Landing} />
-
+          <Header />
           <div className="container" />
           <Route exact path="/dashboard" component={Dashboard} />
           <Route exact path="/appointments/new" component={AppointmentNew} />
