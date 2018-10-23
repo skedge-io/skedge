@@ -27,26 +27,20 @@ class AccountForm extends Component {
     return (
       <div className="account-setup-col">
         <div className="row">
-          <img className="logo" src="/skedge.png" />
-          <h2 align="center">Finish setting up your account</h2>
+          <a href="/">
+            <img src="/signup-logo.png" />
+          </a>
+          <p align="center">A few details about you‍</p>
         </div>
         <div className="account-setup-form">
           <form onSubmit={this.props.handleSubmit(this.props.onAccountSubmit)}>
             {this.renderFields()}
-            <Link
-              to="/dashboard"
-              className="red btn-flat white-text hoverable waves-effect waves-light"
-            >
-              Cancel
-            </Link>
-            <Button text="Cancel" intent={Intent.DANGER} />
-            <button
-              className="teal btn-flat right white-text hoverable waves-effect waves-light"
-              waves="light"
+            <Button
+              text="Continue"
+              large="true"
+              intent={Intent.SUCCESS}
               type="submit"
-            >
-              Next <i className="material-icons right">done</i>
-            </button>
+            />
           </form>
         </div>
       </div>
