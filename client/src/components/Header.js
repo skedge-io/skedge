@@ -9,7 +9,7 @@ class Header extends Component {
         <div className="navbar header-nav fixed-top navbar-expand-lg">
           <div className="container">
             {/* Brand */}
-            <a className="navbar-brand" href="#">
+            <a className="navbar-brand" href="/auth/google">
               Skedge
             </a>
             {/* end */}

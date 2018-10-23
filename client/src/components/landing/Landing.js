@@ -68,7 +68,7 @@ class Landing extends Component {
                   }
                 },
                 line_linked: {
-                  enable: false,
+                  enable: true,
                   distance: 0,
                   color: "#ffffff",
                   opacity: 0,
@@ -148,7 +148,7 @@ class Landing extends Component {
                     grow your business at the same time!
                   </p>
                   <div className="app-btn-set">
-                    <a href="#" className="m-btn m-btn-white">
+                    <a href="/auth/google" className="m-btn m-btn-white">
                       Try for free
                     </a>
                   </div>
