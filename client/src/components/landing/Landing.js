@@ -68,7 +68,7 @@ class Landing extends Component {
                   }
                 },
                 line_linked: {
-                  enable: true,
+                  enable: false,
                   distance: 0,
                   color: "#ffffff",
                   opacity: 0,
@@ -76,7 +76,7 @@ class Landing extends Component {
                 },
                 move: {
                   enable: true,
-                  speed: 8,
+                  speed: 9,
                   direction: "top",
                   random: true,
                   straight: true,
