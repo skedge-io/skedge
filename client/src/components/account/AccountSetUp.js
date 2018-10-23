@@ -1,8 +1,8 @@
 // AccountSetUp shows AccountForm and AccountFormReview
-import React, { Component } from 'react';
-import { reduxForm } from 'redux-form';
-import AccountForm from './AccountForm';
-import AccountFormReview from './AccountFormReview';
+import React, { Component } from "react";
+import { reduxForm } from "redux-form";
+import AccountForm from "./AccountForm";
+import AccountFormReview from "./AccountFormReview";
 
 class AccountSetUp extends Component {
   state = { showFormReview: false };
@@ -11,23 +11,25 @@ class AccountSetUp extends Component {
     if (this.state.showFormReview) {
       return (
         <AccountFormReview
-        onCancel={() => this.setState({ showFormReview: false })}
-       />
-     );
-  }
+          onCancel={() => this.setState({ showFormReview: false })}
+        />
+      );
+    }
 
-    return <AccountForm onAccountSubmit={() => this.setState({ showFormReview: true })}/>;
+    return (
+      <AccountForm
+        onAccountSubmit={() => this.setState({ showFormReview: true })}
+      />
+    );
   }
 
   render() {
     return (
-      <div className="container">
-        {this.renderContent()}
-      </div>
+      <div className="container account-setup">{this.renderContent()}</div>
     );
   }
 }
 
 export default reduxForm({
-  form: 'accountForm'
+  form: "accountForm"
 })(AccountSetUp);
