@@ -2,9 +2,15 @@
 
 @import "~@blueprintjs/icons/lib/css/blueprint-icons.css";
 
-$side-menu: #222b31;
+$hover-overlay: #e5f4ff;
+$theme-color: #1f96f3;
+$very-light-grey: #eeeef6;
+$light-grey: #b4b4b4;
+$dark-grey: #222b31;
 $inactive: #7f8c8d;
 $collapsed-menu-icon: 2rem;
+
+$border-radius: 4px;
 
 .brand-logo {
   margin-left: 1rem;
@@ -28,11 +34,12 @@ $collapsed-menu-icon: 2rem;
   align-items: center;
   height: calc(100vh - 64px);
   width: 100%;
-  height: 100%;
+  height: 100vh;
   overflow-y: hidden;
 }
 
 .cal-container {
+  background-color: white;
   height: 110%;
   width: 100%;
   display: flex;
@@ -66,14 +73,15 @@ $collapsed-menu-icon: 2rem;
 }
 
 .rbc-btn-group button {
-  background-color: #2196f3 !important;
-  color: white !important;
-  border: solid 1px white !important;
+  background-color: white !important;
+  color: black !important;
+  border: solid 1px $very-light-grey !important;
   margin-right: 2px !important;
   border-radius: 4px !important;
   transition: all 200ms;
   &:hover {
-    background-color: #44acfe !important;
+    border-color: $theme-color !important;
+    background-color: $hover-overlay !important;
   }
 }
 
@@ -117,23 +125,25 @@ $collapsed-menu-icon: 2rem;
 }
 
 .top-bar {
-  height: 55px;
+  height: 70px;
   width: 100%;
   background: white;
-  /*border-bottom: solid 1px #00a1f680;*/
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: rgba(0, 0, 0, 0.05);
   padding-left: 1rem;
   padding-right: 1rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
   font-size: 1.3rem;
-  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12), 0 1px 1px 0 rgba(0, 0, 0, 0.12),
-    0 1px 1px -2px rgba(0, 0, 0, 0.2);
+  // box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12), 0 1px 1px 0 rgba(0, 0, 0, 0.12),
+  //   0 1px 1px -2px rgba(0, 0, 0, 0.2);
 }
 
 .left-panel {
   z-index: 2;
-  background: $side-menu;
+  background: $dark-grey;
   width: 5%;
   /*border-right: solid 1px #00a1f680;*/
   display: flex;
@@ -357,6 +367,7 @@ $collapsed-menu-icon: 2rem;
 }
 
 .min-button {
+  font-size: 25px;
   background: none;
   border: none;
   color: $inactive;
@@ -366,4 +377,34 @@ $collapsed-menu-icon: 2rem;
   &:focus {
     background: none;
   }
+}
+
+.calendar-toolbar {
+  display: flex;
+  justify-content: space-between;
+}
+
+.calendar-text-btn {
+  font-weight: bold;
+  &.left {
+    border-top-right-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+    margin-right: 1px !important;
+  }
+  &.right {
+    border-top-left-radius: 0 !important;
+    border-bottom-left-radius: 0 !important;
+  }
+  &:focus {
+    border-color: $dark-grey !important;
+  }
+}
+
+.calendar-view-btn {
+  height: 40px;
+  width: 150px;
+}
+
+.no-shadow {
+  box-shadow: none !important;
 }
