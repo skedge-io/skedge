@@ -2,6 +2,9 @@
 
 @import "~@blueprintjs/icons/lib/css/blueprint-icons.css";
 
+$side-menu: #222b31;
+$inactive: #7f8c8d;
+
 .brand-logo {
   margin-left: 1rem;
 }
@@ -128,13 +131,13 @@
 
 .left-panel {
   z-index: 2;
-  background: white;
-  width: 15%;
+  background: $side-menu;
+  width: 4%;
   /*border-right: solid 1px #00a1f680;*/
   display: flex;
+  align-items: center;
   flex-direction: column;
   justify-content: flex-start;
-  padding-left: 1rem;
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12),
     0 3px 1px -2px rgba(0, 0, 0, 0.2);
 }
@@ -161,24 +164,15 @@
 .sec-link {
   margin-bottom: 1.5rem;
   align-items: center;
-  display: flex;
-  color: #7f8c8d;
+  color: $inactive;
   transition: all 200ms;
   &:hover {
-    color: #039be5;
+    color: white;
   }
 }
 
-/*.active-sec {
-  color: #039be5;
-}*/
-
 #active-sec {
-  color: #039be5;
-}
-
-.sec-link i {
-  margin-right: 6px;
+  color: white;
 }
 
 .rbc-btn-group button {
@@ -345,4 +339,16 @@
 
 .results {
   margin: 0 -5%;
+}
+
+.hamburger-container {
+  margin: 1rem 0 1rem 0;
+  display: flex;
+  background: none;
+  border: none;
+  justify-content: center;
+  color: $inactive;
+  i {
+    font-size: 25px;
+  }
 }

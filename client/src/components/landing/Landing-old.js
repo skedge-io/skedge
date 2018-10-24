@@ -104,7 +104,8 @@ class Landing extends Component {
               We invented Skedge because we believe in software that goes the{" "}
               <b>
                 <big>extra mile</big>
-              </b>. Skedge helps you schedule appointments and{" "}
+              </b>
+              . Skedge helps you schedule appointments and{" "}
               <b>
                 <big>
                   <div className="grow">grow</div> your business
@@ -117,10 +118,10 @@ class Landing extends Component {
 
         <div className="threeBenefits">
           <p>
-            We help businesses grow by scheduling appointments,<br /> sending
-            custom text reminders that combat no-shows, <br /> providing
-            incentives to gain repeat business, <br />and by increasing their
-            five star reviews.
+            We help businesses grow by scheduling appointments,
+            <br /> sending custom text reminders that combat no-shows, <br />{" "}
+            providing incentives to gain repeat business, <br />
+            and by increasing their five star reviews.
           </p>
           <div className="threeBenefitItems">
             <div className="benefitItem">
@@ -216,7 +217,8 @@ class Landing extends Component {
           <div className="reviewsText">
             <div>
               We give you more five star reviews by sending out a message
-              sometime after an appointment.<br />
+              sometime after an appointment.
+              <br />
               <br /> We filter reviews so only positive reviews end up on Yelp,
               Nextdoor, etc.
             </div>

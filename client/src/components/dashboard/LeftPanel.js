@@ -1,20 +1,68 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-class LeftPanel extends Component {
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
+class LeftPanel extends Component {
+  constructor(props, context) {
+    super(props, context);
+
+    this.state = {
+      visible: false
+    };
+
+    this.toggleMenu = this.toggleMenu.bind(this);
+  }
+
+  toggleMenu() {
+    this.setState({
+      visible: !this.state.visible
+    });
+  }
 
   render() {
-
     return (
       <div className="left-panel">
-        <p className="grayer">Sections</p>
-        <Link className="sec-link" id={this.props.wambo} to="/dashboard"><i className="material-icons">event</i> Calendar</Link>
-        <Link className="sec-link" id={this.props.index1} to="/dashboard/employees"><i className="material-icons">person</i> Employees</Link>
-        <Link className="sec-link" id={this.props.index2} to="/dashboard/statistics"><i className="material-icons">assessment</i> Statistics</Link>
-        <Link className="sec-link" id={this.props.index3} to="/dashboard/campaigns"><i className="material-icons">library_books</i> Campaigns</Link>
-        <Link className="sec-link" id={this.props.index4} to="/dashboard/contacts"><i className="material-icons">contacts</i> Manage Contacts</Link>
+        <button className="hamburger-container">
+          <i className="material-icons">menu</i>
+        </button>
+        <Link className="sec-link" id={this.props.wambo} to="/dashboard">
+          <i className="material-icons">event</i>
+        </Link>
+        {/* Item */}
+        <Link
+          className="sec-link"
+          id={this.props.index1}
+          to="/dashboard/employees"
+        >
+          <div>
+            <i className="material-icons">person</i>
+          </div>
+        </Link>
+        {/* Item */}
+        <Link
+          className="sec-link"
+          id={this.props.index2}
+          to="/dashboard/statistics"
+        >
+          <i className="material-icons">assessment</i>
+        </Link>
+        {/* Item */}
+        <Link
+          className="sec-link"
+          id={this.props.index3}
+          to="/dashboard/campaigns"
+        >
+          <i className="material-icons">library_books</i>
+        </Link>
+        {/* Item */}
+        <Link
+          className="sec-link"
+          id={this.props.index4}
+          to="/dashboard/contacts"
+        >
+          <i className="material-icons">contacts</i>
+        </Link>
       </div>
-    )
+    );
   }
 }
 

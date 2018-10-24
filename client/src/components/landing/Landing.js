@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import Header from "../Header";
 import { connect } from "react-redux";
 import Particles from "react-particles-js";
@@ -148,7 +147,7 @@ class Landing extends Component {
                     grow your business at the same time!
                   </p>
                   <div className="app-btn-set">
-                    <a href="/auth/google" className="m-btn m-btn-white">
+                    <a href="./auth/google" className="m-btn m-btn-white">
                       Try for free
                     </a>
                   </div>
@@ -174,4 +173,8 @@ class Landing extends Component {
   }
 }
 
-export default Landing;
+function mapStateToProps({ auth }) {
+  return { auth };
+}
+
+export default connect(mapStateToProps)(Landing);
