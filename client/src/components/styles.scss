@@ -4,6 +4,7 @@
 
 $side-menu: #222b31;
 $inactive: #7f8c8d;
+$collapsed-menu-icon: 2rem;
 
 .brand-logo {
   margin-left: 1rem;
@@ -26,7 +27,8 @@ $inactive: #7f8c8d;
   flex-direction: column;
   align-items: center;
   height: calc(100vh - 64px);
-  width: 80%;
+  width: 100%;
+  height: 100%;
   overflow-y: hidden;
 }
 
@@ -115,7 +117,7 @@ $inactive: #7f8c8d;
 }
 
 .top-bar {
-  height: 50px;
+  height: 55px;
   width: 100%;
   background: white;
   /*border-bottom: solid 1px #00a1f680;*/
@@ -132,7 +134,7 @@ $inactive: #7f8c8d;
 .left-panel {
   z-index: 2;
   background: $side-menu;
-  width: 4%;
+  width: 5%;
   /*border-right: solid 1px #00a1f680;*/
   display: flex;
   align-items: center;
@@ -348,7 +350,20 @@ $inactive: #7f8c8d;
   border: none;
   justify-content: center;
   color: $inactive;
-  i {
-    font-size: 25px;
+}
+
+.collapsed-menu {
+  font-size: $collapsed-menu-icon;
+}
+
+.min-button {
+  background: none;
+  border: none;
+  color: $inactive;
+  &:active {
+    background: none;
+  }
+  &:focus {
+    background: none;
   }
 }

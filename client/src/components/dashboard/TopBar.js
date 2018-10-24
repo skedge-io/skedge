@@ -1,16 +1,18 @@
-import React, { Component } from 'react';
-
+import React, { Component } from "react";
 
 class TopBar extends Component {
   render() {
     return (
-      <div style={this.props.style} className="top-bar">
+      <div className="top-bar">
         {this.props.header}
         <div className="right">
-          {this.props.btn}
+          <button className="material-icons min-button">
+            notifications_none
+          </button>
+          <button class="material-icons min-button">person_outline</button>
         </div>
       </div>
-    )
+    );
   }
 }
 
