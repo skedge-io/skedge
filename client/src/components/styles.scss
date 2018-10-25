@@ -121,7 +121,7 @@ $border-radius: 4px;
 .row-this {
   display: flex;
   flex-direction: row;
-  justify-content: flex-start;
+  justify-content: space-between;
 }
 
 .top-bar {
@@ -144,14 +144,30 @@ $border-radius: 4px;
 .left-panel {
   z-index: 2;
   background: $dark-grey;
-  width: 5%;
-  /*border-right: solid 1px #00a1f680;*/
+  width: 13.75rem;
+  transform: translateX(0%);
+  -webkit-transform: translateX(0%);
   display: flex;
-  align-items: center;
   flex-direction: column;
   justify-content: flex-start;
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12),
     0 3px 1px -2px rgba(0, 0, 0, 0.2);
+  -webkit-transition: width 0.15s ease-in-out;
+  -moz-transition: width 0.15s ease-in-out;
+  -o-transition: width 0.15s ease-in-out;
+  transition: width 0.15s ease-in-out;
+  &.collapsed-panel {
+    width: 4.25rem;
+    -webkit-transition: width 0.2s ease-in-out;
+    -moz-transition: width 0.2s ease-in-out;
+    -o-transition: width 0.2s ease-in-out;
+    transition: width 0.2s ease-in-out;
+  }
+  .group {
+    display: flex;
+    flex-direction: column;
+    margin-left: 1rem;
+  }
 }
 
 .grayer {
@@ -174,12 +190,19 @@ $border-radius: 4px;
 }
 
 .sec-link {
+  text-decoration: none !important;
   margin-bottom: 1.5rem;
   align-items: center;
   color: $inactive;
   transition: all 200ms;
+  display: inline-flex;
   &:hover {
     color: white;
+  }
+  div {
+    margin-left: 1.2rem;
+    font-weight: bold;
+    overflow: hidden;
   }
 }
 
@@ -411,10 +434,11 @@ $border-radius: 4px;
 
 /* hamburger */
 .hamburger {
-  width: 20px;
+  width: 28px;
   margin-top: 1.5rem !important;
   margin-bottom: 1.5rem !important;
   padding: 0px !important;
+  padding-left: 3px !important;
   display: inline-block;
   cursor: pointer;
   transition-property: opacity, filter;
@@ -441,8 +465,7 @@ $border-radius: 4px;
 }
 
 .hamburger-box {
-  width: 20px;
-  height: 24px;
+  width: 28px;
   display: inline-block;
   position: relative;
 }
@@ -455,7 +478,7 @@ $border-radius: 4px;
 .hamburger-inner,
 .hamburger-inner::before,
 .hamburger-inner::after {
-  width: 20px !important;
+  width: 28px !important;
   height: 2px !important;
   background-color: $light-grey !important;
   border-radius: 4px;
@@ -494,8 +517,8 @@ $border-radius: 4px;
   transform: rotate(-180deg);
 }
 .hamburger--arrowturn.is-active .hamburger-inner::before {
-  transform: translate3d(4px, 5px, 0) rotate(45deg) scale(0.7, 1);
+  transform: translate3d(9.5px, 5.5px, 0) rotate(45deg) scale(0.5, 1);
 }
 .hamburger--arrowturn.is-active .hamburger-inner::after {
-  transform: translate3d(4px, -5px, 0) rotate(-45deg) scale(0.7, 1);
+  transform: translate3d(9.5px, -5.5px, 0) rotate(-45deg) scale(0.5, 1);
 }
