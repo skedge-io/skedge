@@ -9,7 +9,7 @@ class TopBar extends Component {
           <button className="material-icons min-button">
             notifications_none
           </button>
-          <button class="material-icons min-button">person_outline</button>
+          <button className="material-icons min-button">person_outline</button>
         </div>
       </div>
     );

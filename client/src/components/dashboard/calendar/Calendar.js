@@ -11,20 +11,11 @@ import { Link } from "react-router-dom";
 
 import CalendarEventView from "./CalendarEventView";
 import Toolbar from "react-big-calendar/lib/Toolbar";
-import {
-  Alignment,
-  Button,
-  ButtonGroup,
-  H5,
-  IconName,
-  Popover,
-  Position,
-  Switch
-} from "@blueprintjs/core";
+
+import { Button, IconName, Popover, Switch } from "@blueprintjs/core";
 
 import "react-big-calendar/lib/addons/dragAndDrop/styles.css";
 import "react-big-calendar/lib/css/react-big-calendar.css";
-import "../../styles.css";
 
 // Setup the localizer by providing the moment (or globalize) Object
 // to the correct localizer.
@@ -242,7 +233,6 @@ class DashCalendar extends Component {
           defaultDate={defaultDate}
           scrollToTime={defaultDate}
           defaultView="week"
-          views={["month", "week", "day"]}
           events={this.state.events}
           onEventDrop={this.onEventDrop}
           onSelectEvent={event => this.onEventClick(event)}

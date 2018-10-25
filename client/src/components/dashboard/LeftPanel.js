@@ -2,28 +2,36 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
 class LeftPanel extends Component {
-  constructor(props, context) {
-    super(props, context);
+  constructor(props) {
+    super(props);
 
     this.state = {
-      visible: false
+      animate: false
     };
 
-    this.toggleMenu = this.toggleMenu.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
-  toggleMenu() {
-    this.setState({
-      visible: !this.state.visible
+  handleClick(e) {
+    this.setState(prevState => {
+      return { animate: !prevState.animate };
     });
   }
 
   render() {
+    let animationClasses = this.state.animate ? "is-active" : "";
+
     return (
       <div className="left-panel">
-        <button className="hamburger-container">
-          <i className="material-icons collapsed-menu">menu</i>
+        <button
+          className={`hamburger hamburger--arrowturn ${animationClasses}`}
+          onClick={this.handleClick}
+        >
+          <span className="hamburger-box">
+            <span className="hamburger-inner" />
+          </span>
         </button>
+
         <Link className="sec-link" id={this.props.wambo} to="/dashboard">
           <i className="material-icons collapsed-menu">event</i>
         </Link>
