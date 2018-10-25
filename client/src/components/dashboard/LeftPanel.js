@@ -20,10 +20,7 @@ class LeftPanel extends Component {
 
   render() {
     let animationClasses = this.state.animate ? "is-active" : "";
-    let panelClass = this.state.animate
-      ? "collapsed-panel slide-in"
-      : "slide-out";
-    let labelClass = this.state.animate ? "hide-label" : "show-label";
+    let panelClass = this.state.animate ? "" : "collapsed-panel";
 
     return (
       <div className={`left-panel ${panelClass}`}>
@@ -39,7 +36,7 @@ class LeftPanel extends Component {
           {/* Item */}
           <Link className="sec-link" id={this.props.wambo} to="/dashboard">
             <i className="material-icons collapsed-menu">event</i>
-            <div className={`${labelClass}`}>Calendar</div>
+            <div>Calendar</div>
           </Link>
           {/* Item */}
           <Link
@@ -48,7 +45,7 @@ class LeftPanel extends Component {
             to="/dashboard/employees"
           >
             <i className="material-icons collapsed-menu">person</i>
-            <div className={`${labelClass}`}>Employees</div>
+            <div>Employees</div>
           </Link>
           {/* Item */}
           <Link
@@ -57,7 +54,7 @@ class LeftPanel extends Component {
             to="/dashboard/statistics"
           >
             <i className="material-icons collapsed-menu">assessment</i>
-            <div className={`${labelClass}`}>Analytics</div>
+            <div>Analytics</div>
           </Link>
           {/* Item */}
           <Link
@@ -66,7 +63,7 @@ class LeftPanel extends Component {
             to="/dashboard/campaigns"
           >
             <i className="material-icons collapsed-menu">library_books</i>
-            <div className={`${labelClass}`}>Campaigns</div>
+            <div>Campaigns</div>
           </Link>
           {/* Item */}
           <Link
@@ -75,7 +72,7 @@ class LeftPanel extends Component {
             to="/dashboard/contacts"
           >
             <i className="material-icons collapsed-menu">contacts</i>
-            <div className={`${labelClass}`}>Contacts</div>
+            <div>Contacts</div>
           </Link>
         </div>
       </div>
