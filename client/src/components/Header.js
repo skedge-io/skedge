@@ -40,28 +40,8 @@ class Header extends Component {
                   </a>
                 </li>
                 <li>
-                  <a className="nav-link" href="#about">
-                    About Us
-                  </a>
-                </li>
-                <li>
                   <a className="nav-link" href="#feature">
-                    Feature
-                  </a>
-                </li>
-                <li>
-                  <a className="nav-link" href="#price">
-                    Price
-                  </a>
-                </li>
-                <li>
-                  <a className="nav-link" href="#team">
-                    Our Team
-                  </a>
-                </li>
-                <li>
-                  <a className="nav-link" href="#blog">
-                    Blog
+                    Features
                   </a>
                 </li>
                 <li>
@@ -70,7 +50,10 @@ class Header extends Component {
                   </a>
                 </li>
                 <li>
-                  <a className="nav-link nav-link-btn theme-bg" href="#">
+                  <a
+                    className="nav-link nav-link-btn theme-bg"
+                    href="./auth/google"
+                  >
                     Login with Google
                   </a>
                 </li>

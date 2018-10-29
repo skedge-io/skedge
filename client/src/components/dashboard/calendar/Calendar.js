@@ -233,11 +233,13 @@ class DashCalendar extends Component {
           defaultDate={defaultDate}
           scrollToTime={defaultDate}
           defaultView="week"
+          views={"month" | "week"}
           events={this.state.events}
           onEventDrop={this.onEventDrop}
           onSelectEvent={event => this.onEventClick(event)}
           onSelectSlot={this.onSelectSlot}
           popup
+          timeslots={4}
           components={{
             event: Event,
             toolbar: CustomToolbar,
@@ -264,7 +266,7 @@ class CustomToolbar extends Toolbar {
             rightIcon="caret-down"
           />
         </span>
-        <span className="rbc-btn-group">
+        <span className="rbc-btn-group middle">
           <button
             className="material-icons"
             type="button"
@@ -279,6 +281,7 @@ class CustomToolbar extends Toolbar {
           >
             chevron_left
           </button>
+          {/* <----- calendar date range -----> */}
           <button>
             <span className="rbc-toolbar-label calendar-text-btn">
               {this.props.label}

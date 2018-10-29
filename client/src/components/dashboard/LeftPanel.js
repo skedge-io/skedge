@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import { Button } from "@blueprintjs/core";
 
 class LeftPanel extends Component {
   constructor(props) {
@@ -45,7 +46,7 @@ class LeftPanel extends Component {
             to="/dashboard/employees"
           >
             <i className="material-icons collapsed-menu">person</i>
-            <div>Employees</div>
+            <div>Staff</div>
           </Link>
           {/* Item */}
           <Link

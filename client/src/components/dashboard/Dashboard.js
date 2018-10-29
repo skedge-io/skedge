@@ -60,7 +60,6 @@ class Dashboard extends Component {
       case false:
         return (
           <div>
-            {" "}
             <center>
               <a
                 className="cfd-cta-2 hoverable waves-effect waves-purple"
@@ -68,7 +67,7 @@ class Dashboard extends Component {
               >
                 Log In
               </a>
-            </center>{" "}
+            </center>
           </div>
         );
       default:

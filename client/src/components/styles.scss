@@ -149,7 +149,7 @@ $border-radius: 4px;
   -webkit-transform: translateX(0%);
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: space-between;
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12),
     0 3px 1px -2px rgba(0, 0, 0, 0.2);
   -webkit-transition: width 0.15s ease-in-out;
@@ -409,6 +409,7 @@ $border-radius: 4px;
 
 .calendar-text-btn {
   font-weight: bold;
+  flex-grow: 1;
   &.left {
     border-top-right-radius: 0 !important;
     border-bottom-right-radius: 0 !important;
@@ -521,4 +522,18 @@ $border-radius: 4px;
 }
 .hamburger--arrowturn.is-active .hamburger-inner::after {
   transform: translate3d(9.5px, -5.5px, 0) rotate(-45deg) scale(0.5, 1);
+}
+
+.bp3-menu {
+  min-width: 8rem !important;
+}
+
+.clear-btn {
+  background-color: none;
+}
+
+.rbc-btn-group {
+  &.middle {
+    display: flex;
+  }
 }
