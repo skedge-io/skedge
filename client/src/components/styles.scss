@@ -28,6 +28,16 @@ $border-radius: 4px;
   background: #025299;
 }
 
+.top-bar-link {
+  text-decoration: none;
+  color: black;
+}
+
+.top-bar-link:hover {
+  color: black;
+  text-decoration: none;
+}
+
 .dash-con {
   display: flex;
   flex-direction: column;

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from 'react-router-dom';
 import {
   Menu,
   MenuItem,
@@ -35,7 +36,7 @@ class TopBar extends Component {
             content={
               <Menu>
                 <MenuItem icon="cog" text="My Settings" />
-                <MenuItem icon="settings" text="Account Setup" />
+                <Link className="top-bar-link" to="/account/setup"><MenuItem icon="settings" text="Account Setup" /></Link>
                 <MenuItem href="/api/logout" icon="log-out" text="Logout" />
               </Menu>
             }
