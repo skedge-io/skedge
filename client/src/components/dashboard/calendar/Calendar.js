@@ -57,6 +57,24 @@ class DashCalendar extends Component {
     });
   }
 
+  componentDidUpdate() {
+    axios.get("/api/appointments").then(res => {
+      let events = [];
+      res.data.forEach(appointment => {
+        events.push({
+          title: appointment.title,
+          desc: appointment.desc,
+          start: new Date(appointment.start),
+          end: new Date(appointment.end),
+          id: appointment._id,
+          phone: appointment.phone,
+          desc: appointment.desc
+        });
+      });
+      this.setState({ events: events });
+    });
+  }
+
   onEventResize = (type, { event, start, end, allDay }) => {
     this.setState(state => {
       state.events[0].start = start;
