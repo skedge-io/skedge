@@ -10,6 +10,7 @@
     "start": "node server.js",
     "server": "nodemon server.js",
     "test": "npx jest",
+    "docs": "docsify serve docs",
     "client": "npm run start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
