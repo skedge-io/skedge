@@ -40,5 +40,9 @@
     "passport-google-oauth20": "^1.0.0",
     "passport-oauth2-refresh": "^1.1.0",
     "twilio": "^3.23.1"
+  },
+  "devDependencies": {
+    "jest": "^23.6.0",
+    "react-test-renderer": "^16.6.0"
   }
 }
