@@ -5,7 +5,6 @@
   justify-content: flex-start;
 }
 
-
 .outer-campaign {
   /*height: 100%;*/
   width: 100%;
@@ -20,7 +19,8 @@
   width: 40rem;
   /*border: solid 1px black;*/
   /*border: solid 1px rgba(33, 150, 243, 1);*/
-  box-shadow: 0 1px 1px 0 rgba(0,0,0,0.12), 0 1px 1px 0 rgba(0,0,0,0.12), 0 1px 1px -2px rgba(0,0,0,0.2);
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12), 0 1px 1px 0 rgba(0, 0, 0, 0.12),
+    0 1px 1px -2px rgba(0, 0, 0, 0.2);
   transition: all 300ms;
 }
 
@@ -35,8 +35,9 @@
 .campaign-top-bar {
   width: 40rem;
   height: 2rem;
-  box-shadow: 0 1px 1px 0 rgba(0,0,0,0.12), 0 1px 1px 0 rgba(0,0,0,0.12), 0 1px 1px -2px rgba(0,0,0,0.2);
-  background: #2196F3;
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12), 0 1px 1px 0 rgba(0, 0, 0, 0.12),
+    0 1px 1px -2px rgba(0, 0, 0, 0.2);
+  background: #2196f3;
   color: white;
   display: flex;
   align-items: center;
@@ -48,8 +49,9 @@
 .key-top-bar {
   width: 15rem;
   height: 2rem;
-  box-shadow: 0 1px 1px 0 rgba(0,0,0,0.12), 0 1px 1px 0 rgba(0,0,0,0.12), 0 1px 1px -2px rgba(0,0,0,0.2);
-  background: #2196F3;
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12), 0 1px 1px 0 rgba(0, 0, 0, 0.12),
+    0 1px 1px -2px rgba(0, 0, 0, 0.2);
+  background: #2196f3;
   color: white;
   display: flex;
   align-items: center;
@@ -65,7 +67,7 @@
 
 .key-table {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
 }
 
 .switch-enabler {
@@ -97,8 +99,6 @@
   padding-right: 1rem;
 }
 
-
-
 .key-box {
   position: absolute;
   background: white;
@@ -106,7 +106,8 @@
   right: 15rem;
   height: 11rem;
   width: 15rem;
-  box-shadow: 0 1px 1px 0 rgba(0,0,0,0.12), 0 1px 1px 0 rgba(0,0,0,0.12), 0 1px 1px -2px rgba(0,0,0,0.2);
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12), 0 1px 1px 0 rgba(0, 0, 0, 0.12),
+    0 1px 1px -2px rgba(0, 0, 0, 0.2);
 }
 
 .key-word {
@@ -114,19 +115,17 @@
   padding-left: 1rem;
 }
 
-
 @media (max-width: 900px) and (min-width: 300px) {
+  .key-box {
+    height: 100%;
+    width: 20%;
+  }
 
-.key-box {
-  display: none;
-}
+  .campaign-box {
+    transform: scale(0.7) translateX(-130px);
+  }
 
-.campaign-box {
-  transform: scale(.7) translateX(-130px);
-}
-
-.campaign-top-bar {
-  transform: scale(.7) translateX(-130px) translateY(60px);
-}
-
+  .campaign-top-bar {
+    transform: scale(0.7) translateX(-130px) translateY(60px);
+  }
 }

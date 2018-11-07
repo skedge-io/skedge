@@ -1,10 +1,7 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
+import EmployeeListItem from "./EmployeeListItem";
 
-
-
-import EmployeeListItem from './EmployeeListItem';
-
-import './styles.css';
+import "./styles.css";
 
 class EmployeeBox extends Component {
   render() {
@@ -13,7 +10,6 @@ class EmployeeBox extends Component {
         <div className="employee-box">
           <div className="employee-top-bar">Manage Employees</div>
           <div className="employee-list">
-
             <div className="employee-list-item key">
               <div className="list-item-info name">Name</div>
               <div className="list-item-info">Apts</div>
@@ -23,16 +19,16 @@ class EmployeeBox extends Component {
               <div className="list-item-info delete">Delete</div>
             </div>
 
-            <EmployeeListItem name="Jessica Dobbie" appointments="6"/>
-            <EmployeeListItem name="Rick Astley" appointments="2"/>
-            <EmployeeListItem name="Samson Farris" appointments="9"/>
-            <EmployeeListItem name="Jeff Harrison" appointments="3"/>
-            <EmployeeListItem name="John H. Epson" appointments="6"/>
+            <EmployeeListItem name="Jessica Dobbie" appointments="6" />
+            <EmployeeListItem name="Rick Astley" appointments="2" />
+            <EmployeeListItem name="Samson Farris" appointments="9" />
+            <EmployeeListItem name="Jeff Harrison" appointments="3" />
+            <EmployeeListItem name="John H. Epson" appointments="6" />
           </div>
         </div>
       </div>
-    )
+    );
   }
 }
 
-export default EmployeeBox
+export default EmployeeBox;

@@ -142,8 +142,7 @@ class DashCalendar extends Component {
       desc: "none",
       date: moment(event.start).format("D MMMM, YYYY"),
       start: "",
-      end: "",
-      desc: ""
+      end: ""
     };
 
     axios.post("/api/appointment/new", newEvent).then(res => {
@@ -158,8 +157,7 @@ class DashCalendar extends Component {
             start: new Date(appointment.start),
             end: new Date(appointment.end),
             id: appointment._id,
-            phone: appointment.phone,
-            desc: appointment.desc
+            phone: appointment.phone
           });
           window.location = "/appointments/edit/" + appointment._id;
         });

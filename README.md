@@ -21,7 +21,7 @@ $ npm run dev
 Run Test
 
 ```
-$ npm jsx
+$ npm t
 ```
 
 Serve up docs

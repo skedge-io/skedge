@@ -1,103 +1,143 @@
-import React, { Component } from 'react';
-import ReactTooltip from 'react-tooltip';
+import React, { Component } from "react";
 
-import axios from 'axios';
+import axios from "axios";
 
-import TopBar from '../TopBar';
-import LeftPanel from '../LeftPanel';
-import RightPanel from '../RightPanel';
+import TopBar from "../TopBar";
+import LeftPanel from "../LeftPanel";
+import { Tab, Tabs } from "@blueprintjs/core";
 
-import CampaignBox from './CampaignBox';
+import CampaignBox from "./CampaignBox";
+import Tags from "./Tags";
 
-import './styles.css';
+import "./styles.scss";
+import "./styles.css";
 
 class Campaign extends Component {
   constructor(props) {
-    super(props)
+    super(props);
 
-    this.state = {renderInfo : false}
+    this.state = {
+      renderInfo: false,
+      tab: "reminders"
+    };
 
+    this.handleTabChange = this.handleTabChange.bind(this);
+  }
+
+  handleTabChange(choice) {
+    this.setState({
+      clicked: true,
+      result: choice
+    });
   }
 
   componentDidMount() {
-    axios.get('/api/current_business').then((res) => {
-      this.setState({campaigns : res.data.business.campaigns})
-    })
+    axios.get("/api/current_business").then(res => {
+      this.setState({ campaigns: res.data.business.campaigns });
+    });
   }
-
-
 
   renderFields() {
     if (this.state.campaigns) {
       return (
         <div className="cal-container container-campaigns">
-          <CampaignBox text={this.state.campaigns[0].text} active={this.state.campaigns[0].active} camp={this.state.campaigns[0].name} when={this.state.campaigns[0].when} title="Reminders" time="Hours before appointment" toolTipMsg="Send a text reminder to help prevent no-shows"/>
-          <CampaignBox text={this.state.campaigns[1].text} active={this.state.campaigns[1].active} camp={this.state.campaigns[1].name} when={this.state.campaigns[1].when} title="Reviews" time="Hours after appointment" toolTipMsg="Send a text to encourage your clients to leave a review" />
-          <CampaignBox text={this.state.campaigns[2].text} active={this.state.campaigns[2].active} camp={this.state.campaigns[2].name} when={this.state.campaigns[2].when} title="Revisits" time="Days after last appointment" toolTipMsg="Send a text to get clients back who haven't scheduled in a speccified time period"/>
-          <CampaignBox text={this.state.campaigns[3].text} active={this.state.campaigns[3].active} camp={this.state.campaigns[3].name} when={this.state.campaigns[3].when} title="Promotions" time="Hours from now" toolTipMsg="Send a general promotional text"/>
+          <Tabs
+            id="campaigns-tabs"
+            onChange={this.handleTabChange}
+            selectedTabId={this.state.tab}
+            animate="true"
+          >
+            {/* <----- Reminders ------> */}
+            <Tab
+              id="reminders"
+              title="Reminders"
+              panel={
+                <CampaignBox
+                  text={this.state.campaigns[0].text}
+                  active={this.state.campaigns[0].active}
+                  camp={this.state.campaigns[0].name}
+                  when={this.state.campaigns[0].when}
+                  title="Reminders"
+                  time="Hours before appointment"
+                  toolTipMsg="Send a text reminder to help prevent no-shows"
+                />
+              }
+            />
 
+            {/* <----- Reviews ------> */}
+            <Tab
+              id="reviews"
+              title="Reviews"
+              panel={
+                <CampaignBox
+                  text={this.state.campaigns[1].text}
+                  active={this.state.campaigns[1].active}
+                  camp={this.state.campaigns[1].name}
+                  when={this.state.campaigns[1].when}
+                  title="Reviews"
+                  time="Hours after appointment"
+                  toolTipMsg="Send a text to encourage your clients to leave a review"
+                />
+              }
+            />
 
-          <div className="key-box">
-          <div className="key-top-bar">
-            <div>Key</div>
-              <ReactTooltip id="key-info" place="top" type="dark" effect="solid">Use these in your campaign messages</ReactTooltip>
-              <i data-tip="key-info" data-for='key-info' className="material-icons keyname-info">info</i>
-            </div>
-            <div className="key-table">
+            {/* <----- Revisits ------> */}
+            <Tab
+              id="revisits"
+              title="Revisits"
+              panel={
+                <CampaignBox
+                  text={this.state.campaigns[2].text}
+                  active={this.state.campaigns[2].active}
+                  camp={this.state.campaigns[2].name}
+                  when={this.state.campaigns[2].when}
+                  title="Revisits"
+                  time="Days after last appointment"
+                  toolTipMsg="Send a text to get clients back who haven't scheduled in a speccified time period"
+                />
+              }
+            />
 
-              <div className="key-titles">
-                <p className="key-word"><b>*name*</b>:</p>
-                <p className="key-word"><b>*employee*</b>:</p>
-                <p className="key-word"><b>*business*</b>:</p>
-                <p className="key-word"><b>*time*</b>:</p>
-              </div>
-
-              <div className="key-descriptions">
-                <p className="key-word"> Name of Client</p>
-                <p className="key-word">Name of Employee</p>
-                <p className="key-word">Name of Business</p>
-                <p className="key-word">Time of appointment</p>
-              </div>
-
-            </div>
-          </div>
-
+            {/* <----- Promotions ------> */}
+            <Tab
+              id="promotions"
+              title="Promotions"
+              panel={
+                <CampaignBox
+                  text={this.state.campaigns[3].text}
+                  active={this.state.campaigns[3].active}
+                  camp={this.state.campaigns[3].name}
+                  when={this.state.campaigns[3].when}
+                  title="Promotions"
+                  time="Hours from now"
+                  toolTipMsg="Send a general promotional text"
+                />
+              }
+            />
+            <Tabs.Expander />
+          </Tabs>
         </div>
-      )
+      );
     } else {
-      return (
-        <div>
-          Loading
-        </div>
-      )
+      return <div>Loading</div>;
     }
   }
 
   render() {
-      return (
+    return (
+      <div className="row-this">
+        <LeftPanel index3="active-sec" />
 
-        <div className="row-this">
-
-        <LeftPanel index3="active-sec"/>
-
-
-         <div className="dash-con">
-           <TopBar header="Campaigns"/>
+        <div className="dash-con">
+          <TopBar className="" header="Campaigns" />
+          <div className="campaign-view-container">
             {this.renderFields()}
-
-         </div>
-
-         <RightPanel />
-
-
-
-
-
-         </div>
-      )
-    }
+            <Tags />
+          </div>
+        </div>
+      </div>
+    );
   }
-
-
+}
 
 export default Campaign;

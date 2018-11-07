@@ -9,7 +9,10 @@
   "scripts": {
     "start": "node server.js",
     "server": "nodemon server.js",
-    "test": "npx jest",
+    "test": "npx jest --silent",
+    "test:update": "jest --silent -u",
+    "test:watch": "jest --silent --watch",
+    "test:coverage": "jest --silent --coverage",
     "docs": "docsify serve docs",
     "client": "npm run start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
