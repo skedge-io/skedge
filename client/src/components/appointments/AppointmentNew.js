@@ -1,15 +1,11 @@
 // AppointmentNew shows AppointmentForm and AppointmentFormReview
-import React, { Component } from 'react';
-import { reduxForm } from 'redux-form';
-import AppointmentForm from './AppointmentForm';
-import AppointmentFormReview from './AppointmentFormReview';
+import React, { Component } from "react";
+import { reduxForm } from "redux-form";
+import AppointmentForm from "./AppointmentForm";
+import AppointmentFormReview from "./AppointmentFormReview";
 
-
-
-import TopBar from '../dashboard/TopBar';
-import LeftPanel from '../dashboard/LeftPanel';
-import RightPanel from '../dashboard/RightPanel';
-
+import TopBar from "../dashboard/TopBar";
+import LeftPanel from "../dashboard/LeftPanel";
 
 class AppointmentNew extends Component {
   state = { showFormReview: false };
@@ -18,12 +14,16 @@ class AppointmentNew extends Component {
     if (this.state.showFormReview) {
       return (
         <AppointmentFormReview
-        onCancel={() => this.setState({ showFormReview: false })}
-       />
-     );
-  }
+          onCancel={() => this.setState({ showFormReview: false })}
+        />
+      );
+    }
 
-    return <AppointmentForm onAppointmentSubmit={() => this.setState({ showFormReview: true })}/>;
+    return (
+      <AppointmentForm
+        onAppointmentSubmit={() => this.setState({ showFormReview: true })}
+      />
+    );
   }
 
   render() {
@@ -32,16 +32,13 @@ class AppointmentNew extends Component {
         <LeftPanel wambo="active-sec" />
         <div className="container formFlex">
           <TopBar header="New Appointment" />
-          <div className="inside">
-            {this.renderContent()}
-          </div>
+          <div className="inside">{this.renderContent()}</div>
         </div>
-        <RightPanel />
       </div>
     );
   }
 }
 
 export default reduxForm({
-  form: 'appointmentForm'
+  form: "appointmentForm"
 })(AppointmentNew);

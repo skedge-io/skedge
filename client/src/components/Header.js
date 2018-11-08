@@ -1,65 +1,72 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
-
-import MobileMenu from './dashboard/MobileMenu';
-
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import { connect } from "react-redux";
 
 class Header extends Component {
-  renderContent() {
-    switch(this.props.auth) {
-      case null:
-        return;
-      case false:
-        return <li><a href="/auth/google">Login With Google</a></li>
-      default:
-        return [
-          <li key="2"><a href="/api/logout">Logout</a></li>
-        ]
-    }
-  }
-
-renderMobile() {
-  switch(this.props.auth) {
-    case null:
-      return;
-    case false:
-      return;
-    default:
-      return  (
-        <MobileMenu />
-      )
-  }
-}
-
-
   render() {
     return (
-      <nav className="blue">
-        <div className="nav-wrapper">
-
-        {this.renderMobile()}
-
-          <Link
-            to={this.props.auth ? '/dashboard' : '/'}
-            className={this.props.auth ? 'left brand-logo' : 'left brand-logo logged-out-brand'}
-          >
-            Skedge
-          </Link>
-
-
-          <ul className="right">
-            {this.renderContent()}
-          </ul>
-
+      <header>
+        <div className="navbar header-nav fixed-top navbar-expand-lg">
+          <div className="container">
+            {/* Brand */}
+            <a className="navbar-brand" href="/auth/google">
+              Skedge
+            </a>
+            {/* end */}
+            {/* Mobile Toggle */}
+            <button
+              className="navbar-toggler"
+              type="button"
+              data-toggle="collapse"
+              data-target="#navbar"
+              aria-controls="navbar"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <span />
+              <span />
+              <span />
+            </button>
+            {/* end */}
+            {/* Top Menu */}
+            <div
+              className="collapse navbar-collapse justify-content-end"
+              id="navbar"
+            >
+              <ul className="navbar-nav ml-auto">
+                <li>
+                  <a className="nav-link active" href="#home">
+                    Home
+                  </a>
+                </li>
+                <li>
+                  <a className="nav-link" href="#feature">
+                    Features
+                  </a>
+                </li>
+                <li>
+                  <a className="nav-link" href="#contact">
+                    Contact Us
+                  </a>
+                </li>
+                <li>
+                  <a
+                    className="nav-link nav-link-btn theme-bg"
+                    href="./auth/google"
+                  >
+                    Login with Google
+                  </a>
+                </li>
+              </ul>
+            </div>
+            {/* end */}
+          </div>
+          {/* Container */}
         </div>
-      </nav>
-    )
+        {/* Navbar */}
+      </header>
+    );
   }
 }
 
-function mapStateToProps({ auth }) {
-  return { auth };
-}
-
-export default connect(mapStateToProps)(Header);
+export default Header;

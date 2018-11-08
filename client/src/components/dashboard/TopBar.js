@@ -1,16 +1,54 @@
-import React, { Component } from 'react';
-
+import React, { Component } from "react";
+import { Link } from 'react-router-dom';
+import {
+  Menu,
+  MenuItem,
+  Button,
+  IconName,
+  Popover,
+  PopoverInteractionKind,
+  Classes,
+  Position
+} from "@blueprintjs/core";
 
 class TopBar extends Component {
   render() {
     return (
-      <div style={this.props.style} className="top-bar">
+      <div className="top-bar">
         {this.props.header}
         <div className="right">
-          {this.props.btn}
+          <Popover
+            interactionKind={PopoverInteractionKind.HOVER}
+            content={
+              <Menu text="Updates">
+                <MenuItem icon="tick" text="No updates" />
+              </Menu>
+            }
+            position={Position.BOTTOM_LEFT}
+          >
+            <button className="material-icons min-button">
+              notifications_none
+            </button>
+          </Popover>
+
+          <Popover
+            interactionKind={PopoverInteractionKind.HOVER}
+            content={
+              <Menu>
+                <MenuItem icon="cog" text="My Settings" />
+                <Link className="top-bar-link" to="/account/setup"><MenuItem icon="settings" text="Account Setup" /></Link>
+                <MenuItem href="/api/logout" icon="log-out" text="Logout" />
+              </Menu>
+            }
+            position={Position.BOTTOM_LEFT}
+          >
+            <button className="material-icons min-button">
+              person_outline
+            </button>
+          </Popover>
         </div>
       </div>
-    )
+    );
   }
 }
 

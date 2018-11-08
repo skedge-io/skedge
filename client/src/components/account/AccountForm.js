@@ -1,40 +1,57 @@
 // AccountFrom shows a form for a user to add input
-import _ from 'lodash';
-import React, { Component } from 'react';
-import { reduxForm, Field } from 'redux-form';
-import { Link } from 'react-router-dom';
-import AccountField from './AccountField';
-import validateNumbers from '../../utils/validateNumbers';
-import formFields from './formFields.js';
+import _ from "lodash";
+import React, { Component } from "react";
+import { reduxForm, Field } from "redux-form";
+import { Link } from "react-router-dom";
+import AccountField from "./AccountField";
+import validateNumbers from "../../utils/validateNumbers";
+import formFields from "./formFields.js";
+import { Button, Intent } from "@blueprintjs/core";
 
 class AccountForm extends Component {
   renderFields() {
     return _.map(formFields, ({ label, name }) => {
-      return <Field key={name} component={AccountField} type="text" label={label} name={name} />
-    })
+      return (
+        <Field
+          key={name}
+          component={AccountField}
+          type="text"
+          label={label}
+          name={name}
+        />
+      );
+    });
   }
 
   render() {
     return (
-      <div>
-        <h2 align="center">Finish setting up your account</h2>
-        <form onSubmit={this.props.handleSubmit(this.props.onAccountSubmit)}>
-          {this.renderFields()}
-          <Link to="/dashboard" className="red btn-flat white-text hoverable waves-effect waves-light">
-            Cancel
-          </Link>
-          <button className="teal btn-flat right white-text hoverable waves-effect waves-light" waves='light' type="submit">Next <i className="material-icons right">done</i></button>
-        </form>
+      <div className="account-setup-col">
+        <div className="row">
+          <a href="/">
+            <img src="/signup-logo.png" />
+          </a>
+          <p align="center">A few details about you‍</p>
+        </div>
+        <div className="account-setup-form">
+          <form onSubmit={this.props.handleSubmit(this.props.onAccountSubmit)}>
+            {this.renderFields()}
+            <Button
+              text="Continue"
+              large="true"
+              intent={Intent.SUCCESS}
+              type="submit"
+            />
+          </form>
+        </div>
       </div>
     );
   }
 }
 
-
 function validate(values) {
   const errors = {};
 
-  errors.phone = validateNumbers(values.phone || '');
+  errors.phone = validateNumbers(values.phone || "");
 
   _.each(formFields, ({ name, noValueError }) => {
     if (!values[name]) {
@@ -47,6 +64,6 @@ function validate(values) {
 
 export default reduxForm({
   validate,
-  form: 'accountForm',
+  form: "accountForm",
   destroyOnUnmount: false
 })(AccountForm);
