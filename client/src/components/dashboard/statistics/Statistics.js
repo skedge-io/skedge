@@ -5,7 +5,7 @@ import LeftPanel from "../LeftPanel";
 
 import SkedgeStats from "./SkedgeStats";
 
-import "./styles.css";
+import "./styles.scss";
 
 class Statistics extends Component {
   render() {

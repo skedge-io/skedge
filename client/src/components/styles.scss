@@ -1,5 +1,4 @@
 @import "~@blueprintjs/core/lib/css/blueprint.css";
-
 @import "~@blueprintjs/icons/lib/css/blueprint-icons.css";
 
 $hover-overlay: #e5f4ff;
@@ -451,9 +450,9 @@ h5 {
 .hamburger {
   width: 28px;
   margin-top: 1.5rem !important;
-  margin-bottom: 1.5rem !important;
+  margin-bottom: 2rem !important;
   padding: 0px !important;
-  padding-left: 3px !important;
+  padding-left: 1px !important;
   display: inline-block;
   cursor: pointer;
   transition-property: opacity, filter;

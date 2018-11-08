@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Header from "../Header";
 import { connect } from "react-redux";
 import Particles from "react-particles-js";
+import Footer from "./Footer";
 
 class Landing extends Component {
   render() {
@@ -167,6 +168,77 @@ class Landing extends Component {
           </div>
           {/* container */}
         </section>
+
+        {/* Featre */}
+        <section id="about" class="section gray-bg border-bottom">
+          <div class="container">
+            <div class="row justify-content-center m-45px-b md-m-25px-b">
+              <div class="col-md-10 col-lg-8 col-xl-7">
+                <div class="section-title">
+                  <h2 class="theme-after-bg">
+                    Help your <span class="theme-color">business </span> grow
+                  </h2>
+                  <p>
+                    Gain repeatable business by increasing five star reviews.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6 col-lg-3 m-15px-tb">
+                <div class="feature-box">
+                  <div class="icon">
+                    <i class="ti-package theme-color" />
+                  </div>
+                  <h3 class="font-alt">Works anywhere</h3>
+                  <p>Phone or tablet, schedule appointments anywhere you go.</p>
+                </div>
+              </div>
+              {/* col */}
+              <div class="col-md-6 col-lg-3 m-15px-tb">
+                <div class="feature-box">
+                  <div class="icon">
+                    <i class="ti-blackboard theme-color" />
+                  </div>
+                  <h3 class="font-alt">Fast and easy</h3>
+                  <p>
+                    Skedge is almost twice as fast as it's competitors, and it's
+                    so easy you don't even have to train your employees on how
+                    to use it!
+                  </p>
+                </div>
+              </div>
+              {/* col */}
+              <div class="col-md-6 col-lg-3 m-15px-tb">
+                <div class="feature-box">
+                  <div class="icon">
+                    <i class="ti-crown theme-color" />
+                  </div>
+                  <h3 class="font-alt">Free</h3>
+                  <p>Free updates, free business growth, free smiles</p>
+                </div>
+              </div>
+              {/* col */}
+              <div class="col-md-6 col-lg-3 m-15px-tb">
+                <div class="feature-box">
+                  <div class="icon">
+                    <i class="ti-heart theme-color" />
+                  </div>
+                  <h3 class="font-alt">Continuous Supports</h3>
+                  <p>
+                    Have a question or looking for a new feature? Message us and
+                    we'll get back with you as soon as possible!
+                  </p>
+                </div>
+              </div>
+              {/* col */}
+            </div>
+            {/* row */}
+          </div>
+          {/* container */}
+        </section>
+        {/* <-- / --> */}
+        <Footer />
         {/* end */}
       </div>
     );

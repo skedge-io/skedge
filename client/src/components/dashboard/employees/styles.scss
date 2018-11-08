@@ -1,0 +1,71 @@
+.relat-z {
+  position: relative;
+  z-index: 100000;
+}
+
+.clickable {
+  cursor: pointer;
+}
+
+.outer-employee {
+  height: 100%;
+  width: 100%;
+  padding-top: 1rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+.employee-box {
+  min-height: 20rem;
+}
+
+.employee-top-bar {
+  width: 100%;
+  height: 2rem;
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12), 0 1px 1px 0 rgba(0, 0, 0, 0.12),
+    0 1px 1px -2px rgba(0, 0, 0, 0.2);
+  background: #2196f3;
+  color: white;
+  display: flex;
+  align-items: center;
+  padding-left: 1rem;
+}
+
+.employee-list-item {
+  padding: 1rem;
+  display: flex;
+  justify-content: space-around;
+  border-bottom: solid 1px #dddcdc;
+  &.key {
+    background: #ecf0f1;
+    color: #a0a0a0;
+    font-weight: 600;
+    border-bottom: solid 1px #dddcdc;
+    .list-item-info.delete {
+      color: #a0a0a0;
+    }
+  }
+}
+
+.list-item-info {
+  width: 20%;
+  &.name {
+    width: 30%;
+  }
+  &.edit {
+    color: #27ae60;
+  }
+  &.info {
+    color: #2980b9;
+  }
+  &.delete {
+    color: red;
+    width: 10%;
+  }
+}
+
+@media (max-width: 900px) and (min-width: 300px) {
+  .employee-box {
+    transform: scale(0.6) translateX(-180px) translateY(-100px);
+  }
+}
