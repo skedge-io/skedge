@@ -10,25 +10,14 @@ import CampaignBox from "./CampaignBox";
 import Tags from "./Tags";
 
 import "./styles.scss";
-import "./styles.css";
 
 class Campaign extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      renderInfo: false,
-      tab: "reminders"
+      renderInfo: false
     };
-
-    this.handleTabChange = this.handleTabChange.bind(this);
-  }
-
-  handleTabChange(choice) {
-    this.setState({
-      clicked: true,
-      result: choice
-    });
   }
 
   componentDidMount() {
@@ -43,14 +32,14 @@ class Campaign extends Component {
         <div className="cal-container container-campaigns">
           <Tabs
             id="campaigns-tabs"
-            onChange={this.handleTabChange}
-            selectedTabId={this.state.tab}
+            onChange={this.handleNavbarTabChange}
+            selectedTabId={this.state.navbarTabId}
             animate="true"
           >
             {/* <----- Reminders ------> */}
             <Tab
               id="reminders"
-              title="Reminders"
+              title="REMINDERS"
               panel={
                 <CampaignBox
                   text={this.state.campaigns[0].text}
@@ -67,7 +56,7 @@ class Campaign extends Component {
             {/* <----- Reviews ------> */}
             <Tab
               id="reviews"
-              title="Reviews"
+              title="REVIEWS"
               panel={
                 <CampaignBox
                   text={this.state.campaigns[1].text}
@@ -84,7 +73,7 @@ class Campaign extends Component {
             {/* <----- Revisits ------> */}
             <Tab
               id="revisits"
-              title="Revisits"
+              title="REVISITS"
               panel={
                 <CampaignBox
                   text={this.state.campaigns[2].text}
@@ -101,7 +90,7 @@ class Campaign extends Component {
             {/* <----- Promotions ------> */}
             <Tab
               id="promotions"
-              title="Promotions"
+              title="PROMOTIONS"
               panel={
                 <CampaignBox
                   text={this.state.campaigns[3].text}
