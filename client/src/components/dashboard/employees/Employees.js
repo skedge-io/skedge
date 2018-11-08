@@ -15,7 +15,7 @@ class Employees extends Component {
 
         <div className="dash-con">
           <TopBar
-            header="Employees"
+            header="Staff"
             btn={
               <Link
                 to="/dashboard/employees/new"
