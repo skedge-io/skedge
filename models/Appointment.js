@@ -15,7 +15,8 @@ const AppointmentSchema = new Schema({
   employee : String,
   employee_id : String,
   phone : String,
-  gCalendarId : String
+  gCalendarId : String,
+  active : {type : Boolean, default : true}
 });
 
 const Appointment = mongoose.model('Appointment', AppointmentSchema);

@@ -41,8 +41,6 @@ setText = (appointment, business, campaign) => {
       });
       break;
 
-
-
   }
 }
 
@@ -54,6 +52,7 @@ deleteText = (appointmentId, business, campaign) => {
 }
 
 initBusinessCampaigns = (Business) => {
+
   Business.find().then((businesses)=>{
     businesses.forEach((business) => {
       texts[business._id] = {
@@ -63,11 +62,16 @@ initBusinessCampaigns = (Business) => {
         "Promotions" : {}
       };
       //Reminders and Reviews
+      let presentTime = new Date();
       for(let i=0;i<2;i++){
         if(business.campaigns[i].active){
-          Appointment.find({business : business._id}).then((appointments) => {
+          Appointment.find({
+            business : business._id,
+          }).then((appointments) => {
             appointments.forEach((appointment) => {
-              setText(appointment, business, business.campaigns[i]);
+              if(new Date(appointment.end) > presentTime){
+                setText(appointment, business, business.campaigns[i]);
+              }
             })
           })
         }
