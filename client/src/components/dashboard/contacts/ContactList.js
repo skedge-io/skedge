@@ -29,8 +29,15 @@ class ContactList extends Component {
 
       this.setState({contacts : res.data.clients})
 
+      this.state.contacts.forEach(function(contact, index, object) {
+      })
+
       //this sorts the contacts in alphabetical order
       let newClients = this.state.contacts.sort(function(a, b) {
+        if (a.name === undefined || b.name === undefined) {
+          return
+        }
+
         let textA = a.name.toUpperCase();
         let textB = b.name.toUpperCase();
         return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;

@@ -65,6 +65,7 @@ class DashCalendar extends Component {
           title: appointment.title,
           desc: appointment.desc,
           start: new Date(appointment.start),
+          clientName: appointment.clientName,
           end: new Date(appointment.end),
           id: appointment._id,
           phone: appointment.phone,
@@ -91,6 +92,7 @@ class DashCalendar extends Component {
     updatedEvent.startTime = moment(start).format("hh:mm A");
     updatedEvent.endTime = moment(end).format("hh:mm A");
     updatedEvent.date = moment(start).format("D MMMM, YYYY");
+    updatedEvent.clientName = event.clientName;
 
     const nextEvents = [...events];
     nextEvents.splice(idx, 1, updatedEvent);
@@ -136,7 +138,7 @@ class DashCalendar extends Component {
       title: "New Event",
       phone: "",
       startTime: moment(event.start).format("hh:mm A"),
-      clientName: "",
+      clientName: "New Contact",
       employee: "",
       endTime: moment(event.end).format("hh:mm A"),
       desc: "none",
@@ -159,7 +161,7 @@ class DashCalendar extends Component {
             id: appointment._id,
             phone: appointment.phone
           });
-          window.location = "/appointments/edit/" + appointment._id;
+          // window.location = "/appointments/edit/" + appointment._id;
         });
         this.setState({ events: events });
       });
