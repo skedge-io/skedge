@@ -176,64 +176,8 @@ class DashCalendar extends Component {
         return;
       case true:
         return (
-          <div>
-            <div className="col s12 m6">
-              <div className="card darken-1">
-                <div className="card-content">
-                  <span className="card-title">
-                    {this.state.eventView.title}
-                  </span>
-                  <p>
-                    <b>Start</b>: {this.state.eventView.start}{" "}
-                    <b>
-                      <br />
-                      End
-                    </b>
-                    : {this.state.eventView.end.toString()}
-                  </p>
-                  <p>
-                    <b>Phone</b>: {this.state.eventView.phone}
-                  </p>
-                  <p>
-                    <b>Notes</b>: {this.state.eventView.desc}
-                  </p>
-                </div>
-                <div className="card-action">
-                  <div className="form-in-row">
-                    <a
-                      href={"/appointments/edit/" + this.state.eventView.id}
-                      className="btn-floating waves-effect waves-light blue margin-right"
-                    >
-                      <i className="material-icons">edit</i>
-                    </a>
-                    <button
-                      className="waves-effect waves-light btn red darken-2"
-                      onClick={() =>
-                        this.setState({ eventView: { style: { height: "0" } } })
-                      }
-                    >
-                      Close
-                    </button>
-
-                    <form
-                      method="POST"
-                      action={
-                        "/api/appointment/delete/" + this.state.eventView.id
-                      }
-                    >
-                      <button
-                        type="submit"
-                        className="btn-floating waves-effect waves-light red margin-right"
-                      >
-                        <i className="material-icons">delete</i>
-                      </button>
-                    </form>
-                  </div>
-                </div>
-              </div>
-
-            </div>
-          </div>
+          <CalendarEventView title={this.state.eventView.title} start={this.state.eventView.start} end={this.state.eventView.end.toString()} phone={this.state.eventView.phone} id={this.state.eventView.id} desc={this.state.eventView.desc}
+          setState={() => this.setState({ eventView: { style: { height: "0" } } })} />
         );
       default:
         return;

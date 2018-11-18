@@ -6,6 +6,9 @@ import '../../styles.css';
 
 
 class CalendarEventView extends Component {
+  constructor(props) {
+    super(props)
+  }
 
   render() {
     return (
@@ -41,9 +44,7 @@ class CalendarEventView extends Component {
                 </a>
                 <button
                   className="waves-effect waves-light btn red darken-2"
-                  onClick={() =>
-                    this.setState({ eventView: { style: { height: "0" } } })
-                  }
+                  onClick={this.props.setState}
                 >
                   Close
                 </button>
@@ -64,7 +65,6 @@ class CalendarEventView extends Component {
               </div>
             </div>
           </div>
-
         </div>
       </div>
     );
