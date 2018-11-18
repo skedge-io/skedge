@@ -117,11 +117,35 @@ h5 {
   }
 }
 
-.eventView {
-  height: 0vh;
-  width: 100%;
-  transition: all 400ms;
+@keyframes eventEnter {
+  from {
+    opacity: 0;
+    transform: translateX(-5px);
+  }
+  to {
+    opacity: 100%;
+    transform: translateX(0px);
+  }
 }
+
+.eventEnter {
+  animation-name: eventEnter;
+  animation-fill-mode: both;
+  animation-duration: 250ms;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: 1;
+}
+
+.eventView {
+  position: absolute;
+  top: 10vh;
+  left: 10vh;
+  height: auto;
+  z-index: 50;
+  width: auto;
+  transition: all 0ms;;
+}
+
 
 .rbc-calendar {
   margin-bottom: 10px;

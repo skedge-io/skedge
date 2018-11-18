@@ -126,7 +126,7 @@ class DashCalendar extends Component {
         start: moment(event.start).format("D MMMM, YYYY hh:mm A"),
         end: moment(event.end).format("D MMMM, YYYY hh:mm A"),
         phone: event.phone,
-        style: { height: "100vh" }
+        style: {}
       }
     });
   }
@@ -206,6 +206,15 @@ class DashCalendar extends Component {
                     >
                       <i className="material-icons">edit</i>
                     </a>
+                    <button
+                      className="waves-effect waves-light btn red darken-2"
+                      onClick={() =>
+                        this.setState({ eventView: { style: { height: "0" } } })
+                      }
+                    >
+                      Close
+                    </button>
+
                     <form
                       method="POST"
                       action={
@@ -222,14 +231,7 @@ class DashCalendar extends Component {
                   </div>
                 </div>
               </div>
-              <button
-                className="waves-effect waves-light btn blue darken-2"
-                onClick={() =>
-                  this.setState({ eventView: { style: { height: "0" } } })
-                }
-              >
-                Back to Calendar
-              </button>
+
             </div>
           </div>
         );
@@ -241,7 +243,7 @@ class DashCalendar extends Component {
   render() {
     return (
       <div className="cal-out">
-        <div className="eventView" style={this.state.eventView.style}>
+        <div className={this.state.eventView.boolean ? 'eventView eventEnter' : ''} style={this.state.eventView.style}>
           {this.renderEventView()}
         </div>
         <p align="center" />
