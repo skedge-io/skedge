@@ -1,5 +1,6 @@
 // AccountSetUp shows AccountForm and AccountFormReview
 import React, { Component } from "react";
+import { Link } from 'react-router-dom';
 import { reduxForm } from "redux-form";
 import AccountForm from "./AccountForm";
 import AccountFormReview from "./AccountFormReview";
@@ -25,7 +26,10 @@ class AccountSetUp extends Component {
 
   render() {
     return (
-      <div className="container account-setup">{this.renderContent()}</div>
+      <div style={{height: '100vh'}} className="react-transition fade-in">
+        <Link style={{padding: '2rem'}} to="/dashboard">Back to dashboard</Link>
+        <div className="container account-setup">{this.renderContent()}</div>
+      </div>
     );
   }
 }

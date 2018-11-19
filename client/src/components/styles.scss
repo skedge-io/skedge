@@ -11,6 +11,73 @@ $collapsed-menu-icon: 2rem;
 
 $border-radius: 4px;
 
+.team-page {
+  position: absolute;
+  top: -10vh;
+  left: -50%;
+  height: 90vh;
+  width: 200%;
+  background: #025299;
+  border-radius: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.team-container {
+  margin-top: 7rem;
+  width: 40%;
+  text-align: center;
+  color: white;
+}
+
+.low-weight {
+  font-weight: 200;
+}
+
+.team-card-container {
+  position: absolute;
+  top: 65vh;
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+}
+
+.team-card {
+  width: 13rem;
+  height: 13rem;
+  background: white;
+  box-shadow: 0px 0px 10px 1px rgba(2, 82, 153, 0.7);
+  border-bottom-left-radius: 50%;
+  border-bottom-right-radius: 50%;
+  border-top-left-radius: 50%;
+  border-top-right-radius: 50%;
+  transition: all 250ms;
+  background-size: contain;
+  background-position: center;
+  border: solid 3px white;
+  cursor: pointer;
+}
+
+#team-one {
+  background: url('https://media.licdn.com/dms/image/C5603AQFKrwCXTjGMXA/profile-displayphoto-shrink_200_200/0?e=1548288000&v=beta&t=bDRlCzHK1d04j2O_7cXzHqtoLd2acBqvOg1dEilA6Z8');
+}
+
+#team-two {
+  background: url('https://media.licdn.com/dms/image/C5603AQHN5mDseuTjmQ/profile-displayphoto-shrink_800_800/0?e=1548288000&v=beta&t=IagHUj2YfklYFOR9Nf2NDF39aj3-MfqRRUP9yEhgjc8');
+  background-size: contain;
+  background-position: center;
+}
+
+#team-three {
+  background: url('https://media.licdn.com/dms/image/C4E03AQHAMPw7P3N-UA/profile-displayphoto-shrink_800_800/0?e=1548288000&v=beta&t=RiutgIe-aQ4O4GI7_N-OKjxaHFw49JQMMU8AyxcaXEQ');
+  background-size: contain;
+  background-position: center;
+}
+
+.team-card:hover {
+  transform: translateY(-5px) scale(1.01);
+}
+
 h5 {
   font-weight: bold;
 }
@@ -139,7 +206,7 @@ h5 {
 .eventView {
   position: absolute;
   top: 10vh;
-  left: 10vh;
+  left: 12vh;
   height: auto;
   z-index: 50;
   width: auto;

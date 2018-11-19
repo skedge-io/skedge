@@ -3,9 +3,14 @@ import { BrowserRouter, Route } from "react-router-dom";
 import { connect } from "react-redux";
 import * as actions from "../actions";
 
+
+import './react-transitions.css';
+
 import "./styles.scss";
 
 import Landing from "./landing/Landing";
+import Team from "./landing/Team";
+
 import Dashboard from "./dashboard/Dashboard";
 import AppointmentNew from "./appointments/AppointmentNew";
 import AppointmentEdit from "./appointments/appointmentsEdit/AppointmentEdit";
@@ -25,8 +30,9 @@ class App extends Component {
   render() {
     return (
       <BrowserRouter>
-        <div className="bg">
+        <div className="bg transition-container">
           <Route exact path="/" component={Landing} />
+          <Route exact path="/team" component={Team} />
 
           <div className="container" />
           <Route exact path="/dashboard" component={Dashboard} />

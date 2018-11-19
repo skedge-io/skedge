@@ -35,15 +35,21 @@ class Header extends Component {
             >
               <ul className="navbar-nav ml-auto">
                 <li>
-                  <a className="nav-link active" href="#home">
+                  <Link className="nav-link active" to="/">
                     Home
-                  </a>
+                  </Link>
                 </li>
                 <li>
                   <a className="nav-link" href="#feature">
                     Features
                   </a>
                 </li>
+                <li>
+                  <Link className="nav-link" to="/team">
+                    Team
+                  </Link>
+                </li>
+
                 <li>
                   <a className="nav-link" href="#contact">
                     Contact Us

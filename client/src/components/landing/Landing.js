@@ -4,10 +4,12 @@ import { connect } from "react-redux";
 import Particles from "react-particles-js";
 import Footer from "./Footer";
 
+import { Link } from 'react-router-dom'
+
 class Landing extends Component {
   render() {
     return (
-      <div data-spy="scroll" data-target="#navbar" data-offset="98">
+      <div className="react-transition fade-in" data-spy="scroll" data-target="#navbar" data-offset="98">
         {/* Loading */}
         <div id="loading">
           <div className="load-circle">
@@ -141,16 +143,16 @@ class Landing extends Component {
             <div className="row p-100px-t justify-content-center">
               <div className="col-md-10 col-lg-8 text-center p-60px-tb sm-p-30px-tb">
                 <div className="home-text-center">
-                  <h1 className="font-alt">Simple, flexible, powerful</h1>
+                  <h1 className="font-alt">{this.props.auth ? 'Welcome Back!' : 'Simple, flexible, powerful'}</h1>
                   <p>
                     We invented Skedge because we believe in software that goes
                     the extra mile. Skedge helps you schedule appointments and
                     grow your business at the same time!
                   </p>
                   <div className="app-btn-set">
-                    <a href="./auth/google" className="m-btn m-btn-white">
+                    {this.props.auth ?<Link className="m-btn m-btn-white" to="/dashboard">Go to Dashboard</Link>  : <a href="./auth/google" className="m-btn m-btn-white">
                       Try for free
-                    </a>
+                    </a> }
                   </div>
                 </div>
                 {/* home-text-center */}
