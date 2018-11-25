@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Calendar from "react-big-calendar";
 import moment from "moment";
 import withDragAndDrop from "react-big-calendar/lib/addons/dragAndDrop";
+
 import { connect } from "react-redux";
 import { fetchAppointments } from "../../../actions";
 import axios from "axios";
@@ -55,6 +56,13 @@ class DashCalendar extends Component {
       });
       this.setState({ events: events });
     });
+
+
+
+
+
+
+
   }
 
   componentDidUpdate() {
@@ -74,6 +82,8 @@ class DashCalendar extends Component {
       });
       this.setState({ events: events });
     });
+
+
   }
 
   onEventResize = (type, { event, start, end, allDay }) => {
@@ -147,6 +157,11 @@ class DashCalendar extends Component {
       end: ""
     };
 
+    //don't create new events when exiting out of the event view
+    if (this.state.eventView.boolean) {
+      return
+    }
+
     axios.post("/api/appointment/new", newEvent).then(res => {
       axios.get("/api/appointments").then(res => {
         console.log(res.data);
@@ -177,7 +192,7 @@ class DashCalendar extends Component {
       case true:
         return (
           <CalendarEventView title={this.state.eventView.title} start={this.state.eventView.start} end={this.state.eventView.end.toString()} phone={this.state.eventView.phone} id={this.state.eventView.id} desc={this.state.eventView.desc}
-          setState={() => this.setState({ eventView: { style: { height: "0" } } })} />
+          setState={() => this.setState({ eventView: { boolean: false } })} />
         );
       default:
         return;
@@ -187,7 +202,7 @@ class DashCalendar extends Component {
   render() {
     return (
       <div className="cal-out">
-        <div className={this.state.eventView.boolean ? 'eventView eventEnter' : ''} style={this.state.eventView.style}>
+        <div id="calendarInfo" className={this.state.eventView.boolean ? 'eventView eventEnter' : ''} style={this.state.eventView.style}>
           {this.renderEventView()}
         </div>
         <p align="center" />
