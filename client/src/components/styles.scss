@@ -213,8 +213,13 @@ h5 {
   transition: all 0ms;;
 }
 
-.card-content {
+.card .card-content {
+  background: #d8e5e830;
   width: 30rem;
+}
+
+.card .card-action:last-child {
+  background: #959dcc36;
 }
 
 .card-input-imp {
