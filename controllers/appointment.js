@@ -118,6 +118,7 @@ module.exports = (app, Appointment) => {
 
   app.post('/api/appointment/edit/:id', reqLogin, (req, res) => {
     Appointment.findById(req.params.id).then((appointment) => {
+      console.log(req.body);
       appointment.employee = req.body.employee ? req.body.employee : appointment.employee;
       appointment.employee_id = req.user._id;
       appointment.title = req.body.title ? req.body.title : req.body.clientName + " : " + req.body.employee;
@@ -149,11 +150,8 @@ module.exports = (app, Appointment) => {
               if(business.clients.indexOf(client._id) == -1){
                 business.clients.push(client._id);
                 business.save().then((business) => {
-                  console.log("Saved");
-                  res.redirect('/dashboard');
                 });
               }else{
-                res.redirect('/dashboard');
               }
             })
           })

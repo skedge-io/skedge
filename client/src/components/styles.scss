@@ -360,6 +360,11 @@ h5 {
   display: none;
 }
 
+.edit-form input {
+  height: 30px;
+}
+
+
 @media (max-width: 900px) and (min-width: 300px) {
   .brand-logo {
     margin-left: 5rem;

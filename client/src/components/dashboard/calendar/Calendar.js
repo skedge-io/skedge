@@ -14,6 +14,8 @@ import CalendarEventView from "./CalendarEventView";
 import Toolbar from "react-big-calendar/lib/Toolbar";
 
 import { Button, IconName, Popover, Switch } from "@blueprintjs/core";
+import { Input } from 'react-materialize'
+
 
 import "react-big-calendar/lib/addons/dragAndDrop/styles.css";
 import "react-big-calendar/lib/css/react-big-calendar.css";
@@ -36,6 +38,8 @@ class DashCalendar extends Component {
       desc: "",
       start: "",
       end: "",
+      startTime: "",
+      endTime: "",
       style: {}
     }
   };
@@ -47,6 +51,7 @@ class DashCalendar extends Component {
         events.push({
           title: appointment.title,
           desc: appointment.desc,
+          date: appointment.date,
           start: new Date(appointment.start),
           end: new Date(appointment.end),
           id: appointment._id,
@@ -73,11 +78,15 @@ class DashCalendar extends Component {
           title: appointment.title,
           desc: appointment.desc,
           start: new Date(appointment.start),
+          date: appointment.date,
           clientName: appointment.clientName,
           end: new Date(appointment.end),
           id: appointment._id,
           phone: appointment.phone,
-          desc: appointment.desc
+          desc: appointment.desc,
+          startTime: appointment.startTime,
+          endTime: appointment.endTime,
+          employee: appointment.employee
         });
       });
       this.setState({ events: events });
@@ -132,10 +141,15 @@ class DashCalendar extends Component {
         boolean: true,
         id: event.id,
         title: event.title,
+        clientName: event.clientName,
+        employee: event.employee,
         desc: event.desc,
+        date: event.date,
         start: moment(event.start).format("D MMMM, YYYY hh:mm A"),
         end: moment(event.end).format("D MMMM, YYYY hh:mm A"),
         phone: event.phone,
+        startTime: event.startTime,
+        endTime: event.endTime,
         style: {}
       }
     });
@@ -191,8 +205,20 @@ class DashCalendar extends Component {
         return;
       case true:
         return (
-          <CalendarEventView title={this.state.eventView.title} start={this.state.eventView.start} end={this.state.eventView.end.toString()} phone={this.state.eventView.phone} id={this.state.eventView.id} desc={this.state.eventView.desc}
-          setState={() => this.setState({ eventView: { boolean: false } })} />
+          <CalendarEventView
+           date={this.state.eventView.date}
+           title={this.state.eventView.title}
+           startTime={this.state.eventView.startTime}
+           endTime={this.state.eventView.endTime}
+           clientName={this.state.eventView.clientName}
+           employee={this.state.eventView.employee}
+           start={this.state.eventView.start}
+           end={this.state.eventView.end.toString()}
+           phone={this.state.eventView.phone}
+           id={this.state.eventView.id}
+           desc={this.state.eventView.desc}
+           setStateFunc={() => this.setState({ eventView: { boolean: false } })}
+           />
         );
       default:
         return;
