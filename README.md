@@ -24,7 +24,7 @@ Run Test
 $ npm t
 ```
 
-Serve up docs
+Serve up development server
 
 ```
 $ npm run dev
