@@ -170,7 +170,7 @@ module.exports = (app, Appointment) => {
         //Remove from Google Calendar
         gCalendar.deleteEvent(req.user, appointment.gCalendarId);
       })
-      res.redirect('/dashboard');
+      // request done 
     })
   })
 

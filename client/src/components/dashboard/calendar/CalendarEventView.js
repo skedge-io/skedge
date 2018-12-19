@@ -33,7 +33,9 @@ class CalendarEventView extends Component {
     this.handleEnd = this.handleEnd.bind(this);
     this.handlePhone = this.handlePhone.bind(this);
     this.handleDesc = this.handleDesc.bind(this);
+
     this.updateAppointment = this.updateAppointment.bind(this);
+    this.deleteAppointment = this.deleteAppointment.bind(this);
   }
 
 
@@ -109,6 +111,17 @@ class CalendarEventView extends Component {
 
   }
 
+  deleteAppointment = () => {
+    let appointment = this.state;
+
+    axios.post('/api/appointment/delete/' + this.props.id).then(res => {
+      console.log('deleted');
+    })
+
+    this.props.setStateFunc()
+
+  }
+
 
   render() {
     return (
@@ -148,19 +161,12 @@ class CalendarEventView extends Component {
                   {this.renderButton()}
 
 
-                  <form
-                    method="POST"
-                    action={
-                      "/api/appointment/delete/" + this.props.id
-                    }
-                  >
                     <button
-                      type="submit"
                       className="btn-floating waves-effect waves-light red margin-right"
+                      onClick={this.deleteAppointment}
                     >
                       <i className="material-icons">delete</i>
                     </button>
-                  </form>
                 </div>
               </div>
             </div>
