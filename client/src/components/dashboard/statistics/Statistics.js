@@ -4,6 +4,7 @@ import TopBar from "../TopBar";
 import LeftPanel from "../LeftPanel";
 
 import SkedgeStats from "./SkedgeStats";
+import SkedgeGraphs from './SkedgeGraphs';
 
 import "./styles.scss";
 
@@ -15,8 +16,10 @@ class Statistics extends Component {
 
         <div className="dash-con">
           <TopBar header="Statistics" btn="" />
-
-          <SkedgeStats />
+          <div className="statistics-flex">
+            <SkedgeStats />
+            <SkedgeGraphs />
+          </div>
         </div>
       </div>
     );
