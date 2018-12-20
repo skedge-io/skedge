@@ -16,7 +16,7 @@
 .contact-details-page {
   height: 100%;
   width: 50rem;
-  padding-left: 1rem;
+  padding: 3rem;
 }
 
 .contact {
@@ -42,12 +42,17 @@
   position: relative;
 }
 
+.contact-details input {
+  background: white;
+  padding-left: 1rem;
+}
+
 .delete-contact {
   background: none;
   padding-left: 1rem;
   padding-right: 1rem;
   border: solid 1px #c0392b;
-  border-radius: 3px;
+  border-radius: 50%;
   margin: 0;
   color: #c0392b;
   transition: all 250ms;
@@ -60,9 +65,10 @@
 }
 
 .del-contact {
-  position: absolute;
-  top: -.3rem;
-  right: 1rem;
+}
+
+.contact-inputs {
+  margin-bottom: 2rem;
 }
 
 .search-box {
@@ -99,4 +105,30 @@
   margin-top: 5px;
   align-self: center;
   margin-right: .5rem;
+}
+
+@keyframes updated {
+  from {
+    transform: rotate(360deg) scale(.7);
+  }
+
+  5% {
+    transform: rotate(0deg) scale(1);
+  }
+
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+.updated-contact {
+  /*animation-name: updated;
+  animation-duration: 5s;
+  animation-timing-function: linear;
+  animation-fill-mode: both;*/
+  position: absolute;
+  bottom: -8rem;
+  color: #27ae60;
+  font-weight: 600;
 }
