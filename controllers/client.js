@@ -5,6 +5,20 @@ const reqLogin = require('../middlewares/requireLogin.js');
 
 module.exports = (app) => {
 
+  app.post('/api/clients/new', reqLogin, (req, res) => {
+    Business.findById(req.user.business).then((business) => {
+      let newClient = new Client();
+      newClient.name = req.body.name;
+      newClient.phone = req.body.phone;
+      newClient.business = business._id;
+      newClient.notes = req.body.notes;
+      newClient.save().then((client) => {
+        business.clients.push(client._id);
+        business.save();
+      })
+    })
+  })
+
   //grab one client - Done by Joe, refactor if needed 9/26/18
   app.get('/api/clients/:clientId', reqLogin, (req, res) => {
     Business.findById(req.user.business).then((business) => {
