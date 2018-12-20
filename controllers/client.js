@@ -21,7 +21,7 @@ module.exports = (app) => {
         client.phone = req.body.phone;
         client.notes = req.body.notes;
         client.save().then((client) => {
-          res.redirect('/dashboard/contacts');
+          //request done
         });
       });
     })
