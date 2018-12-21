@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import Contact from './Contact';
+import AddContactForm from './AddContactForm';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import ReactTooltip from "react-tooltip";
 
 
 class ContactList extends Component {
@@ -10,12 +12,13 @@ class ContactList extends Component {
     this.state = {
       showContact: false,
       contacts: [],
-        contactName: '',
-        contactPhone: '',
-        contactNextAppointment: '',
-        contactPreviousAppointments: '',
-        contactNotes: '',
-      showUpdate: false
+      contactName: '',
+      contactPhone: '',
+      contactNextAppointment: '',
+      contactPreviousAppointments: '',
+      contactNotes: '',
+      showUpdate: false,
+      showForm: false
     };
 
     this.showContactDetails  = this.showContactDetails.bind(this);
@@ -172,6 +175,7 @@ class ContactList extends Component {
         return (
           <div className="contact-details">
             <div className="contact-inputs">
+              <h3 className="contact-edit-title">Contact Info</h3>
               <label>Name</label>
               <input value={this.state.contactName} onChange={this.handleContactName} />
               <label>Number</label>
@@ -247,6 +251,22 @@ class ContactList extends Component {
         <div className="contact-details-page">
           { this.state.showContact ? this.renderContactDetails() : null }
         </div>
+
+        <div className="fixed-action-btn">
+          <button onClick={() => this.setState({showForm: true})} className="btn-floating btn-large blue hoverable waves-effect waves-light" data-tip="React-tooltip">
+            <i className="material-icons">add</i>
+          </button>
+          <ReactTooltip place="left" type="dark" effect="solid">Create New Contact</ReactTooltip>
+        </div>
+
+
+        {this.state.showForm ? <div className="add-contact-form"><AddContactForm cancel={() => this.setState({showForm: false})} update={() => { this.refreshContacts(); this.forceUpdate(); this.refreshContacts() }} /></div> : null}
+
+
+
+
+
+
 
 
       </div>

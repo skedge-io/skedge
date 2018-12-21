@@ -17,6 +17,7 @@
   height: 100%;
   width: 50rem;
   padding: 3rem;
+  padding-top: 1rem;
 }
 
 .contact {
@@ -131,4 +132,47 @@
   bottom: -8rem;
   color: #27ae60;
   font-weight: 600;
+}
+
+.contact-edit-title {
+  margin: 0;
+  padding: 0;
+  font-size: 1.2rem;
+}
+
+.add-contact-button {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  height: 4rem;
+  width: 4rem;
+  background: #3498db;
+  color: white;
+  border: none;
+  border-radius: 50%;
+}
+
+@keyframes enterContactForm {
+  from {
+    transform: translateX(10px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateX(0px);
+    opacity: 1;
+  }
+}
+
+.eventContactViewer {
+  animation-name: enterContactForm;
+  animation-duration: 150ms;
+  animation-fill-mode: both;
+  animation-timing-function: ease-in;
+  position: absolute;
+  right: 0;
+}
+
+.white-bkg {
+  background: white !important;
 }
