@@ -30,6 +30,12 @@ let defaultDate = new Date();
 defaultDate.setHours(9, 0, 0, 0);
 
 class DashCalendar extends Component {
+  constructor(props) {
+    super(props)
+
+    this.newAppointmentForm = this.newAppointmentForm.bind(this);
+  }
+
   state = {
     events: [],
     eventView: {
@@ -41,7 +47,8 @@ class DashCalendar extends Component {
       startTime: "",
       endTime: "",
       style: {}
-    }
+    },
+    lastEvent: {}
   };
 
   componentDidMount() {
@@ -171,6 +178,8 @@ class DashCalendar extends Component {
       end: ""
     };
 
+
+
     //don't create new events when exiting out of the event view
     if (this.state.eventView.boolean) {
       return
@@ -193,9 +202,48 @@ class DashCalendar extends Component {
           // window.location = "/appointments/edit/" + appointment._id;
         });
         this.setState({ events: events });
+
       });
-    });
+
+        //      this.newAppointmentForm()
+
+    })
+
+    this.newAppointmentForm()
+
+
   };
+
+  newAppointmentForm() {
+
+    console.log('new apt form')
+
+    axios.get("/api/appointments").then(res => {
+      let events = [];
+      res.data.forEach(appointment => {
+        events.push({
+          title: appointment.title,
+          clientName: appointment.clientName,
+          desc: appointment.desc,
+          start: new Date(appointment.start),
+          end: new Date(appointment.end),
+          id: appointment._id,
+          phone: appointment.phone
+        });
+        // window.location = "/appointments/edit/" + appointment._id;
+      });
+      let lastEvent = res.data[res.data.length -1]
+      lastEvent.id = lastEvent._id
+      this.onEventClick(lastEvent)
+      console.log(res.data[res.data.length -1])
+      this.setState({ events: events });
+    })
+
+    console.log('hheeeerrrreeee')
+
+
+  }
+
 
   renderEventView() {
     switch (this.state.eventView.boolean) {
