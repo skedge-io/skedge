@@ -172,13 +172,13 @@ class Landing extends Component {
         </section>
 
         {/* Featre */}
-        <section id="about" class="section gray-bg border-bottom">
-          <div class="container">
-            <div class="row justify-content-center m-45px-b md-m-25px-b">
-              <div class="col-md-10 col-lg-8 col-xl-7">
-                <div class="section-title">
-                  <h2 class="theme-after-bg">
-                    Help your <span class="theme-color">business </span> grow
+        <section id="about" className="section gray-bg border-bottom">
+          <div className="container">
+            <div className="row justify-content-center m-45px-b md-m-25px-b">
+              <div className="col-md-10 col-lg-8 col-xl-7">
+                <div className="section-title">
+                  <h2 className="theme-after-bg">
+                    Help your <span className="theme-color">business </span> grow
                   </h2>
                   <p>
                     Gain repeatable business by increasing five star reviews.
@@ -186,23 +186,23 @@ class Landing extends Component {
                 </div>
               </div>
             </div>
-            <div class="row">
-              <div class="col-md-6 col-lg-3 m-15px-tb">
-                <div class="feature-box">
-                  <div class="icon">
-                    <i class="ti-package theme-color" />
+            <div className="row">
+              <div className="col-md-6 col-lg-3 m-15px-tb">
+                <div className="feature-box">
+                  <div className="icon">
+                    <i className="ti-package theme-color" />
                   </div>
-                  <h3 class="font-alt">Works anywhere</h3>
+                  <h3 className="font-alt">Works anywhere</h3>
                   <p>Phone or tablet, schedule appointments anywhere you go.</p>
                 </div>
               </div>
               {/* col */}
-              <div class="col-md-6 col-lg-3 m-15px-tb">
-                <div class="feature-box">
-                  <div class="icon">
-                    <i class="ti-blackboard theme-color" />
+              <div className="col-md-6 col-lg-3 m-15px-tb">
+                <div className="feature-box">
+                  <div className="icon">
+                    <i className="ti-blackboard theme-color" />
                   </div>
-                  <h3 class="font-alt">Fast and easy</h3>
+                  <h3 className="font-alt">Fast and easy</h3>
                   <p>
                     Skedge is almost twice as fast as it's competitors, and it's
                     so easy you don't even have to train your employees on how
@@ -211,22 +211,22 @@ class Landing extends Component {
                 </div>
               </div>
               {/* col */}
-              <div class="col-md-6 col-lg-3 m-15px-tb">
-                <div class="feature-box">
-                  <div class="icon">
-                    <i class="ti-crown theme-color" />
+              <div className="col-md-6 col-lg-3 m-15px-tb">
+                <div className="feature-box">
+                  <div className="icon">
+                    <i className="ti-crown theme-color" />
                   </div>
-                  <h3 class="font-alt">Free</h3>
+                  <h3 className="font-alt">Free</h3>
                   <p>Free updates, free business growth, free smiles</p>
                 </div>
               </div>
               {/* col */}
-              <div class="col-md-6 col-lg-3 m-15px-tb">
-                <div class="feature-box">
-                  <div class="icon">
-                    <i class="ti-heart theme-color" />
+              <div className="col-md-6 col-lg-3 m-15px-tb">
+                <div className="feature-box">
+                  <div className="icon">
+                    <i className="ti-heart theme-color" />
                   </div>
-                  <h3 class="font-alt">Continuous Supports</h3>
+                  <h3 className="font-alt">Continuous Supports</h3>
                   <p>
                     Have a question or looking for a new feature? Message us and
                     we'll get back with you as soon as possible!

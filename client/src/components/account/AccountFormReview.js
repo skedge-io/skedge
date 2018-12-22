@@ -27,7 +27,7 @@ const AccountFormReview = ({
     <div className="account-setup-col">
       <div className="row">
         <a href="/">
-          <img src="/signup-logo.png" />
+          <img src="/signup-logo.png" alt="skedge sign-up" />
         </a>
         <p align="center">Everything looks good? 👍‍</p>
       </div>

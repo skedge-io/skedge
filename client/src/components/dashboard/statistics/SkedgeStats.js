@@ -15,7 +15,6 @@ class SkedgeStats extends Component {
     axios.get("/api/appointments").then(res => {
       let events = [];
       res.data.forEach(appointment => {
-        console.log(appointment);
         events.push({
           title: appointment.title,
           desc: appointment.desc,
