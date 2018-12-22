@@ -1,6 +1,4 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import ReactTooltip from "react-tooltip";
 
 import TopBar from "../TopBar";
 import LeftPanel from "../LeftPanel";

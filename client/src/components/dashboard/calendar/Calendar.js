@@ -328,7 +328,7 @@ class CustomToolbar extends Toolbar {
             refresh
           </button>
           <button
-            class="material-icons"
+            className="material-icons"
             type="button"
             onClick={() => this.navigate("PREV")}
           >
@@ -341,7 +341,7 @@ class CustomToolbar extends Toolbar {
             </span>
           </button>
           <button
-            class="material-icons"
+            className="material-icons"
             type="button"
             onClick={() => this.navigate("NEXT")}
           >

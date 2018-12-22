@@ -7,7 +7,7 @@ import { fetchAppointments } from "../../../actions";
 
 import axios from 'axios';
 
-import ReactChartkick, { LineChart, PieChart } from 'react-chartkick'
+import ReactChartkick, { LineChart } from 'react-chartkick'
 import Chart from 'chart.js'
 
 ReactChartkick.addAdapter(Chart)
@@ -25,7 +25,6 @@ class SkedgeGraphs extends Component {
     axios.get("/api/appointments").then(res => {
       let events = [];
       res.data.forEach(appointment => {
-        console.log(appointment);
         events.push({
           title: appointment.title,
           desc: appointment.desc,
