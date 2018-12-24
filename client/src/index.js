@@ -8,10 +8,11 @@ import reduxThunk from 'redux-thunk';
 
 import App from './components/App';
 import reducers from './reducers';
+import * as serviceWorker from './registerServiceWorker';
+
 
 const store = createStore(reducers, {}, applyMiddleware(reduxThunk));
 
-import * as serviceWorker from './registerServiceWorker';
 
 
 ReactDOM.render(
