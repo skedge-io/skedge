@@ -50,8 +50,8 @@ class App extends Component {
   }
 }
 
-function mapStateToProps({ auth }) {
-  return { auth };
+function mapStateToProps({ auth, apps }) {
+  return { auth, apps };
 }
 
 export default connect(

@@ -5,8 +5,12 @@ import Particles from "react-particles-js";
 import Footer from "./Footer";
 
 import { Link } from 'react-router-dom'
+import { fetchAppointments } from '../../actions';
 
 class Landing extends Component {
+  componentDidMount() {
+    this.props.fetchAppointments()
+  }
   render() {
     return (
       <div className="react-transition fade-in" data-spy="scroll" data-target="#navbar" data-offset="98">
@@ -247,8 +251,10 @@ class Landing extends Component {
   }
 }
 
-function mapStateToProps({ auth }) {
-  return { auth };
+
+
+function mapStateToProps({ auth, apps }) {
+  return { auth, apps };
 }
 
-export default connect(mapStateToProps)(Landing);
+export default connect(mapStateToProps, { fetchAppointments })(Landing);

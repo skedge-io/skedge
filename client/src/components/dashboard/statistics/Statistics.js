@@ -6,9 +6,17 @@ import LeftPanel from "../LeftPanel";
 import SkedgeStats from "./SkedgeStats";
 import SkedgeGraphs from './SkedgeGraphs';
 
+import { connect } from "react-redux";
+import { fetchAppointments } from '../../../actions';
+
+
 import "./styles.scss";
 
 class Statistics extends Component {
+  componentDidMount() {
+    this.props.fetchAppointments()
+  }
+
   render() {
     return (
       <div className="row-this">
@@ -17,8 +25,8 @@ class Statistics extends Component {
         <div className="dash-con">
           <TopBar header="Statistics" btn="" />
           <div className="statistics-flex">
-            <SkedgeStats />
-            <SkedgeGraphs />
+            <SkedgeStats apps={this.props.apps}/>
+            <SkedgeGraphs apps={this.props.apps}/>
           </div>
         </div>
       </div>
@@ -26,4 +34,9 @@ class Statistics extends Component {
   }
 }
 
-export default Statistics;
+
+function mapStateToProps({ auth, apps }) {
+  return { auth, apps };
+}
+
+export default connect(mapStateToProps, { fetchAppointments })(Statistics);
