@@ -4,7 +4,7 @@ import moment from "moment";
 import withDragAndDrop from "react-big-calendar/lib/addons/dragAndDrop";
 
 import { connect } from "react-redux";
-import { fetchAppointments } from "../../../actions";
+import { fetchAppointments, changeDefaultView } from "../../../actions";
 import axios from "axios";
 import events from "./events";
 
@@ -29,11 +29,15 @@ const DnDCalendar = withDragAndDrop(Calendar);
 let defaultDate = new Date();
 defaultDate.setHours(9, 0, 0, 0);
 
+const allViews = Object.keys(Calendar.Views).map(k => Calendar.Views[k])
+
+
 class DashCalendar extends Component {
   constructor(props) {
     super(props)
 
     this.newAppointmentForm = this.newAppointmentForm.bind(this);
+    this.changeDefaultView = this.changeDefaultView.bind(this);
   }
 
   state = {
@@ -48,7 +52,8 @@ class DashCalendar extends Component {
       endTime: "",
       style: {}
     },
-    lastEvent: {}
+    lastEvent: {},
+    defaultView: "week"
   };
 
   componentDidMount() {
@@ -100,6 +105,12 @@ class DashCalendar extends Component {
     });
 
 
+  }
+
+
+
+  changeDefaultView(action) {
+    this.setState({defaultView: action})
   }
 
   onEventResize = (type, { event, start, end, allDay }) => {
@@ -285,14 +296,15 @@ class DashCalendar extends Component {
           selectable
           defaultDate={defaultDate}
           scrollToTime={defaultDate}
-          defaultView="week"
-          views={"month" | "week"}
+          defaultView={this.state.defaultView}
+          views={allViews}
+          longPressThreshold={250}
           events={this.state.events}
           onEventDrop={this.onEventDrop}
           onSelectEvent={event => this.onEventClick(event)}
           onSelectSlot={this.onSelectSlot}
           popup
-          timeslots={4}
+          timeslots={2}
           components={{
             event: Event,
             toolbar: CustomToolbar,
@@ -308,7 +320,13 @@ class DashCalendar extends Component {
 }
 
 class CustomToolbar extends Toolbar {
+  componentDidMount() {
+		const view = this.props.view;
+		console.log('view: ', view)
+	}
+
   render() {
+
     return (
       <div className="rbc-toolbar calendar-toolbar">
         <span className="rbc-btn-group">
@@ -352,14 +370,14 @@ class CustomToolbar extends Toolbar {
           <button
             className="calendar-text-btn calendar-view-btn left"
             type="button"
-            onClick={this.view.bind(null, "month")}
+            onClick={() => {this.view.bind(null, "month")}}
           >
             Month
           </button>
           <button
             className="calendar-text-btn calendar-view-btn right"
             type="button"
-            onClick={this.view.bind(null, "week")}
+            onClick={() => this.view.bind(null, "week")}
           >
             Week
           </button>
@@ -399,5 +417,5 @@ function mapStateToProps({ appointments }) {
 
 export default connect(
   mapStateToProps,
-  { fetchAppointments }
+  { fetchAppointments, changeDefaultView }
 )(DashCalendar);

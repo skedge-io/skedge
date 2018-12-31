@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { FETCH_USER, FETCH_APPOINTMENTS } from './types';
+import { FETCH_USER, FETCH_APPOINTMENTS, CHANGE_DEFAULT_VIEW } from './types';
 import { push } from 'react-router-redux'
 
 
@@ -44,4 +44,11 @@ export const fetchAppointments = () => async dispatch => {
   const res = await axios.get('/api/appointments/');
 
   dispatch({ type: FETCH_APPOINTMENTS, payload: res.data })
+}
+
+export const changeDefaultView = (view) => {
+  return {
+    type: CHANGE_DEFAULT_VIEW,
+    payload: view
+  }
 }
