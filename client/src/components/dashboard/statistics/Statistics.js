@@ -25,7 +25,7 @@ class Statistics extends Component {
         <div className="dash-con">
           <TopBar header="Statistics" btn="" />
           <div className="statistics-flex">
-            <SkedgeStats />
+            <SkedgeStats apps={this.props.apps}/>
             <SkedgeGraphs apps={this.props.apps}/>
           </div>
         </div>
