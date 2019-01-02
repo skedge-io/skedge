@@ -46,4 +46,17 @@ module.exports = (app, Business) => {
       });
     })
   })
+
+  app.post('/api/business/:id/join', reqLogin, (req, res) => {
+    Business.findById(req.params.id).then((business) => {
+      User.findById(req.user.id).then((user) => {
+        user.business = business._id;
+        business.employees.push(user._id);
+        user.save();
+        business.save();
+      })
+    })
+  })
+
+
 }
