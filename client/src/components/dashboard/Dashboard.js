@@ -51,7 +51,8 @@ class Dashboard extends Component {
             Create new appointment
           </ReactTooltip>
         </div>
-      </div>*/}
+        */}
+      </div>
     );
   }
 

@@ -6,7 +6,7 @@ const reqLogin = require('../middlewares/requireLogin.js');
 // const googleCalendarKey = require('../config/keys.js').googleCalendarKey;
 const configKeys = require('../config/keys.js');
 // const twilio = require('twilio')(twilioAcc, twilioAuth);
-// const moment = require('moment');
+const moment = require('moment');
 
 
 const {google} = require('googleapis');
@@ -170,7 +170,7 @@ module.exports = (app, Appointment) => {
         //Remove from Google Calendar
         gCalendar.deleteEvent(req.user, appointment.gCalendarId);
       })
-      // request done 
+      // request done
     })
   })
 
@@ -179,6 +179,23 @@ module.exports = (app, Appointment) => {
     .then((appointments) => {
       res.send(appointments);
     })
+  });
+
+  app.get('/api/appointments/monthly_data', reqLogin, (req, res) => {
+    Appointment.find({business : req.user.business}).then((appointments) => {
+      let monthData = {};
+      appointments.forEach((appointment) => {
+        let thisMonth = moment(appointment.date).format("YYYY-MM");
+        if(!monthData[thisMonth]){
+          monthData[thisMonth] = 1;
+        }else{
+          monthData[thisMonth] += 1;
+        }
+      });
+      res.send(monthData);
+    })
   })
+
+
 
 }
