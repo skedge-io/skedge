@@ -37,7 +37,9 @@ class Dashboard extends Component {
           </div>
         </div>
 
-        <div className="fixed-action-btn">
+        {/* action button disabled for now
+
+          <div className="fixed-action-btn">
           <Link
             to="/appointments/new"
             data-tip="React-tooltip"
@@ -49,6 +51,7 @@ class Dashboard extends Component {
             Create new appointment
           </ReactTooltip>
         </div>
+        */}
       </div>
     );
   }
