@@ -38,6 +38,7 @@ class DashCalendar extends Component {
 
     this.newAppointmentForm = this.newAppointmentForm.bind(this);
     this.changeDefaultView = this.changeDefaultView.bind(this);
+    this.updateAppointments = this.updateAppointments.bind(this);
   }
 
   state = {
@@ -76,13 +77,14 @@ class DashCalendar extends Component {
 
 
 
+    this.updateAppointments()
 
 
 
 
   }
 
-  componentDidUpdate() {
+  updateAppointments() {
     axios.get("/api/appointments").then(res => {
       let events = [];
       res.data.forEach(appointment => {
@@ -141,7 +143,10 @@ class DashCalendar extends Component {
     let theAptId = updatedEvent.id;
     axios
       .post(`/api/appointment/edit/${theAptId}`, updatedEvent)
-      .then(res => {});
+      .then(res => {
+            this.updateAppointments()
+          });
+
   };
 
   onSlotChange(slotInfo) {
@@ -154,6 +159,8 @@ class DashCalendar extends Component {
   }
 
   onEventClick(event) {
+    this.updateAppointments()
+
     this.setState({
       eventView: {
         boolean: true,
@@ -171,6 +178,7 @@ class DashCalendar extends Component {
         style: {}
       }
     });
+
   }
 
   onSelectSlot = event => {
@@ -213,6 +221,7 @@ class DashCalendar extends Component {
           // window.location = "/appointments/edit/" + appointment._id;
         });
         this.setState({ events: events });
+        this.updateAppointments()
 
       });
 
@@ -248,6 +257,7 @@ class DashCalendar extends Component {
       this.onEventClick(lastEvent)
       console.log(res.data[res.data.length -1])
       this.setState({ events: events });
+      this.updateAppointments()
     })
 
     console.log('hheeeerrrreeee')
@@ -276,6 +286,7 @@ class DashCalendar extends Component {
            phone={this.state.eventView.phone}
            id={this.state.eventView.id}
            desc={this.state.eventView.desc}
+           updateApps={() => this.updateAppointments()}
            setStateFunc={() => this.setState({ eventView: { boolean: false } })}
            />
         );
