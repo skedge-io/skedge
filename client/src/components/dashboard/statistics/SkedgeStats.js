@@ -12,7 +12,7 @@ class SkedgeStats extends Component {
         <div className="stats-box">
           <div className="title-stats">Total Appointments</div>
           <div className="stat-counter">{this.props.apps.length}</div>
-          <div className="bottom-stats">This month</div>
+          <div className="bottom-stats">All Time</div>
         </div>
 
         <div className="stats-box">
