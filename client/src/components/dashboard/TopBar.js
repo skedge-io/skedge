@@ -35,7 +35,7 @@ class TopBar extends Component {
             interactionKind={PopoverInteractionKind.HOVER}
             content={
               <Menu>
-                <MenuItem icon="cog" text="My Settings" />
+                <Link className="top-bar-link" to="/settings"><MenuItem icon="cog" text="My Settings" /></Link>
                 <Link className="top-bar-link" to="/account/setup"><MenuItem icon="settings" text="Account Setup" /></Link>
                 <MenuItem href="/api/logout" icon="log-out" text="Logout" />
               </Menu>
