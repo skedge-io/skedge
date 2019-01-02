@@ -51,7 +51,6 @@ class App extends Component {
           <Route path="/contacts/edit/" component={ContactEdit} />
 
           <Route exact path="/settings" component={SettingsContainer} />
-          <Route component={NotFound} />
         </div>
       </BrowserRouter>
     );
