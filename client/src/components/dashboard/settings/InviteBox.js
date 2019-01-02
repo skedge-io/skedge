@@ -18,11 +18,11 @@ class InviteBox extends Component {
         {this.props.business.business._id ?
         <div>
           { () => {this.setState({value: this.props.business.business._id })}}
-          <input className="copy-input-imp" value={this.state.value} />
+          <input readOnly className="copy-input-imp" value={this.state.value} />
           <CopyToClipboard
            text={this.state.value}
             onCopy={() => this.setState({copied: true})}>
-            {this.state.copied ? <button class="copy-button-imp">Copied</button> : <button class="copy-button-imp">Copy</button>}
+            {this.state.copied ? <button className="copy-button-imp">Copied</button> : <button className="copy-button-imp">Copy</button>}
           </CopyToClipboard>
         </div>
           :

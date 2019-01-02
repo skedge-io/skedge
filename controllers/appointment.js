@@ -175,7 +175,7 @@ module.exports = (app, Appointment) => {
   })
 
   app.get('/api/appointments', reqLogin, (req, res) => {
-    Appointment.find({employee_id : req.user._id})
+    Appointment.find({business : req.user.business})
     .then((appointments) => {
       res.send(appointments);
     })

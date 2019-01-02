@@ -149,9 +149,7 @@ class Landing extends Component {
                 <div className="home-text-center">
                   <h1 className="font-alt">{this.props.auth ? 'Welcome Back!' : 'Simple, flexible, powerful'}</h1>
                   <p>
-                    We invented Skedge because we believe in software that goes
-                    the extra mile. Skedge helps you schedule appointments and
-                    grow your business at the same time!
+                    Skedge helps you schedule appointments, increase your five star reviews, send reminders and promotions, eliminate no shows, and gain repeat business, all at the same time.
                   </p>
                   <div className="app-btn-set">
                     {this.props.auth ?<Link className="m-btn m-btn-white" to="/dashboard">Go to Dashboard</Link>  : <a href="./auth/google" className="m-btn m-btn-white">

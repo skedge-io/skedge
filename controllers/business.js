@@ -1,5 +1,6 @@
 const Appointment = require('../models/Appointment');
 const Client = require('../models/Client');
+const User = require('../models/User');
 const campaigns = require('../services/campaigns.js');
 const reqLogin = require('../middlewares/requireLogin.js');
 
@@ -49,11 +50,13 @@ module.exports = (app, Business) => {
 
   app.post('/api/business/:id/join', reqLogin, (req, res) => {
     Business.findById(req.params.id).then((business) => {
+      console.log(business)
       User.findById(req.user.id).then((user) => {
         user.business = business._id;
         business.employees.push(user._id);
         user.save();
         business.save();
+        res.send('');
       })
     })
   })
