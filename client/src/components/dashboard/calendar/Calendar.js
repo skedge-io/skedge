@@ -84,7 +84,8 @@ class DashCalendar extends Component {
 
   }
 
-  updateAppointments() {
+  updateAppointments(callback = function() {}) {
+
     axios.get("/api/appointments").then(res => {
       let events = [];
       res.data.forEach(appointment => {
@@ -104,6 +105,8 @@ class DashCalendar extends Component {
         });
       });
       this.setState({ events: events });
+      callback = callback.bind(this);
+      callback()
     });
 
 
@@ -159,9 +162,8 @@ class DashCalendar extends Component {
   }
 
   onEventClick(event) {
-    this.updateAppointments()
-
-    this.setState({
+    this.updateAppointments(function() {
+      this.setState({
       eventView: {
         boolean: true,
         id: event.id,
@@ -176,10 +178,12 @@ class DashCalendar extends Component {
         startTime: event.startTime,
         endTime: event.endTime,
         style: {}
-      }
-    });
-
+      }}
+    )
   }
+)}
+
+
 
   onSelectSlot = event => {
     console.log(event);
