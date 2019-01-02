@@ -5,6 +5,7 @@
   "dependencies": {
     "@blueprintjs/core": "^3.7.0",
     "ajv": "^6.5.4",
+    "ajv-errors": "^1.0.1",
     "axios": "^0.18.0",
     "chart.js": "^2.7.3",
     "d3": "^5.7.0",
