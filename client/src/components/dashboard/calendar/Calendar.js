@@ -327,7 +327,7 @@ class DashCalendar extends Component {
               event: EventAgenda
             }
           }}
-          style={{ height: "95%" }}
+          style={{ height: "99%" }}
         />
       </div>
     );
@@ -346,15 +346,15 @@ class CustomToolbar extends Toolbar {
       <div className="rbc-toolbar calendar-toolbar">
         <span className="rbc-btn-group">
           <Button
-            className="no-shadow"
+            className="no-shadow hide-on-mobile"
             text="Default"
             large="true"
             rightIcon="caret-down"
           />
         </span>
-        <span className="rbc-btn-group middle">
+        <span className="rbc-btn-group middle mobile-top-cal-btns">
           <button
-            className="material-icons"
+            className="material-icons mobile-cal-refresh"
             type="button"
             onClick={() => this.navigate("TODAY")}
           >
