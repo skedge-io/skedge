@@ -24,6 +24,7 @@ import ContactEdit from "./dashboard/contacts/ContactsEdit";
 
 import SettingsContainer from "./dashboard/settings/SettingsContainer";
 
+import NotFound from "./NotFound";
 
 class App extends Component {
   componentDidMount() {
@@ -50,6 +51,7 @@ class App extends Component {
           <Route path="/contacts/edit/" component={ContactEdit} />
 
           <Route exact path="/settings" component={SettingsContainer} />
+          <Route component={NotFound} />
         </div>
       </BrowserRouter>
     );
