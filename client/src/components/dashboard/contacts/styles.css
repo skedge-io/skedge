@@ -106,6 +106,8 @@
   margin-top: 5px;
   align-self: center;
   margin-right: .5rem;
+  position: absolute;
+  right: 0;
 }
 
 @keyframes updated {

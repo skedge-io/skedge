@@ -12,11 +12,57 @@ import {
 } from "@blueprintjs/core";
 
 class TopBar extends Component {
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      animate: false
+    };
+
+    this.handleClick = this.handleClick.bind(this);
+
+  }
+
+  handleClick(e) {
+    this.setState(prevState => {
+      return { animate: !prevState.animate };
+    });
+  }
+
+
   render() {
+
+    let animationClasses = this.state.animate ? "is-active" : "";
+
+
     return (
       <div className="top-bar">
+      <Popover className="hide-on-desktop"
+        interactionKind={PopoverInteractionKind.HOVER}
+        content={
+          <Menu>
+            <Link className="top-bar-link" to="/dashboard"><MenuItem icon="calendar" text="Calendar" /></Link>
+            <Link className="top-bar-link" to="/dashboard/employees"><MenuItem icon="person" text="Staff" /></Link>
+            <Link className="top-bar-link" to="/dashboard/statistics"><MenuItem icon="chart" text="Analytics" /></Link>
+            <Link className="top-bar-link" to="/dashboard/campaigns"><MenuItem icon="layers" text="Campaigns" /></Link>
+            <Link className="top-bar-link" to="/dashboard/contacts"><MenuItem icon="id-number" text="Contacts" /></Link>
+
+          </Menu>
+        }
+        position={Position.BOTTOM_LEFT}
+      >
+        <button
+          className={`hide-on-desktop hamburger hamburger--arrowturn`}
+          onClick={this.handleClick}
+        >
+        <span className="hamburger-box">
+          <span className="hamburger-inner" />
+        </span>
+      </button>
+    </Popover>
         {this.props.header}
         <div className="right">
+
           <Popover
             interactionKind={PopoverInteractionKind.HOVER}
             content={

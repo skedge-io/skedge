@@ -190,7 +190,7 @@ class ContactList extends Component {
             <button className="btn left green white-text" onClick={this.updateContact}>Update Contact</button>
 
             <button
-              className="btn-floating waves-effect waves-light red right margin-right"
+              className="delete-contact-btn btn-floating waves-effect waves-light red right margin-right"
               onClick={this.deleteContact}
             >
               <i className="material-icons">delete</i>
@@ -240,7 +240,7 @@ class ContactList extends Component {
         <div className="contact-list-container">
             <div className="search-box">
               <input onChange={this.searchChange} placeholder="search" className="search-bar"></input>
-              <div className="search-icon"><i className="material-icons">search</i></div>
+              <div className="hide-on-mobile search-icon"><i className="material-icons">search</i></div>
             </div>
           {this.state.contacts.map((data, index) => (
             <Contact key={data.number} clicky={(event) => {this.showContactDetails(event,data)}} name={data.name} number={data.number}  />
