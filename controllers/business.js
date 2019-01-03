@@ -57,7 +57,7 @@ module.exports = (app, Business) => {
             business.employees.push(user._id);
             user.save();
             business.save();
-            res.status(200);
+            res.send('');
           }
         })
       }

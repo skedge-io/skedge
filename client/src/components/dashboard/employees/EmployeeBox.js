@@ -4,6 +4,18 @@ import EmployeeListItem from "./EmployeeListItem";
 import "./styles.scss";
 
 class EmployeeBox extends Component {
+  constructor(props) {
+    super(props)
+
+    this.renderEmployees = this.renderEmployees.bind(this);
+  }
+
+  renderEmployees() {
+    this.props.employee.map((data, index) => (
+      <EmployeeListItem key={index} name={data.name} appointments="6" />
+    ))
+  }
+
   render() {
     return (
       <div className="outer-employee">
@@ -11,18 +23,14 @@ class EmployeeBox extends Component {
           <div className="employee-list">
             <div className="employee-list-item key">
               <div className="list-item-info name">NAME</div>
-              <div className="list-item-info">APTS</div>
-              <div className="list-item-info">CALENDAR</div>
-              <div className="list-item-info">INFO</div>
-              <div className="list-item-info">EDIT</div>
-              <div className="list-item-info delete">DELETE</div>
+              <div className="list-item-info">PHONE</div>
+              <div className="list-item-info">EMAIL</div>
             </div>
-
-            <EmployeeListItem name="Jessica Dobbie" appointments="6" />
-            <EmployeeListItem name="Rick Astley" appointments="2" />
-            <EmployeeListItem name="Samson Farris" appointments="9" />
-            <EmployeeListItem name="Jeff Harrison" appointments="3" />
-            <EmployeeListItem name="John H. Epson" appointments="6" />
+            {this.props.employee.map((data, index) => (
+              <EmployeeListItem key={index} name={data.name} phone={data.phone} email={data.email} />
+            ))}
+            {this.renderEmployees()}
+            {console.log(this.props.employee)}
           </div>
         </div>
       </div>
