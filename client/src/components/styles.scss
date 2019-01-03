@@ -583,13 +583,19 @@ h5 {
   }
 }
 
-
+.hide-on-desktop {
+  display: none;
+}
 
 
 @media (max-width: 900px) and (min-width: 300px) {
 
   .hide-on-mobile {
     display: none !important;
+  }
+
+  .hide-on-desktop {
+    display: block;
   }
 
   .brand-logo {
@@ -695,7 +701,6 @@ h5 {
 
   .top-bar {
     position: fixed;
-    z-index: 100;
   }
 
   .cal-container {
@@ -704,6 +709,14 @@ h5 {
     left: 0;
     height: 90%;
     width: 200%;
+  }
+
+  .outer-employee, .statistics-flex, .contacts-container {
+    position: absolute;
+    top: 70px;
+    left: 0;
+    height: 100%;
+    width: 100%;
   }
 
   .dash-con {
@@ -721,5 +734,39 @@ h5 {
   .card .card-content {
     width: 100%;
   }
+
+  .list-item-info {
+    width: auto !important;
+    font-size: 10px;
+  }
+
+  .statistics-flex {
+    flex-direction: column-reverse;
+  }
+
+  .stats-page {
+    overflow: visible;
+  }
+
+  .stats-box {
+    height: 12rem;
+  }
+
+  #chart-1 {
+    width: 100% !important;
+  }
+
+  .fixed-action-btn {
+    bottom: auto;
+    position: fixed;
+    top: 87vh;
+  }
+
+  .delete-contact-btn {
+    position: absolute;
+    right: -2rem;
+    top: -.7rem;
+    transform: scale(.8);
+    }
 
 }
