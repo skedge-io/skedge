@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { FETCH_USER, FETCH_APPOINTMENTS, CHANGE_DEFAULT_VIEW, FETCH_BUSINESS, FETCH_MONTHLY_DATA } from './types';
+import { FETCH_USER, FETCH_APPOINTMENTS, CHANGE_DEFAULT_VIEW, FETCH_BUSINESS, FETCH_MONTHLY_DATA, FETCH_EMPLOYEES } from './types';
 import { push } from 'react-router-redux'
 
 
@@ -63,4 +63,10 @@ export const fetchMonthlyData = () => async dispatch => {
   const res = await axios.get('/api/appointments/monthly_data');
 
   dispatch({ type: FETCH_MONTHLY_DATA, payload: res.data })
+}
+
+export const fetchEmployees = () => async dispatch => {
+  const res = await axios.get('/api/current_business/employees');
+
+  dispatch({ type: FETCH_EMPLOYEES, payload: res.data })
 }

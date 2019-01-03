@@ -5,9 +5,18 @@ import ReactTooltip from "react-tooltip";
 import TopBar from "../TopBar";
 import LeftPanel from "../LeftPanel";
 
+import { connect } from "react-redux";
+import { fetchEmployees } from '../../../actions';
+
+
 import EmployeeBox from "./EmployeeBox";
 
 class Employees extends Component {
+
+  componentDidMount() {
+    this.props.fetchEmployees()
+  }
+
   render() {
     return (
       <div className="row-this">
@@ -25,7 +34,7 @@ class Employees extends Component {
               </Link>
             }
           />
-          <EmployeeBox />
+          <EmployeeBox employee={this.props.employee}/>
         </div>
 
         <div className="fixed-action-btn">
@@ -45,4 +54,8 @@ class Employees extends Component {
   }
 }
 
-export default Employees;
+function mapStateToProps({ employee }) {
+  return { employee };
+}
+
+export default connect(mapStateToProps, { fetchEmployees })(Employees);
