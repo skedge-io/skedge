@@ -23,14 +23,11 @@ class EmployeeBox extends Component {
           <div className="employee-list">
             <div className="employee-list-item key">
               <div className="list-item-info name">NAME</div>
-              <div className="list-item-info">APTS</div>
-              <div className="list-item-info">CALENDAR</div>
-              <div className="list-item-info">INFO</div>
-              <div className="list-item-info">EDIT</div>
-              <div className="list-item-info delete">DELETE</div>
+              <div className="list-item-info">PHONE</div>
+              <div className="list-item-info">EMAIL</div>
             </div>
             {this.props.employee.map((data, index) => (
-              <EmployeeListItem key={index} name={data.name} appointments="6" />
+              <EmployeeListItem key={index} name={data.name} phone={data.phone} email={data.email} />
             ))}
             {this.renderEmployees()}
             {console.log(this.props.employee)}
