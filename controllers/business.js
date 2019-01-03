@@ -3,7 +3,6 @@ const Client = require('../models/Client');
 const User = require('../models/User');
 const campaigns = require('../services/campaigns.js');
 const reqLogin = require('../middlewares/requireLogin.js');
-const User = require('../models/User')
 
 
 module.exports = (app, Business) => {

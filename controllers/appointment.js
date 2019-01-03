@@ -150,8 +150,14 @@ module.exports = (app, Appointment) => {
               if(business.clients.indexOf(client._id) == -1){
                 business.clients.push(client._id);
                 business.save().then((business) => {
+
                 });
-              }else{
+              }
+              //Add to Business Text Campaign if active
+              for(let i=0;i<2;i++){
+                if(business.campaigns[i].active){
+                  campaigns.setText(appointment, business, business.campaigns[i]);
+                }
               }
             })
           })
