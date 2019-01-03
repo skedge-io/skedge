@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { BrowserRouter, Route } from "react-router-dom";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { connect } from "react-redux";
 import * as actions from "../actions";
 
@@ -22,36 +22,43 @@ import Campaign from "./dashboard/campaigns/Campaign";
 import Contacts from "./dashboard/contacts/Contacts";
 import ContactEdit from "./dashboard/contacts/ContactsEdit";
 
+import SettingsContainer from "./dashboard/settings/SettingsContainer";
+
+import NotFound from "./NotFound";
+
 class App extends Component {
   componentDidMount() {
     this.props.fetchUser();
+    this.props.fetchBusiness()
   }
 
   render() {
     return (
       <BrowserRouter>
         <div className="bg transition-container">
-          <Route exact path="/" component={Landing} />
-          <Route exact path="/team" component={Team} />
+            <Route exact path="/" component={Landing} />
+            <Route exact path="/team" component={Team} />
 
-          <div className="container" />
-          <Route exact path="/dashboard" component={Dashboard} />
-          <Route exact path="/appointments/new" component={AppointmentNew} />
-          <Route path="/appointments/edit/" component={AppointmentEdit} />
-          <Route exact path="/dashboard/employees" component={Employees} />
-          <Route exact path="/dashboard/statistics" component={Statistics} />
-          <Route exact path="/dashboard/campaigns" component={Campaign} />
-          <Route exact path="/dashboard/contacts" component={Contacts} />
-          <Route exact path="/account/setup" component={AccountSetUp} />
-          <Route path="/contacts/edit/" component={ContactEdit} />
+            <div className="container" />
+            <Route exact path="/dashboard" component={Dashboard} />
+            <Route exact path="/appointments/new" component={AppointmentNew} />
+            <Route path="/appointments/edit/" component={AppointmentEdit} />
+            <Route exact path="/dashboard/employees" component={Employees} />
+            <Route exact path="/dashboard/statistics" component={Statistics} />
+            <Route exact path="/dashboard/campaigns" component={Campaign} />
+            <Route exact path="/dashboard/contacts" component={Contacts} />
+            <Route exact path="/account/setup" component={AccountSetUp} />
+            <Route path="/contacts/edit/" component={ContactEdit} />
+
+            <Route exact path="/settings" component={SettingsContainer} />
         </div>
       </BrowserRouter>
     );
   }
 }
 
-function mapStateToProps({ auth, apps }) {
-  return { auth, apps };
+function mapStateToProps({ auth, apps, business }) {
+  return { auth, apps, business };
 }
 
 export default connect(

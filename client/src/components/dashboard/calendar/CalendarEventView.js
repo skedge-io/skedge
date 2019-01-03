@@ -108,7 +108,7 @@ class CalendarEventView extends Component {
     })
 
     this.props.setStateFunc()
-
+    this.props.updateApps()
   }
 
   deleteAppointment = () => {
@@ -119,6 +119,7 @@ class CalendarEventView extends Component {
     })
 
     this.props.setStateFunc()
+    this.props.updateApps()
 
   }
 

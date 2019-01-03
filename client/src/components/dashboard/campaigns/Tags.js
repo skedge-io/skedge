@@ -4,7 +4,7 @@ class Tags extends Component {
   state = {};
   render() {
     return (
-      <div className="tag-container">
+      <div className="tag-container hide-on-mobile">
         <div className="tag-col">
           <h5>Available tags</h5>
           <div className="tag-content">

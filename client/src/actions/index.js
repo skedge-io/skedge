@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { FETCH_USER, FETCH_APPOINTMENTS, CHANGE_DEFAULT_VIEW } from './types';
+import { FETCH_USER, FETCH_APPOINTMENTS, CHANGE_DEFAULT_VIEW, FETCH_BUSINESS, FETCH_MONTHLY_DATA } from './types';
 import { push } from 'react-router-redux'
 
 
@@ -51,4 +51,16 @@ export const changeDefaultView = (view) => {
     type: CHANGE_DEFAULT_VIEW,
     payload: view
   }
+}
+
+export const fetchBusiness = () => async dispatch => {
+  const res = await axios.get('/api/current_business')
+
+  dispatch({ type: FETCH_BUSINESS, payload: res.data });
+};
+
+export const fetchMonthlyData = () => async dispatch => {
+  const res = await axios.get('/api/appointments/monthly_data');
+
+  dispatch({ type: FETCH_MONTHLY_DATA, payload: res.data })
 }

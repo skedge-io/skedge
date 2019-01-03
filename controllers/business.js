@@ -1,5 +1,6 @@
 const Appointment = require('../models/Appointment');
 const Client = require('../models/Client');
+const User = require('../models/User');
 const campaigns = require('../services/campaigns.js');
 const reqLogin = require('../middlewares/requireLogin.js');
 const User = require('../models/User')

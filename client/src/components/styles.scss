@@ -11,6 +11,10 @@ $collapsed-menu-icon: 2rem;
 
 $border-radius: 4px;
 
+.not-found {
+  padding: 1rem;
+}
+
 .team-page {
   position: absolute;
   top: -10vh;
@@ -365,87 +369,6 @@ h5 {
 }
 
 
-@media (max-width: 900px) and (min-width: 300px) {
-  .brand-logo {
-    margin-left: 5rem;
-  }
-  .logged-out-brand {
-    margin-left: 1rem;
-  }
-  .top-bar,
-  .left-panel,
-  .right-panel {
-    display: none;
-  }
-  .dash-con {
-    width: 100%;
-    position: relative;
-  }
-  .mob-menu-btn {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    top: 0.3rem;
-    left: 1rem;
-    height: 3rem;
-    width: 3rem;
-    border-radius: 50%;
-    background: #0e78cc;
-    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
-    color: white;
-    z-index: 50001;
-    transition: all 400ms;
-    &.active {
-      top: 1rem;
-      left: 2rem;
-      transform: scale(1.4);
-    }
-  }
-  .mob-menu {
-    display: flex;
-    z-index: 0;
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100vh;
-    width: 0%;
-    background: #195586d6;
-    visibility: hidden;
-    transition: all 200ms;
-    &.on {
-      display: flex;
-      z-index: 5000;
-      /*transition: all 400ms;*/
-      width: 100%;
-      color: white;
-      visibility: visible;
-      justify-content: center;
-      height: 100vh;
-    }
-  }
-  .mobileMenuLinks {
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    a {
-      color: #195586;
-      font-size: 0%;
-      transition: all 400ms;
-    }
-    &.on a {
-      color: white;
-      font-size: 140%;
-      margin-bottom: 3rem;
-      margin-bottom: 3rem;
-    }
-  }
-}
-
 .account-setup {
   display: flex;
   justify-content: center;
@@ -658,4 +581,201 @@ h5 {
   &.middle {
     display: flex;
   }
+}
+
+.hide-on-desktop {
+  display: none;
+}
+
+
+@media (max-width: 900px) and (min-width: 300px) {
+
+  .hide-on-mobile {
+    display: none !important;
+  }
+
+  .hide-on-desktop {
+    display: block;
+  }
+
+  .brand-logo {
+    margin-left: 5rem;
+  }
+  .logged-out-brand {
+    margin-left: 1rem;
+  }
+  .left-panel,
+  .right-panel {
+    display: none;
+  }
+  .dash-con {
+    width: 100%;
+    position: relative;
+  }
+  .mob-menu-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0.3rem;
+    left: 1rem;
+    height: 3rem;
+    width: 3rem;
+    border-radius: 50%;
+    background: #0e78cc;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
+    color: white;
+    z-index: 50001;
+    transition: all 400ms;
+    &.active {
+      top: 1rem;
+      left: 2rem;
+      transform: scale(1.4);
+    }
+  }
+  .mob-menu {
+    display: flex;
+    z-index: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 0%;
+    background: #195586d6;
+    visibility: hidden;
+    transition: all 200ms;
+    &.on {
+      display: flex;
+      z-index: 5000;
+      /*transition: all 400ms;*/
+      width: 100%;
+      color: white;
+      visibility: visible;
+      justify-content: center;
+      height: 100vh;
+    }
+  }
+  .mobileMenuLinks {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    a {
+      color: #195586;
+      font-size: 0%;
+      transition: all 400ms;
+    }
+    &.on a {
+      color: white;
+      font-size: 140%;
+      margin-bottom: 3rem;
+      margin-bottom: 3rem;
+    }
+  }
+
+  .mobile-top-cal-btns {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .mobile-cal-refresh {
+    // flex: 0 0 100%;
+  }
+
+  .rbc-toolbar button, .calendar-text-btn {
+    padding: 0 !important;
+  }
+
+  .calendar-view-btn {
+    height: 30px;
+    width: 75px;
+  }
+
+  .cal-out {
+    height: 110%;
+    width: calc(100% - .6rem);
+  }
+
+  .top-bar {
+    position: fixed;
+  }
+
+  .cal-container {
+    position: absolute;
+    top: 70px;
+    left: 0;
+    height: 90%;
+    width: 200%;
+  }
+
+  .outer-employee, .statistics-flex, .contacts-container, .campaign-view-container {
+    position: absolute;
+    top: 70px;
+    left: 0;
+    height: 100%;
+    width: 100%;
+  }
+
+  .dash-con {
+    height: 200vh;
+    background: white;
+  }
+
+  .eventView {
+    position: fixed;
+    left: 5%;
+    top: 30%;
+    width: 90%;
+  }
+
+  .card .card-content {
+    width: 100%;
+  }
+
+  .list-item-info {
+    width: auto !important;
+    font-size: 10px;
+  }
+
+  .statistics-flex {
+    flex-direction: column-reverse;
+  }
+
+  .graphs-container {
+    padding: 1rem;
+  }
+
+  .stats-page {
+    overflow: visible !important;
+    width: 100% !important;
+  }
+
+  .stats-box {
+    height: 12rem !important;
+  }
+
+  #chart-1 {
+    width: 100% !important;
+  }
+
+  .fixed-action-btn {
+    bottom: auto;
+    position: fixed;
+    top: 87vh;
+  }
+
+  .delete-contact-btn {
+    position: absolute;
+    right: -2rem;
+    top: -.7rem;
+    transform: scale(.8);
+    }
+
+    .eventContactViewer {
+      z-index: 100;
+    }
+
 }

@@ -38,6 +38,7 @@ class DashCalendar extends Component {
 
     this.newAppointmentForm = this.newAppointmentForm.bind(this);
     this.changeDefaultView = this.changeDefaultView.bind(this);
+    this.updateAppointments = this.updateAppointments.bind(this);
   }
 
   state = {
@@ -76,13 +77,15 @@ class DashCalendar extends Component {
 
 
 
+    this.updateAppointments()
 
 
 
 
   }
 
-  componentDidUpdate() {
+  updateAppointments(callback = function() {}) {
+
     axios.get("/api/appointments").then(res => {
       let events = [];
       res.data.forEach(appointment => {
@@ -102,6 +105,8 @@ class DashCalendar extends Component {
         });
       });
       this.setState({ events: events });
+      callback = callback.bind(this);
+      callback()
     });
 
 
@@ -141,7 +146,10 @@ class DashCalendar extends Component {
     let theAptId = updatedEvent.id;
     axios
       .post(`/api/appointment/edit/${theAptId}`, updatedEvent)
-      .then(res => {});
+      .then(res => {
+            this.updateAppointments()
+          });
+
   };
 
   onSlotChange(slotInfo) {
@@ -154,7 +162,8 @@ class DashCalendar extends Component {
   }
 
   onEventClick(event) {
-    this.setState({
+    this.updateAppointments(function() {
+      this.setState({
       eventView: {
         boolean: true,
         id: event.id,
@@ -169,9 +178,12 @@ class DashCalendar extends Component {
         startTime: event.startTime,
         endTime: event.endTime,
         style: {}
-      }
-    });
+      }}
+    )
   }
+)}
+
+
 
   onSelectSlot = event => {
     console.log(event);
@@ -213,6 +225,7 @@ class DashCalendar extends Component {
           // window.location = "/appointments/edit/" + appointment._id;
         });
         this.setState({ events: events });
+        this.updateAppointments()
 
       });
 
@@ -248,6 +261,7 @@ class DashCalendar extends Component {
       this.onEventClick(lastEvent)
       console.log(res.data[res.data.length -1])
       this.setState({ events: events });
+      this.updateAppointments()
     })
 
     console.log('hheeeerrrreeee')
@@ -276,6 +290,7 @@ class DashCalendar extends Component {
            phone={this.state.eventView.phone}
            id={this.state.eventView.id}
            desc={this.state.eventView.desc}
+           updateApps={() => this.updateAppointments()}
            setStateFunc={() => this.setState({ eventView: { boolean: false } })}
            />
         );
@@ -312,7 +327,7 @@ class DashCalendar extends Component {
               event: EventAgenda
             }
           }}
-          style={{ height: "95%" }}
+          style={{ height: "99%" }}
         />
       </div>
     );
@@ -331,15 +346,15 @@ class CustomToolbar extends Toolbar {
       <div className="rbc-toolbar calendar-toolbar">
         <span className="rbc-btn-group">
           <Button
-            className="no-shadow"
+            className="no-shadow hide-on-mobile"
             text="Default"
             large="true"
             rightIcon="caret-down"
           />
         </span>
-        <span className="rbc-btn-group middle">
+        <span className="rbc-btn-group middle mobile-top-cal-btns">
           <button
-            className="material-icons"
+            className="material-icons mobile-cal-refresh"
             type="button"
             onClick={() => this.navigate("TODAY")}
           >
