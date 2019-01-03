@@ -711,7 +711,7 @@ h5 {
     width: 200%;
   }
 
-  .outer-employee, .statistics-flex, .contacts-container {
+  .outer-employee, .statistics-flex, .contacts-container, .campaign-view-container {
     position: absolute;
     top: 70px;
     left: 0;
@@ -727,7 +727,7 @@ h5 {
   .eventView {
     position: fixed;
     left: 5%;
-    top: 40%;
+    top: 30%;
     width: 90%;
   }
 
@@ -744,12 +744,17 @@ h5 {
     flex-direction: column-reverse;
   }
 
+  .graphs-container {
+    padding: 1rem;
+  }
+
   .stats-page {
-    overflow: visible;
+    overflow: visible !important;
+    width: 100% !important;
   }
 
   .stats-box {
-    height: 12rem;
+    height: 12rem !important;
   }
 
   #chart-1 {
@@ -767,6 +772,10 @@ h5 {
     right: -2rem;
     top: -.7rem;
     transform: scale(.8);
+    }
+
+    .eventContactViewer {
+      z-index: 100;
     }
 
 }
