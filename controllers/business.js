@@ -2,6 +2,7 @@ const Appointment = require('../models/Appointment');
 const Client = require('../models/Client');
 const campaigns = require('../services/campaigns.js');
 const reqLogin = require('../middlewares/requireLogin.js');
+const User = require('../models/User')
 
 
 module.exports = (app, Business) => {
@@ -49,13 +50,27 @@ module.exports = (app, Business) => {
 
   app.post('/api/business/:id/join', reqLogin, (req, res) => {
     Business.findById(req.params.id).then((business) => {
-      User.findById(req.user.id).then((user) => {
-        user.business = business._id;
-        business.employees.push(user._id);
-        user.save();
-        business.save();
-      })
+      if(business){
+        User.findById(req.user.id).then((user) => {
+          if(user){
+            user.business = business._id;
+            business.employees.push(user._id);
+            user.save();
+            business.save();
+          }
+        })
+      }
     })
+  })
+
+  app.get('/api/current_business/employees', reqLogin, (req, res) => {
+    Business.findById(req.user.business).then((business) => {
+      if(business){
+        User.find({_id : { $in : business.employees}}).then((employees) => {
+          res.send(employees)
+        })
+      }
+    });
   })
 
 
