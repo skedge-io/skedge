@@ -12,6 +12,7 @@ filterMessage = (appointment, business, message) => {
   newMessage = newMessage.replace(/\*business\*/gi, business.name);
   newMessage = newMessage.replace(/\*time\*/gi, appointment.startTime);
   newMessage = newMessage.replace(/\*employee\*/gi, appointment.employee);
+  newMessage = newMessage.replace(/\*notes\*/gi, appointment.desc);
   return newMessage;
 }
 
