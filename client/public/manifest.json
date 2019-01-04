@@ -3,9 +3,9 @@
   "short_name": "Skedge",
   "theme_color": "#2196f3",
   "background_color": "#2196f3",
-  "display": "standalone",
+  "display": "fullscreen",
   "Scope": "/",
-  "start_url": "/dashboard",
+  "start_url": "/",
   "icons": [
     {
       "src": "images/icons/icon-72x72.png",

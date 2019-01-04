@@ -61,18 +61,7 @@ class Dashboard extends Component {
       case null:
         return;
       case false:
-        return (
-          <div>
-            <center>
-              <a
-                className="cfd-cta-2 hoverable waves-effect waves-purple"
-                href="./auth/google"
-              >
-                Log In
-              </a>
-            </center>
-          </div>
-        );
+        return <div>{this.renderAuth()}</div>
       default:
         return <div>{this.renderAuth()}</div>;
     }
