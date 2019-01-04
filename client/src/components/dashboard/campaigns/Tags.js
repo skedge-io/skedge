@@ -37,6 +37,10 @@ class Tags extends Component {
           <p>
             <b>*time*</b>: Time of appointment
           </p>
+
+          <p>
+            <b>*notes*</b>: Notes of appointment
+          </p>
         </div>
       </div>
     );
