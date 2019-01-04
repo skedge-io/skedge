@@ -779,4 +779,79 @@ h5 {
       z-index: 100;
     }
 
+    .mobile-nav {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100vh;
+      background: #222b31;
+      transition: all 150ms;
+      z-index: 1000;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    @keyframes floatDown {
+      from {
+        height: 0%;
+      }
+
+      to {
+        height: 100vh;
+      }
+    }
+
+    .mobile-nav.is-active {
+      animation-name: floatDown;
+      animation-fill-mode: both;
+      animation-duration: 150ms;
+      animation-timing-function: ease-in-out;
+      animation-iteration-count: 1;
+      width: 100%;
+    }
+
+    .hamburger {
+      position: relative;
+      z-index: 1001;
+    }
+
+    .top-bar.is-active {
+      position: fixed;
+      z-index: 10000;
+      height: 100vh;
+      display: flex;
+      align-items: flex-start;
+    }
+
+    .sec-link li {
+      text-decoration: none;
+      list-style: none;
+      text-align: left;
+      height: auto;
+    }
+
+    .mobile-nav-links {
+      display: flex;
+      flex-direction: column;
+      text-align: left;
+      justify-content: center;
+      font-size: 2rem;
+      height: auto;
+    }
+
+    .navbar-brand.mob {
+      color: white;
+      font-size: 2rem;
+      margin-bottom: 5px;
+      text-align: center;
+      align-self: stretch;
+      font-weight: 600;
+    }
+
+    .bp3-menu-item {
+      line-height: normal;
+    }
+
 }

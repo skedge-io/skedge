@@ -16,17 +16,43 @@ class TopBar extends Component {
     super(props)
 
     this.state = {
-      animate: false
+      animate: false,
+      showNav: false
     };
 
     this.handleClick = this.handleClick.bind(this);
+    this.renderMobileNav = this.renderMobileNav.bind(this);
 
   }
 
+
   handleClick(e) {
     this.setState(prevState => {
-      return { animate: !prevState.animate };
+      return { animate: !prevState.animate, showNav: !prevState.showNav };
     });
+  }
+
+
+
+  renderMobileNav() {
+    let animationClasses = this.state.animate ? "is-active" : "";
+
+    if (this.state.showNav) {
+      return (
+        <div className={`hide-on-desktop mobile-nav ${this.state.animate ? "is-active" : ""}`}>
+          <div className="mobile-nav-links">
+            <div className="navbar-brand mob">
+              Skedge
+            </div>
+            <Link className="sec-link" to="/dashboard"><MenuItem icon="calendar" text="Calendar" /></Link>
+            <Link className="sec-link" to="/dashboard/employees"><MenuItem icon="person" text="Staff" /></Link>
+            <Link className="sec-link" to="/dashboard/statistics"><MenuItem icon="chart" text="Analytics" /></Link>
+            <Link className="sec-link" to="/dashboard/campaigns"><MenuItem icon="layers" text="Campaigns" /></Link>
+            <Link className="sec-link" to="/dashboard/contacts"><MenuItem icon="id-number" text="Contacts" /></Link>
+          </div>
+        </div>
+      )
+    }
   }
 
 
@@ -36,30 +62,18 @@ class TopBar extends Component {
 
 
     return (
-      <div className="top-bar">
-      <Popover className="hide-on-desktop"
-        interactionKind={PopoverInteractionKind.HOVER}
-        content={
-          <Menu>
-            <Link className="top-bar-link" to="/dashboard"><MenuItem icon="calendar" text="Calendar" /></Link>
-            <Link className="top-bar-link" to="/dashboard/employees"><MenuItem icon="person" text="Staff" /></Link>
-            <Link className="top-bar-link" to="/dashboard/statistics"><MenuItem icon="chart" text="Analytics" /></Link>
-            <Link className="top-bar-link" to="/dashboard/campaigns"><MenuItem icon="layers" text="Campaigns" /></Link>
-            <Link className="top-bar-link" to="/dashboard/contacts"><MenuItem icon="id-number" text="Contacts" /></Link>
+      <div className={`top-bar ${this.state.animate ? "is-active" : ""}`}>
 
-          </Menu>
-        }
-        position={Position.BOTTOM_LEFT}
-      >
+      {this.renderMobileNav()}
+
         <button
-          className={`hide-on-desktop hamburger hamburger--arrowturn`}
+        className={`hide-on-desktop hamburger hamburger--arrowturn ${animationClasses}`}
           onClick={this.handleClick}
         >
         <span className="hamburger-box">
           <span className="hamburger-inner" />
         </span>
       </button>
-    </Popover>
         {this.props.header}
         <div className="right">
 
