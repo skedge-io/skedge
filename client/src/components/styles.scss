@@ -726,10 +726,20 @@ h5 {
   }
 
   .eventView {
-    position: fixed;
-    left: 5%;
-    top: 30%;
-    width: 90%;
+    position: absolute;
+    top: 10vh;
+    left: 12vh;
+    height: 100vh;
+    z-index: 50;
+    width: auto;
+    -webkit-transition: all 0ms;
+    transition: all 0ms;
+    width: 50%;
+    z-index: 100000;
+  }
+
+  .eventViewer {
+
   }
 
   .card .card-content {
