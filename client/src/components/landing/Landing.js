@@ -152,7 +152,7 @@ class Landing extends Component {
                     Skedge helps you schedule appointments, increase your five star reviews, send reminders and promotions, eliminate no shows, and gain repeat business, all at the same time.
                   </p>
                   <div className="app-btn-set">
-                    {this.props.auth ?<Link className="m-btn m-btn-white" to="/dashboard">Go to Dashboard</Link>  : <a href="https://www.skedge.com/auth/google" className="m-btn m-btn-white">
+                    {this.props.auth ?<Link className="m-btn m-btn-white" to="/dashboard">Go to Dashboard</Link>  : <a href="https://www.skedge.io/auth/google" className="m-btn m-btn-white">
                       Try for free
                     </a> }
                   </div>
