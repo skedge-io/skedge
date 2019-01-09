@@ -9,7 +9,7 @@ class Header extends Component {
         <div className="navbar header-nav fixed-top navbar-expand-lg">
           <div className="container">
             {/* Brand */}
-            <a className="navbar-brand" href="/auth/google">
+            <a className="navbar-brand" href="/">
               Skedge
             </a>
             {/* end */}
@@ -35,9 +35,9 @@ class Header extends Component {
             >
               <ul className="navbar-nav ml-auto">
                 <li>
-                  <Link className="nav-link active" to="/">
+                  <a className="nav-link" href="/">
                     Home
-                  </Link>
+                  </a>
                 </li>
                 <li>
                   <a className="nav-link" href="#feature">
@@ -56,12 +56,12 @@ class Header extends Component {
                   </a>
                 </li>
                 <li>
-                  <a
+                  <Link
                     className="nav-link nav-link-btn theme-bg"
-                    href="./auth/google"
+                    to="/login"
                   >
-                    Login with Google
-                  </a>
+                    Try For Free
+                  </Link>
                 </li>
               </ul>
             </div>

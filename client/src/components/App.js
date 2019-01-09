@@ -21,6 +21,7 @@ import Statistics from "./dashboard/statistics/Statistics";
 import Campaign from "./dashboard/campaigns/Campaign";
 import Contacts from "./dashboard/contacts/Contacts";
 import ContactEdit from "./dashboard/contacts/ContactsEdit";
+import Login from './landing/Login';
 
 import SettingsContainer from "./dashboard/settings/SettingsContainer";
 
@@ -37,6 +38,7 @@ class App extends Component {
       <BrowserRouter>
         <div className="bg transition-container">
             <Route exact path="/" component={Landing} />
+            <Route exact path="/login" component={Login} />
             <Route exact path="/team" component={Team} />
 
             <div className="container" />
