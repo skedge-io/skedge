@@ -89,7 +89,7 @@ p .login-gray {
 .login-photo {
   height: 100vh;
   width: calc(100vw - 35rem);
-  background: url('https://i.ibb.co/X8kDHNT/Desktop-HD.png');
+  background: url('https://i.ibb.co/XLyWKqs/Desktop-HD.png');
   background-size: cover;
   background-position: right;
   background-repeat: no-repeat;
@@ -1005,6 +1005,19 @@ h5 {
 
     .login-box {
       height: 120vh;
+      width: 100vw;
+      box-shadow: none;
     }
+
+    .login-with-google, .login-with-outlook {
+      width: 24rem;
+    }
+
+    html {
+      background: #ecf0f1;
+    }
+
+    .login-page {
+background: #ecf0f1;   }
 
 }
