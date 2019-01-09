@@ -9,7 +9,7 @@ class Login extends Component {
 
         <div className="login-nav">
           <a className="navbar-brand brand-dark" href="/">
-            <img height="50" src="https://i.ibb.co/b5dLJP5/Group.png" />
+            <img height="50" src="https://i.ibb.co/x8xTBHb/Group.png" />
           </a>
 
                 <Link className="nav-link white-text" to="/">
