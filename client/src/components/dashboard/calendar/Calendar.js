@@ -107,6 +107,7 @@ class DashCalendar extends Component {
       this.setState({ events: events });
       callback = callback.bind(this);
       callback()
+
     });
 
 
@@ -264,7 +265,6 @@ class DashCalendar extends Component {
       this.updateAppointments()
     })
 
-    console.log('hheeeerrrreeee')
 
 
   }
@@ -291,7 +291,7 @@ class DashCalendar extends Component {
            id={this.state.eventView.id}
            desc={this.state.eventView.desc}
            updateApps={() => this.updateAppointments()}
-           setStateFunc={() => this.setState({ eventView: { boolean: false } })}
+           setStateFunc={() => {this.setState({ eventView: { boolean: false } }); this.updateAppointments()}}
            />
         );
       default:
