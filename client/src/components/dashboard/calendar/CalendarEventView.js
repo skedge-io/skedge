@@ -4,6 +4,9 @@ import ClickOutHandler from 'react-onclickout';
 import { Input } from 'react-materialize';
 import axios from 'axios';
 
+import { connect } from "react-redux";
+import { fetchEmployees } from '../../../actions';
+
 
 import '../../styles.css';
 
@@ -14,7 +17,7 @@ class CalendarEventView extends Component {
 
     this.state = {
       clientName: this.props.clientName,
-      employee: this.props.employee,
+      employee: this.props.employeeProp,
       startTime: this.props.startTime,
       endTime: this.props.endTime,
       phone: this.props.phone,
@@ -36,6 +39,11 @@ class CalendarEventView extends Component {
 
     this.updateAppointment = this.updateAppointment.bind(this);
     this.deleteAppointment = this.deleteAppointment.bind(this);
+    this.renderEmployees = this.renderEmployees.bind(this);
+  }
+
+  componentDidMount() {
+    this.props.fetchEmployees()
   }
 
 
@@ -44,7 +52,12 @@ class CalendarEventView extends Component {
   }
 
   handleEmployee(event) {
-    this.setState({ employee: event.target.value });
+
+    let newEmp = event.target.value;
+    console.log(newEmp)
+
+    this.setState({ employee: newEmp });
+    console.log(this.state)
   }
 
   handleStartTime(event) {
@@ -73,7 +86,7 @@ class CalendarEventView extends Component {
   }
 
   renderButton() {
-    if (this.props.clientName !== this.state.clientName || this.props.employee !== this.state.employee || this.props.startTime !== this.state.startTime  || this.props.endTime !== this.state.endTime || this.props.phone !== this.state.phone || this.props.desc !== this.state.desc) {
+    if (this.props.clientName !== this.state.clientName || this.props.employeeProp !== this.state.employee || this.props.startTime !== this.state.startTime  || this.props.endTime !== this.state.endTime || this.props.phone !== this.state.phone || this.props.desc !== this.state.desc) {
       return (
         <button
           className="waves-effect waves-light btn green darken-2"
@@ -98,8 +111,6 @@ class CalendarEventView extends Component {
   updateAppointment = () => {
 
     let appointment = this.state;
-    //console.log('yes')
-    //console.log(appointment)
 
     axios.post('/api/appointment/edit/' + this.props.id, appointment).then(res => {
     }).catch((err) => {
@@ -124,6 +135,12 @@ class CalendarEventView extends Component {
 
   }
 
+  renderEmployees() {
+    this.props.employee.map((data, index) => (
+      <option key={index} value={data.name}>{data.name}</option>
+    ))
+  }
+
 
   render() {
     return (
@@ -138,8 +155,15 @@ class CalendarEventView extends Component {
 
                 <label>Client Name</label>
                 <input className="card-input-imp" value={this.state.clientName} onChange={this.handleClientName} />
+
                 <label>Employee Name</label>
-                <input className="card-input-imp" value={this.state.employee} onChange={this.handleEmployee} />
+                <select className="card-input-imp" defaultValue={this.state.employee} onChange={this.handleEmployee}>
+                  <option value=""></option>
+                  {this.props.employee.map((data, index) => (
+                    <option value={data.name}>{data.name}</option>
+                  ))}
+                </select>
+
                 <label>Start Time</label>
                 <input className="card-input-imp" value={this.state.startTime} onChange={this.handleStartTime} />
                 <label>End Time</label>
@@ -179,4 +203,8 @@ class CalendarEventView extends Component {
   }
 }
 
-export default CalendarEventView;
+function mapStateToProps({ employee }) {
+  return { employee };
+}
+
+export default connect(mapStateToProps, { fetchEmployees })(CalendarEventView);

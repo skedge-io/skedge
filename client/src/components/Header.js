@@ -10,7 +10,7 @@ class Header extends Component {
           <div className="container">
             {/* Brand */}
             <a className="navbar-brand" href="/">
-              Skedge
+               Skedge
             </a>
             {/* end */}
             {/* Mobile Toggle */}
@@ -40,9 +40,9 @@ class Header extends Component {
                   </a>
                 </li>
                 <li>
-                  <a className="nav-link" href="#feature">
+                  <Link className="nav-link" to="/features">
                     Features
-                  </a>
+                  </Link>
                 </li>
                 <li>
                   <Link className="nav-link" to="/team">

@@ -5,6 +5,7 @@ class FooterSections extends Component {
   render() {
     return (
       <div className="row">
+
         <div className="col-md-12 col-lg-4 sm-m-15px-tb md-m-30px-b">
           <h4 className="font-alt">About Us</h4>
           <p className="footer-text">
@@ -41,6 +42,7 @@ class FooterSections extends Component {
           <ul className="fot-link">
             <li>
               <a href="/#">Features</a>
+              <br />
               <Link to="/team">Team</Link>
             </li>
           </ul>

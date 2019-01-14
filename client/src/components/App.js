@@ -10,6 +10,7 @@ import "./styles.scss";
 
 import Landing from "./landing/Landing";
 import Team from "./landing/Team";
+import Features from "./landing/Features"
 
 import Dashboard from "./dashboard/Dashboard";
 import AppointmentNew from "./appointments/AppointmentNew";
@@ -40,6 +41,7 @@ class App extends Component {
             <Route exact path="/" component={Landing} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/team" component={Team} />
+            <Route exact path="/features" component={Features} />
 
             <div className="container" />
             <Route exact path="/dashboard" component={Dashboard} />

@@ -30,7 +30,6 @@ class EmployeeBox extends Component {
               <EmployeeListItem key={index} name={data.name} phone={data.phone} email={data.email} />
             ))}
             {this.renderEmployees()}
-            {console.log(this.props.employee)}
           </div>
         </div>
       </div>

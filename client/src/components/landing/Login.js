@@ -2,30 +2,14 @@ import React, { Component } from 'react';
 import Header from '../Header';
 import { Link } from 'react-router-dom'
 
+import MarketNav from './MarketNav'
+
 class Login extends Component {
   render() {
     return (
       <div className="login-page" data-spy="scroll" data-target="#navbar" data-offset="98">
 
-        <div className="login-nav">
-          <a className="navbar-brand brand-dark" href="/">
-            <img height="50" src="https://i.ibb.co/v4Z8V3p/Group.png" />
-          </a>
-
-                <Link className="nav-link white-text" to="/">
-                </Link>
-                <a className="nav-link white-text" href="#feature">
-                  Features
-                </a>
-                <Link className="nav-link white-text" to="/team">
-                  Team
-                </Link>
-
-                <a className="nav-link white-text" href="#contact">
-                  Contact Us
-                </a>
-            </div>
-
+      <MarketNav />
 
         <div className="login-container">
           <div className="login-box">

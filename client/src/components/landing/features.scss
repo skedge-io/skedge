@@ -1,0 +1,28 @@
+.features-hero {
+  height: 100vh;
+  width: 100%;
+  background: url('https://i.ibb.co/XLyWKqs/Desktop-HD.png');
+  background-size: cover;
+  background-position: top;
+}
+
+.features-inner-hero {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.features-dash {
+  height: 450px;
+  width: 900px;
+  background: url('https://i.ibb.co/Fx6cn95/Screen-Shot-2019-01-07-at-10-59-10-AM.png');
+  background-size: contain;
+  border-radius: 8px;
+  background-repeat: no-repeat;
+}

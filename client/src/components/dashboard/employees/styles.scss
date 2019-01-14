@@ -64,6 +64,10 @@
   }
 }
 
+select {
+  display: block;
+}
+
 @media (max-width: 900px) and (min-width: 300px) {
   .employee-box {
   }

@@ -43,16 +43,14 @@ class DashCalendar extends Component {
 
   state = {
     events: [],
-    eventView: {
-      boolean: false,
-      title: "",
-      desc: "",
-      start: "",
-      end: "",
-      startTime: "",
-      endTime: "",
-      style: {}
-    },
+    boolean: false,
+    title: "",
+    desc: "",
+    start: "",
+    end: "",
+    startTime: "",
+    endTime: "",
+    style: {},
     lastEvent: {},
     defaultView: "week"
   };
@@ -165,7 +163,6 @@ class DashCalendar extends Component {
   onEventClick(event) {
     this.updateAppointments(function() {
       this.setState({
-      eventView: {
         boolean: true,
         id: event.id,
         title: event.title,
@@ -179,7 +176,7 @@ class DashCalendar extends Component {
         startTime: event.startTime,
         endTime: event.endTime,
         style: {}
-      }}
+      }
     )
   }
 )}
@@ -205,7 +202,7 @@ class DashCalendar extends Component {
 
 
     //don't create new events when exiting out of the event view
-    if (this.state.eventView.boolean) {
+    if (this.state.boolean) {
       return
     }
 
@@ -218,6 +215,7 @@ class DashCalendar extends Component {
             title: appointment.title,
             clientName: appointment.clientName,
             desc: appointment.desc,
+            employee: appointment.employee,
             start: new Date(appointment.start),
             end: new Date(appointment.end),
             id: appointment._id,
@@ -249,6 +247,7 @@ class DashCalendar extends Component {
         events.push({
           title: appointment.title,
           clientName: appointment.clientName,
+          employee: appointment.employee,
           desc: appointment.desc,
           start: new Date(appointment.start),
           end: new Date(appointment.end),
@@ -271,7 +270,7 @@ class DashCalendar extends Component {
 
 
   renderEventView() {
-    switch (this.state.eventView.boolean) {
+    switch (this.state.boolean) {
       case null:
         return;
       case false:
@@ -279,19 +278,19 @@ class DashCalendar extends Component {
       case true:
         return (
           <CalendarEventView
-           date={this.state.eventView.date}
-           title={this.state.eventView.title}
-           startTime={this.state.eventView.startTime}
-           endTime={this.state.eventView.endTime}
-           clientName={this.state.eventView.clientName}
-           employee={this.state.eventView.employee}
-           start={this.state.eventView.start}
-           end={this.state.eventView.end.toString()}
-           phone={this.state.eventView.phone}
-           id={this.state.eventView.id}
-           desc={this.state.eventView.desc}
+           date={this.state.date}
+           title={this.state.title}
+           startTime={this.state.startTime}
+           endTime={this.state.endTime}
+           clientName={this.state.clientName}
+           employeeProp={this.state.employee}
+           start={this.state.start}
+           end={this.state.end.toString()}
+           phone={this.state.phone}
+           id={this.state.id}
+           desc={this.state.desc}
            updateApps={() => this.updateAppointments()}
-           setStateFunc={() => {this.setState({ eventView: { boolean: false } }); this.updateAppointments()}}
+           setStateFunc={() => {this.setState({  boolean: false  }); this.updateAppointments()}}
            />
         );
       default:
@@ -302,7 +301,7 @@ class DashCalendar extends Component {
   render() {
     return (
       <div className="cal-out">
-        <div id="calendarInfo" className={this.state.eventView.boolean ? 'eventView eventEnter' : ''} style={this.state.eventView.style}>
+        <div id="calendarInfo" className={this.state.boolean ? 'eventView eventEnter' : ''} style={this.state.style}>
           {this.renderEventView()}
         </div>
         <p align="center" />
