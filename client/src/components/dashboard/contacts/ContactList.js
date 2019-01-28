@@ -33,6 +33,8 @@ class ContactList extends Component {
     this.handlePrevApt = this.handlePrevApt.bind(this);
     this.handleNotes = this.handleNotes.bind(this);
     this.refreshContacts = this.refreshContacts.bind(this);
+
+    this.resetForm = this.resetForm.bind(this);
   }
 
   componentWillMount() {
@@ -167,7 +169,9 @@ class ContactList extends Component {
     this.setState({ contactNotes: event.target.value  });
   }
 
-
+  resetForm(event) {
+    this.setState({showContact: false})
+  }
 
 
 
@@ -180,14 +184,12 @@ class ContactList extends Component {
               <input value={this.state.contactName} onChange={this.handleContactName} />
               <label>Number</label>
               <input value={this.state.contactPhone} onChange={this.handleContactNumber} />
-              <label>Next Appointment</label>
-              <input value={this.state.contactNextAppointment} onChange={this.handleNextApt} />
-              <label>Previous Appointments</label>
-              <input value={this.state.contactPreviousAppointments} onChange={this.handlePrevApt}/>
               <label>Notes</label>
               <input value={this.state.contactNotes} onChange={this.handleNotes} />
             </div>
+
             <button className="btn left green white-text" onClick={this.updateContact}>Update Contact</button>
+            <button onClick={() => this.resetForm()} className="reset-contact-form delete-contact-btn btn-floating waves-effect waves-light left red"><i className="material-icons">visibility_off</i></button>
 
             <button
               className="delete-contact-btn btn-floating waves-effect waves-light red right margin-right"

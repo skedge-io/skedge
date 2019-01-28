@@ -24,6 +24,7 @@ import Contacts from "./dashboard/contacts/Contacts";
 import ContactEdit from "./dashboard/contacts/ContactsEdit";
 import Login from './landing/Login';
 
+
 import SettingsContainer from "./dashboard/settings/SettingsContainer";
 
 import NotFound from "./NotFound";
@@ -53,6 +54,7 @@ class App extends Component {
             <Route exact path="/dashboard/contacts" component={Contacts} />
             <Route exact path="/account/setup" component={AccountSetUp} />
             <Route path="/contacts/edit/" component={ContactEdit} />
+
 
             <Route exact path="/settings" component={SettingsContainer} />
         </div>

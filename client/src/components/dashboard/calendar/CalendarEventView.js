@@ -157,7 +157,7 @@ class CalendarEventView extends Component {
                 <input className="card-input-imp" value={this.state.clientName} onChange={this.handleClientName} />
 
                 <label>Employee Name</label>
-                <select className="card-input-imp" defaultValue={this.state.employee} onChange={this.handleEmployee}>
+                <select className="card-input-imp select-employee-form" defaultValue={this.state.employee} onChange={this.handleEmployee}>
                   <option value=""></option>
                   {this.props.employee.map((data, index) => (
                     <option value={data.name}>{data.name}</option>
@@ -177,7 +177,7 @@ class CalendarEventView extends Component {
               <div className="card-action">
                 <div className="form-in-row">
                   <a
-                    href={"/appointments/edit/" + this.props.id}
+                    onClick={this.updateAppointment}
                     className="btn-floating waves-effect waves-light blue margin-right"
                   >
                     <i className="material-icons">edit</i>

@@ -6,6 +6,27 @@
   justify-content: flex-start;
 }
 
+.reset-contact-form {
+  margin-left: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 0;
+  background: transparent !important;
+  box-shadow: none;
+  color: black;
+  transition: all 200ms;
+}
+
+.reset-contact-form:hover {
+  box-shadow: none;
+  transform: scale(1.05);
+}
+
+.reset-contact-form i {
+  color: #c0392b;
+}
+
 .contact-list-container {
   height: 100%;
   width: 20rem;
@@ -173,6 +194,7 @@
   animation-timing-function: ease-in;
   position: absolute;
   right: 0;
+  z-index: 10;
 }
 
 .white-bkg {
