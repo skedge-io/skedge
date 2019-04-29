@@ -105,4 +105,47 @@ deleteEvent = (user, gCalendarId) => {
   }
 }
 
-module.exports = {addEvent, deleteEvent}
+checkForNewEvents = (user) => {
+  let calRetries = 2;
+  checkForNewEventsFromCalendar = () => {
+    if(!calRetries){
+      return;
+    }
+    calRetries--;
+    let oauth2Client = new OAuth2Client(
+      configKeys.googleClientID,
+      configKeys.googleClientSecret
+    );
+    oauth2Client.credentials = {
+      access_token: user.accessToken,
+      refresh_token: user.refreshToken
+    }
+    calendar.events.watch({
+      auth: oauth2Client,
+      calendarId: 'primary',
+    }, function(err, resp) {
+      console.log(err);
+      console.log(resp);
+      if (err) {
+        if(err == "Error: Invalid Credentials" ||
+            "Error: No access, refresh token or API key is set."){
+          refresh.requestNewAccessToken('google', user.refreshToken, (err, accessToken) => {
+            user.accessToken = accessToken;
+            user.save().then(() => {
+              checkForNewEventsFromCalendar();
+            })
+          })
+        }else{
+          console.log('There was an error contacting the Calendar service: ' + err);
+          return;
+        }
+      }else{
+        console.log(resp);
+        return resp;
+      }
+    });
+  }
+  checkForNewEventsFromCalendar();
+}
+
+module.exports = {addEvent, deleteEvent, checkForNewEvents}
