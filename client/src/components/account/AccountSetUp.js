@@ -27,7 +27,7 @@ class AccountSetUp extends Component {
   render() {
     return (
       <div style={{height: '100vh'}} className="react-transition fade-in">
-        <Link style={{padding: '2rem'}} to="/dashboard">Back to dashboard</Link>
+        {/*<Link style={{padding: '2rem'}} to="/dashboard">Back to dashboard</Link> */}
         <div className="container account-setup">{this.renderContent()}</div>
       </div>
     );

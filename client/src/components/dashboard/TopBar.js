@@ -96,7 +96,7 @@ class TopBar extends Component {
             content={
               <Menu>
                 <Link className="top-bar-link" to="/settings"><MenuItem icon="cog" text="My Settings" /></Link>
-                <Link className="top-bar-link" to="/account/setup"><MenuItem icon="settings" text="Account Setup" /></Link>
+                <Link className="top-bar-link" to="/settings"><MenuItem icon="settings" text="Account Setup" /></Link>
                 <MenuItem href="/api/logout" icon="log-out" text="Logout" />
               </Menu>
             }
