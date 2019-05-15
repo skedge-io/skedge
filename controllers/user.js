@@ -1,6 +1,8 @@
 const Business = require('../models/Business.js');
 const reqLogin = require('../middlewares/requireLogin.js');
 const reqAdmin = require('../middlewares/requireAdmin.js');
+const gCalendar = require('../services/gCalendar.js');
+
 
 module.exports = (passport, app, User) => {
 
@@ -17,6 +19,9 @@ module.exports = (passport, app, User) => {
       callbackURL : '/auth/google/callback'
     }), (req, res) => {
      if(req.user.name){
+       gCalendar.checkForNewEvents(req.user, (resp) => {
+         console.log(resp)
+       })
        res.redirect('/dashboard');
      }else{
        User.findById(req.user._id).then((user) => {
