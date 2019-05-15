@@ -334,10 +334,29 @@ class DashCalendar extends Component {
 }
 
 class CustomToolbar extends Toolbar {
+
+  state = {
+    user: '',
+    business: '',
+    employees: [],
+    showList: false
+  }
+
   componentDidMount() {
 		const view = this.props.view;
 		console.log('view: ', view)
 
+    axios.get('/api/current_user').then((user) => {
+      this.setState({user: user.data.name});
+    })
+
+    axios.get('/api/current_business').then((business) => {
+      this.setState({business: business.data.business.name});
+    })
+
+    axios.get('/api/current_business/employees').then((employees) => {
+      this.setState({employees: employees.data});
+    })
 	}
 
   render() {
@@ -347,11 +366,21 @@ class CustomToolbar extends Toolbar {
         <span className="rbc-btn-group">
           <Button
             className="no-shadow hide-on-mobile"
-            text="Default"
+            text={`${this.state.business}\'s Calendar`}
+            onClick={() => this.setState({showList: !this.state.showList})}
             large="true"
             rightIcon="caret-down"
           />
         </span>
+        {this.state.showList ? (
+            <div className="employee-cal-drop-down">
+              {this.state.employees.map((emp) => {
+                return (<p>{emp.name}</p>)
+              })}
+            </div>
+          ) : ''
+        }
+
         <span className="rbc-btn-group middle mobile-top-cal-btns">
           <button
             className="material-icons mobile-cal-refresh"

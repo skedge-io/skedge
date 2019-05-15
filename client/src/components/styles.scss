@@ -11,6 +11,18 @@ $collapsed-menu-icon: 2rem;
 
 $border-radius: 4px;
 
+.employee-cal-drop-down {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 110px;
+  background: white;
+  padding: .3rem .5rem;
+  z-index: 100;
+  border-radius: 4px;
+  box-shadow: 0px 1px 1px rgba(0,0,0,.3);
+}
+
 .select-employee-form {
   height: 30px;
   width: 105%;
