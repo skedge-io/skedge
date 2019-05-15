@@ -7,5 +7,7 @@ module.exports = {
   cookieKey: process.env.COOKIE_KEY,
   redirectDomain: process.env.REDIRECT_DOMAIN,
   twilioAcc: process.env.TWILIO_ACC,
-  twilioAuth: process.env.TWILIO_AUTH
+  twilioAuth: process.env.TWILIO_AUTH,
+  stripePublishableKey: process.env.STRIPE_PUBLISHABLE_KEY,
+  stripeSecretKey: process.env.STRIPE_SECRET_KEY
 }
