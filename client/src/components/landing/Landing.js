@@ -202,9 +202,7 @@ class Landing extends Component {
                   </div>
                   <h3 className="font-alt">Fast and easy</h3>
                   <p>
-                    Skedge is almost twice as fast as it's competitors, and it's
-                    so easy you don't even have to train your employees on how
-                    to use it!
+                    Skedge is lightning fast, and simple to learn.
                   </p>
                 </div>
               </div>
@@ -224,7 +222,7 @@ class Landing extends Component {
                   <div className="icon">
                     <i className="ti-heart theme-color" />
                   </div>
-                  <h3 className="font-alt">Continuous Supports</h3>
+                  <h3 className="font-alt">Continuous Support</h3>
                   <p>
                     Have a question or looking for a new feature? Message us and
                     we'll get back with you as soon as possible!
