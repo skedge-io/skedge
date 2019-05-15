@@ -337,6 +337,7 @@ class CustomToolbar extends Toolbar {
   componentDidMount() {
 		const view = this.props.view;
 		console.log('view: ', view)
+
 	}
 
   render() {
@@ -384,14 +385,14 @@ class CustomToolbar extends Toolbar {
           <button
             className="calendar-text-btn calendar-view-btn left"
             type="button"
-            onClick={() => {this.view.bind(null, "month")}}
+            onClick={this.view.bind(null, "month")}
           >
             Month
           </button>
           <button
             className="calendar-text-btn calendar-view-btn right"
             type="button"
-            onClick={() => this.view.bind(null, "week")}
+            onClick={this.view.bind(null, "week")}
           >
             Week
           </button>
