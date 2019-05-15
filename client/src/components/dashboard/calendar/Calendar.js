@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Calendar from "react-big-calendar";
+import ClickOutHandler from 'react-onclickout';
 import moment from "moment";
 import withDragAndDrop from "react-big-calendar/lib/addons/dragAndDrop";
 
@@ -373,11 +374,13 @@ class CustomToolbar extends Toolbar {
           />
         </span>
         {this.state.showList ? (
+          <ClickOutHandler onClickOut={() => this.setState({showList: !this.state.showList})}>
             <div className="employee-cal-drop-down">
               {this.state.employees.map((emp) => {
                 return (<p>{emp.name}</p>)
               })}
             </div>
+            </ClickOutHandler>
           ) : ''
         }
 
@@ -419,12 +422,20 @@ class CustomToolbar extends Toolbar {
             Month
           </button>
           <button
-            className="calendar-text-btn calendar-view-btn right"
+            className="calendar-text-btn calendar-view-btn"
             type="button"
             onClick={this.view.bind(null, "week")}
           >
             Week
           </button>
+          <button
+            className="calendar-text-btn calendar-view-btn right"
+            type="button"
+            onClick={this.view.bind(null, "agenda")}
+          >
+            List
+          </button>
+
         </span>
       </div>
     );
@@ -449,7 +460,7 @@ function Event({ event }) {
 function EventAgenda({ event }) {
   return (
     <span>
-      <em style={{ color: "magenta" }}>{event.title}</em> <p>{event.phone}</p>{" "}
+      <em>{event.title}</em> <p>{event.phone}</p>{" "}
       <p>{event.desc}</p>
     </span>
   );
