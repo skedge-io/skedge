@@ -3,9 +3,6 @@ import React, { Component } from 'react';
 import Header from '../Header';
 
 import './features.scss';
-import DashCalendar from '../dashboard/calendar/Calendar'
-import SkedgeStats from '../dashboard/statistics/SkedgeStats'
-import SkedgeGraphs from '../dashboard/statistics/SkedgeGraphs'
 
 
 class Features extends Component {

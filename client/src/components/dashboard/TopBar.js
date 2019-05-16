@@ -3,11 +3,8 @@ import { Link } from 'react-router-dom';
 import {
   Menu,
   MenuItem,
-  Button,
-  IconName,
   Popover,
   PopoverInteractionKind,
-  Classes,
   Position
 } from "@blueprintjs/core";
 
@@ -35,7 +32,6 @@ class TopBar extends Component {
 
 
   renderMobileNav() {
-    let animationClasses = this.state.animate ? "is-active" : "";
 
     if (this.state.showNav) {
       return (

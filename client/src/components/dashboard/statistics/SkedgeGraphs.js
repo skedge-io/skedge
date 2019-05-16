@@ -1,11 +1,6 @@
 //https://github.com/ankane/react-chartkick
 
 import React, { Component } from 'react';
-import { connect } from "react-redux";
-import { fetchAppointments } from "../../../actions";
-
-
-import axios from 'axios';
 
 import ReactChartkick, { LineChart } from 'react-chartkick'
 import Chart from 'chart.js'
@@ -14,11 +9,6 @@ ReactChartkick.addAdapter(Chart)
 
 
 class SkedgeGraphs extends Component {
-  constructor(props) {
-    super(props);
-  }
-
-
 
   render() {
     return (

@@ -1,6 +1,5 @@
 import axios from 'axios';
 import { FETCH_USER, FETCH_APPOINTMENTS, CHANGE_DEFAULT_VIEW, FETCH_BUSINESS, FETCH_MONTHLY_DATA, FETCH_EMPLOYEES } from './types';
-import { push } from 'react-router-redux'
 
 
 export const fetchUser = () => async dispatch => {
@@ -31,7 +30,6 @@ export const editAppointment = (values, history) => async dispatch => {
   theAptId = theAptId.substring(0, aptI);
   theAptId = theAptId.split('').reverse().join('');
 
-  const axiosUrl = '/api/appointment/' + theAptId;
 
   const res = await axios.post('/api/appointment/edit/' + theAptId, values);
 

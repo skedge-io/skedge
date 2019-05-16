@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { Button } from "@blueprintjs/core";
 
 class LeftPanel extends Component {
   constructor(props) {

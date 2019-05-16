@@ -18,14 +18,6 @@ class UpgradeAccount extends Component {
       this.props.fetchUser();
       this.setState({success: true, plan: this.props.auth.plan, loading: !this.state.loading});
     })
-
-    // fetch('/api/stripe', {
-    //   method: 'POST',
-    //   body: JSON.stringify(token),
-    // }).then(response => {
-    //   this.props.fetchUser();
-    //   this.setState({success: true, plan: this.props.auth.plan});
-    // });
   }
 
   toggleLoader() {
@@ -53,13 +45,13 @@ class UpgradeAccount extends Component {
         </div>
         {this.state.success ? (
           <div>
-            <h1>Your account has been upgraded!</h1>
+            <h3>Your account has been upgraded!</h3>
           </div>
         ) : ''}
 
         {this.state.loading ? (
           <div>
-            <h1>Loading</h1>
+            <h3>Loading</h3>
           </div>
         ) : ''
 

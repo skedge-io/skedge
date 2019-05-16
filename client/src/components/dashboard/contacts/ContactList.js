@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import Contact from './Contact';
 import AddContactForm from './AddContactForm';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
 import ReactTooltip from "react-tooltip";
 
 
@@ -48,8 +47,8 @@ class ContactList extends Component {
       //this sorts the contacts in alphabetical order
       let newClients = this.state.contacts.sort(function(a, b) {
         if (a.name === undefined || b.name === undefined) {
-          return
-        }
+          return '';
+      }
 
         let textA = a.name.toUpperCase();
         let textB = b.name.toUpperCase();
@@ -80,12 +79,6 @@ class ContactList extends Component {
   }
 
   deleteContact = () => {
-    let contact = {
-      name: this.state.contactName,
-      phone: this.state.contactPhone,
-      notes: this.state.contactNotes,
-      _id: this.state.contactId,
-    }
 
     axios.post('/api/clients/' + this.state.contactId + "/delete").then(res => {
       console.log('deleted');
@@ -132,7 +125,7 @@ class ContactList extends Component {
       //this sorts the contacts in alphabetical order
       let newClients = this.state.contacts.sort(function(a, b) {
         if (a.name === undefined || b.name === undefined) {
-          return
+          return ''
         }
 
         let textA = a.name.toUpperCase();

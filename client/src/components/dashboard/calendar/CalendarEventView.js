@@ -1,7 +1,6 @@
 //when you click a slot on the calander this will pop up
 import React, { Component } from 'react';
 import ClickOutHandler from 'react-onclickout';
-import { Input } from 'react-materialize';
 import axios from 'axios';
 
 import { connect } from "react-redux";
@@ -123,7 +122,6 @@ class CalendarEventView extends Component {
   }
 
   deleteAppointment = () => {
-    let appointment = this.state;
 
     axios.post('/api/appointment/delete/' + this.props.id).then(res => {
       console.log('deleted');
@@ -176,12 +174,12 @@ class CalendarEventView extends Component {
               </div>
               <div className="card-action">
                 <div className="form-in-row">
-                  <a
+                  <button
                     onClick={this.updateAppointment}
                     className="btn-floating waves-effect waves-light blue margin-right"
                   >
                     <i className="material-icons">edit</i>
-                  </a>
+                  </button>
 
 
                   {this.renderButton()}

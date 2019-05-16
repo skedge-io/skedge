@@ -29,7 +29,7 @@ const AccountFormReview = ({
         <a href="/">
           <img src="/signup-logo.png" alt="skedge sign-up" />
         </a>
-        <p align="center">Everything looks good? 👍‍</p>
+        <p align="center">Everything looks good? <span role="img" aria-label="thumbs up">👍</span>‍</p>
       </div>
       <div className="account-setup-form results">
         <Button

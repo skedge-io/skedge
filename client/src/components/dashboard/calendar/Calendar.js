@@ -7,16 +7,11 @@ import withDragAndDrop from "react-big-calendar/lib/addons/dragAndDrop";
 import { connect } from "react-redux";
 import { fetchAppointments, changeDefaultView } from "../../../actions";
 import axios from "axios";
-import events from "./events";
-
-import { Link } from "react-router-dom";
 
 import CalendarEventView from "./CalendarEventView";
 import Toolbar from "react-big-calendar/lib/Toolbar";
 
-import { Button, IconName, Popover, Switch } from "@blueprintjs/core";
-import { Input } from 'react-materialize'
-
+import { Button } from "@blueprintjs/core";
 
 import "react-big-calendar/lib/addons/dragAndDrop/styles.css";
 import "react-big-calendar/lib/css/react-big-calendar.css";
@@ -68,7 +63,6 @@ class DashCalendar extends Component {
           end: new Date(appointment.end),
           id: appointment._id,
           phone: appointment.phone,
-          desc: appointment.desc
         });
       });
       this.setState({ events: events });
@@ -97,7 +91,6 @@ class DashCalendar extends Component {
           end: new Date(appointment.end),
           id: appointment._id,
           phone: appointment.phone,
-          desc: appointment.desc,
           startTime: appointment.startTime,
           endTime: appointment.endTime,
           employee: appointment.employee
@@ -152,14 +145,6 @@ class DashCalendar extends Component {
 
   };
 
-  onSlotChange(slotInfo) {
-    var startDate = moment(slotInfo.start.toLocaleString()).format(
-      "YYYY-MM-DDm:ss"
-    );
-    var endDate = moment(slotInfo.end.toLocaleString()).format(
-      "YYYY-MM-DDm:ss"
-    );
-  }
 
   onEventClick(event) {
     this.updateAppointments(function() {
@@ -367,7 +352,7 @@ class CustomToolbar extends Toolbar {
         <span className="rbc-btn-group">
           <Button
             className="no-shadow hide-on-mobile"
-            text={`${this.state.business}\'s Calendar`}
+            text={`${this.state.business}'s Calendar`}
             onClick={() => this.setState({showList: !this.state.showList})}
             large="true"
             rightIcon="caret-down"

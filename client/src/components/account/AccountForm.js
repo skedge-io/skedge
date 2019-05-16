@@ -2,7 +2,6 @@
 import _ from "lodash";
 import React, { Component } from "react";
 import { reduxForm, Field } from "redux-form";
-import { Link } from "react-router-dom";
 import AccountField from "./AccountField";
 import validateNumbers from "../../utils/validateNumbers";
 import formFields from "./formFields.js";
@@ -28,7 +27,7 @@ class AccountForm extends Component {
       <div className="account-setup-col">
         <div className="row">
           <a href="/">
-            <img src="/signup-logo.png" />
+            <img alt="sign-up logo" src="/signup-logo.png" />
           </a>
           <p align="center">A few details about you‍</p>
         </div>

@@ -6,7 +6,7 @@ class MarketNav extends Component {
     return (
       <div className="login-nav">
         <a className="navbar-brand brand-dark" href="/">
-          <img height="50" src="https://i.ibb.co/v4Z8V3p/Group.png" />
+          <img alt="skedge-logo" height="50" src="https://i.ibb.co/v4Z8V3p/Group.png" />
         </a>
 
         <Link className="nav-link white-text" to="/">

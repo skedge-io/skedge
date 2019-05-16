@@ -1,6 +1,5 @@
 // AccountSetUp shows AccountForm and AccountFormReview
 import React, { Component } from "react";
-import { Link } from 'react-router-dom';
 import { reduxForm } from "redux-form";
 import AccountForm from "./AccountForm";
 import AccountFormReview from "./AccountFormReview";
