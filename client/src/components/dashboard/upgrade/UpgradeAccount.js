@@ -44,13 +44,13 @@ class UpgradeAccount extends Component {
           />
         </div>
         {this.state.success ? (
-          <div>
+          <div onClick={() => this.setState({success : false})} className="done-box">
             <h3>Your account has been upgraded!</h3>
           </div>
         ) : ''}
 
         {this.state.loading ? (
-          <div>
+          <div className="done-box">
             <h3>Loading</h3>
           </div>
         ) : ''

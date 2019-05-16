@@ -356,7 +356,9 @@ class CustomToolbar extends Toolbar {
         <span className="rbc-btn-group">
           <Button
             className="no-shadow hide-on-mobile"
-            text={`${this.state.business}'s Calendar`}
+            text={
+              // eslint-disable-next-line
+              `${this.state.business}\'s Calendar`}
             onClick={() => this.setState({showList: !this.state.showList})}
             large="true"
             rightIcon="caret-down"
