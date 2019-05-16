@@ -9,7 +9,8 @@ const userSchema = new Schema({
   refreshToken : String,
   phone : String,
   email : String,
-  admin : { type: Boolean, default: false }
+  admin : { type: Boolean, default: false },
+  plan : { type: String, default: 'Free' }
 });
 
 const User = mongoose.model('User', userSchema);

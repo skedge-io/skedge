@@ -50,6 +50,9 @@ require("./controllers/business.js")(app, Business, texts);
 //Client Controller
 require("./controllers/client.js")(app);
 
+//Billing Controller
+require("./controllers/billing.js")(app);
+
 if (process.env.NODE_ENV === "production") {
   // Express will serve up production assets
   // like our main.js or main.css file

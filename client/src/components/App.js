@@ -26,6 +26,8 @@ import Login from './landing/Login';
 
 
 import SettingsContainer from "./dashboard/settings/SettingsContainer";
+import UpgradeAccountContainer from "./dashboard/upgrade/UpgradeAccountContainer";
+
 
 import NotFound from "./NotFound";
 
@@ -57,6 +59,7 @@ class App extends Component {
 
 
             <Route exact path="/settings" component={SettingsContainer} />
+            <Route exact path="/upgrade" component={UpgradeAccountContainer} />
         </div>
       </BrowserRouter>
     );
