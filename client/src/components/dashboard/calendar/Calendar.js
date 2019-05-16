@@ -35,6 +35,8 @@ class DashCalendar extends Component {
     this.newAppointmentForm = this.newAppointmentForm.bind(this);
     this.changeDefaultView = this.changeDefaultView.bind(this);
     this.updateAppointments = this.updateAppointments.bind(this);
+    this.setEvents = this.setEvents.bind(this);
+    this.onSelectSlot = this.onSelectSlot.bind(this);
   }
 
   state = {
@@ -78,9 +80,9 @@ class DashCalendar extends Component {
   }
 
   updateAppointments(callback = function() {}) {
+    let events = [];
 
     axios.get("/api/appointments").then(res => {
-      let events = [];
       res.data.forEach(appointment => {
         events.push({
           title: appointment.title,
@@ -96,16 +98,19 @@ class DashCalendar extends Component {
           employee: appointment.employee
         });
       });
-      this.setState({ events: events });
+
+    }).then(() => {
+      this.setEvents(events);
       callback = callback.bind(this);
       callback()
-
     });
 
 
   }
 
-
+  setEvents(events) {
+    this.setState({ events: events });
+  }
 
   changeDefaultView(action) {
     this.setState({defaultView: action})
@@ -171,7 +176,7 @@ class DashCalendar extends Component {
 
   onSelectSlot = event => {
     console.log(event);
-
+    let events = [];
     const newEvent = {
       title: "New Event",
       phone: "",
@@ -179,7 +184,7 @@ class DashCalendar extends Component {
       clientName: "New Contact",
       employee: "",
       endTime: moment(event.end).format("hh:mm A"),
-      desc: "none",
+      desc: "",
       date: moment(event.start).format("D MMMM, YYYY"),
       start: "",
       end: ""
@@ -195,7 +200,6 @@ class DashCalendar extends Component {
     axios.post("/api/appointment/new", newEvent).then(res => {
       axios.get("/api/appointments").then(res => {
         console.log(res.data);
-        let events = [];
         res.data.forEach(appointment => {
           events.push({
             title: appointment.title,
@@ -209,8 +213,9 @@ class DashCalendar extends Component {
           });
           // window.location = "/appointments/edit/" + appointment._id;
         });
-        this.setState({ events: events });
+        this.setEvents(events)
         this.updateAppointments()
+        this.newAppointmentForm()
 
       });
 
@@ -218,7 +223,6 @@ class DashCalendar extends Component {
 
     })
 
-    this.newAppointmentForm()
 
 
   };

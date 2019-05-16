@@ -152,7 +152,7 @@ class CalendarEventView extends Component {
                 </span>
 
                 <label>Client Name</label>
-                <input className="card-input-imp" value={this.state.clientName} onChange={this.handleClientName} />
+                <input className="card-input-imp" value={this.state.clientName} placeholder="John Smith" onChange={this.handleClientName} />
 
                 <label>Employee Name</label>
                 <select className="card-input-imp select-employee-form" defaultValue={this.state.employee} onChange={this.handleEmployee}>
@@ -167,9 +167,9 @@ class CalendarEventView extends Component {
                 <label>End Time</label>
                 <input className="card-input-imp" value={this.state.endTime} onChange={this.handleEndTime}/>
                 <label>Phone</label>
-                <input className="card-input-imp" value={this.state.phone} onChange={this.handlePhone}/>
+                <input className="card-input-imp" value={this.state.phone} placeholder="1234567890" onChange={this.handlePhone}/>
                 <label>desc</label>
-                <input className="card-input-imp" value={this.state.desc} onChange={this.handleDesc}/>
+                <input className="card-input-imp" value={this.state.desc} placeholder="Dye hair red" onChange={this.handleDesc}/>
 
               </div>
               <div className="card-action">
