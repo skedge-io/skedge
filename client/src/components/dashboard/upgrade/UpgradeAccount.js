@@ -1,22 +1,35 @@
 import React, { Component } from 'react';
 import StripeCheckout from 'react-stripe-checkout';
-
+import axios from 'axios';
 
 class UpgradeAccount extends Component {
 
   state = {
     plan: this.props.auth ? this.props.auth.plan : 'Free',
-    success: false
+    success: false,
+    loading: false
   }
 
   onToken = (token) => {
-    fetch('/api/stripe', {
-      method: 'POST',
-      body: JSON.stringify(token),
-    }).then(response => {
+
+    this.toggleLoader();
+
+    axios.post('/api/stripe', token).then((response) => {
       this.props.fetchUser();
-      this.setState({success: true, plan: this.props.auth.plan});
-    });
+      this.setState({success: true, plan: this.props.auth.plan, loading: !this.state.loading});
+    })
+
+    // fetch('/api/stripe', {
+    //   method: 'POST',
+    //   body: JSON.stringify(token),
+    // }).then(response => {
+    //   this.props.fetchUser();
+    //   this.setState({success: true, plan: this.props.auth.plan});
+    // });
+  }
+
+  toggleLoader() {
+    this.setState({loading: !this.state.loading});
   }
 
   render() {
@@ -41,6 +54,14 @@ class UpgradeAccount extends Component {
             <h1>Your account has been upgraded!</h1>
           </div>
         ) : ''}
+
+        {this.state.loading ? (
+          <div>
+            <h1>Loading</h1>
+          </div>
+        ) : ''
+
+        }
 
       </div>
     )
