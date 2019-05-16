@@ -7,6 +7,17 @@
   padding-right: 1rem;
 }
 
+
+.campaign-loading {
+  padding: 1rem;
+  padding-left: 1rem;
+  font-weight: bold;
+}
+
+.tag-container {
+  transition: all 200ms;
+}
+
 .outer-campaign {
   /*height: 100%;*/
   width: 100%;

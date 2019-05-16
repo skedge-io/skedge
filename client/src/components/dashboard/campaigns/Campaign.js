@@ -108,7 +108,7 @@ class Campaign extends Component {
         </div>
       );
     } else {
-      return <div>Loading</div>;
+      return <div className="campaign-loading">Loading</div>;
     }
   }
 
@@ -121,7 +121,7 @@ class Campaign extends Component {
           <TopBar className="" header="Campaigns" />
           <div className="campaign-view-container">
             {this.renderFields()}
-            <Tags />
+            {this.state.campaigns ? <Tags /> : ''}
           </div>
         </div>
       </div>
