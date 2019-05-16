@@ -9,7 +9,7 @@ module.exports = app => {
   //make a payment
   app.post('/api/stripe', requireLogin, (req, res) => {
 
-  stripe.charges.create({
+    stripe.charges.create({
       amount: 1995,
       currency: 'usd',
       description: '$19.95 for upgraded plan',
@@ -22,5 +22,5 @@ module.exports = app => {
       })
     })
   });
-  
+
 };
