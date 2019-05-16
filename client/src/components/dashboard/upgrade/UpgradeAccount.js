@@ -34,21 +34,23 @@ class UpgradeAccount extends Component {
 
   render() {
     return (
-      <div>
-        Upgrade Account
-
-        <StripeCheckout
-          name="Skedge.io"
-          description="Upgrade Your Account"
-          image="https://avatars0.githubusercontent.com/u/41029863?s=200&v=4"
-          ComponentClass="div"
-          panelLabel="Upgrade Account"
-          amount={1995}
-          currency="USD"
-          token={this.onToken}
-          stripeKey="pk_test_crtKSHcAQUsq0CsXf9zUqqv6"
-        />
-
+      <div className="upgrade-card">
+        <h2>Upgrade to Enterprise</h2>
+        <p>Empower your business with additional features</p>
+        <img width="400px" alt="checkout cartoon" src="https://embedwistia-a.akamaihd.net/deliveries/890c08e8393baa51aa9ced55f002ce7a83d383a3.jpg?image_crop_resized=640x375" />
+        <div>
+          <StripeCheckout
+            name="Skedge.io"
+            description="Upgrade Your Account"
+            image="https://avatars0.githubusercontent.com/u/41029863?s=200&v=4"
+            ComponentClass="checkout-btn"
+            panelLabel="Upgrade Account"
+            amount={1995}
+            currency="USD"
+            token={this.onToken}
+            stripeKey="pk_test_crtKSHcAQUsq0CsXf9zUqqv6"
+          />
+        </div>
         {this.state.success ? (
           <div>
             <h1>Your account has been upgraded!</h1>

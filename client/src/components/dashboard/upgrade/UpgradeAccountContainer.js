@@ -26,7 +26,7 @@ class UpgradeAccountContainer extends Component {
         <LeftPanel />
         <div className="dash-con">
           <TopBar header="Upgrade Account" btn="" />
-          <div className="settings-container">
+          <div className="upgrade-container">
             <UpgradeAccount apps={this.props.apps} auth={this.props.auth} business={this.props.business} fetchUser={this.props.fetchUser}/>
           </div>
         </div>

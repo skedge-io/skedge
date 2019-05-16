@@ -1,0 +1,44 @@
+.upgrade-container {
+  height: calc(100vh - 50px);
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .upgrade-card {
+    height: 31rem;
+    width: 60%;
+    padding-left: 1rem;
+    padding-bottom: 1rem;
+    box-shadow: 0px 1px 1px rgba(0,0,0,.3);
+    background: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    h2 {
+      text-align: center;
+    }
+
+    p {
+      text-align: center;
+      font-size: 1.3rem;
+      padding-bottom: 5px;
+    }
+
+    button {
+      margin-top: .6rem;
+      height: 40px;
+      width: 200px;
+      border-radius: 0;
+    }
+
+    button span {
+      font-size: 1.3rem !important;
+      background: none !important;
+      border: none !important;
+      box-shadow: none !important;
+    }
+
+  }
+}
