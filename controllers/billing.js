@@ -23,4 +23,15 @@ module.exports = app => {
     })
   });
 
+  //cancel premium
+  app.post('/api/downgrade', requireLogin, (req, res) => {
+
+      User.findById(req.user.id).then((user) => {
+        req.user.plan = 'Free';
+        req.user.save();
+        res.send(user);
+      })
+    })
+
+
 };

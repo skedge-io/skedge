@@ -4,6 +4,7 @@ import { Tab, Tabs } from "@blueprintjs/core";
 
 import InviteBox from './InviteBox';
 import JoinBox from './JoinBox';
+import BillingSetting from './BillingSetting';
 
 class Settings extends Component {
   componentDidMount() {
@@ -38,9 +39,18 @@ class Settings extends Component {
                   business={this.props.business}
                 />
               }
-
           />
-
+          <Tab
+            id="BILLING"
+            title="BILLING"
+            panel={
+              <BillingSetting
+                apps={this.props.apps}
+                auth={this.props.auth}
+                business={this.props.business}
+              />
+            }
+            />
 
 
 
