@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from 'react-router-dom';
 
 import axios from "axios";
 
@@ -102,11 +103,24 @@ class Form extends Component {
             />
             <label className="when-label">{this.props.time}</label>
           </div>
-          <input
-            className="btn-flat btn-small white-text blue"
-            type="submit"
-            value="update"
-          />
+          {this.props.auth.plan === 'Premium' ? (
+            <input
+              className="btn-flat btn-small white-text blue"
+              type="submit"
+              value="update"
+            />
+
+          ) : (
+            <div>
+              <input
+                disabled
+                className="btn-flat btn-small white-text blue"
+                type="submit"
+                value="update"
+              />
+              <p>Your business must be on the <Link to="/upgrade">Premium plan.</Link> to enable this marketing campaign</p>
+            </div>
+          ) }
         </form>
       </div>
     );

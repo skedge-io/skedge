@@ -1,5 +1,9 @@
 import React, { Component } from "react";
 
+import { connect } from "react-redux";
+import { fetchUser } from '../../../actions';
+
+
 import axios from "axios";
 
 import TopBar from "../TopBar";
@@ -21,6 +25,9 @@ class Campaign extends Component {
   }
 
   componentDidMount() {
+
+    this.props.fetchUser()
+
     axios.get("/api/current_business").then(res => {
       this.setState({ campaigns: res.data.business.campaigns });
     });
@@ -42,6 +49,8 @@ class Campaign extends Component {
               title="REMINDERS"
               panel={
                 <CampaignBox
+                  auth={this.props.auth}
+                  fetchUser={this.props.fetchUser}
                   text={this.state.campaigns[0].text}
                   active={this.state.campaigns[0].active}
                   camp={this.state.campaigns[0].name}
@@ -59,6 +68,8 @@ class Campaign extends Component {
               title="REVIEWS"
               panel={
                 <CampaignBox
+                  auth={this.props.auth}
+                  fetchUser={this.props.fetchUser}
                   text={this.state.campaigns[1].text}
                   active={this.state.campaigns[1].active}
                   camp={this.state.campaigns[1].name}
@@ -76,6 +87,8 @@ class Campaign extends Component {
               title="REVISITS"
               panel={
                 <CampaignBox
+                  auth={this.props.auth}
+                  fetchUser={this.props.fetchUser}
                   text={this.state.campaigns[2].text}
                   active={this.state.campaigns[2].active}
                   camp={this.state.campaigns[2].name}
@@ -93,6 +106,8 @@ class Campaign extends Component {
               title="PROMOTIONS"
               panel={
                 <CampaignBox
+                  auth={this.props.auth}
+                  fetchUser={this.props.fetchUser}
                   text={this.state.campaigns[3].text}
                   active={this.state.campaigns[3].active}
                   camp={this.state.campaigns[3].name}
@@ -129,4 +144,8 @@ class Campaign extends Component {
   }
 }
 
-export default Campaign;
+function mapStateToProps({ auth }) {
+  return { auth };
+}
+
+export default connect(mapStateToProps, { fetchUser })(Campaign);

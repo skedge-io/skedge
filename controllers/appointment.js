@@ -81,7 +81,7 @@ module.exports = (app, Appointment) => {
                 }
                 //Add to Business Text Campaign if active
                 for(let i=0;i<2;i++){
-                  if(business.campaigns[i].active){
+                  if(business.campaigns[i].active && req.user.plan === "Premium"){
                     campaigns.setText(appointment, business, business.campaigns[i]);
                   }
                 }
@@ -100,7 +100,7 @@ module.exports = (app, Appointment) => {
         Business.findById(req.user.business).then((business) => {
           //Add to Business Text Campaign if active
           for(let i=0;i<2;i++){
-            if(business.campaigns[i].active){
+            if(business.campaigns[i].active && req.user.plan === "Premium"){
               campaigns.setText(appointment, business, business.campaigns[i]);
             }
           }

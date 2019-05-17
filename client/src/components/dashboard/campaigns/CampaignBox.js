@@ -40,6 +40,8 @@ class CampaignBox extends Component {
         >
           {this.state.isActive ? null : (
             <Form
+              auth={this.props.auth}
+              fetchUser={this.props.fetchUser}
               when={this.props.when}
               active={this.props.active}
               text={this.props.text}
