@@ -11,6 +11,10 @@ $collapsed-menu-icon: 2rem;
 
 $border-radius: 4px;
 
+label {
+  margin-bottom: .5rem;
+}
+
 .employee-cal-drop-down {
   display: flex;
   flex-direction: column;
@@ -50,6 +54,7 @@ $border-radius: 4px;
   display: flex;
   align-items: center;
   border-radius: 4px;
+  cursor: pointer;
 
   &:after {
     position: absolute;
