@@ -24,6 +24,7 @@ class CalendarEventView extends Component {
       date: this.props.date,
       start: this.props.start,
       end: this.props.end,
+      showEmployees: false
     };
 
 
@@ -125,7 +126,6 @@ class CalendarEventView extends Component {
 
     axios.post('/api/appointment/delete/' + this.props.id).then(res => {
       console.log('deleted');
-
     })
 
     this.props.setStateFunc()
@@ -155,12 +155,17 @@ class CalendarEventView extends Component {
                 <input className="card-input-imp" value={this.state.clientName} placeholder="John Smith" onChange={this.handleClientName} />
 
                 <label>Employee Name</label>
-                <select className="card-input-imp select-employee-form" defaultValue={this.state.employee} onChange={this.handleEmployee}>
-                  <option value=""></option>
-                  {this.props.employee.map((data, index) => (
-                    <option value={data.name}>{data.name}</option>
-                  ))}
-                </select>
+                <div onClick={() => this.setState({showEmployees: !this.state.showEmployees})} className="card-input-imp select-employee-form">{this.state.employee ? this.state.employee : 'Select Employee'}</div>
+                  { this.state.showEmployees ? (
+                    <ClickOutHandler onClickOut={() => this.setState({showEmployees: !this.state.showEmployees})}>
+                      <div className="employee-cal-drop-down on-edit">
+                        {this.props.employee.map((data, index) => (
+                          <p onClick={() => this.setState({employee: data.name, showEmployees: !this.state.showEmployees})}>{data.name}</p>
+                        ))}
+                      </div>
+                    </ClickOutHandler>
+                  ) : '' }
+                    
 
                 <label>Start Time</label>
                 <input className="card-input-imp" value={this.state.startTime} onChange={this.handleStartTime} />
