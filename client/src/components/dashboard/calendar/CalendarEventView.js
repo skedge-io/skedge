@@ -111,7 +111,7 @@ class CalendarEventView extends Component {
   updateAppointment = () => {
 
     let appointment = this.state;
-
+    this.props.toggleAlert('success', 'Appointment Updated');
     axios.post('/api/appointment/edit/' + this.props.id, appointment).then(res => {
     }).catch((err) => {
       console.log(err);
@@ -125,7 +125,7 @@ class CalendarEventView extends Component {
   deleteAppointment = () => {
 
     axios.post('/api/appointment/delete/' + this.props.id).then(res => {
-      console.log('deleted');
+      this.props.toggleAlert('failure', 'Appointment Deleted');
     })
 
     this.props.setStateFunc()
