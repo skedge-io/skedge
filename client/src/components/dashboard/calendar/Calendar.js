@@ -16,6 +16,8 @@ import { Button } from "@blueprintjs/core";
 import "react-big-calendar/lib/addons/dragAndDrop/styles.css";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 
+import CalendarAlert from './CalendarAlert';
+
 // Setup the localizer by providing the moment (or globalize) Object
 // to the correct localizer.
 Calendar.setLocalizer(Calendar.momentLocalizer(moment));
@@ -37,6 +39,7 @@ class DashCalendar extends Component {
     this.updateAppointments = this.updateAppointments.bind(this);
     this.setEvents = this.setEvents.bind(this);
     this.onSelectSlot = this.onSelectSlot.bind(this);
+    this.toggleAlert = this.toggleAlert.bind(this);
   }
 
   state = {
@@ -50,7 +53,10 @@ class DashCalendar extends Component {
     endTime: "",
     style: {},
     lastEvent: {},
-    defaultView: "week"
+    defaultView: "week",
+    showAlert: false,
+    alertType: "",
+    alertMessage: ""
   };
 
   componentDidMount() {
@@ -168,9 +174,8 @@ class DashCalendar extends Component {
         endTime: event.endTime,
         style: {}
       }
-    )
-  }
-)}
+    )}
+  )}
 
 
 
@@ -218,19 +223,10 @@ class DashCalendar extends Component {
         this.newAppointmentForm()
 
       });
-
-        //      this.newAppointmentForm()
-
     })
-
-
-
   };
 
   newAppointmentForm() {
-
-    console.log('new apt form')
-
     axios.get("/api/appointments").then(res => {
       let events = [];
       res.data.forEach(appointment => {
@@ -244,7 +240,6 @@ class DashCalendar extends Component {
           id: appointment._id,
           phone: appointment.phone
         });
-        // window.location = "/appointments/edit/" + appointment._id;
       });
       let lastEvent = res.data[res.data.length -1]
       lastEvent.id = lastEvent._id
@@ -253,9 +248,6 @@ class DashCalendar extends Component {
       this.setState({ events: events });
       this.updateAppointments()
     })
-
-
-
   }
 
 
@@ -277,6 +269,7 @@ class DashCalendar extends Component {
            start={this.state.start}
            end={this.state.end.toString()}
            phone={this.state.phone}
+           toggleAlert={this.toggleAlert}
            id={this.state.id}
            desc={this.state.desc}
            updateApps={() => this.updateAppointments()}
@@ -288,9 +281,18 @@ class DashCalendar extends Component {
     }
   }
 
+  toggleAlert(alertType, alertMessage) {
+    window.setTimeout(() => {
+      this.setState({showAlert: false})
+    }, 3000)
+    this.setState({showAlert: !this.state.showAlert, alertType, alertMessage})
+  }
+
   render() {
     return (
       <div className="cal-out">
+        {this.state.showAlert ? <CalendarAlert alertType={this.state.alertType} alertMessage={this.state.alertMessage} toggleAlert={this.toggleAlert} /> : ''}
+
         <div id="calendarInfo" className={this.state.boolean ? 'eventView eventEnter' : ''} style={this.state.style}>
           {this.renderEventView()}
         </div>

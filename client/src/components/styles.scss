@@ -11,6 +11,61 @@ $collapsed-menu-icon: 2rem;
 
 $border-radius: 4px;
 
+@keyframes alertIn {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+
+@keyframes alertOut {
+  from {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+
+  to {
+    opacity: 0;
+    transform: translateY(5px);
+    visibility: hidden;
+  }
+}
+
+.calendar-alert {
+  animation: alertIn 150ms ease-in;
+  position: absolute;
+  bottom: 0rem; left: 0; right: 0;
+  margin-left: auto; margin-right: auto;
+  height: 3rem;
+  width: 30rem;
+  padding: 0 1rem;
+  box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.3);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  color: white;
+  z-index: 1000000000000;
+
+  &.failure {
+    background: #e74c3c;
+  }
+
+  &.success {
+    background: #3498db;
+  }
+
+  &.go-away {
+    animation: alertOut 150ms ease-in;
+    animation-fill-mode: forwards;
+  }
+}
+
 label {
   margin-bottom: .5rem;
 }
