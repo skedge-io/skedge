@@ -39,7 +39,7 @@ class Employees extends Component {
 
         <div className="fixed-action-btn">
           <Link
-            to="/dashboard/employees/new"
+            to="/settings"
             data-tip="React-tooltip"
             className="btn-floating btn-large blue hoverable waves-effect waves-light"
           >

@@ -35,7 +35,10 @@
   padding: 1rem;
   display: flex;
   justify-content: space-around;
+  background: white;
   border-bottom: solid 1px #dddcdc;
+  border-left: solid 1px #dddcdc;
+  border-right: solid 1px #dddcdc;
   &.key {
     background: #ecf0f1;
     color: #a0a0a0;
