@@ -183,12 +183,27 @@ module.exports = (app, Appointment) => {
     })
   })
 
+  // get all biz appointment
   app.get('/api/appointments', reqLogin, (req, res) => {
     Appointment.find({business : req.user.business})
     .then((appointments) => {
       res.send(appointments);
     })
   });
+
+  app.get('/api/appointments/:employee_id', reqLogin, (req, res) => {
+    Appointment.find({business : req.user.business})
+    .then((appointments) => {
+      let employeeAppointments = [];
+      appointments.forEach((app) => {
+        if (app.employee_id === req.params.employee_id) {
+          employeeAppointments.push(app);
+        }
+      })
+      res.send(employeeAppointments);
+    })
+  });
+
 
   app.get('/api/appointments/monthly_data', reqLogin, (req, res) => {
     Appointment.find({business : req.user.business}).then((appointments) => {

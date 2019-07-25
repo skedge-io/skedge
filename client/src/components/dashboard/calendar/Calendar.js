@@ -40,6 +40,7 @@ class DashCalendar extends Component {
     this.setEvents = this.setEvents.bind(this);
     this.onSelectSlot = this.onSelectSlot.bind(this);
     this.toggleAlert = this.toggleAlert.bind(this);
+    this.setCalApi = this.setCalApi.bind(this);
   }
 
   state = {
@@ -56,11 +57,12 @@ class DashCalendar extends Component {
     defaultView: "week",
     showAlert: false,
     alertType: "",
-    alertMessage: ""
+    alertMessage: "",
+    appointmentUrl: '/api/appointments'
   };
 
   componentDidMount() {
-    axios.get("/api/appointments").then(res => {
+    axios.get(this.state.appointmentUrl).then(res => {
       let events = [];
       res.data.forEach(appointment => {
         events.push({
@@ -86,9 +88,11 @@ class DashCalendar extends Component {
   }
 
   updateAppointments(callback = function() {}) {
+    console.log('yeet')
     let events = [];
 
-    axios.get("/api/appointments").then(res => {
+    axios.get(this.state.appointmentUrl).then(res => {
+      console.log(res)
       res.data.forEach(appointment => {
         events.push({
           title: appointment.title,
@@ -109,12 +113,14 @@ class DashCalendar extends Component {
       this.setEvents(events);
       callback = callback.bind(this);
       callback()
+      console.log('events: ', this.state.events)
     });
 
 
   }
 
   setEvents(events) {
+    console.log('wow')
     this.setState({ events: events });
   }
 
@@ -203,7 +209,7 @@ class DashCalendar extends Component {
     }
 
     axios.post("/api/appointment/new", newEvent).then(res => {
-      axios.get("/api/appointments").then(res => {
+      axios.get(this.state.appointmentUrl).then(res => {
         console.log(res.data);
         res.data.forEach(appointment => {
           events.push({
@@ -288,7 +294,18 @@ class DashCalendar extends Component {
     this.setState({showAlert: !this.state.showAlert, alertType, alertMessage})
   }
 
+  changeUrl = (id) => {
+    this.setState({appointmentUrl: '/api/appointments/' + id})
+  }
+
+  setCalApi(id) {
+    this.changeUrl(id);
+    this.updateAppointments();
+  }
+
+
   render() {
+    const setCalApi = this.setCalApi
     return (
       <div className="cal-out">
         {this.state.showAlert ? <CalendarAlert alertType={this.state.alertType} alertMessage={this.state.alertMessage} toggleAlert={this.toggleAlert} /> : ''}
@@ -310,10 +327,11 @@ class DashCalendar extends Component {
           onSelectEvent={event => this.onEventClick(event)}
           onSelectSlot={this.onSelectSlot}
           popup
+          onCalSwitch={this.setCalApi}
           timeslots={2}
           components={{
             event: Event,
-            toolbar: CustomToolbar,
+            toolbar: NewToolbar({setCalApi}),
             agenda: {
               event: EventAgenda
             }
@@ -325,121 +343,133 @@ class DashCalendar extends Component {
   }
 }
 
-class CustomToolbar extends Toolbar {
 
-  state = {
-    user: '',
-    business: '',
-    employees: [],
-    showList: false
+const NewToolbar = ({setCalApi}) => {
+  return class CustomToolbar extends Toolbar { 
+    state = {
+      user: '',
+      business: '',
+      employees: [],
+      showList: false,
+      displayName: ''
+    }
+  
+    componentDidMount() {
+  
+      axios.get('/api/current_user').then((user) => {
+        this.setState({user: user.data.name});
+      })
+  
+      axios.get('/api/current_business').then((business) => {
+        this.setState({business: business.data.business.name, displayName: business.data.business.name});
+      })
+  
+      axios.get('/api/current_business/employees').then((employees) => {
+        this.setState({employees: employees.data});
+      })
+    }
+  
+    render() {
+  
+      return (
+        <div className="rbc-toolbar calendar-toolbar">
+          <span className="rbc-btn-group">
+            <Button
+              className="no-shadow hide-on-mobile"
+              text={
+                // eslint-disable-next-line
+                `${this.state.displayName}\'s Calendar`}
+              onClick={() => this.setState({showList: !this.state.showList})}
+              large="true"
+              rightIcon="caret-down"
+            />
+          </span>
+          {this.state.showList ? (
+            <ClickOutHandler onClickOut={() => this.setState({showList: !this.state.showList})}>
+              <div className="employee-cal-drop-down">
+                {this.state.employees.map((emp) => {
+                  return (<p key={emp._id} onClick={() => this.switchCalendar(emp._id, emp.name)}>{emp.name}</p>)
+                })}
+              </div>
+              </ClickOutHandler>
+            ) : ''
+          }
+  
+          <span className="rbc-btn-group middle mobile-top-cal-btns">
+            <button
+              className="material-icons mobile-cal-refresh"
+              type="button"
+              onClick={() => this.navigate("TODAY")}
+            >
+              refresh
+            </button>
+            <button
+              className="material-icons"
+              type="button"
+              onClick={() => this.navigate("PREV")}
+            >
+              chevron_left
+            </button>
+            {/* <----- calendar date range -----> */}
+            <button>
+              <span className="rbc-toolbar-label calendar-text-btn">
+                {this.props.label}
+              </span>
+            </button>
+            <button
+              className="material-icons"
+              type="button"
+              onClick={() => this.navigate("NEXT")}
+            >
+              chevron_right
+            </button>
+          </span>
+          <span className="rbc-btn-group">
+            <button
+              className="calendar-text-btn calendar-view-btn left"
+              type="button"
+              onClick={this.view.bind(null, "month")}
+            >
+              Month
+            </button>
+            <button
+              className="calendar-text-btn calendar-view-btn"
+              type="button"
+              onClick={this.view.bind(null, "week")}
+            >
+              Week
+            </button>
+            <button
+              className="calendar-text-btn calendar-view-btn right"
+              type="button"
+              onClick={this.view.bind(null, "agenda")}
+            >
+              List
+            </button>
+  
+          </span>
+        </div>
+      );
+    }
+  
+    navigate = action => {
+      console.log(action);
+  
+      this.props.onNavigate(action);
+    };
+  
+    switchCalendar = (action, name) => {
+      setCalApi(action);
+      this.setState=({displayName: name})
+    }
+  
+   }
   }
 
-  componentDidMount() {
-		const view = this.props.view;
-		console.log('view: ', view)
 
-    axios.get('/api/current_user').then((user) => {
-      this.setState({user: user.data.name});
-    })
 
-    axios.get('/api/current_business').then((business) => {
-      this.setState({business: business.data.business.name});
-    })
 
-    axios.get('/api/current_business/employees').then((employees) => {
-      this.setState({employees: employees.data});
-    })
-	}
 
-  render() {
-
-    return (
-      <div className="rbc-toolbar calendar-toolbar">
-        <span className="rbc-btn-group">
-          <Button
-            className="no-shadow hide-on-mobile"
-            text={
-              // eslint-disable-next-line
-              `${this.state.business}\'s Calendar`}
-            onClick={() => this.setState({showList: !this.state.showList})}
-            large="true"
-            rightIcon="caret-down"
-          />
-        </span>
-        {this.state.showList ? (
-          <ClickOutHandler onClickOut={() => this.setState({showList: !this.state.showList})}>
-            <div className="employee-cal-drop-down">
-              {this.state.employees.map((emp) => {
-                return (<p>{emp.name}</p>)
-              })}
-            </div>
-            </ClickOutHandler>
-          ) : ''
-        }
-
-        <span className="rbc-btn-group middle mobile-top-cal-btns">
-          <button
-            className="material-icons mobile-cal-refresh"
-            type="button"
-            onClick={() => this.navigate("TODAY")}
-          >
-            refresh
-          </button>
-          <button
-            className="material-icons"
-            type="button"
-            onClick={() => this.navigate("PREV")}
-          >
-            chevron_left
-          </button>
-          {/* <----- calendar date range -----> */}
-          <button>
-            <span className="rbc-toolbar-label calendar-text-btn">
-              {this.props.label}
-            </span>
-          </button>
-          <button
-            className="material-icons"
-            type="button"
-            onClick={() => this.navigate("NEXT")}
-          >
-            chevron_right
-          </button>
-        </span>
-        <span className="rbc-btn-group">
-          <button
-            className="calendar-text-btn calendar-view-btn left"
-            type="button"
-            onClick={this.view.bind(null, "month")}
-          >
-            Month
-          </button>
-          <button
-            className="calendar-text-btn calendar-view-btn"
-            type="button"
-            onClick={this.view.bind(null, "week")}
-          >
-            Week
-          </button>
-          <button
-            className="calendar-text-btn calendar-view-btn right"
-            type="button"
-            onClick={this.view.bind(null, "agenda")}
-          >
-            List
-          </button>
-
-        </span>
-      </div>
-    );
-  }
-
-  navigate = action => {
-    console.log(action);
-
-    this.props.onNavigate(action);
-  };
-}
 
 function Event({ event }) {
   return (
