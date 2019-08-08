@@ -63,11 +63,6 @@ class ContactList extends Component {
 
   }
 
-  componentDidUpdate() {
-
-  }
-
-
   showContactDetails(event,data) {
     this.setState({ showContact: true,
       contactName: data.name,
@@ -108,10 +103,6 @@ class ContactList extends Component {
     })
 
     this.refreshContacts()
-
-    this.forceUpdate()
-    this.refreshContacts()
-
   }
 
 
@@ -254,15 +245,7 @@ class ContactList extends Component {
           <ReactTooltip place="left" type="dark" effect="solid">Create New Contact</ReactTooltip>
         </div>
 
-
         {this.state.showForm ? <div className="add-contact-form"><AddContactForm cancel={() => this.setState({showForm: false})} update={() => { this.refreshContacts(); this.forceUpdate(); this.refreshContacts() }} /></div> : null}
-
-
-
-
-
-
-
 
       </div>
     )
