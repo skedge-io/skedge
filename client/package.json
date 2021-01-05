@@ -6,7 +6,7 @@
     "@blueprintjs/core": "^3.7.0",
     "ajv": "^6.5.4",
     "ajv-errors": "^1.0.1",
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "chart.js": "^2.7.3",
     "d3": "^5.7.0",
     "http-proxy-middleware": "^0.19.0",
